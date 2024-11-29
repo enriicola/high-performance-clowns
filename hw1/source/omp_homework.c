@@ -1,4 +1,3 @@
-
 #include "stdio.h" // printf
 #include "stdlib.h" // malloc and rand for instance. Rand not thread safe!
 #include "time.h"   // time(0) to get random seed
@@ -74,26 +73,23 @@ int main(int argc, char* argv[]){
 // WAW Dependencies: There are no WAW dependencies because each k is handled independently across outer loop iterations, so there's no overwriting of the same variable in an unsynchronized way.
 int DFT(int idft, double* xr, double* xi, double* Xr_o, double* Xi_o, int N){
   int k, n;
-  #ifdef PARALLEL
-  omp_thread_nums(20);
-  #pragma omp parallel for private(k, n) reduction(+:Xr_o, +:Xi_o)
-  #endif
-  for (k=0 ; k<N ; k++)
-  {
-      for (n=0 ; n<N ; n++)  {
-        // Real part of X[k]
-          Xr_o[k] += xr[n] * cos(n * k * PI2 / N) + idft*xi[n]*sin(n * k * PI2 / N);
-          // Imaginary part of X[k]
-          Xi_o[k] += -idft*xr[n] * sin(n * k * PI2 / N) + xi[n] * cos(n * k * PI2 / N);
-
+  #pragma omp parallel for private(n)
+  for (k=0 ; k<N ; k++) {
+      double Xr_temp = 0.0;
+      double Xi_temp = 0.0;
+      for (n=0 ; n<N ; n++) {
+          Xr_temp += xr[n] * cos(n * k * PI2 / N) + idft * xi[n] * sin(n * k * PI2 / N);
+          Xi_temp += -idft * xr[n] * sin(n * k * PI2 / N) + xi[n] * cos(n * k * PI2 / N);
       }
+      Xr_o[k] = Xr_temp;
+      Xi_o[k] = Xi_temp;
   }
 
-  // normalize if you are doing IDFT
-  if (idft==-1){
-    for (n=0 ; n<N ; n++){
-      Xr_o[n] /=N;
-      Xi_o[n] /=N;
+  if (idft == -1) {
+    #pragma omp parallel for
+    for (n=0 ; n<N ; n++) {
+      Xr_o[n] /= N;
+      Xi_o[n] /= N;
     }
   }
   return 1;

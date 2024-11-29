@@ -1,4 +1,3 @@
-
 #include "stdio.h" // printf
 #include "stdlib.h" // malloc and rand for instance. Rand not thread safe!
 #include "time.h"   // time(0) to get random seed
@@ -91,7 +90,7 @@ int DFT(int idft, double* xr, double* xi, double* Xr_o, double* Xi_o, int N){
 
 // set the initial signal
 // be careful with this
-// rand() is NOT thread safe in case
+// rand() is NOT thread safe in this case
 int fillInput(double* xr, double* xi, int N){
   int n;
   srand(time(0));
@@ -101,6 +100,7 @@ int fillInput(double* xr, double* xi, int N){
      // Generate random discrete-time signal x in range (-1,+1)
      //xr[n] = ((double)(2.0 * rand()) / RAND_MAX) - 1.0;
      //xi[n] = ((double)(2.0 * rand()) / RAND_MAX) - 1.0;
+     
      // constant real signal
      xr[n] = 1.0;
      xi[n] = 0.0;
