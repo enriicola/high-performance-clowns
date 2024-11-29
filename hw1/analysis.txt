@@ -24,4 +24,3 @@ sequential (vectorized): // BEST sequential time
     - Hotsposts:
         - loop in DFT at omp_homework.c:83
             - Time: 18.950s
-
