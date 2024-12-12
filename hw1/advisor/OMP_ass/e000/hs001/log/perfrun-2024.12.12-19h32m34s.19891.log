@@ -1,0 +1,10 @@
+1 [140275248924608] INFO perfrun.launcher <> - Launcher main begin
+2 [140275248924608] INFO perfrun.launcher <> - MessageCatalogInit finished
+2 [140275248924608] INFO perfrun.launcher <> - Launcher instance created
+2 [140275248924608] INFO perfrun.launcher <> - argc = 9; cmdline = /opt/intel/oneapi/advisor/2025.0/bin64/advixe-runss --ui-output-format xml --ui-output-fd 117 -r /home/chris/high-performance-clowns/hw1/advisor/OMP_ass/e000/hs001 --command stop 
+59 [140275248924608] INFO perfrun.launcher <> - create msngr2::ICliToolContext
+59 [140275248924608] INFO perfrun.launcher <> - create file finder object
+59 [140275248924608] INFO perfrun.launcher <> - open the result directory: pattern = /home/chris/high-performance-clowns/hw1/advisor/OMP_ass/e000/hs001
+62 [140275248924608] INFO perfrun.launcher <> - RpcClient: IP address = 127.0.0.1; port = 4294948367
+72884 [140275248924608] INFO perfrun.launcher <> - Application exit code: 0
+72884 [140275248924608] INFO perfrun.launcher <> - Exit code: 0

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- <!DOCTYPE IntelParallelAdvisorSummaryCollection SYSTEM  "IntelParallelAdvisorSummaryCollection.dtd"> -->
+
+<IntelParallelAdvisorSummary version="" 
+                             kind="DATAKIND_SURVEY_EX" >
+  <hotspot filename="/home/chris/high-performance-clowns/hw1/./source/omp_homework.c"
+           line_no="76"
+           routine="DFT.extracted.9"
+           is_vectorized="0"
+           self_time="4.008194E-02"
+           total_time="3.952923E+02"
+           trip_counts=""
+           func_instance="27"
+           priority="0"/>
+  <hotspot filename="/home/chris/high-performance-clowns/hw1/./source/omp_homework.c"
+           line_no="76"
+           routine="DFT.extracted.9"
+           is_vectorized="0"
+           self_time="1.576299E+02"
+           total_time="3.952522E+02"
+           trip_counts=""
+           func_instance="24"
+           priority="0"/>
+</IntelParallelAdvisorSummary >
