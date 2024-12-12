@@ -4,7 +4,7 @@ sequential (not vectorized):
     - GFLOPS: 4.93
     - GINTOPS: 1.38
     - Hotsposts:
-        - loop in DFT at omp_homework.c:73:
+        - loop in DFT at omp_homework.c:71:
             - Time: 7.286s
 
 sequential (vectorized): // BEST sequential time

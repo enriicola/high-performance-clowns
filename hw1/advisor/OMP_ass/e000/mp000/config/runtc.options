@@ -1,0 +1,17 @@
+-r
+/home/chris/high-performance-clowns/hw1/advisor/OMP_ass/e000/mp000
+--tool=map
+--record-stack-frame
+--sample-size=300000
+--record-mem-allocations
+--search-dir
+sym:p=/home/chris/high-performance-clowns/hw1/release
+--search-dir
+sym:p=/home/chris/high-performance-clowns/hw1
+--search-dir
+bin:p=/home/chris/high-performance-clowns/hw1/release
+--search-dir
+bin:p=/home/chris/high-performance-clowns/hw1
+--app-working-dir=/home/chris/high-performance-clowns/hw1/release
+--
+/home/chris/high-performance-clowns/hw1/release/omp_homework

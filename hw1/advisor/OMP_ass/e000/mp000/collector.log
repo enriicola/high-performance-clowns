@@ -1,0 +1,35 @@
+Analysis started...
+Collection has been started.
+Result file: /home/chris/high-performance-clowns/hw1/advisor/OMP_ass/e000/mp000/mp000.advixe 
+Found target process /home/chris/high-performance-clowns/hw1/release/omp_homework (PID = 39006). Analysis started... 
+Loaded module: /home/chris/high-performance-clowns/hw1/release/omp_homework. 
+Loaded module: /lib64/ld-linux-x86-64.so.2. 
+Loaded module: [vdso]. 
+Loaded module: /lib/x86_64-linux-gnu/libm.so.6. 
+Loaded module: /opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so. 
+Loaded module: /lib/x86_64-linux-gnu/libc.so.6. 
+Loaded module: /lib/x86_64-linux-gnu/librt.so.1. 
+Loaded module: /lib/x86_64-linux-gnu/libdl.so.2. 
+Loaded module: /lib/x86_64-linux-gnu/libpthread.so.0. 
+Loaded module: /opt/intel/oneapi/advisor/2025.0/lib64/runtime/libittnotify.so. 
+Loaded module: /opt/intel/oneapi/advisor/2025.0/lib64/libpinjitprofiling.so. 
+Loaded module: /lib/x86_64-linux-gnu/libstdc++.so.6. 
+Loaded module: /lib/x86_64-linux-gnu/libgcc_s.so.1. 
+Unloaded module: /home/chris/high-performance-clowns/hw1/release/omp_homework. 
+Unloaded module: /lib64/ld-linux-x86-64.so.2. 
+Unloaded module: [vdso]. 
+Unloaded module: /lib/x86_64-linux-gnu/libm.so.6. 
+Unloaded module: /opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so. 
+Unloaded module: /lib/x86_64-linux-gnu/libc.so.6. 
+Unloaded module: /lib/x86_64-linux-gnu/librt.so.1. 
+Unloaded module: /lib/x86_64-linux-gnu/libdl.so.2. 
+Unloaded module: /lib/x86_64-linux-gnu/libpthread.so.0. 
+Unloaded module: /opt/intel/oneapi/advisor/2025.0/lib64/runtime/libittnotify.so. 
+Unloaded module: /opt/intel/oneapi/advisor/2025.0/lib64/libpinjitprofiling.so. 
+Unloaded module: /lib/x86_64-linux-gnu/libstdc++.so.6. 
+Unloaded module: /lib/x86_64-linux-gnu/libgcc_s.so.1. 
+Process /home/chris/high-performance-clowns/hw1/release/omp_homework (PID = 39006) has terminated. 
+Warning: No SITE annotations were encountered, so no stride/alignment data can be reported. 
+Application exit code: 1 
+Result file: /home/chris/high-performance-clowns/hw1/advisor/OMP_ass/e000/mp000/mp000.advixe 
+Analysis completed

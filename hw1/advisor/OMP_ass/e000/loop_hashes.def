@@ -1,3 +1,3 @@
 # hash file version: 3
-1	24	/home/chris/high-performance-clowns/hw1/release/omp_homework	6646	7071	/home/chris/high-performance-clowns/hw1/./source/omp_homework.c	76	425	6aa7ef7875e2544487a74358283333ed	0	1	0	0	0
-2	27	/home/chris/high-performance-clowns/hw1/release/omp_homework	6602	7142	/home/chris/high-performance-clowns/hw1/./source/omp_homework.c	76	540	6aa7ef7875e2544487a74358283333ed	0	1	0	0	0
+9	26	/home/chris/high-performance-clowns/hw1/release/omp_homework	10000	10127	/home/chris/high-performance-clowns/hw1/./source/omp_homework.c	76	127	fb6b7c4207cd1c1b76662afe3f0e581e	1	1	0	0	0
+10	28	/home/chris/high-performance-clowns/hw1/release/omp_homework	9648	10510	/home/chris/high-performance-clowns/hw1/./source/omp_homework.c	73	614	fb6b7c4207cd1c1b76662afe3f0e581e	0	1	0	0	0

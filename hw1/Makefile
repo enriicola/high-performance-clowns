@@ -1,5 +1,5 @@
 CC=icx
-FLAGS=-g -qopenmp 
+FLAGS=-g -Wall -qopenmp -qopt-report=3
 SOURCE=./source
 RELEASE=./release
 
