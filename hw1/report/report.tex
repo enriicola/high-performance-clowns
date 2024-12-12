@@ -19,22 +19,32 @@ lorem ipsum
 lorem ipsum
 
 \section{Hotspot analysis}
-lorem ipsum
+inside the vanilla version of the code, the hotspot is on the line 70 (the nested outer for loop takes 13.2 seconds out of the 13.44 seconds of total execution time)
+inside the vanilla version of the code, the hotspot is on the line 71 (the nested inner for loop takes 13.2 seconds out of the 13.44 seconds of total execution time)
+it is a scalar loop that can be parallelized with OpenMP
+
 
 \section{Performance optimization}
-lorem ipsum
+explain all the flags used in the makefile
+
 
 \subsection{caching??}
 lorem ipsum
 
 \subsection{Vectorization}
-lorem ipsum
+using vectorization as in the code inside omp homework, the execution time is 0.71 seconds, which is 18.5 times faster than the vanilla version of the code (for N=10000) with a non existent error (Xre = 10000.0000)
+
 
 \subsection{Parallelization}
-lorem ipsum
+using 
+   ifndef PARALLEL
+      omp set num threads(4)
+      pragma omp parallel for private (k)
+   endif
+
 
 \section{Performance evaluation}
-lorem ipsum
+vectorization + Parallelization takes to around 70 seconds of execution time vs the original 17 seconds
 
 \section{Conclusions}
 lorem ipsum
