@@ -71,7 +71,7 @@ int DFT(int idft, double* xr, double* xi, double* Xr_o, double* Xi_o, int N) {
   int k, n;
 
 #ifndef PARALLEL
-#pragma omp parallel for num_threads(NTHREADS) collapse(2) schedule(static) reduction(+ : Xr_o, Xi_o)
+#pragma omp parallel for num_threads(NTHREADS) collapse(2) schedule(static) reduction(+ : Xr_o[ : N], Xi_o[ : N])
 #endif
   for (k = 0; k < N; k++) {
     for (n = 0; n < N; n++) {
