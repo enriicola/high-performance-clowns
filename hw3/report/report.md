@@ -29,6 +29,7 @@ The sequential case is the following:
     <figcaption>Figure 1: sequential case</figcaption>
   </figure>
 </div>
+
 As we can see, the sum is performed alltogether on the same node. The simplest yet most powerful way to parallelize this sum is to split the computations on different nodes, making them calculate only a chunk of the total sum.
 
 <div style="display: flex; align-items: center; width: 100%;">
