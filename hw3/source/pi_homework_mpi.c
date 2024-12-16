@@ -5,7 +5,14 @@
 
 #define PI25DT 3.141592653589793238462643
 
+#ifndef INTERVALS
 #define INTERVALS 10000000000
+#endif
+
+#ifndef NTHREADS
+#define NTHREADS 4
+#endif
+
 #define MASTER_NODE 0
 
 int main(int argc, char **argv) {
@@ -33,8 +40,7 @@ int main(int argc, char **argv) {
   dx = 1.0 / (double)intervals;
 
 #ifdef PARALLEL
-  omp_set_num_threads(20);
-#pragma omp parallel for private(x, f) reduction(+ : local_sum)
+#pragma omp parallel for num_threads(NTHREADS) private(x, f) reduction(+ : local_sum)
 #endif
   for (i = start; i <= end; i++) {
     x = dx * ((double)(i - 0.5));

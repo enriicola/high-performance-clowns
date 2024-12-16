@@ -1,5 +1,6 @@
 import subprocess
 import time
+import json
 
 EXECS = 2
 DEBUG = True
@@ -11,33 +12,42 @@ def run_command(command):
    return end_time - start_time
 
 def write_metrics(data):
-   with open("./data/data.txt", "w") as f:
-      for target, times in data.items():
-         f.write(f"{target}:\n")
-         for entry in times:
-            f.write(f"    - N = {entry['N']}:\n")
-            f.write(f"        Time = {entry['Time (s)']:.4f} seconds\n")
-         f.write("\n")
+   with open("./data/data.json", "w") as f:
+      json.dump(data, f, indent=4)
 
 def main():
-   N = [2_000, 4_000, 6_000, 8_000]
-   
+   N = [20000, 40000, 60000, 80000]
+   NTHREADS = [4, 8, 12, 24]
+
    make_targets = ["default", "vec", "parallel"]
    executable = "./release/omp_homework"  # Replace with your actual executable name
-   data = {target: {} for target in make_targets}  # Data structure to hold N and Time for each target
-   
+   data = {target: [] for target in make_targets}  # Data structure to hold N and Time for each target
+
    for target in make_targets:
       for n in N:
-         for run in range(EXECS):
-            if DEBUG:
-               print(f"N={n}: make {target}")
-            subprocess.run("make " + target, shell=True)
-            exec_time = run_command(f"{executable} {n}")
-            # Store execution time under the corresponding target and N
-            data[target] = {"N": n, "run": run, "Time (s)": exec_time}
+         for nthreads in NTHREADS:
+            for run in range(EXECS):
+               if DEBUG:
+                  print(f"N={n}, Threads={nthreads}: make {target}")
+               if target in ["default", "vec"]:
+                  continue
+               subprocess.run(f"make {target}", shell=True)
+               exec_time = run_command(f"{executable} {n}")
+               # Store execution time under the corresponding target and N
+               data[target].append({
+                  "N": n,
+                  "Threads": nthreads,
+                  "Time (s)": exec_time,
+                  "GFLOPS": 0,  # Placeholder, replace with actual calculation if needed
+                  "Hotspots": [
+                     {
+                        "Hotspot": "-",  # Placeholder, replace with actual hotspot data if needed
+                        "Time (s)": 0  # Placeholder, replace with actual hotspot time if needed
+                     }
+                  ]
+               })
 
-   print(data)
-      # write_metrics(data)
+   write_metrics(data)
 
 if __name__ == "__main__":
    main()

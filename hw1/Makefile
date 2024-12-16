@@ -2,6 +2,7 @@ CC=icx
 FLAGS=-g -Wall -std=c99 -qopenmp -qopt-report=3
 SOURCE=./source
 RELEASE=./release
+NTHREADS ?= 4
 
 default:
 	${CC} ${FLAGS} ${SOURCE}/omp_homework.c -o ${RELEASE}/omp_homework
@@ -13,7 +14,7 @@ vec:
 
 parallel: FLAGS += -xHost -O3 -ffast-math
 parallel: 
-	${CC} -D PARALLEL ${FLAGS} ${SOURCE}/omp_homework.c -o ${RELEASE}/omp_homework
+	${CC} -D PARALLEL -D NTHREADS=${NTHREADS} ${FLAGS} ${SOURCE}/omp_homework.c -o ${RELEASE}/omp_homework 
 
 clean:
 	rm -rf ${RELEASE}/*
