@@ -45,9 +45,11 @@ Since it's a sum of $N$ elements, it can be splitted into $m$ different threads,
 
 <div style="display: flex; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-    <img src="./images/omp.png" alt="OMP" width="80%" />
+    <img src="./images/omp.png" alt="OMP" width="70%" />
   </figure>
 </div>
+
+So, $X_k$ will be an array with $N$ cells, and each sub-section of it will be handled by a different thread
 
 # Implementation details in SW2 👨🏻‍💻
 lorem ipsum
