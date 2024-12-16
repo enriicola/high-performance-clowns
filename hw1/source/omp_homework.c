@@ -18,8 +18,13 @@ int printResults(double* xr, double* xi, int N);
 
 int main(int argc, char* argv[]) {
   // size of input array
-  int N = 100000;
-  printf("DFTW calculation with N = %d \n", N);
+  long int N = 20000;
+
+  if (argc == 2)
+    N = atoi(argv[1]);
+
+  // long int N = atoi(argv[1]);
+  printf("DFTW calculation with N = %ld \n", N);
 
   double* xr = (double*)malloc(N * sizeof(double));
   double* xi = (double*)malloc(N * sizeof(double));
@@ -70,8 +75,9 @@ int main(int argc, char* argv[]) {
 int DFT(int idft, double* xr, double* xi, double* Xr_o, double* Xi_o, int N) {
   int k, n;
 
-#ifndef PARALLEL
-#pragma omp parallel for num_threads(NTHREADS)
+#ifdef PARALLEL
+#pragma omp parallel for num_threads(NTHREADS) private(cos_res, sin_res) collapse(2) \
+    schedule(static) reduction(+ : Xr_o[ : N], Xi_o[ : N])
 #endif
   for (k = 0; k < N; k++) {
     for (n = 0; n < N; n++) {
@@ -87,6 +93,9 @@ int DFT(int idft, double* xr, double* xi, double* Xr_o, double* Xi_o, int N) {
 
   // normalize if you are doing IDFT
   if (idft == -1) {
+#ifdef PARALLEL
+#pragma omp parallel for reduction(/ : Xr_o[ : N], Xi_o[ : N])
+#endif
     for (n = 0; n < N; n++) {
       Xr_o[n] /= N;
       Xi_o[n] /= N;

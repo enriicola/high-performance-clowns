@@ -1,0 +1,129 @@
+{
+  "default": [
+    {
+      "N": 20000,
+      "Time (s)": 32.97,
+      "GFLOPS": 2.38,
+      "Hotspots": [
+        {
+          "Hotspot": "loop in DFT at omp_homework.c:82",
+          "Time (s)": 32.23
+        }
+      ]
+    },
+    {
+      "N": 40000,
+      "Time (s)": 0,
+      "GFLOPS": 0,
+      "Hotspots": [
+        {
+          "Hotspot": "-",
+          "Time (s)": 0
+        }
+      ]
+    },
+    {
+      "N": 60000,
+      "Time (s)": 0,
+      "GFLOPS": 0,
+      "Hotspots": [
+        {
+          "Hotspot": "-",
+          "Time (s)": 0
+        }
+      ]
+    }
+  ],
+  "vec": [
+    {
+      "N": 20000,
+      "Time (s)": 0,
+      "GFLOPS": 0,
+      "Hotspots": [
+        {
+          "Hotspot": "-",
+          "Time (s)": 0
+        }
+      ]
+    },
+    {
+      "N": 40000,
+      "Time (s)": 0,
+      "GFLOPS": 0,
+      "Hotspots": [
+        {
+          "Hotspot": "-",
+          "Time (s)": 0
+        }
+      ]
+    },
+    {
+      "N": 60000,
+      "Time (s)": 0,
+      "GFLOPS": 0,
+      "Hotspots": [
+        {
+          "Hotspot": "-",
+          "Time (s)": 0
+        }
+      ]
+    },
+    {
+      "N": 80000,
+      "Time (s)": 0,
+      "GFLOPS": 0,
+      "Hotspots": [
+        {
+          "Hotspot": "-",
+          "Time (s)": 0
+        }
+      ]
+    }
+  ],
+  "parallel": [
+    {
+      "N": 20000,
+      "Time (s)": 0,
+      "GFLOPS": 0,
+      "Hotspots": [
+        {
+          "Hotspot": "-",
+          "Time (s)": 0
+        }
+      ]
+    },
+    {
+      "N": 40000,
+      "Time (s)": 0,
+      "GFLOPS": 0,
+      "Hotspots": [
+        {
+          "Hotspot": "-",
+          "Time (s)": 0
+        }
+      ]
+    },
+    {
+      "N": 60000,
+      "Time (s)": 0,
+      "GFLOPS": 0,
+      "Hotspots": [
+        {
+          "Hotspot": "-",
+          "Time (s)": 0
+        }
+      ]
+    },
+    {
+      "N": 80000,
+      "Time (s)": 0,
+      "GFLOPS": 0,
+      "Hotspots": [
+        {
+          "Hotspot": "-",
+          "Time (s)": 0
+        }
+      ]
+    }
+  ]
+}

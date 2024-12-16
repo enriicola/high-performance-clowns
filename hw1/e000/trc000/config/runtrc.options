@@ -1,0 +1,15 @@
+-r
+/home/chris/high-performance-clowns/hw1/e000/trc000
+-quiet
+-cs-file
+/home/chris/high-performance-clowns/hw1/e000/callstacks.def
+--cs-mode=no-count-loops,no-count-flops,stl-profiling,stack-stitching
+--target-loops=n
+--count-flops
+--jit-profiling
+--benchmarks=dram,mcdram,cpu_cache,flop_peak,int,
+--target-gpu=none
+--
+./release/omp_homework
+--report-output=./results/report.html
+--format=html

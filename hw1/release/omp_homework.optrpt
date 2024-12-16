@@ -1,311 +1,42 @@
 Begin optimization report for: main
-
-LOOP BEGIN at ./source/omp_homework.c (104, 3)
-    remark #15527: Loop was not vectorized: function call to  cannot be vectorized
-    remark #25438: Loop unrolled without remainder by 8
-LOOP END
-
-LOOP BEGIN at ./source/omp_homework.c (106, 3)
-    remark #15300: LOOP WAS VECTORIZED
-    remark #15305: vectorization support: vector length 4
-    remark #15389: vectorization support: unmasked unaligned unit stride store: xr xr xr xr [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (112, 5) ] 
-    remark #15475: --- begin vector loop cost summary ---
-    remark #15476: scalar cost: 3.000000 
-    remark #15477: vector cost: 1.593750 
-    remark #15478: estimated potential speedup: 1.875000 
-    remark #15309: vectorization support: normalized vectorization overhead 0.000000
-    remark #15570: using scalar loop trip count: 100000
-    remark #15488: --- end vector loop cost summary ---
-    remark #15447: --- begin vector loop memory reference summary ---
-    remark #15451: unmasked unaligned unit stride stores: 1 
-    remark #15474: --- end vector loop memory reference summary ---
-LOOP END
-
-LOOP BEGIN at ./source/omp_homework.c (76, 3)
-    remark #25452: Poor spatial locality detected in memref(s). 
-    remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
-
-    LOOP BEGIN at ./source/omp_homework.c (77, 5)
-        remark #15300: LOOP WAS VECTORIZED
-        remark #15305: vectorization support: vector length 4
-        remark #15389: vectorization support: unmasked unaligned unit stride load: xr xr xr xr [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (82, 18) ] 
-        remark #15389: vectorization support: unmasked unaligned unit stride load: xi xi xi xi [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (82, 43) ] 
-        remark #15475: --- begin vector loop cost summary ---
-        remark #15476: scalar cost: 98.000000 
-        remark #15477: vector cost: 26.843750 
-        remark #15478: estimated potential speedup: 3.640625 
-        remark #15309: vectorization support: normalized vectorization overhead 0.296875
-        remark #15570: using scalar loop trip count: 100000
-        remark #15482: vectorized math library calls: 2 
-        remark #15488: --- end vector loop cost summary ---
-        remark #15447: --- begin vector loop memory reference summary ---
-        remark #15450: unmasked unaligned unit stride loads: 2 
-        remark #15474: --- end vector loop memory reference summary ---
-        remark #25587: Loop has reduction
-        remark #15590: vectorization support: add reduction with value type double [./source/omp_homework.c:82:15 @[ ./source/omp_homework.c:41:3 ]]
-        remark #15590: vectorization support: add reduction with value type double [./source/omp_homework.c:84:15 @[ ./source/omp_homework.c:41:3 ]]
-    LOOP END
-LOOP END
-
-LOOP BEGIN at ./source/omp_homework.c (76, 3)
-    remark #25452: Poor spatial locality detected in memref(s). 
-    remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
-
-    LOOP BEGIN at ./source/omp_homework.c (77, 5)
-        remark #15300: LOOP WAS VECTORIZED
-        remark #15305: vectorization support: vector length 4
-        remark #15389: vectorization support: unmasked unaligned unit stride load: Xr_o Xr_o Xr_o [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (82, 18) ] 
-        remark #15389: vectorization support: unmasked unaligned unit stride load: Xi_r Xi_o Xi_o [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (82, 43) ] 
-        remark #15475: --- begin vector loop cost summary ---
-        remark #15476: scalar cost: 98.000000 
-        remark #15477: vector cost: 26.843750 
-        remark #15478: estimated potential speedup: 3.640625 
-        remark #15309: vectorization support: normalized vectorization overhead 0.296875
-        remark #15570: using scalar loop trip count: 100000
-        remark #15482: vectorized math library calls: 2 
-        remark #15488: --- end vector loop cost summary ---
-        remark #15447: --- begin vector loop memory reference summary ---
-        remark #15450: unmasked unaligned unit stride loads: 2 
-        remark #15474: --- end vector loop memory reference summary ---
-        remark #25587: Loop has reduction
-        remark #15590: vectorization support: add reduction with value type double [./source/omp_homework.c:82:15 @[ ./source/omp_homework.c:44:3 ]]
-        remark #15590: vectorization support: add reduction with value type double [./source/omp_homework.c:84:15 @[ ./source/omp_homework.c:44:3 ]]
-    LOOP END
-LOOP END
-
-LOOP BEGIN at ./source/omp_homework.c (90, 5)
-    remark #15300: LOOP WAS VECTORIZED
-    remark #15305: vectorization support: vector length 4
-    remark #15389: vectorization support: unmasked unaligned unit stride load: xr_check xr_check [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (91, 15) ] 
-    remark #15389: vectorization support: unmasked unaligned unit stride store: xr_check xr_check [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (91, 7) ] 
-    remark #15389: vectorization support: unmasked unaligned unit stride load: xi_check xi_check [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (92, 15) ] 
-    remark #15389: vectorization support: unmasked unaligned unit stride store: xi_check xi_check [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (92, 7) ] 
-    remark #15475: --- begin vector loop cost summary ---
-    remark #15476: scalar cost: 8.000000 
-    remark #15477: vector cost: 3.031250 
-    remark #15478: estimated potential speedup: 2.625000 
-    remark #15309: vectorization support: normalized vectorization overhead 0.000000
-    remark #15570: using scalar loop trip count: 100000
-    remark #15488: --- end vector loop cost summary ---
-    remark #15447: --- begin vector loop memory reference summary ---
-    remark #15450: unmasked unaligned unit stride loads: 2 
-    remark #15451: unmasked unaligned unit stride stores: 2 
-    remark #15474: --- end vector loop memory reference summary ---
-LOOP END
-
-LOOP BEGIN at ./source/omp_homework.c (131, 3)
-    remark #15527: Loop was not vectorized: function call to  cannot be vectorized
-    remark #25438: Loop unrolled without remainder by 4
-LOOP END
 =================================================================
 
 Begin optimization report for: fillInput
 
-LOOP BEGIN at ./source/omp_homework.c (104, 3)
-    remark #15527: Loop was not vectorized: function call to  cannot be vectorized
-    remark #25438: Loop unrolled without remainder by 8
+LOOP BEGIN at ./source/omp_homework.c (113, 3)
 LOOP END
 
-LOOP BEGIN at ./source/omp_homework.c (106, 3)
-<Multiversioned v2>
-    remark #15319: Loop was not vectorized: novector directive used
-LOOP END
-
-LOOP BEGIN at ./source/omp_homework.c (106, 3)
-<Multiversioned v2>
-    remark #15300: LOOP WAS VECTORIZED
-    remark #15305: vectorization support: vector length 4
-    remark #15389: vectorization support: unmasked unaligned unit stride store: xr [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (112, 5) ] 
-    remark #15389: vectorization support: unmasked unaligned unit stride store: xi [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (113, 5) ] 
-    remark #15475: --- begin vector loop cost summary ---
-    remark #15476: scalar cost: 4.000000 
-    remark #15477: vector cost: 1.937500 
-    remark #15478: estimated potential speedup: 1.890625 
-    remark #15309: vectorization support: normalized vectorization overhead 1.031250
-    remark #15488: --- end vector loop cost summary ---
-    remark #15447: --- begin vector loop memory reference summary ---
-    remark #15451: unmasked unaligned unit stride stores: 2 
-    remark #15474: --- end vector loop memory reference summary ---
-LOOP END
-
-LOOP BEGIN at ./source/omp_homework.c (106, 3)
-<Remainder loop for vectorization>
-LOOP END
-
-LOOP BEGIN at ./source/omp_homework.c (106, 3)
-<Multiversioned v1>
-<Multiversioned v1>
-    remark #25228: Loop multiversioned for Data Dependence
-    remark #25408: memset generated
-    remark #25562: The loop has been multiversioned for the small trip count
-    remark #15300: LOOP WAS VECTORIZED
-    remark #15305: vectorization support: vector length 4
-    remark #15389: vectorization support: unmasked unaligned unit stride store: xr [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (112, 5) ] 
-    remark #15475: --- begin vector loop cost summary ---
-    remark #15476: scalar cost: 3.000000 
-    remark #15477: vector cost: 1.593750 
-    remark #15478: estimated potential speedup: 1.609375 
-    remark #15309: vectorization support: normalized vectorization overhead 1.250000
-    remark #15488: --- end vector loop cost summary ---
-    remark #15447: --- begin vector loop memory reference summary ---
-    remark #15451: unmasked unaligned unit stride stores: 1 
-    remark #15474: --- end vector loop memory reference summary ---
-LOOP END
-
-LOOP BEGIN at ./source/omp_homework.c (106, 3)
-<Remainder loop for vectorization>
+LOOP BEGIN at ./source/omp_homework.c (115, 3)
 LOOP END
 =================================================================
 
 Begin optimization report for: setOutputZero
 
-LOOP BEGIN at ./source/omp_homework.c (121, 3)
-<Multiversioned v1>
-<Multiversioned v1>
-    remark #25228: Loop multiversioned for Data Dependence
-    remark #25408: memset generated
-    remark #25408: memset generated
-    remark #25562: The loop has been multiversioned for the small trip count
-    remark #25260: Dead loop optimized away
-LOOP END
-
-LOOP BEGIN at ./source/omp_homework.c (121, 3)
-<Multiversioned v2>
-    remark #15319: Loop was not vectorized: novector directive used
-LOOP END
-
-LOOP BEGIN at ./source/omp_homework.c (121, 3)
-<Multiversioned v2>
-    remark #15300: LOOP WAS VECTORIZED
-    remark #15305: vectorization support: vector length 4
-    remark #15389: vectorization support: unmasked unaligned unit stride store: Xr_o [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (122, 5) ] 
-    remark #15389: vectorization support: unmasked unaligned unit stride store: Xi_o [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (123, 5) ] 
-    remark #15475: --- begin vector loop cost summary ---
-    remark #15476: scalar cost: 4.000000 
-    remark #15477: vector cost: 1.937500 
-    remark #15478: estimated potential speedup: 1.890625 
-    remark #15309: vectorization support: normalized vectorization overhead 1.031250
-    remark #15488: --- end vector loop cost summary ---
-    remark #15447: --- begin vector loop memory reference summary ---
-    remark #15451: unmasked unaligned unit stride stores: 2 
-    remark #15474: --- end vector loop memory reference summary ---
-LOOP END
-
-LOOP BEGIN at ./source/omp_homework.c (121, 3)
-<Remainder loop for vectorization>
+LOOP BEGIN at ./source/omp_homework.c (130, 3)
 LOOP END
 =================================================================
 
 Begin optimization report for: DFT
 
-LOOP BEGIN at ./source/omp_homework.c (76, 3)
-<Multiversioned v2>
-    remark #25452: Poor spatial locality detected in memref(s). 
-    remark #15319: Loop was not vectorized: novector directive used
+LOOP BEGIN at ./source/omp_homework.c (82, 3)
 
-    LOOP BEGIN at ./source/omp_homework.c (77, 5)
-        remark #15319: Loop was not vectorized: novector directive used
+    LOOP BEGIN at ./source/omp_homework.c (83, 5)
     LOOP END
 LOOP END
 
-LOOP BEGIN at ./source/omp_homework.c (76, 3)
-<Multiversioned v1>
-    remark #25228: Loop multiversioned for Data Dependence
-    remark #25452: Poor spatial locality detected in memref(s). 
-    remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
-
-    LOOP BEGIN at ./source/omp_homework.c (77, 5)
-        remark #25528: Load/Store of reduction at line 84 sinked after loop
-        remark #25563: Load hoisted out of the loop
-        remark #25564: Store sinked out of the loop
-        remark #25583: Number of Array Refs Scalar Replaced In Loop: 2
-        remark #15300: LOOP WAS VECTORIZED
-        remark #15305: vectorization support: vector length 4
-        remark #15389: vectorization support: unmasked unaligned unit stride load: xr [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (82, 18) ] 
-        remark #15389: vectorization support: unmasked unaligned unit stride load: xi [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (82, 43) ] 
-        remark #15475: --- begin vector loop cost summary ---
-        remark #15476: scalar cost: 101.000000 
-        remark #15477: vector cost: 27.593750 
-        remark #15478: estimated potential speedup: 3.625000 
-        remark #15309: vectorization support: normalized vectorization overhead 0.359375
-        remark #15482: vectorized math library calls: 2 
-        remark #15488: --- end vector loop cost summary ---
-        remark #15447: --- begin vector loop memory reference summary ---
-        remark #15450: unmasked unaligned unit stride loads: 2 
-        remark #15474: --- end vector loop memory reference summary ---
-        remark #25587: Loop has reduction
-        remark #15590: vectorization support: add reduction with value type double [./source/omp_homework.c:76:3]
-        remark #15590: vectorization support: add reduction with value type double [./source/omp_homework.c:76:3]
-    LOOP END
-
-    LOOP BEGIN at ./source/omp_homework.c (77, 5)
-    <Remainder loop for vectorization>
-        remark #15440: remainder loop was vectorized (masked)
-        remark #15305: vectorization support: vector length 4
-        remark #15389: vectorization support: masked unaligned unit stride load: xr [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (82, 18) ] 
-        remark #15389: vectorization support: masked unaligned unit stride load: xi [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (82, 43) ] 
-        remark #15475: --- begin vector loop cost summary ---
-        remark #15482: vectorized math library calls: 2 
-        remark #15488: --- end vector loop cost summary ---
-        remark #15447: --- begin vector loop memory reference summary ---
-        remark #15456: masked unaligned unit stride loads: 2 
-        remark #15474: --- end vector loop memory reference summary ---
-        remark #25261: Single iteration loop optimized away
-    LOOP END
-LOOP END
-
-LOOP BEGIN at ./source/omp_homework.c (90, 5)
-<Multiversioned v2>
-    remark #15319: Loop was not vectorized: novector directive used
-LOOP END
-
-LOOP BEGIN at ./source/omp_homework.c (90, 5)
-<Multiversioned v1>
-    remark #25228: Loop multiversioned for Data Dependence
-    remark #15300: LOOP WAS VECTORIZED
-    remark #15305: vectorization support: vector length 4
-    remark #15389: vectorization support: unmasked unaligned unit stride load: Xr_o [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (91, 15) ] 
-    remark #15389: vectorization support: unmasked unaligned unit stride store: Xr_o [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (91, 7) ] 
-    remark #15389: vectorization support: unmasked unaligned unit stride load: Xi_o [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (92, 15) ] 
-    remark #15389: vectorization support: unmasked unaligned unit stride store: Xi_o [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (92, 7) ] 
-    remark #15475: --- begin vector loop cost summary ---
-    remark #15476: scalar cost: 8.000000 
-    remark #15477: vector cost: 3.031250 
-    remark #15478: estimated potential speedup: 2.578125 
-    remark #15309: vectorization support: normalized vectorization overhead 0.656250
-    remark #15488: --- end vector loop cost summary ---
-    remark #15447: --- begin vector loop memory reference summary ---
-    remark #15450: unmasked unaligned unit stride loads: 2 
-    remark #15451: unmasked unaligned unit stride stores: 2 
-    remark #15474: --- end vector loop memory reference summary ---
-LOOP END
-
-LOOP BEGIN at ./source/omp_homework.c (90, 5)
-<Remainder loop for vectorization>
+LOOP BEGIN at ./source/omp_homework.c (99, 5)
 LOOP END
 =================================================================
 
 Begin optimization report for: checkResults
 
-LOOP BEGIN at ./source/omp_homework.c (131, 3)
-    remark #15527: Loop was not vectorized: function call to  cannot be vectorized
-    remark #25439: Loop unrolled with remainder by 4
-LOOP END
-
-LOOP BEGIN at ./source/omp_homework.c (131, 3)
-<Remainder loop>
+LOOP BEGIN at ./source/omp_homework.c (140, 3)
 LOOP END
 =================================================================
 
 Begin optimization report for: printResults
 
-LOOP BEGIN at ./source/omp_homework.c (144, 3)
-    remark #15527: Loop was not vectorized: function call to  cannot be vectorized
-    remark #25439: Loop unrolled with remainder by 8
-LOOP END
-
-LOOP BEGIN at ./source/omp_homework.c (144, 3)
-<Remainder loop>
+LOOP BEGIN at ./source/omp_homework.c (153, 3)
 LOOP END
 =================================================================
 
@@ -316,266 +47,88 @@ Option Values:
   inlinecold-threshold: 45
   inlineoptsize-threshold: 15
 
-DEAD STATIC FUNC: llvm.ssa.copy.f64
-
-DEAD STATIC FUNC: llvm.ssa.copy.i32
-
-DEAD STATIC FUNC: llvm.ssa.copy.i64
+COMPILE FUNC: main
+   -> EXTERN: atoi omp_homework.c(24,9)
+   -> EXTERN: printf omp_homework.c(27,3)
+   -> EXTERN: malloc omp_homework.c(29,25)
+   -> EXTERN: malloc omp_homework.c(30,25)
+   -> fillInput omp_homework.c(31,3)
+   -> EXTERN: malloc omp_homework.c(33,31)
+   -> EXTERN: malloc omp_homework.c(34,31)
+   -> setOutputZero omp_homework.c(35,3)
+   -> EXTERN: malloc omp_homework.c(37,27)
+   -> EXTERN: malloc omp_homework.c(38,27)
+   -> setOutputZero omp_homework.c(39,3)
+   -> EXTERN: omp_get_wtime omp_homework.c(42,23)
+   -> DFT omp_homework.c(46,3)
+   -> DFT omp_homework.c(49,3)
+   -> EXTERN: omp_get_wtime omp_homework.c(52,21)
+   -> EXTERN: printf omp_homework.c(53,3)
+   -> checkResults omp_homework.c(56,3)
+   -> EXTERN: free omp_homework.c(63,3)
+   -> EXTERN: free omp_homework.c(64,3)
+   -> EXTERN: free omp_homework.c(65,3)
+   -> EXTERN: free omp_homework.c(66,3)
+   -> EXTERN: free omp_homework.c(67,3)
+   -> EXTERN: free omp_homework.c(68,3)
 
 COMPILE FUNC: fillInput
-   -> EXTERN: time omp_homework.c(103,9)
-   -> EXTERN: srand omp_homework.c(103,3)
-   -> DELETE: rand omp_homework.c(105,5)
-   -> EXTERN: rand omp_homework.c(105,5)
-   -> EXTERN: rand omp_homework.c(105,5)
-   -> EXTERN: rand omp_homework.c(105,5)
-   -> EXTERN: rand omp_homework.c(105,5)
-   -> EXTERN: rand omp_homework.c(105,5)
-   -> EXTERN: rand omp_homework.c(105,5)
-   -> EXTERN: rand omp_homework.c(105,5)
-   -> EXTERN: rand omp_homework.c(105,5)
-   -> DELETE: llvm.memset.p0.i64 omp_homework.c(113,5)
-   -> llvm.memset.p0.i64 omp_homework.c(113,5)
-   -> DELETE: llvm.ssa.copy.i32 omp_homework.c(104,28)
-   -> DELETE: llvm.ssa.copy.i64 omp_homework.c(106,23)
+   -> EXTERN: time omp_homework.c(112,9)
+   -> EXTERN: srand omp_homework.c(112,3)
+   -> EXTERN: rand omp_homework.c(114,5)
 
 COMPILE FUNC: setOutputZero
-   -> DELETE: llvm.memset.p0.i64 omp_homework.c(122,5)
-   -> llvm.memset.p0.i64 omp_homework.c(122,5)
-   -> DELETE: llvm.memset.p0.i64 omp_homework.c(123,5)
-   -> llvm.memset.p0.i64 omp_homework.c(123,5)
-   -> DELETE: llvm.ssa.copy.i64 omp_homework.c(121,23)
 
 COMPILE FUNC: DFT
-   -> DELETE: llvm.cos.f64 omp_homework.c(78,24)
-   -> DELETE: llvm.sin.f64 omp_homework.c(79,24)
-   -> DELETE: __svml_cos4 omp_homework.c(78,24)
-   -> EXTERN: __svml_cos4 omp_homework.c(78,24)
-   -> DELETE: __svml_sin4 omp_homework.c(79,24)
-   -> EXTERN: __svml_sin4 omp_homework.c(79,24)
-   -> DELETE: llvm.vector.reduce.fadd.v4f64 omp_homework.c(76,3)
-   -> llvm.vector.reduce.fadd.v4f64 omp_homework.c(76,3)
-   -> DELETE: llvm.vector.reduce.fadd.v4f64 omp_homework.c(76,3)
-   -> llvm.vector.reduce.fadd.v4f64 omp_homework.c(76,3)
-   -> DELETE: __svml_cos4_mask omp_homework.c(78,24)
-   -> EXTERN: __svml_cos4_mask omp_homework.c(78,24)
-   -> DELETE: __svml_sin4_mask omp_homework.c(79,24)
-   -> EXTERN: __svml_sin4_mask omp_homework.c(79,24)
-   -> DELETE: llvm.vector.reduce.fadd.v4f64 omp_homework.c(76,3)
-   -> llvm.vector.reduce.fadd.v4f64 omp_homework.c(76,3)
-   -> DELETE: llvm.vector.reduce.fadd.v4f64 omp_homework.c(76,3)
-   -> llvm.vector.reduce.fadd.v4f64 omp_homework.c(76,3)
-   -> llvm.cos.f64 omp_homework.c(78,24)
-   -> llvm.sin.f64 omp_homework.c(79,24)
-   -> DELETE: llvm.ssa.copy.i64
-   -> DELETE: llvm.ssa.copy.i64 omp_homework.c(77,25)
-   -> DELETE: llvm.ssa.copy.i64 omp_homework.c(76,23)
-   -> DELETE: llvm.ssa.copy.i64 omp_homework.c(90,25)
-   -> llvm.masked.load.v4f64.p0 omp_homework.c(82,18)
-   -> llvm.masked.load.v4f64.p0 omp_homework.c(82,43)
+   -> llvm.cos.f64 omp_homework.c(84,24)
+   -> llvm.sin.f64 omp_homework.c(85,24)
 
 COMPILE FUNC: checkResults
-   -> DELETE: llvm.fabs.f64 omp_homework.c(132,9)
-   -> DELETE: printf omp_homework.c(133,7)
-   -> DELETE: llvm.fabs.f64 omp_homework.c(134,9)
-   -> DELETE: printf omp_homework.c(135,7)
-   -> EXTERN: printf omp_homework.c(137,3)
-   -> llvm.fabs.f64 omp_homework.c(132,9)
-   -> EXTERN: printf omp_homework.c(133,7)
-   -> llvm.fabs.f64 omp_homework.c(134,9)
-   -> EXTERN: printf omp_homework.c(135,7)
-   -> llvm.fabs.f64 omp_homework.c(132,9)
-   -> EXTERN: printf omp_homework.c(133,7)
-   -> llvm.fabs.f64 omp_homework.c(134,9)
-   -> EXTERN: printf omp_homework.c(135,7)
-   -> llvm.fabs.f64 omp_homework.c(132,9)
-   -> EXTERN: printf omp_homework.c(133,7)
-   -> llvm.fabs.f64 omp_homework.c(134,9)
-   -> EXTERN: printf omp_homework.c(135,7)
-   -> llvm.fabs.f64 omp_homework.c(132,9)
-   -> EXTERN: printf omp_homework.c(133,7)
-   -> llvm.fabs.f64 omp_homework.c(134,9)
-   -> EXTERN: printf omp_homework.c(135,7)
-   -> llvm.fabs.f64 omp_homework.c(132,9)
-   -> EXTERN: printf omp_homework.c(133,7)
-   -> llvm.fabs.f64 omp_homework.c(134,9)
-   -> EXTERN: printf omp_homework.c(135,7)
-   -> DELETE: llvm.ssa.copy.i64 omp_homework.c(131,23)
-
-COMPILE FUNC: main
-   -> EXTERN: printf omp_homework.c(22,3)
-   -> EXTERN: malloc omp_homework.c(24,25)
-   -> EXTERN: malloc omp_homework.c(25,25)
-   -> INLINE: fillInput omp_homework.c(26,3) (95<=225)
-      -> EXTERN: time omp_homework.c(103,9)
-      -> EXTERN: srand omp_homework.c(103,3)
-      -> DELETE: rand omp_homework.c(105,5)
-      -> EXTERN: rand omp_homework.c(105,5)
-      -> EXTERN: rand omp_homework.c(105,5)
-      -> EXTERN: rand omp_homework.c(105,5)
-      -> EXTERN: rand omp_homework.c(105,5)
-      -> EXTERN: rand omp_homework.c(105,5)
-      -> EXTERN: rand omp_homework.c(105,5)
-      -> EXTERN: rand omp_homework.c(105,5)
-      -> EXTERN: rand omp_homework.c(105,5)
-   -> DELETE: malloc omp_homework.c(28,31)
-   -> DELETE: malloc omp_homework.c(29,31)
-   -> INLINE: setOutputZero omp_homework.c(30,3) (-20<=225)
-   -> DELETE: malloc omp_homework.c(32,27)
-   -> DELETE: malloc omp_homework.c(33,27)
-   -> INLINE: setOutputZero omp_homework.c(34,3) (-20<=225)
-   -> EXTERN: omp_get_wtime omp_homework.c(37,23)
-   -> INLINE: DFT omp_homework.c(41,3) (85<=225)
-      -> DELETE: llvm.cos.f64 omp_homework.c(78,24)
-      -> DELETE: llvm.sin.f64 omp_homework.c(79,24)
-   -> INLINE: DFT omp_homework.c(44,3) (130<=225)
-      -> DELETE: llvm.cos.f64 omp_homework.c(78,24)
-      -> DELETE: llvm.sin.f64 omp_homework.c(79,24)
-   -> EXTERN: omp_get_wtime omp_homework.c(47,21)
-   -> EXTERN: printf omp_homework.c(48,3)
-   -> INLINE: checkResults omp_homework.c(51,3) (165<=225)
-      -> DELETE: llvm.fabs.f64 omp_homework.c(132,9)
-      -> DELETE: printf omp_homework.c(133,7)
-      -> DELETE: llvm.fabs.f64 omp_homework.c(134,9)
-      -> DELETE: printf omp_homework.c(135,7)
-      -> EXTERN: printf omp_homework.c(137,3)
-      -> llvm.fabs.f64 omp_homework.c(132,9)
-      -> EXTERN: printf omp_homework.c(133,7)
-      -> llvm.fabs.f64 omp_homework.c(134,9)
-      -> EXTERN: printf omp_homework.c(135,7)
-      -> llvm.fabs.f64 omp_homework.c(132,9)
-      -> EXTERN: printf omp_homework.c(133,7)
-      -> llvm.fabs.f64 omp_homework.c(134,9)
-      -> EXTERN: printf omp_homework.c(135,7)
-      -> llvm.fabs.f64 omp_homework.c(132,9)
-      -> EXTERN: printf omp_homework.c(133,7)
-      -> llvm.fabs.f64 omp_homework.c(134,9)
-      -> EXTERN: printf omp_homework.c(135,7)
-      -> llvm.fabs.f64 omp_homework.c(132,9)
-      -> EXTERN: printf omp_homework.c(133,7)
-      -> llvm.fabs.f64 omp_homework.c(134,9)
-      -> EXTERN: printf omp_homework.c(135,7)
-   -> EXTERN: free omp_homework.c(58,3)
-   -> EXTERN: free omp_homework.c(59,3)
-   -> EXTERN: free omp_homework.c(60,3)
-   -> EXTERN: free omp_homework.c(61,3)
-   -> EXTERN: free omp_homework.c(62,3)
-   -> EXTERN: free omp_homework.c(63,3)
-   -> DELETE: __svml_cos4 omp_homework.c(78,24)
-   -> EXTERN: __svml_cos4 omp_homework.c(78,24)
-   -> DELETE: __svml_sin4 omp_homework.c(79,24)
-   -> EXTERN: __svml_sin4 omp_homework.c(79,24)
-   -> DELETE: llvm.vector.reduce.fadd.v4f64 omp_homework.c(82,15)
-   -> llvm.vector.reduce.fadd.v4f64 omp_homework.c(82,15)
-   -> DELETE: llvm.vector.reduce.fadd.v4f64 omp_homework.c(84,15)
-   -> llvm.vector.reduce.fadd.v4f64 omp_homework.c(84,15)
-   -> DELETE: __svml_cos4 omp_homework.c(78,24)
-   -> EXTERN: __svml_cos4 omp_homework.c(78,24)
-   -> DELETE: __svml_sin4 omp_homework.c(79,24)
-   -> EXTERN: __svml_sin4 omp_homework.c(79,24)
-   -> DELETE: llvm.vector.reduce.fadd.v4f64 omp_homework.c(82,15)
-   -> llvm.vector.reduce.fadd.v4f64 omp_homework.c(82,15)
-   -> DELETE: llvm.vector.reduce.fadd.v4f64 omp_homework.c(84,15)
-   -> llvm.vector.reduce.fadd.v4f64 omp_homework.c(84,15)
-   -> DELETE: llvm.ssa.copy.i32 omp_homework.c(104,28)
-   -> DELETE: llvm.ssa.copy.i64 omp_homework.c(106,23)
-   -> DELETE: llvm.ssa.copy.i64
-   -> DELETE: llvm.ssa.copy.f64
-   -> DELETE: llvm.ssa.copy.f64
-   -> DELETE: llvm.ssa.copy.i64 omp_homework.c(77,25)
-   -> DELETE: llvm.ssa.copy.i64 omp_homework.c(76,23)
-   -> DELETE: llvm.ssa.copy.i64
-   -> DELETE: llvm.ssa.copy.i64
-   -> DELETE: llvm.ssa.copy.f64
-   -> DELETE: llvm.ssa.copy.f64
-   -> DELETE: llvm.ssa.copy.i64 omp_homework.c(77,25)
-   -> DELETE: llvm.ssa.copy.i64 omp_homework.c(76,23)
-   -> DELETE: llvm.ssa.copy.i64
-   -> DELETE: llvm.ssa.copy.i64 omp_homework.c(90,25)
-   -> DELETE: llvm.ssa.copy.i64 omp_homework.c(131,23)
-   -> llvm.memset.p0.i64 omp_homework.c(113,11)
-   -> EXTERN: calloc omp_homework.c(28,31)
-   -> EXTERN: calloc omp_homework.c(29,31)
-   -> EXTERN: calloc omp_homework.c(32,27)
-   -> EXTERN: calloc omp_homework.c(33,27)
+   -> llvm.fabs.f64 omp_homework.c(141,9)
+   -> EXTERN: printf omp_homework.c(142,7)
+   -> llvm.fabs.f64 omp_homework.c(143,9)
+   -> EXTERN: printf omp_homework.c(144,7)
+   -> EXTERN: printf omp_homework.c(146,3)
 
 COMPILE FUNC: printResults
-   -> DELETE: printf omp_homework.c(145,5)
-   -> EXTERN: printf omp_homework.c(145,5)
-   -> EXTERN: printf omp_homework.c(145,5)
-   -> EXTERN: printf omp_homework.c(145,5)
-   -> EXTERN: printf omp_homework.c(145,5)
-   -> EXTERN: printf omp_homework.c(145,5)
-   -> EXTERN: printf omp_homework.c(145,5)
-   -> EXTERN: printf omp_homework.c(145,5)
-   -> EXTERN: printf omp_homework.c(145,5)
-   -> EXTERN: printf omp_homework.c(145,5)
-   -> DELETE: llvm.ssa.copy.i64 omp_homework.c(144,23)
+   -> EXTERN: printf omp_homework.c(154,5)
 
 ---- End Inlining Report ------
 Register allocation report for: main
 FUNCTION BEGIN
- 4 reloads 3 spills 
- LOOP1 BEGIN at (./source/omp_homework.c:104:3 @[ ./source/omp_homework.c:26:3 ])
- LOOP1 END
- LOOP1 BEGIN at (./source/omp_homework.c:106:3 @[ ./source/omp_homework.c:26:3 ])
- LOOP1 END
- LOOP1 BEGIN at (./source/omp_homework.c:76:3 @[ ./source/omp_homework.c:41:3 ])
-  2 reloads 2 spills 
-  LOOP2 BEGIN at (./source/omp_homework.c:77:5 @[ ./source/omp_homework.c:41:3 ])
-  LOOP2 END
- LOOP1 END
- LOOP1 BEGIN at (./source/omp_homework.c:76:3 @[ ./source/omp_homework.c:44:3 ])
-  4 reloads 2 spills 
-  LOOP2 BEGIN at (./source/omp_homework.c:77:5 @[ ./source/omp_homework.c:44:3 ])
-  LOOP2 END
- LOOP1 END
- LOOP1 BEGIN at (./source/omp_homework.c:90:5 @[ ./source/omp_homework.c:44:3 ])
- LOOP1 END
- LOOP1 BEGIN at (./source/omp_homework.c:131:3 @[ ./source/omp_homework.c:51:3 ])
-  8 reloads 
- LOOP1 END
 
 Hardware registers used
- Reserved : 4 [ rsp ssp rip mxcsr  ]
- Available : 11 [ r8 r9 r10 r11 zmm5 zmm6 zmm7 k0_k1 k2_k3 k4_k5 k6_k7  ]
- Callee Saved : 6 [ rbp rbx r12 r13 r14 r15  ]
- Assigned : 25 [ eflags rax rbp rbx rcx rdi rdx rsi r12 r13 r14 r15 zmm0 zmm1 zmm2 zmm3 zmm4 zmm8 zmm9 zmm10 zmm11 zmm12 zmm13 zmm14 zmm15  ]
+ Reserved : 3 [ rsp ssp mxcsr  ]
+ Available : 26 [ rbx r10 r11 r12 r13 r14 r15 zmm1 zmm2 zmm3 zmm4 zmm5 zmm6 zmm7 zmm8 zmm9 zmm10 zmm11 zmm12 zmm13 zmm14 zmm15 k0_k1 k2_k3 k4_k5 k6_k7  ]
+ Callee Saved : 0 [  ]
+ Assigned : 9 [ eflags rax rcx rdi rdx rsi r8 r9 zmm0  ]
 
 Routine stack 
- Variables : 40 Bytes
-   Read Count : 18
-   Write Count : 7
- Spills : 56 Bytes
-   Read Count : 18
-   Write Count : 7
+ Variables : 92 Bytes
+   Read Count : 45
+   Write Count : 15
+ Spills : 0 Bytes
+   Read Count : 0
+   Write Count : 0
 
 FUNCTION END
 Register allocation report for: fillInput
 FUNCTION BEGIN
- LOOP1 BEGIN at (./source/omp_homework.c:104:3)
+ LOOP1 BEGIN at (./source/omp_homework.c:113:8)
  LOOP1 END
- LOOP1 BEGIN at (./source/omp_homework.c:106:3)
- LOOP1 END
- LOOP1 BEGIN at (./source/omp_homework.c:106:3)
- LOOP1 END
- LOOP1 BEGIN at (./source/omp_homework.c:106:3)
- LOOP1 END
- LOOP1 BEGIN at (./source/omp_homework.c:106:3)
- LOOP1 END
- LOOP1 BEGIN at (./source/omp_homework.c:106:3)
+ LOOP1 BEGIN at (./source/omp_homework.c:115:8)
  LOOP1 END
 
 Hardware registers used
  Reserved : 3 [ rsp ssp rip  ]
- Available : 24 [ r8 r9 r10 r11 r12 r13 zmm2 zmm3 zmm4 zmm5 zmm6 zmm7 zmm8 zmm9 zmm10 zmm11 zmm12 zmm13 zmm14 zmm15 k0_k1 k2_k3 k4_k5 k6_k7  ]
- Callee Saved : 2 [ r14 rbx  ]
- Assigned : 12 [ eflags rax rbp rbx rcx rdi rdx rsi r14 r15 zmm0 zmm1  ]
+ Available : 28 [ rbx r8 r9 r10 r11 r12 r13 r14 r15 zmm1 zmm2 zmm3 zmm4 zmm5 zmm6 zmm7 zmm8 zmm9 zmm10 zmm11 zmm12 zmm13 zmm14 zmm15 k0_k1 k2_k3 k4_k5 k6_k7  ]
+ Callee Saved : 0 [  ]
+ Assigned : 7 [ eflags rax rcx rdi rdx rsi zmm0  ]
 
 Routine stack 
- Variables : 0 Bytes
-   Read Count : 0
-   Write Count : 0
+ Variables : 24 Bytes
+   Read Count : 9
+   Write Count : 7
  Spills : 0 Bytes
    Read Count : 0
    Write Count : 0
@@ -583,23 +136,19 @@ Routine stack
 FUNCTION END
 Register allocation report for: setOutputZero
 FUNCTION BEGIN
- LOOP1 BEGIN at (./source/omp_homework.c:121:3)
- LOOP1 END
- LOOP1 BEGIN at (./source/omp_homework.c:121:3)
- LOOP1 END
- LOOP1 BEGIN at (./source/omp_homework.c:121:3)
+ LOOP1 BEGIN at (./source/omp_homework.c:130:8)
  LOOP1 END
 
 Hardware registers used
- Reserved : 2 [ rsp ssp  ]
- Available : 27 [ rbp r8 r9 r10 r11 r12 r13 r15 zmm1 zmm2 zmm3 zmm4 zmm5 zmm6 zmm7 zmm8 zmm9 zmm10 zmm11 zmm12 zmm13 zmm14 zmm15 k0_k1 k2_k3 k4_k5 k6_k7  ]
- Callee Saved : 2 [ r14 rbx  ]
- Assigned : 9 [ eflags rax rbx rcx rdi rdx rsi r14 zmm0  ]
+ Reserved : 0 [  ]
+ Available : 28 [ rbx r8 r9 r10 r11 r12 r13 r14 r15 zmm1 zmm2 zmm3 zmm4 zmm5 zmm6 zmm7 zmm8 zmm9 zmm10 zmm11 zmm12 zmm13 zmm14 zmm15 k0_k1 k2_k3 k4_k5 k6_k7  ]
+ Callee Saved : 0 [  ]
+ Assigned : 7 [ eflags rax rcx rdi rdx rsi zmm0  ]
 
 Routine stack 
- Variables : 0 Bytes
-   Read Count : 0
-   Write Count : 0
+ Variables : 24 Bytes
+   Read Count : 7
+   Write Count : 5
  Spills : 0 Bytes
    Read Count : 0
    Write Count : 0
@@ -607,81 +156,63 @@ Routine stack
 FUNCTION END
 Register allocation report for: DFT
 FUNCTION BEGIN
- 6 reloads 10 spills 
- LOOP1 BEGIN at (./source/omp_homework.c:90:5)
- LOOP1 END
- LOOP1 BEGIN at (./source/omp_homework.c:90:5)
- LOOP1 END
- LOOP1 BEGIN at (./source/omp_homework.c:90:5)
- LOOP1 END
- LOOP1 BEGIN at (./source/omp_homework.c:76:3)
-  6 reloads 2 spills 
-  LOOP2 BEGIN at (./source/omp_homework.c:77:5)
+ LOOP1 BEGIN at (./source/omp_homework.c:82:8)
+  LOOP2 BEGIN at (./source/omp_homework.c:83:10)
   LOOP2 END
  LOOP1 END
- LOOP1 BEGIN at (./source/omp_homework.c:76:3)
-  2 reloads 
-  LOOP2 BEGIN at (./source/omp_homework.c:77:5)
-   5 reloads 
-  LOOP2 END
+ LOOP1 BEGIN at (./source/omp_homework.c:99:10)
  LOOP1 END
 
 Hardware registers used
  Reserved : 4 [ rip mxcsr rsp ssp  ]
- Available : 7 [ zmm5 zmm6 zmm7 k0_k1 k2_k3 k4_k5 k6_k7  ]
- Callee Saved : 6 [ rbp rbx r12 r13 r14 r15  ]
- Assigned : 29 [ eflags rax rbp rbx rcx rdi rdx rsi r8 r9 r10 r11 r12 r13 r14 r15 zmm0 zmm1 zmm2 zmm3 zmm4 zmm8 zmm9 zmm10 zmm11 zmm12 zmm13 zmm14 zmm15  ]
+ Available : 25 [ rbx r10 r11 r12 r13 r14 r15 zmm2 zmm3 zmm4 zmm5 zmm6 zmm7 zmm8 zmm9 zmm10 zmm11 zmm12 zmm13 zmm14 zmm15 k0_k1 k2_k3 k4_k5 k6_k7  ]
+ Callee Saved : 0 [  ]
+ Assigned : 10 [ eflags rax rcx rdi rdx rsi r8 r9 zmm0 zmm1  ]
 
 Routine stack 
- Variables : 93 Bytes
-   Read Count : 19
-   Write Count : 12
- Spills : 109 Bytes
-   Read Count : 19
-   Write Count : 12
+ Variables : 64 Bytes
+   Read Count : 40
+   Write Count : 14
+ Spills : 0 Bytes
+   Read Count : 0
+   Write Count : 0
 
 FUNCTION END
 Register allocation report for: checkResults
 FUNCTION BEGIN
- 3 reloads 2 spills 
- LOOP1 BEGIN at (./source/omp_homework.c:131:3)
-  1 reloads 
- LOOP1 END
- LOOP1 BEGIN at (./source/omp_homework.c:131:3)
+ LOOP1 BEGIN at (./source/omp_homework.c:140:8)
  LOOP1 END
 
 Hardware registers used
- Reserved : 4 [ rsp ssp rip mxcsr  ]
- Available : 17 [ r10 r11 zmm5 zmm6 zmm7 zmm8 zmm9 zmm10 zmm11 zmm12 zmm13 zmm14 zmm15 k0_k1 k2_k3 k4_k5 k6_k7  ]
- Callee Saved : 6 [ rbp rbx r12 r13 r14 r15  ]
- Assigned : 19 [ eflags rax rbp rbx rcx rdi rdx rsi r8 r9 r12 r13 r14 r15 zmm0 zmm1 zmm2 zmm3 zmm4  ]
+ Reserved : 4 [ mxcsr rip rsp ssp  ]
+ Available : 25 [ rbx r10 r11 r12 r13 r14 r15 zmm2 zmm3 zmm4 zmm5 zmm6 zmm7 zmm8 zmm9 zmm10 zmm11 zmm12 zmm13 zmm14 zmm15 k0_k1 k2_k3 k4_k5 k6_k7  ]
+ Callee Saved : 0 [  ]
+ Assigned : 10 [ eflags rax rcx rdi rdx rsi r8 r9 zmm0 zmm1  ]
 
 Routine stack 
- Variables : 20 Bytes
-   Read Count : 5
-   Write Count : 2
- Spills : 16 Bytes
-   Read Count : 4
-   Write Count : 2
+ Variables : 56 Bytes
+   Read Count : 25
+   Write Count : 8
+ Spills : 0 Bytes
+   Read Count : 0
+   Write Count : 0
 
 FUNCTION END
 Register allocation report for: printResults
 FUNCTION BEGIN
- LOOP1 BEGIN at (./source/omp_homework.c:144:3)
- LOOP1 END
- LOOP1 BEGIN at (./source/omp_homework.c:144:3)
+ LOOP1 BEGIN at (./source/omp_homework.c:153:8)
  LOOP1 END
 
 Hardware registers used
  Reserved : 2 [ rsp ssp  ]
- Available : 23 [ rcx r8 r9 r10 r11 zmm2 zmm3 zmm4 zmm5 zmm6 zmm7 zmm8 zmm9 zmm10 zmm11 zmm12 zmm13 zmm14 zmm15 k0_k1 k2_k3 k4_k5 k6_k7  ]
- Callee Saved : 5 [ rbx r12 r13 r14 r15  ]
- Assigned : 13 [ eflags rax rbp rbx rdi rdx rsi r12 r13 r14 r15 zmm0 zmm1  ]
+ Available : 27 [ rbx r8 r9 r10 r11 r12 r13 r14 r15 zmm2 zmm3 zmm4 zmm5 zmm6 zmm7 zmm8 zmm9 zmm10 zmm11 zmm12 zmm13 zmm14 zmm15 k0_k1 k2_k3 k4_k5 k6_k7  ]
+ Callee Saved : 0 [  ]
+ Assigned : 8 [ eflags rax rcx rdi rdx rsi zmm0 zmm1  ]
 
 Routine stack 
- Variables : 0 Bytes
-   Read Count : 0
-   Write Count : 0
+ Variables : 24 Bytes
+   Read Count : 9
+   Write Count : 5
  Spills : 0 Bytes
    Read Count : 0
    Write Count : 0

@@ -1,466 +1,284 @@
 # callstacks file version: 8
 #    rowid	    parent	       rva	 loop	 system	                                function	binary	instance_start_rva	instance_size	instance_end_rva	finst_rowid	roi	is_inlined	jit_method_id	tripcounts_roi	flops_roi	cachesim_roi	data_transfer_roi	projection_roi
-         1	        -1	      5296	    0	      0	                                  _start	/home/chris/high-performance-clowns/hw1/release/omp_homework	5296	38	0	23	0	0	0	0	0	0	0	0
-         2	        -1	      5332	    0	      0	                                  _start	/home/chris/high-performance-clowns/hw1/release/omp_homework	5296	38	0	23	0	0	0	0	0	0	0	0
-         3	       448	    172682	    1	      1	[Loop at line 347 in __libc_start_main_impl]	/lib/x86_64-linux-gnu/libc.so.6	172651,172784	132,64	0	83	0	0	0	0	0	0	0	0
-         4	         3	    172489	    0	      1	                  __libc_start_call_main	/lib/x86_64-linux-gnu/libc.so.6	172368	164	0	85	0	0	0	0	0	0	0	0
-         5	       331	      5909	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	5900	66	0	24	0	1	0	0	0	0	0	0
-         6	         5	    663051	    0	      1	           __kmp_api_omp_set_num_threads	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	663040	22	0	65	0	0	0	0	0	0	0	0
-         7	       287	    776164	    0	      1	            __kmp_acquire_bootstrap_lock	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	776148	17	0	67	0	1	0	0	0	0	0	0
-         8	         7	    746057	    0	      1	               __kmp_acquire_ticket_lock	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	746048	17	0	80	0	0	0	0	0	0	0	0
-         9	         8	    242091	    0	      1	       __kmp_itt_fsync_acquired_init_3_0	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	242048	79	0	81	0	0	0	0	0	0	0	0
-        10	         9	    271440	    0	      1	                   __kmp_itt_init_ittlib	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	268736	2715	0	89	0	0	0	0	0	0	0	0
-        11	        10	     56400	    0	      1	                          __itt_api_init	/opt/intel/oneapi/advisor/2025.0/lib64/runtime/libittnotify_collector.so	56288	905	0	37	0	0	0	0	0	0	0	0
-        12	        11	     31488	    0	      1	                             func@0x7970	/opt/intel/oneapi/advisor/2025.0/lib64/runtime/libittnotify_collector.so	31088	448	0	45	0	0	0	0	0	0	0	0
-        13	        12	     26082	    0	      1	                             func@0x6560	/opt/intel/oneapi/advisor/2025.0/lib64/runtime/libittnotify_collector.so	25952	368	0	52	0	0	0	0	0	0	0	0
-        14	        11	     31502	    0	      1	                             func@0x7970	/opt/intel/oneapi/advisor/2025.0/lib64/runtime/libittnotify_collector.so	31088	448	0	45	0	0	0	0	0	0	0	0
-        15	       446	     25972	    1	      1	            [Loop@0x6570 in func@0x6560]	/opt/intel/oneapi/advisor/2025.0/lib64/runtime/libittnotify_collector.so	25968	14	0	59	0	0	0	0	0	0	0	0
-        16	        15	   1208925	    0	      1	                                 syscall	/lib/x86_64-linux-gnu/libc.so.6	1208896	55	0	86	0	0	0	0	0	0	0	0
-        17	         6	    776184	    0	      1	          __kmp_get_global_thread_id_reg	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	776064	155	0	68	0	0	0	0	0	0	0	0
-        18	        17	    776271	    0	      1	              __kmp_do_serial_initialize	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	776256	1603	0	90	0	0	0	0	0	0	0	0
-        19	       289	   1106714	    0	      1	                     ompt_try_start_tool	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	1105614,1106574,1107068	853,399,291	0	101	0	1	0	0	0	0	0	0
-        20	       450	    623182	    0	      1	                   dlopen_implementation	/lib/x86_64-linux-gnu/libc.so.6	623152	39	0	87	0	1	0	0	0	0	0	0
-        21	        20	    621682	    0	      1	                            _dlerror_run	/lib/x86_64-linux-gnu/libc.so.6	621520	505	0	91	0	0	0	0	0	0	0	0
-        22	        21	      5736	    0	      1	                         _dl_catch_error	/lib64/ld-linux-x86-64.so.2	5696	75	0	34	0	0	0	0	0	0	0	0
-        23	        22	      5403	    0	      1	                __GI__dl_catch_exception	/lib64/ld-linux-x86-64.so.2	5248	433	0	36	0	0	0	0	0	0	0	0
-        24	        23	    622995	    0	      1	                             dlopen_doit	/lib/x86_64-linux-gnu/libc.so.6	622896	162	0	92	0	0	0	0	0	0	0	0
-        25	       291	   1106714	    0	      1	                     ompt_try_start_tool	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	1105614,1106574,1107068	853,399,291	0	101	0	1	0	0	0	0	0	0
-        26	       373	     53603	    1	      1	          [Loop at line 888 in _dl_open]	/lib64/ld-linux-x86-64.so.2	53532,54112	124,173	0	38	0	0	0	0	0	0	0	0
-        27	        26	      5403	    0	      1	                __GI__dl_catch_exception	/lib64/ld-linux-x86-64.so.2	5248	433	0	36	0	0	0	0	0	0	0	0
-        28	        27	     52511	    0	      1	                          dl_open_worker	/lib64/ld-linux-x86-64.so.2	52448	253	0	41	0	0	0	0	0	0	0	0
-        29	        28	      5403	    0	      1	                __GI__dl_catch_exception	/lib64/ld-linux-x86-64.so.2	5248	433	0	36	0	0	0	0	0	0	0	0
-        30	        29	     55708	    0	      1	                    dl_open_worker_begin	/lib64/ld-linux-x86-64.so.2	55344	2638	0	42	0	0	0	0	0	0	0	0
-        31	        30	   9231636	    0	      1	                           func@0x8cdcd0	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9231568	128	0	127	0	0	0	0	0	0	0	0
-        32	        31	   9230148	    0	      1	                           func@0x8cd6e0	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9230048	240	0	128	0	0	0	0	0	0	0	0
-        33	       398	   9224166	    1	      1	        [Loop@0x8cbfc0 in func@0x8cadc0]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9224128,9228135,9228393	435,18,120	0	129	0	0	0	0	0	0	0	0
-        34	        33	   9002332	    0	      1	       LEVEL_PINCLIENT::ProcessImageLoad	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9002256	204	0	131	0	0	0	0	0	0	0	0
-        35	        34	   8993743	    0	      1	                           func@0x893480	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8991872	10384	0	132	0	0	0	0	0	0	0	0
-        36	        35	   9303884	    0	      1	          LEVEL_PINCLIENT::ElfCookRegsym	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9303152	1670	0	133	0	0	0	0	0	0	0	0
-        37	       400	   9312950	    1	      1	[Loop@0x8e1220 in LEVEL_PINCLIENT::CookSymSec<Elf64_Sym>]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9310752,9311160,9312920	347,139,38	0	134	0	0	0	0	0	0	0	0
-        38	        37	   9298922	    0	      1	                           func@0x8de2b0	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9298608	416	0	136	0	0	0	0	0	0	0	0
-        39	       454	   3486950	    1	      1	[Loop@0x3534d6 in LEVEL_BASE::SWMALLOC::Deallocate]	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3486934,3487496	50,87	0	35	0	0	0	0	0	0	0	0
-        40	        34	   8994860	    0	      1	                           func@0x893480	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8991872	10384	0	132	0	0	0	0	0	0	0	0
-        41	       403	   8955477	    1	      1	        [Loop@0x88a350 in func@0x88a2d0]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8954704,8956200,8956224,8956248,8956272,8956296,8956320,8956344,8956384,8956416,8956448,8956480	1432,18,18,15,18,18,18,30,30,30,30,309	0	137	0	0	0	0	0	0	0	0
-        42	        41	    329714	    0	      1	std::__1::operator+<char, std::__1::char_traits<char>, std::__1::allocator<char>>	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++.so	329584	252	0	6	0	0	0	0	0	0	0	0
-        43	        42	    317755	    0	      1	std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::append	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++.so	317664	214	0	7	0	0	0	0	0	0	0	0
-        44	        43	    433560	    0	      1	                                  memcpy	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	433552	14	0	1	0	0	0	0	0	0	0	0
-        45	       357	    433949	    1	      1	               [Loop@0x69f18 in memmove]	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	433944	19	0	2	0	0	0	0	0	0	0	0
-        46	        34	   8994907	    0	      1	                           func@0x893480	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8991872	10384	0	132	0	0	0	0	0	0	0	0
-        47	       405	   8923899	    1	      1	[Loop@0x8829d8 in LEVEL_PINCLIENT::IMG_FindRtnByName]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8923608,8923760,8923840,8923856,8923872,8923984,8924120,8924888,8924976,8925016,8925040,8925064,8925160,8925432	143,56,10,10,110,128,761,82,37,21,18,93,264,50	0	140	0	0	0	0	0	0	0	0
-        48	        47	   8923513	    0	      1	LEVEL_PINCLIENT::PIN_UndecorateSymbolName	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8923504	16	0	142	0	0	0	0	0	0	0	0
-        49	        48	   9265628	    0	      1	     LEVEL_PINCLIENT::SYM_UndecorateName	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9265520	207	0	143	0	0	0	0	0	0	0	0
-        50	        49	   9263054	    0	      1	                           func@0x8d5790	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9262992	2528	0	144	0	0	0	0	0	0	0	0
-        51	        50	    140432	    0	      1	                          __cxa_demangle	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++abi.so	139232	1829	0	20	0	0	0	0	0	0	0	0
-        52	        51	   3489769	    0	      1	          LEVEL_BASE::SWMALLOC::Allocate	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3488112	2616	0	70	0	0	0	0	0	0	0	0
-        53	        52	   3486564	    0	      1	          LEVEL_BASE::SWMALLOC::GetPages	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3486496	105	0	74	0	0	0	0	0	0	0	0
-        54	        53	   2387711	    0	      1	                                 VM_Mmap	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	2387680	37	0	77	0	0	0	0	0	0	0	0
-        55	       456	   2380438	    1	      1	[Loop@0x24526b in LEVEL_VM::MmapCheckedWithMemoryLimit]	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	2380395,2380664	221,41	0	78	0	0	0	0	0	0	0	0
-        56	        55	   1055861	    0	      1	                     LEVEL_BASE::RawMmap	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	1055792	356	0	82	0	0	0	0	0	0	0	0
-        57	        56	    497055	    0	      1	                            OS_SyscallDo	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	496832	374	0	5	0	0	0	0	0	0	0	0
-        58	        57	    526707	    0	      1	    OS_BARESYSCALL_DoCallAsmIntel64Linux	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	526676	36	0	11	0	0	0	0	0	0	0	0
-        59	        34	   8993421	    0	      1	                           func@0x893480	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8991872	10384	0	132	0	0	0	0	0	0	0	0
-        60	        59	   9279277	    0	      1	          LEVEL_PINCLIENT::IMG_ReadImage	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9278608	2121	0	145	0	0	0	0	0	0	0	0
-        61	        60	   9356389	    0	      1	LEVEL_IMGIO::IMG_UpdateImageFromElfHeaders	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9349232	12140	0	146	0	0	0	0	0	0	0	0
-        62	       407	   9318533	    1	      1	        [Loop@0x8e24d0 in func@0x8e2310]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9315536,9316024,9316048,9316152,9319233,9319488,9319691,9320181,9320231,9321472,9321824,9321888,9322192,9322240,9322264,9322288	466,15,75,3014,233,84,189,27,44,61,63,299,41,18,18,18	0	147	0	0	0	0	0	0	0	0
-        63	        62	   8814979	    0	      1	std::__1::basic_stringbuf<char, std::__1::char_traits<char>, std::__1::allocator<char>>::str	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8814544	862	0	149	0	0	0	0	0	0	0	0
-        64	       275	    151581	    1	      1	          [Loop@0x25016 in operator new]	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++abi.so	151574,151601	16,14	0	32	0	0	0	0	0	0	0	0
-        65	        64	   3489031	    0	      1	          LEVEL_BASE::SWMALLOC::Allocate	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3488112	2616	0	70	0	0	0	0	0	0	0	0
-        66	        35	   9303469	    0	      1	          LEVEL_PINCLIENT::ElfCookRegsym	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9303152	1670	0	133	0	0	0	0	0	0	0	0
-        67	       409	   9310902	    1	      1	[Loop@0x8e1220 in LEVEL_PINCLIENT::CookSymSec<Elf64_Sym>]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9310752,9311160,9312920	347,139,38	0	134	0	0	0	0	0	0	0	0
-        68	        67	   9307325	    0	      1	std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__emplace_unique_key_args<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long><std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9307296	199	0	150	0	0	0	0	0	0	0	0
-        69	       413	   9306915	    1	      1	[Loop@0x8e02ee in std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306862,9307112,9307192,9307224,9307248	218,75,22,8,33	0	151	0	0	0	0	0	0	0	0
-        70	       359	    433503	    1	      1	                [Loop@0x69d10 in memcmp]	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	433424	101	0	12	0	0	0	0	0	0	0	0
-        71	       416	   9306997	    1	      1	[Loop@0x8e036d in std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306989	91	0	155	0	0	0	0	0	0	0	0
-        72	       409	   9310829	    1	      1	[Loop@0x8e1220 in LEVEL_PINCLIENT::CookSymSec<Elf64_Sym>]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9310752,9311160,9312920	347,139,38	0	134	0	0	0	0	0	0	0	0
-        73	       361	    255808	    1	      1	                [Loop@0x3e740 in strlen]	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	255808	9	0	14	0	0	0	0	0	0	0	0
-        74	        37	   9298844	    0	      1	                           func@0x8de2b0	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9298608	416	0	136	0	0	0	0	0	0	0	0
-        75	        74	   9662621	    0	      1	                    LEVEL_CORE::SYM_Init	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9662480	471	0	157	0	0	0	0	0	0	0	0
-        76	        75	    313063	    0	      1	std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::basic_string	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++.so	312976	161	0	8	0	0	0	0	0	0	0	0
-        77	       277	    151581	    1	      1	          [Loop@0x25016 in operator new]	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++abi.so	151574,151601	16,14	0	32	0	0	0	0	0	0	0	0
-        78	        77	   3489769	    0	      1	          LEVEL_BASE::SWMALLOC::Allocate	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3488112	2616	0	70	0	0	0	0	0	0	0	0
-        79	        78	   3486571	    0	      1	          LEVEL_BASE::SWMALLOC::GetPages	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3486496	105	0	74	0	0	0	0	0	0	0	0
-        80	       400	   9310772	    1	      1	[Loop@0x8e1220 in LEVEL_PINCLIENT::CookSymSec<Elf64_Sym>]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9310752,9311160,9312920	347,139,38	0	134	0	0	0	0	0	0	0	0
-        81	       400	   9310902	    1	      1	[Loop@0x8e1220 in LEVEL_PINCLIENT::CookSymSec<Elf64_Sym>]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9310752,9311160,9312920	347,139,38	0	134	0	0	0	0	0	0	0	0
-        82	        81	   9307369	    0	      1	std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__emplace_unique_key_args<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long><std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9307296	199	0	150	0	0	0	0	0	0	0	0
-        83	       279	    151581	    1	      1	          [Loop@0x25016 in operator new]	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++abi.so	151574,151601	16,14	0	32	0	0	0	0	0	0	0	0
-        84	        83	   3489025	    0	      1	          LEVEL_BASE::SWMALLOC::Allocate	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3488112	2616	0	70	0	0	0	0	0	0	0	0
-        85	       458	   3491842	    1	      1	[Loop@0x3547d8 in ATOMIC::LIFO_PTR<LEVEL_BASE::SWMALLOC::FREE_LIST_ELEMENT, (unsigned int)4, LEVEL_BASE::ATOMIC_STATS>::PopInternal]	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3491800,3492200	108,48	0	97	0	0	0	0	0	0	0	0
-        86	        85	   3868419	    0	      1	                 ATOMIC_CompareAndSwap64	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3868408	15	0	99	0	0	0	0	0	0	0	0
-        87	        37	   9298954	    0	      1	                           func@0x8de2b0	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9298608	416	0	136	0	0	0	0	0	0	0	0
-        88	       281	    151581	    1	      1	          [Loop@0x25016 in operator new]	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++abi.so	151574,151601	16,14	0	32	0	0	0	0	0	0	0	0
-        89	        88	   3489769	    0	      1	          LEVEL_BASE::SWMALLOC::Allocate	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3488112	2616	0	70	0	0	0	0	0	0	0	0
-        90	        89	   3486571	    0	      1	          LEVEL_BASE::SWMALLOC::GetPages	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3486496	105	0	74	0	0	0	0	0	0	0	0
-        91	        81	   9307325	    0	      1	std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__emplace_unique_key_args<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long><std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9307296	199	0	150	0	0	0	0	0	0	0	0
-        92	       423	   9306877	    1	      1	[Loop@0x8e02ee in std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306862,9307112,9307192,9307224,9307248	218,75,22,8,33	0	151	0	0	0	0	0	0	0	0
-        93	       363	    433483	    1	      1	                [Loop@0x69d10 in memcmp]	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	433424	101	0	12	0	0	0	0	0	0	0	0
-        94	       426	   9306997	    1	      1	[Loop@0x8e036d in std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306989	91	0	155	0	0	0	0	0	0	0	0
-        95	       425	   9307133	    1	      1	[Loop@0x8e0331 in std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306929,9307118,9307224,9307267	151,69,8,14	0	156	0	0	0	0	0	0	0	0
-        96	       365	    433457	    1	      1	                [Loop@0x69d10 in memcmp]	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	433424	101	0	12	0	0	0	0	0	0	0	0
-        97	       425	   9306957	    1	      1	[Loop@0x8e0331 in std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306929,9307118,9307224,9307267	151,69,8,14	0	156	0	0	0	0	0	0	0	0
-        98	        35	   9303741	    0	      1	          LEVEL_PINCLIENT::ElfCookRegsym	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9303152	1670	0	133	0	0	0	0	0	0	0	0
-        99	       430	   9576625	    1	      1	[Loop@0x9220a0 in LEVEL_CORE::IMG_SortRegsymsByIaddr]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9576608,9576832,9576888	216,52,59	0	158	0	0	0	0	0	0	0	0
-       100	        99	   9661779	    0	      1	               LEVEL_CORE::REGSYM_Unlink	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9661648	414	0	160	0	0	0	0	0	0	0	0
-       101	        35	   9303779	    0	      1	          LEVEL_PINCLIENT::ElfCookRegsym	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9303152	1670	0	133	0	0	0	0	0	0	0	0
-       102	       101	   9297626	    0	      1	                           func@0x8dde00	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9297408	1200	0	161	0	0	0	0	0	0	0	0
-       103	       102	   9297895	    0	      1	                           func@0x8dde00	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9297408	1200	0	161	0	0	0	0	0	0	0	0
-       104	       103	   9298053	    0	      1	                           func@0x8dde00	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9297408	1200	0	161	0	0	0	0	0	0	0	0
-       105	       104	   9297895	    0	      1	                           func@0x8dde00	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9297408	1200	0	161	0	0	0	0	0	0	0	0
-       106	       105	   9297425	    0	      1	                           func@0x8dde00	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9297408	1200	0	161	0	0	0	0	0	0	0	0
-       107	        34	   8993769	    0	      1	                           func@0x893480	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8991872	10384	0	132	0	0	0	0	0	0	0	0
-       108	       107	   8982438	    0	      1	                           func@0x890f00	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8982272	9600	0	162	0	0	0	0	0	0	0	0
-       109	       108	   9274590	    0	      1	     LEVEL_PINCLIENT::GetSubprogramsInfo	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9274432	2379	0	163	0	0	0	0	0	0	0	0
-       110	       109	     32651	    0	      1	               GetSubprogramsListInImage	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libpindwarf.so	32560	630	0	3	0	0	0	0	0	0	0	0
-       111	       110	     22617	    0	      1	                               LoadDwarf	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libpindwarf.so	22384	2687	0	9	0	0	0	0	0	0	0	0
-       112	       111	    181958	    0	      1	                         dwarf_init_path	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libdwarf.so	181936	28	0	62	0	0	0	0	0	0	0	0
-       113	       112	    181446	    0	      1	                      dwarf_init_path_dl	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libdwarf.so	180656	1279	0	63	0	0	0	0	0	0	0	0
-       114	       113	    107819	    0	      1	                      _dwarf_elf_nlsetup	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libdwarf.so	107584	722	0	64	0	0	0	0	0	0	0	0
-       115	       114	     96820	    0	      1	                  _dwarf_load_elf_symstr	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libdwarf.so	96688	247	0	66	0	0	0	0	0	0	0	0
-       116	       115	    274141	    0	      1	               _dwarf_object_read_random	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libdwarf.so	274048	183	0	69	0	0	0	0	0	0	0	0
-       117	       116	    415363	    0	      1	                                    read	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	415328	79	0	16	0	0	0	0	0	0	0	0
-       118	       117	    513519	    0	      1	                               OS_ReadFD	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	513488	171	0	17	0	0	0	0	0	0	0	0
-       119	       118	    497055	    0	      1	                            OS_SyscallDo	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	496832	374	0	5	0	0	0	0	0	0	0	0
-       120	       119	    526707	    0	      1	    OS_BARESYSCALL_DoCallAsmIntel64Linux	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	526676	36	0	11	0	0	0	0	0	0	0	0
-       121	       113	    107839	    0	      1	                      _dwarf_elf_nlsetup	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libdwarf.so	107584	722	0	64	0	0	0	0	0	0	0	0
-       122	       396	     95968	    1	      1	[Loop@0x176b0 in _dwarf_load_elf_symtab_symbols]	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libdwarf.so	95920	195	0	71	0	0	0	0	0	0	0	0
-       123	       122	    433565	    0	      1	                                  memcpy	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	433552	14	0	1	0	0	0	0	0	0	0	0
-       124	       113	    108190	    0	      1	                      _dwarf_elf_nlsetup	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libdwarf.so	107584	722	0	64	0	0	0	0	0	0	0	0
-       125	       124	    186854	    0	      1	                     dwarf_object_init_b	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libdwarf.so	186784	788	0	73	0	0	0	0	0	0	0	0
-       126	       125	     50231	    0	      1	                        _dwarf_get_debug	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libdwarf.so	50128	115	0	75	0	0	0	0	0	0	0	0
-       127	       126	    319358	    0	      1	           _dwarf_initialize_search_hash	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libdwarf.so	319168	281	0	76	0	0	0	0	0	0	0	0
-       128	       127	   3490869	    0	      1	                    LEVEL_BASE::swCalloc	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3490832	47	0	100	0	0	0	0	0	0	0	0
-       129	       367	    435232	    1	      1	                [Loop@0x6a420 in memset]	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	435232	36	0	18	0	0	0	0	0	0	0	0
-       130	       367	    435251	    1	      1	                [Loop@0x6a420 in memset]	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	435232	36	0	18	0	0	0	0	0	0	0	0
-       131	       367	    435235	    1	      1	                [Loop@0x6a420 in memset]	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	435232	36	0	18	0	0	0	0	0	0	0	0
-       132	       433	   8996426	    1	      1	        [Loop@0x8945ba in func@0x893480]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8996282,8996528,8996576,8996592,8996672,8996832,8999886	198,40,13,71,18,13,44	0	164	0	0	0	0	0	0	0	0
-       133	       132	   9608526	    0	      1	                 LEVEL_CORE::RTN_SetName	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9608432	262	0	166	0	0	0	0	0	0	0	0
-       134	       133	    313063	    0	      1	std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::basic_string	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++.so	312976	161	0	8	0	0	0	0	0	0	0	0
-       135	       283	    151581	    1	      1	          [Loop@0x25016 in operator new]	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++abi.so	151574,151601	16,14	0	32	0	0	0	0	0	0	0	0
-       136	       135	   3489025	    0	      1	          LEVEL_BASE::SWMALLOC::Allocate	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3488112	2616	0	70	0	0	0	0	0	0	0	0
-       137	       460	   3492217	    1	      1	[Loop@0x3547d8 in ATOMIC::LIFO_PTR<LEVEL_BASE::SWMALLOC::FREE_LIST_ELEMENT, (unsigned int)4, LEVEL_BASE::ATOMIC_STATS>::PopInternal]	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3491800,3492200	108,48	0	97	0	0	0	0	0	0	0	0
-       138	       433	   8996392	    1	      1	        [Loop@0x8945ba in func@0x893480]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8996282,8996528,8996576,8996592,8996672,8996832,8999886	198,40,13,71,18,13,44	0	164	0	0	0	0	0	0	0	0
-       139	       138	   9605242	    0	      1	                   LEVEL_CORE::RTN_Alloc	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9605216	683	0	167	0	0	0	0	0	0	0	0
-       140	       436	   9378895	    1	      1	[Loop@0x8f1c48 in LEVEL_BASE::ARRAYBASE::New]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9378888	17	0	168	0	0	0	0	0	0	0	0
-       141	       140	   9366910	    0	      1	        LEVEL_BASE::ARRAYSTRIPE::Realloc	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9366848	86	0	170	0	0	0	0	0	0	0	0
-       142	       141	    433560	    0	      1	                                  memcpy	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	433552	14	0	1	0	0	0	0	0	0	0	0
-       143	       371	    434549	    1	      1	               [Loop@0x6a170 in memmove]	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	434544	22	0	21	0	0	0	0	0	0	0	0
-       144	       138	   9605257	    0	      1	                   LEVEL_CORE::RTN_Alloc	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9605216	683	0	167	0	0	0	0	0	0	0	0
-       145	       438	   9378302	    1	      1	[Loop@0x8f19d2 in LEVEL_BASE::ARRAYBASE::Memset]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9378258	54	0	171	0	0	0	0	0	0	0	0
-       146	       145	    435139	    0	      1	                                  memset	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	435120	152	0	19	0	0	0	0	0	0	0	0
-       147	       403	   8955697	    1	      1	        [Loop@0x88a350 in func@0x88a2d0]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8954704,8956200,8956224,8956248,8956272,8956296,8956320,8956344,8956384,8956416,8956448,8956480	1432,18,18,15,18,18,18,30,30,30,30,309	0	137	0	0	0	0	0	0	0	0
-       148	       147	    317845	    0	      1	std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::append	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++.so	317664	214	0	7	0	0	0	0	0	0	0	0
-       149	       148	    316403	    0	      1	std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__grow_by_and_replace	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++.so	316240	400	0	10	0	0	0	0	0	0	0	0
-       150	       462	   3486950	    1	      1	[Loop@0x3534d6 in LEVEL_BASE::SWMALLOC::Deallocate]	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3486934,3487496	50,87	0	35	0	0	0	0	0	0	0	0
-       151	       403	   8955433	    1	      1	        [Loop@0x88a350 in func@0x88a2d0]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8954704,8956200,8956224,8956248,8956272,8956296,8956320,8956344,8956384,8956416,8956448,8956480	1432,18,18,15,18,18,18,30,30,30,30,309	0	137	0	0	0	0	0	0	0	0
-       152	       151	    317755	    0	      1	std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::append	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++.so	317664	214	0	7	0	0	0	0	0	0	0	0
-       153	       152	    433560	    0	      1	                                  memcpy	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	433552	14	0	1	0	0	0	0	0	0	0	0
-       154	       153	    434697	    0	      1	                                 memmove	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	433808	1170	0	4	0	0	0	0	0	0	0	0
-       155	       403	   8954764	    1	      1	        [Loop@0x88a350 in func@0x88a2d0]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8954704,8956200,8956224,8956248,8956272,8956296,8956320,8956344,8956384,8956416,8956448,8956480	1432,18,18,15,18,18,18,30,30,30,30,309	0	137	0	0	0	0	0	0	0	0
-       156	       155	   8921351	    0	      1	            LEVEL_PINCLIENT::RTN_Address	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8921280	95	0	173	0	0	0	0	0	0	0	0
-       157	       405	   8923644	    1	      1	[Loop@0x8829d8 in LEVEL_PINCLIENT::IMG_FindRtnByName]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8923608,8923760,8923840,8923856,8923872,8923984,8924120,8924888,8924976,8925016,8925040,8925064,8925160,8925432	143,56,10,10,110,128,761,82,37,21,18,93,264,50	0	140	0	0	0	0	0	0	0	0
-       158	        34	   9000960	    0	      1	                           func@0x893480	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8991872	10384	0	132	0	0	0	0	0	0	0	0
-       159	       444	   8923644	    1	      1	[Loop@0x8829d8 in LEVEL_PINCLIENT::IMG_FindRtnByName]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8923608,8923760,8923840,8923856,8923872,8923984,8924120,8924888,8924976,8925016,8925040,8925064,8925160,8925432	143,56,10,10,110,128,761,82,37,21,18,93,264,50	0	140	0	0	0	0	0	0	0	0
-       160	        92	    886352	    0	      1	                            func@0xd8650	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	886352	6	0	174	0	0	0	0	0	0	0	0
-       161	        35	   9303765	    0	      1	          LEVEL_PINCLIENT::ElfCookRegsym	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9303152	1670	0	133	0	0	0	0	0	0	0	0
-       162	       161	   9297640	    0	      1	                           func@0x8dde00	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9297408	1200	0	161	0	0	0	0	0	0	0	0
-       163	       162	   9297664	    0	      1	                           func@0x8dde00	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9297408	1200	0	161	0	0	0	0	0	0	0	0
-       164	       163	   3487280	    0	      1	        LEVEL_BASE::SWMALLOC::Deallocate	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3486880	1078	0	40	0	0	0	0	0	0	0	0
-       165	       138	   9605430	    0	      1	                   LEVEL_CORE::RTN_Alloc	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9605216	683	0	167	0	0	0	0	0	0	0	0
-       166	       285	    151581	    1	      1	          [Loop@0x25016 in operator new]	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++abi.so	151574,151601	16,14	0	32	0	0	0	0	0	0	0	0
-       167	       166	   3488452	    0	      1	          LEVEL_BASE::SWMALLOC::Allocate	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3488112	2616	0	70	0	0	0	0	0	0	0	0
-       168	       376	     56085	    0	      1	            _dl_open_relocate_one_object	/lib64/ld-linux-x86-64.so.2	56007,56054	33,32	0	43	0	1	0	0	0	0	0	0
-       169	       383	     63756	    0	      1	               elf_machine_rela_relative	/lib64/ld-linux-x86-64.so.2	63723,63729,63753,75476	3,20,6,31	0	46	0	1	0	0	0	0	0	0
-       170	       388	     67148	    0	      1	                             resolve_map	/lib64/ld-linux-x86-64.so.2	66810,66834,66966,68483,68624,69025,69748,70210,73286,74657,74701,74753,75335,75585,75667	4,7,221,3,92,20,20,16,221,3,24,92,16,20,23	0	53	0	1	0	0	0	0	0	0
-       171	       392	     45563	    1	      1	[Loop at line 791 in _dl_lookup_symbol_x]	/lib64/ld-linux-x86-64.so.2	45504	68	0	56	0	0	0	0	0	0	0	0
-       172	       394	     43049	    1	      1	       [Loop at line 390 in do_lookup_x]	/lib64/ld-linux-x86-64.so.2	42384,42672,42704,42808,43032,43120,43232,43376,43824,44679,45106	280,26,98,189,86,107,138,69,50,271,17	0	60	0	0	0	0	0	0	0	0
-       173	       331	      5961	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	5900	66	0	24	0	1	0	0	0	0	0	0
-       174	       173	    543623	    0	      1	                           [OpenMP fork]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	543232	560	0	103	0	0	0	0	0	0	0	0
-       175	       174	    798534	    0	      1	                         __kmp_fork_call	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	792256	10158	0	104	0	0	0	0	0	0	0	0
-       176	       293	    790252	    1	      1	[Loop at line 5901 in __kmp_allocate_team]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	790240	117	0	105	0	0	0	0	0	0	0	0
-       177	       176	    818004	    0	      1	                   __kmp_allocate_thread	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	816832	1191	0	107	0	0	0	0	0	0	0	0
-       178	       177	   1335590	    0	      1	                     __kmp_create_worker	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	1335296	1775	0	108	0	0	0	0	0	0	0	0
-       179	       174	    801532	    0	      1	                         __kmp_fork_call	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	792256	10158	0	104	0	0	0	0	0	0	0	0
-       180	       179	         3	    0	      0	                    [Stitch point frame]	n/a	0	0	0	22	0	0	0	0	0	0	0	0
-       181	       180	    828978	    0	      1	                     [OpenMP dispatcher]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	828608	510	0	109	0	0	0	0	0	0	0	0
-       182	       181	   1332738	    0	      1	                  __kmp_invoke_microtask	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	1332592	176	0	110	0	0	0	0	0	0	0	0
-       183	       335	     10056	    1	      0	                [Loop at line 76 in DFT]	/home/chris/high-performance-clowns/hw1/release/omp_homework	10000	127	10127	26	0	0	0	0	0	0	0	0
-       184	       183	     12424	    0	      0	                          __svml_sin4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	12400	1381	0	29	0	0	0	0	0	0	0	0
-       185	       335	     10040	    1	      0	                [Loop at line 76 in DFT]	/home/chris/high-performance-clowns/hw1/release/omp_homework	10000	127	10127	26	0	0	0	0	0	0	0	0
-       186	       185	     10703	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       187	       183	     12555	    0	      0	                          __svml_sin4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	12400	1381	0	29	0	0	0	0	0	0	0	0
-       188	       185	     10602	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       189	       185	     10694	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       190	       335	     10095	    1	      0	                [Loop at line 76 in DFT]	/home/chris/high-performance-clowns/hw1/release/omp_homework	10000	127	10127	26	0	0	0	0	0	0	0	0
-       191	       185	     10725	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       192	       173	    543649	    0	      1	                           [OpenMP fork]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	543232	560	0	103	0	0	0	0	0	0	0	0
-       193	       192	    805780	    0	      1	                         __kmp_join_call	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	805440	3120	0	111	0	0	0	0	0	0	0	0
-       194	       193	    808650	    0	      1	                     __kmp_internal_join	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	808576	394	0	112	0	0	0	0	0	0	0	0
-       195	       194	    497153	    0	      1	                      __kmp_join_barrier	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	496256	1781	0	113	0	0	0	0	0	0	0	0
-       196	       296	    500473	    1	      1	[Loop at line 1117 in __kmp_hyper_barrier_gather]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	500336	448	0	114	0	0	0	0	0	0	0	0
-       197	       299	    513754	    1	      1	[Loop at line 555 in __kmp_wait_template<kmp_flag_64<(bool)0, (bool)1>, (bool)0, (bool)0, (bool)1>]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513373,513488,513696	113,196,443	0	117	0	0	0	0	0	0	0	0
-       198	       197	   1107931	    0	      1	                           __sched_yield	/lib/x86_64-linux-gnu/libc.so.6	1107920	37	0	93	0	0	0	0	0	0	0	0
-       199	       339	      6033	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	5966	314	0	31	0	1	0	0	0	0	0	0
-       200	       199	    543623	    0	      1	                           [OpenMP fork]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	543232	560	0	103	0	0	0	0	0	0	0	0
-       201	       200	    801532	    0	      1	                         __kmp_fork_call	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	792256	10158	0	104	0	0	0	0	0	0	0	0
-       202	       201	         3	    0	      0	                    [Stitch point frame]	n/a	0	0	0	22	0	0	0	0	0	0	0	0
-       203	       202	    828978	    0	      1	                     [OpenMP dispatcher]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	828608	510	0	109	0	0	0	0	0	0	0	0
-       204	       203	   1332738	    0	      1	                  __kmp_invoke_microtask	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	1332592	176	0	110	0	0	0	0	0	0	0	0
-       205	       342	     10040	    1	      0	                [Loop at line 76 in DFT]	/home/chris/high-performance-clowns/hw1/release/omp_homework	10000	127	10127	26	0	0	0	0	0	0	0	0
-       206	       205	     10658	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       207	       205	     10749	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       208	       342	     10056	    1	      0	                [Loop at line 76 in DFT]	/home/chris/high-performance-clowns/hw1/release/omp_homework	10000	127	10127	26	0	0	0	0	0	0	0	0
-       209	       208	     12477	    0	      0	                          __svml_sin4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	12400	1381	0	29	0	0	0	0	0	0	0	0
-       210	       205	     10716	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       211	       205	     10694	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       212	       199	    543649	    0	      1	                           [OpenMP fork]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	543232	560	0	103	0	0	0	0	0	0	0	0
-       213	       212	    805780	    0	      1	                         __kmp_join_call	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	805440	3120	0	111	0	0	0	0	0	0	0	0
-       214	       213	    808650	    0	      1	                     __kmp_internal_join	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	808576	394	0	112	0	0	0	0	0	0	0	0
-       215	       214	    497153	    0	      1	                      __kmp_join_barrier	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	496256	1781	0	113	0	0	0	0	0	0	0	0
-       216	       303	    500473	    1	      1	[Loop at line 1117 in __kmp_hyper_barrier_gather]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	500336	448	0	114	0	0	0	0	0	0	0	0
-       217	       306	    513754	    1	      1	[Loop at line 555 in __kmp_wait_template<kmp_flag_64<(bool)0, (bool)1>, (bool)0, (bool)0, (bool)1>]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513373,513488,513696	113,196,443	0	117	0	0	0	0	0	0	0	0
-       218	       217	   1107931	    0	      1	                           __sched_yield	/lib/x86_64-linux-gnu/libc.so.6	1107920	37	0	93	0	0	0	0	0	0	0	0
-       219	        -1	   1337984	    0	      1	                         [OpenMP worker]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	1337984	873	0	120	0	0	0	0	0	0	0	0
-       220	       185	     10646	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       221	       185	     10676	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       222	       335	     10000	    1	      0	                [Loop at line 76 in DFT]	/home/chris/high-performance-clowns/hw1/release/omp_homework	10000	127	10127	26	0	0	0	0	0	0	0	0
-       223	       185	     10716	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       224	        -1	   1219643	    0	      1	                                __clone3	/lib/x86_64-linux-gnu/libc.so.6	1219600	71	0	94	0	0	0	0	0	0	0	0
-       225	       452	    641683	    1	      1	      [Loop at line 447 in start_thread]	/lib/x86_64-linux-gnu/libc.so.6	641133,641596,641767	281,93,188	0	95	0	0	0	0	0	0	0	0
-       226	       225	   3705604	    0	      1	       tpss_thread_start_routine_wrapper	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	3704672	1788	0	175	0	0	0	0	0	0	0	0
-       227	       226	   1338400	    0	      1	                         [OpenMP worker]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	1337984	873	0	120	0	0	0	0	0	0	0	0
-       228	       309	    823292	    1	      1	[Loop at line 6604 in __kmp_launch_thread]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	823264	287	0	121	0	0	0	0	0	0	0	0
-       229	       228	    506644	    0	      1	                      __kmp_fork_barrier	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	506112	1446	0	123	0	0	0	0	0	0	0	0
-       230	       229	    491390	    0	      1	             __kmp_hyper_barrier_release	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	491200	1245	0	124	0	0	0	0	0	0	0	0
-       231	       312	    514778	    1	      1	[Loop at line 555 in __kmp_wait_template<kmp_flag_64<(bool)0, (bool)1>, (bool)1, (bool)0, (bool)1>]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	514359,514496,514720	126,211,457	0	125	0	0	0	0	0	0	0	0
-       232	       231	   1107931	    0	      1	                           __sched_yield	/lib/x86_64-linux-gnu/libc.so.6	1107920	37	0	93	0	0	0	0	0	0	0	0
-       233	       205	     10725	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       234	       208	     12507	    0	      0	                          __svml_sin4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	12400	1381	0	29	0	0	0	0	0	0	0	0
-       235	       205	     10676	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       236	       185	     10572	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       237	       185	     10614	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       238	       335	     10118	    1	      0	                [Loop at line 76 in DFT]	/home/chris/high-performance-clowns/hw1/release/omp_homework	10000	127	10127	26	0	0	0	0	0	0	0	0
-       239	       312	    514956	    1	      1	[Loop at line 555 in __kmp_wait_template<kmp_flag_64<(bool)0, (bool)1>, (bool)1, (bool)0, (bool)1>]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	514359,514496,514720	126,211,457	0	125	0	0	0	0	0	0	0	0
-       240	       312	    514757	    1	      1	[Loop at line 555 in __kmp_wait_template<kmp_flag_64<(bool)0, (bool)1>, (bool)1, (bool)0, (bool)1>]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	514359,514496,514720	126,211,457	0	125	0	0	0	0	0	0	0	0
-       241	       312	    514739	    1	      1	[Loop at line 555 in __kmp_wait_template<kmp_flag_64<(bool)0, (bool)1>, (bool)1, (bool)0, (bool)1>]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	514359,514496,514720	126,211,457	0	125	0	0	0	0	0	0	0	0
-       242	       205	     10568	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       243	       342	     10045	    1	      0	                [Loop at line 76 in DFT]	/home/chris/high-performance-clowns/hw1/release/omp_homework	10000	127	10127	26	0	0	0	0	0	0	0	0
-       244	       185	     10735	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       245	       183	     12578	    0	      0	                          __svml_sin4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	12400	1381	0	29	0	0	0	0	0	0	0	0
-       246	       185	     10556	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       247	       205	     10589	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       248	       185	     10650	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       249	       185	     10749	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       250	       335	     10085	    1	      0	                [Loop at line 76 in DFT]	/home/chris/high-performance-clowns/hw1/release/omp_homework	10000	127	10127	26	0	0	0	0	0	0	0	0
-       251	       335	     10045	    1	      0	                [Loop at line 76 in DFT]	/home/chris/high-performance-clowns/hw1/release/omp_homework	10000	127	10127	26	0	0	0	0	0	0	0	0
-       252	       309	    823271	    1	      1	[Loop at line 6604 in __kmp_launch_thread]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	823264	287	0	121	0	0	0	0	0	0	0	0
-       253	       252	    497153	    0	      1	                      __kmp_join_barrier	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	496256	1781	0	113	0	0	0	0	0	0	0	0
-       254	       323	    500473	    1	      1	[Loop at line 1117 in __kmp_hyper_barrier_gather]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	500336	448	0	114	0	0	0	0	0	0	0	0
-       255	       326	    513754	    1	      1	[Loop at line 555 in __kmp_wait_template<kmp_flag_64<(bool)0, (bool)1>, (bool)0, (bool)0, (bool)1>]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513373,513488,513696	113,196,443	0	117	0	0	0	0	0	0	0	0
-       256	       255	   1107931	    0	      1	                           __sched_yield	/lib/x86_64-linux-gnu/libc.so.6	1107920	37	0	93	0	0	0	0	0	0	0	0
-       257	       208	     12533	    0	      0	                          __svml_sin4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	12400	1381	0	29	0	0	0	0	0	0	0	0
-       258	       205	     10735	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       259	       205	     10685	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       260	       185	     10667	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       261	       335	     10018	    1	      0	                [Loop at line 76 in DFT]	/home/chris/high-performance-clowns/hw1/release/omp_homework	10000	127	10127	26	0	0	0	0	0	0	0	0
-       262	       342	     10085	    1	      0	                [Loop at line 76 in DFT]	/home/chris/high-performance-clowns/hw1/release/omp_homework	10000	127	10127	26	0	0	0	0	0	0	0	0
-       263	       342	     10108	    1	      0	                [Loop at line 76 in DFT]	/home/chris/high-performance-clowns/hw1/release/omp_homework	10000	127	10127	26	0	0	0	0	0	0	0	0
-       264	       185	     10685	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       265	       335	     10061	    1	      0	                [Loop at line 76 in DFT]	/home/chris/high-performance-clowns/hw1/release/omp_homework	10000	127	10127	26	0	0	0	0	0	0	0	0
-       266	       208	     12400	    0	      0	                          __svml_sin4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	12400	1381	0	29	0	0	0	0	0	0	0	0
-       267	       342	     10090	    1	      0	                [Loop at line 76 in DFT]	/home/chris/high-performance-clowns/hw1/release/omp_homework	10000	127	10127	26	0	0	0	0	0	0	0	0
-       268	       183	     12560	    0	      0	                          __svml_sin4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	12400	1381	0	29	0	0	0	0	0	0	0	0
-       269	       183	     12400	    0	      0	                          __svml_sin4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	12400	1381	0	29	0	0	0	0	0	0	0	0
-       270	       185	     10544	    0	      0	                          __svml_cos4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	10544	1352	0	30	0	0	0	0	0	0	0	0
-       271	       208	     12424	    0	      0	                          __svml_sin4_l9	/home/chris/high-performance-clowns/hw1/release/omp_homework	12400	1381	0	29	0	0	0	0	0	0	0	0
-       272	       342	     10018	    1	      0	                [Loop at line 76 in DFT]	/home/chris/high-performance-clowns/hw1/release/omp_homework	10000	127	10127	26	0	0	0	0	0	0	0	0
-       273	       342	     10031	    1	      0	                [Loop at line 76 in DFT]	/home/chris/high-performance-clowns/hw1/release/omp_homework	10000	127	10127	26	0	0	0	0	0	0	0	0
-       274	       312	    514816	    1	      1	[Loop at line 555 in __kmp_wait_template<kmp_flag_64<(bool)0, (bool)1>, (bool)1, (bool)0, (bool)1>]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	514359,514496,514720	126,211,457	0	125	0	0	0	0	0	0	0	0
-       275	        63	    151574	    0	      1	                            operator new	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++abi.so	151552	63	0	33	0	0	0	0	0	0	0	0
-       276	        63	    151581	    0	      1	                            operator new	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++abi.so	151552	63	0	33	0	0	0	0	0	0	0	0
-       277	        76	    151574	    0	      1	                            operator new	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++abi.so	151552	63	0	33	0	0	0	0	0	0	0	0
-       278	        76	    151581	    0	      1	                            operator new	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++abi.so	151552	63	0	33	0	0	0	0	0	0	0	0
-       279	        82	    151574	    0	      1	                            operator new	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++abi.so	151552	63	0	33	0	0	0	0	0	0	0	0
-       280	        82	    151581	    0	      1	                            operator new	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++abi.so	151552	63	0	33	0	0	0	0	0	0	0	0
-       281	        87	    151574	    0	      1	                            operator new	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++abi.so	151552	63	0	33	0	0	0	0	0	0	0	0
-       282	        87	    151581	    0	      1	                            operator new	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++abi.so	151552	63	0	33	0	0	0	0	0	0	0	0
-       283	       134	    151574	    0	      1	                            operator new	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++abi.so	151552	63	0	33	0	0	0	0	0	0	0	0
-       284	       134	    151581	    0	      1	                            operator new	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++abi.so	151552	63	0	33	0	0	0	0	0	0	0	0
-       285	       165	    151574	    0	      1	                            operator new	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++abi.so	151552	63	0	33	0	0	0	0	0	0	0	0
-       286	       165	    151581	    0	      1	                            operator new	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc++abi.so	151552	63	0	33	0	0	0	0	0	0	0	0
-       287	         6	    776148	    0	      1	          __kmp_get_global_thread_id_reg	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	776064	155	0	68	0	0	0	0	0	0	0	0
-       288	         6	    776164	    0	      1	          __kmp_get_global_thread_id_reg	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	776064	155	0	68	0	0	0	0	0	0	0	0
-       289	        18	   1105614	    0	      1	                           ompt_pre_init	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	1105408	2152	0	102	0	0	0	0	0	0	0	0
-       290	        18	   1106714	    0	      1	                           ompt_pre_init	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	1105408	2152	0	102	0	0	0	0	0	0	0	0
-       291	        24	   1105614	    0	      1	                           ompt_pre_init	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	1105408	2152	0	102	0	0	0	0	0	0	0	0
-       292	        24	   1106714	    0	      1	                           ompt_pre_init	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	1105408	2152	0	102	0	0	0	0	0	0	0	0
-       293	       175	    790240	    0	      1	                     __kmp_allocate_team	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	786432	5619	0	106	0	0	0	0	0	0	0	0
-       294	       175	    790252	    0	      1	                     __kmp_allocate_team	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	786432	5619	0	106	0	0	0	0	0	0	0	0
-       295	       195	    500192	    0	      1	              __kmp_hyper_barrier_gather	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	499840	1231	0	115	0	0	0	0	0	0	0	0
-       296	       295	    500336	    1	      1	[Loop at line 1117 in __kmp_hyper_barrier_gather]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	500192	597	0	116	0	0	0	0	0	0	0	0
-       297	       195	    500473	    0	      1	              __kmp_hyper_barrier_gather	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	499840	1231	0	115	0	0	0	0	0	0	0	0
-       298	       196	    513168	    0	      1	     kmp_flag_64<(bool)0, (bool)1>::wait	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513088	2416	0	119	0	0	0	0	0	0	0	0
-       299	       298	    513373	    0	      1	__kmp_wait_template<kmp_flag_64<(bool)0, (bool)1>, (bool)0, (bool)0, (bool)1>	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513168,513260,515330	38,879,123	0	118	0	1	0	0	0	0	0	0
-       300	       298	    513754	    0	      1	__kmp_wait_template<kmp_flag_64<(bool)0, (bool)1>, (bool)0, (bool)0, (bool)1>	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513168,513260,515330	38,879,123	0	118	0	1	0	0	0	0	0	0
-       301	       196	    513754	    0	      1	     kmp_flag_64<(bool)0, (bool)1>::wait	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513088	2416	0	119	0	0	0	0	0	0	0	0
-       302	       215	    500192	    0	      1	              __kmp_hyper_barrier_gather	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	499840	1231	0	115	0	0	0	0	0	0	0	0
-       303	       302	    500336	    1	      1	[Loop at line 1117 in __kmp_hyper_barrier_gather]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	500192	597	0	116	0	0	0	0	0	0	0	0
-       304	       215	    500473	    0	      1	              __kmp_hyper_barrier_gather	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	499840	1231	0	115	0	0	0	0	0	0	0	0
-       305	       216	    513168	    0	      1	     kmp_flag_64<(bool)0, (bool)1>::wait	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513088	2416	0	119	0	0	0	0	0	0	0	0
-       306	       305	    513373	    0	      1	__kmp_wait_template<kmp_flag_64<(bool)0, (bool)1>, (bool)0, (bool)0, (bool)1>	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513168,513260,515330	38,879,123	0	118	0	1	0	0	0	0	0	0
-       307	       305	    513754	    0	      1	__kmp_wait_template<kmp_flag_64<(bool)0, (bool)1>, (bool)0, (bool)0, (bool)1>	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513168,513260,515330	38,879,123	0	118	0	1	0	0	0	0	0	0
-       308	       216	    513754	    0	      1	     kmp_flag_64<(bool)0, (bool)1>::wait	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513088	2416	0	119	0	0	0	0	0	0	0	0
-       309	       227	    823264	    0	      1	                     __kmp_launch_thread	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	822976	575	0	122	0	0	0	0	0	0	0	0
-       310	       227	    823292	    0	      1	                     __kmp_launch_thread	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	822976	575	0	122	0	0	0	0	0	0	0	0
-       311	       230	    513128	    0	      1	     kmp_flag_64<(bool)0, (bool)1>::wait	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513088	2416	0	119	0	0	0	0	0	0	0	0
-       312	       311	    514359	    0	      1	__kmp_wait_template<kmp_flag_64<(bool)0, (bool)1>, (bool)1, (bool)0, (bool)1>	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513128,513227,514139	40,28,1191	0	126	0	1	0	0	0	0	0	0
-       313	       311	    514778	    0	      1	__kmp_wait_template<kmp_flag_64<(bool)0, (bool)1>, (bool)1, (bool)0, (bool)1>	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513128,513227,514139	40,28,1191	0	126	0	1	0	0	0	0	0	0
-       314	       230	    514778	    0	      1	     kmp_flag_64<(bool)0, (bool)1>::wait	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513088	2416	0	119	0	0	0	0	0	0	0	0
-       315	       311	    514956	    0	      1	__kmp_wait_template<kmp_flag_64<(bool)0, (bool)1>, (bool)1, (bool)0, (bool)1>	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513128,513227,514139	40,28,1191	0	126	0	1	0	0	0	0	0	0
-       316	       230	    514956	    0	      1	     kmp_flag_64<(bool)0, (bool)1>::wait	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513088	2416	0	119	0	0	0	0	0	0	0	0
-       317	       311	    514757	    0	      1	__kmp_wait_template<kmp_flag_64<(bool)0, (bool)1>, (bool)1, (bool)0, (bool)1>	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513128,513227,514139	40,28,1191	0	126	0	1	0	0	0	0	0	0
-       318	       230	    514757	    0	      1	     kmp_flag_64<(bool)0, (bool)1>::wait	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513088	2416	0	119	0	0	0	0	0	0	0	0
-       319	       311	    514739	    0	      1	__kmp_wait_template<kmp_flag_64<(bool)0, (bool)1>, (bool)1, (bool)0, (bool)1>	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513128,513227,514139	40,28,1191	0	126	0	1	0	0	0	0	0	0
-       320	       230	    514739	    0	      1	     kmp_flag_64<(bool)0, (bool)1>::wait	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513088	2416	0	119	0	0	0	0	0	0	0	0
-       321	       227	    823271	    0	      1	                     __kmp_launch_thread	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	822976	575	0	122	0	0	0	0	0	0	0	0
-       322	       253	    500192	    0	      1	              __kmp_hyper_barrier_gather	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	499840	1231	0	115	0	0	0	0	0	0	0	0
-       323	       322	    500336	    1	      1	[Loop at line 1117 in __kmp_hyper_barrier_gather]	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	500192	597	0	116	0	0	0	0	0	0	0	0
-       324	       253	    500473	    0	      1	              __kmp_hyper_barrier_gather	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	499840	1231	0	115	0	0	0	0	0	0	0	0
-       325	       254	    513168	    0	      1	     kmp_flag_64<(bool)0, (bool)1>::wait	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513088	2416	0	119	0	0	0	0	0	0	0	0
-       326	       325	    513373	    0	      1	__kmp_wait_template<kmp_flag_64<(bool)0, (bool)1>, (bool)0, (bool)0, (bool)1>	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513168,513260,515330	38,879,123	0	118	0	1	0	0	0	0	0	0
-       327	       325	    513754	    0	      1	__kmp_wait_template<kmp_flag_64<(bool)0, (bool)1>, (bool)0, (bool)0, (bool)1>	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513168,513260,515330	38,879,123	0	118	0	1	0	0	0	0	0	0
-       328	       254	    513754	    0	      1	     kmp_flag_64<(bool)0, (bool)1>::wait	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513088	2416	0	119	0	0	0	0	0	0	0	0
-       329	       311	    514816	    0	      1	__kmp_wait_template<kmp_flag_64<(bool)0, (bool)1>, (bool)1, (bool)0, (bool)1>	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513128,513227,514139	40,28,1191	0	126	0	1	0	0	0	0	0	0
-       330	       230	    514816	    0	      1	     kmp_flag_64<(bool)0, (bool)1>::wait	/opt/intel/oneapi/compiler/2025.0/lib/libiomp5.so	513088	2416	0	119	0	0	0	0	0	0	0	0
-       331	         4	      5900	    0	      0	                                    main	/home/chris/high-performance-clowns/hw1/release/omp_homework	5536	1419	0	25	0	0	0	0	0	0	0	0
-       332	         4	      5909	    0	      0	                                    main	/home/chris/high-performance-clowns/hw1/release/omp_homework	5536	1419	0	25	0	0	0	0	0	0	0	0
-       333	         4	      5961	    0	      0	                                    main	/home/chris/high-performance-clowns/hw1/release/omp_homework	5536	1419	0	25	0	0	0	0	0	0	0	0
-       334	       182	      9648	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	9152	1392	0	27	0	0	0	0	0	0	0	0
-       335	       334	     10000	    1	      0	                 [Loop at line 0 in DFT]	/home/chris/high-performance-clowns/hw1/release/omp_homework	9648,10208	554,60	10510	28	0	0	0	0	0	0	0	0
-       336	       182	     10056	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	9152	1392	0	27	0	0	0	0	0	0	0	0
-       337	       182	     10040	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	9152	1392	0	27	0	0	0	0	0	0	0	0
-       338	       182	     10095	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	9152	1392	0	27	0	0	0	0	0	0	0	0
-       339	         4	      5966	    0	      0	                                    main	/home/chris/high-performance-clowns/hw1/release/omp_homework	5536	1419	0	25	0	0	0	0	0	0	0	0
-       340	         4	      6033	    0	      0	                                    main	/home/chris/high-performance-clowns/hw1/release/omp_homework	5536	1419	0	25	0	0	0	0	0	0	0	0
-       341	       204	      9648	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	9152	1392	0	27	0	0	0	0	0	0	0	0
-       342	       341	     10000	    1	      0	                 [Loop at line 0 in DFT]	/home/chris/high-performance-clowns/hw1/release/omp_homework	9648,10208	554,60	10510	28	0	0	0	0	0	0	0	0
-       343	       204	     10040	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	9152	1392	0	27	0	0	0	0	0	0	0	0
-       344	       204	     10056	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	9152	1392	0	27	0	0	0	0	0	0	0	0
-       345	       182	     10000	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	9152	1392	0	27	0	0	0	0	0	0	0	0
-       346	       182	     10118	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	9152	1392	0	27	0	0	0	0	0	0	0	0
-       347	       204	     10045	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	9152	1392	0	27	0	0	0	0	0	0	0	0
-       348	       182	     10085	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	9152	1392	0	27	0	0	0	0	0	0	0	0
-       349	       182	     10045	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	9152	1392	0	27	0	0	0	0	0	0	0	0
-       350	       182	     10018	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	9152	1392	0	27	0	0	0	0	0	0	0	0
-       351	       204	     10085	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	9152	1392	0	27	0	0	0	0	0	0	0	0
-       352	       204	     10108	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	9152	1392	0	27	0	0	0	0	0	0	0	0
-       353	       182	     10061	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	9152	1392	0	27	0	0	0	0	0	0	0	0
-       354	       204	     10090	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	9152	1392	0	27	0	0	0	0	0	0	0	0
-       355	       204	     10018	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	9152	1392	0	27	0	0	0	0	0	0	0	0
-       356	       204	     10031	    0	      0	                                     DFT	/home/chris/high-performance-clowns/hw1/release/omp_homework	9152	1392	0	27	0	0	0	0	0	0	0	0
-       357	        44	    433944	    0	      1	                                 memmove	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	433808	1170	0	4	0	0	0	0	0	0	0	0
-       358	        44	    433949	    0	      1	                                 memmove	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	433808	1170	0	4	0	0	0	0	0	0	0	0
-       359	        69	    433424	    0	      1	                                  memcmp	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	433376	165	0	13	0	0	0	0	0	0	0	0
-       360	        69	    433503	    0	      1	                                  memcmp	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	433376	165	0	13	0	0	0	0	0	0	0	0
-       361	        72	    255808	    0	      1	                                  strlen	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	255792	35	0	15	0	0	0	0	0	0	0	0
-       362	        72	    255808	    0	      1	                                  strlen	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	255792	35	0	15	0	0	0	0	0	0	0	0
-       363	        92	    433424	    0	      1	                                  memcmp	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	433376	165	0	13	0	0	0	0	0	0	0	0
-       364	        92	    433483	    0	      1	                                  memcmp	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	433376	165	0	13	0	0	0	0	0	0	0	0
-       365	        95	    433424	    0	      1	                                  memcmp	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	433376	165	0	13	0	0	0	0	0	0	0	0
-       366	        95	    433457	    0	      1	                                  memcmp	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	433376	165	0	13	0	0	0	0	0	0	0	0
-       367	       128	    435232	    0	      1	                                  memset	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	435120	152	0	19	0	0	0	0	0	0	0	0
-       368	       128	    435232	    0	      1	                                  memset	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	435120	152	0	19	0	0	0	0	0	0	0	0
-       369	       128	    435251	    0	      1	                                  memset	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	435120	152	0	19	0	0	0	0	0	0	0	0
-       370	       128	    435235	    0	      1	                                  memset	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	435120	152	0	19	0	0	0	0	0	0	0	0
-       371	       142	    434544	    0	      1	                                 memmove	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	433808	1170	0	4	0	0	0	0	0	0	0	0
-       372	       142	    434549	    0	      1	                                 memmove	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libc-dynamic.so	433808	1170	0	4	0	0	0	0	0	0	0	0
-       373	        25	     53532	    0	      1	                                _dl_open	/lib64/ld-linux-x86-64.so.2	53424	1554	0	39	0	0	0	0	0	0	0	0
-       374	        25	     53603	    0	      1	                                _dl_open	/lib64/ld-linux-x86-64.so.2	53424	1554	0	39	0	0	0	0	0	0	0	0
-       375	        29	     56040	    0	      1	                    dl_open_worker_begin	/lib64/ld-linux-x86-64.so.2	55344	2638	0	42	0	0	0	0	0	0	0	0
-       376	       375	     56007	    1	      1	[Loop at line 722 in dl_open_worker_begin]	/lib64/ld-linux-x86-64.so.2	56040	55	0	44	0	0	0	0	0	0	0	0
-       377	       375	     56085	    1	      1	[Loop at line 722 in dl_open_worker_begin]	/lib64/ld-linux-x86-64.so.2	56040	55	0	44	0	0	0	0	0	0	0	0
-       378	        29	     56085	    0	      1	                    dl_open_worker_begin	/lib64/ld-linux-x86-64.so.2	55344	2638	0	42	0	0	0	0	0	0	0	0
-       379	       168	     62767	    0	      1	                     _dl_relocate_object	/lib64/ld-linux-x86-64.so.2	62016	14509	0	48	0	0	0	0	0	0	0	0
-       380	       379	     62825	    1	      1	[Loop at line 301 in _dl_relocate_object]	/lib64/ld-linux-x86-64.so.2	62767,62928,63144,63320,63664,63696,64344,64504,65016,65752,65784,65824,65848,65872,65904,65968,66064,66200,66392,66544,66584,66742,66784,67264,67408,67904	159,209,96,340,23,624,153,371,244,28,33,19,16,28,56,92,133,186,145,18,104,40,458,135,319,233	0	51	0	0	0	0	0	0	0	0
-       381	       380	     62781	    1	      1	[Loop at line 301 in _dl_relocate_object]	/lib64/ld-linux-x86-64.so.2	62825,62928,63144,63320,63664,63696,64344,64504,65016,65752,65784,65824,65848,65872,65904,65968,66064,66200,66392,66528,66544,66584,66742,66784,67264,67408,67904	101,209,96,340,23,624,153,371,244,28,33,19,16,28,56,92,133,186,77,9,18,104,40,458,135,319,233	0	50	0	0	0	0	0	0	0	0
-       382	       381	     63720	    0	      1	                     elf_dynamic_do_Rela	/lib64/ld-linux-x86-64.so.2	62781,62805,62834,63121,63320,66528,66680,66784,69600,69680,69748,72560,73137,75335,75536,75899	18,25,274,23,3072,40,8,2529,20,42,2270,488,2180,172,196,42	0	49	0	1	0	0	0	0	0	0
-       383	       382	     63723	    1	      1	[Loop at line 123 in elf_dynamic_do_Rela]	/lib64/ld-linux-x86-64.so.2	63720	44	0	47	0	0	0	0	0	0	0	0
-       384	       382	     63756	    1	      1	[Loop at line 123 in elf_dynamic_do_Rela]	/lib64/ld-linux-x86-64.so.2	63720	44	0	47	0	0	0	0	0	0	0	0
-       385	       168	     63756	    0	      1	                     _dl_relocate_object	/lib64/ld-linux-x86-64.so.2	62016	14509	0	48	0	0	0	0	0	0	0	0
-       386	       381	     66880	    0	      1	                     elf_dynamic_do_Rela	/lib64/ld-linux-x86-64.so.2	62781,62805,62834,63121,63320,66528,66680,66784,69600,69680,69748,72560,73137,75335,75536,75899	18,25,274,23,3072,40,8,2529,20,42,2270,488,2180,172,196,42	0	49	0	1	0	0	0	0	0	0
-       387	       386	     66810	    1	      1	[Loop at line 182 in elf_dynamic_do_Rela]	/lib64/ld-linux-x86-64.so.2	66880,67264,67904	362,53,233	0	54	0	0	0	0	0	0	0	0
-       388	       387	     66810	    0	      1	                        elf_machine_rela	/lib64/ld-linux-x86-64.so.2	66810,66834,66937,67287,67727,67844,67884,68137,68171,68282,68343,68552,68565,68624,69025,69680,69701,69748,70210,73137,73184,73257,73572,73926,74043,74062,74212,74244,74271,74343,74366,74657,74701,74738,74753,74891,74980,75201,75335,75585,75924	4,46,347,0,102,37,0,19,108,53,169,10,27,277,20,18,5,20,16,44,16,312,0,102,11,142,24,19,64,15,48,11,24,7,92,73,65,18,57,147,8	0	55	0	1	0	0	0	0	0	0
-       389	       386	     67148	    1	      1	[Loop at line 182 in elf_dynamic_do_Rela]	/lib64/ld-linux-x86-64.so.2	66880,67264,67904	362,53,233	0	54	0	0	0	0	0	0	0	0
-       390	       168	     67148	    0	      1	                     _dl_relocate_object	/lib64/ld-linux-x86-64.so.2	62016	14509	0	48	0	0	0	0	0	0	0	0
-       391	       170	     45315	    0	      1	                     _dl_lookup_symbol_x	/lib64/ld-linux-x86-64.so.2	45264	3018	0	57	0	0	0	0	0	0	0	0
-       392	       391	     45504	    1	      1	[Loop at line 773 in _dl_lookup_symbol_x]	/lib64/ld-linux-x86-64.so.2	45315,45504,45712,45784,45904,45928,45944,46144,46456,46800,46928,47168,47867,48080,48210	184,138,67,119,18,11,46,306,72,9,37,22,208,97,72	0	58	0	0	0	0	0	0	0	0
-       393	       170	     45563	    0	      1	                     _dl_lookup_symbol_x	/lib64/ld-linux-x86-64.so.2	45264	3018	0	57	0	0	0	0	0	0	0	0
-       394	       171	     42384	    0	      1	                             do_lookup_x	/lib64/ld-linux-x86-64.so.2	42288	2971	0	61	0	0	0	0	0	0	0	0
-       395	       171	     43049	    0	      1	                             do_lookup_x	/lib64/ld-linux-x86-64.so.2	42288	2971	0	61	0	0	0	0	0	0	0	0
-       396	       121	     95920	    0	      1	          _dwarf_load_elf_symtab_symbols	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libdwarf.so	95600	1073	0	72	0	0	0	0	0	0	0	0
-       397	       121	     95968	    0	      1	          _dwarf_load_elf_symtab_symbols	/opt/intel/oneapi/advisor/2025.0/lib64/pinruntime/libdwarf.so	95600	1073	0	72	0	0	0	0	0	0	0	0
-       398	        32	   9224128	    0	      1	                           func@0x8cadc0	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9219520	10528	0	130	0	0	0	0	0	0	0	0
-       399	        32	   9224166	    0	      1	                           func@0x8cadc0	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9219520	10528	0	130	0	0	0	0	0	0	0	0
-       400	        36	   9310752	    0	      1	  LEVEL_PINCLIENT::CookSymSec<Elf64_Sym>	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9310448	2945	0	135	0	0	0	0	0	0	0	0
-       401	        36	   9312950	    0	      1	  LEVEL_PINCLIENT::CookSymSec<Elf64_Sym>	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9310448	2945	0	135	0	0	0	0	0	0	0	0
-       402	        40	   8954648	    0	      1	                           func@0x88a2d0	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8954576	2496	0	138	0	0	0	0	0	0	0	0
-       403	       402	   8954704	    1	      1	        [Loop@0x88a318 in func@0x88a2d0]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8954648,8954704,8956200,8956224,8956248,8956272,8956296,8956320,8956344,8956384,8956416,8956448,8956480	52,1471,18,18,15,18,18,18,30,30,30,30,309	0	139	0	0	0	0	0	0	0	0
-       404	        40	   8955477	    0	      1	                           func@0x88a2d0	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8954576	2496	0	138	0	0	0	0	0	0	0	0
-       405	        46	   8923608	    0	      1	      LEVEL_PINCLIENT::IMG_FindRtnByName	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8923520	1962	0	141	0	0	0	0	0	0	0	0
-       406	        46	   8923899	    0	      1	      LEVEL_PINCLIENT::IMG_FindRtnByName	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8923520	1962	0	141	0	0	0	0	0	0	0	0
-       407	        61	   9315536	    0	      1	                           func@0x8e2310	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9315088	7226	0	148	0	0	0	0	0	0	0	0
-       408	        61	   9318533	    0	      1	                           func@0x8e2310	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9315088	7226	0	148	0	0	0	0	0	0	0	0
-       409	        66	   9310752	    0	      1	  LEVEL_PINCLIENT::CookSymSec<Elf64_Sym>	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9310448	2945	0	135	0	0	0	0	0	0	0	0
-       410	        66	   9310902	    0	      1	  LEVEL_PINCLIENT::CookSymSec<Elf64_Sym>	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9310448	2945	0	135	0	0	0	0	0	0	0	0
-       411	        68	   9306816	    0	      1	std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306720	561	0	152	0	0	0	0	0	0	0	0
-       412	       411	   9306835	    1	      1	[Loop@0x8e02c0 in std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306816,9307112,9307192,9307224,9307248	264,75,22,8,33	0	154	0	0	0	0	0	0	0	0
-       413	       412	   9306862	    1	      1	[Loop@0x8e02d3 in std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306835,9307112,9307192,9307224,9307248	245,75,22,8,33	0	153	0	0	0	0	0	0	0	0
-       414	        68	   9306915	    0	      1	std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306720	561	0	152	0	0	0	0	0	0	0	0
-       415	       413	   9306929	    1	      1	[Loop@0x8e02ee in std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306862,9307112,9307192,9307224,9307248	218,75,22,8,33	0	151	0	0	0	0	0	0	0	0
-       416	       415	   9306989	    1	      1	[Loop@0x8e0331 in std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306929,9307118,9307224,9307267	151,69,8,14	0	156	0	0	0	0	0	0	0	0
-       417	        68	   9306997	    0	      1	std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306720	561	0	152	0	0	0	0	0	0	0	0
-       418	        66	   9310829	    0	      1	  LEVEL_PINCLIENT::CookSymSec<Elf64_Sym>	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9310448	2945	0	135	0	0	0	0	0	0	0	0
-       419	        36	   9310772	    0	      1	  LEVEL_PINCLIENT::CookSymSec<Elf64_Sym>	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9310448	2945	0	135	0	0	0	0	0	0	0	0
-       420	        36	   9310902	    0	      1	  LEVEL_PINCLIENT::CookSymSec<Elf64_Sym>	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9310448	2945	0	135	0	0	0	0	0	0	0	0
-       421	        91	   9306816	    0	      1	std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306720	561	0	152	0	0	0	0	0	0	0	0
-       422	       421	   9306835	    1	      1	[Loop@0x8e02c0 in std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306816,9307112,9307192,9307224,9307248	264,75,22,8,33	0	154	0	0	0	0	0	0	0	0
-       423	       422	   9306862	    1	      1	[Loop@0x8e02d3 in std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306835,9307112,9307192,9307224,9307248	245,75,22,8,33	0	153	0	0	0	0	0	0	0	0
-       424	        91	   9306877	    0	      1	std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306720	561	0	152	0	0	0	0	0	0	0	0
-       425	       423	   9306929	    1	      1	[Loop@0x8e02ee in std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306862,9307112,9307192,9307224,9307248	218,75,22,8,33	0	151	0	0	0	0	0	0	0	0
-       426	       425	   9306989	    1	      1	[Loop@0x8e0331 in std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306929,9307118,9307224,9307267	151,69,8,14	0	156	0	0	0	0	0	0	0	0
-       427	        91	   9306997	    0	      1	std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306720	561	0	152	0	0	0	0	0	0	0	0
-       428	        91	   9307133	    0	      1	std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306720	561	0	152	0	0	0	0	0	0	0	0
-       429	        91	   9306957	    0	      1	std::__1::__tree<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>, std::__1::less<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>>::__find_equal<std::__1::pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, unsigned long>>	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9306720	561	0	152	0	0	0	0	0	0	0	0
-       430	        98	   9576608	    0	      1	      LEVEL_CORE::IMG_SortRegsymsByIaddr	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9576496	810	0	159	0	0	0	0	0	0	0	0
-       431	        98	   9576625	    0	      1	      LEVEL_CORE::IMG_SortRegsymsByIaddr	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9576496	810	0	159	0	0	0	0	0	0	0	0
-       432	        34	   8994736	    0	      1	                           func@0x893480	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8991872	10384	0	132	0	0	0	0	0	0	0	0
-       433	       432	   8996282	    1	      1	        [Loop@0x893fb0 in func@0x893480]	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8994736,8995384,8996048,8996528,8996576,8996592,8996672,8996696,8996832,8996848,8996920,8997048,8999886	114,35,479,40,13,71,18,126,13,65,125,13,44	0	165	0	0	0	0	0	0	0	0
-       434	        34	   8996426	    0	      1	                           func@0x893480	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8991872	10384	0	132	0	0	0	0	0	0	0	0
-       435	        34	   8996392	    0	      1	                           func@0x893480	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8991872	10384	0	132	0	0	0	0	0	0	0	0
-       436	       139	   9378888	    0	      1	              LEVEL_BASE::ARRAYBASE::New	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9378592	589	0	169	0	0	0	0	0	0	0	0
-       437	       139	   9378895	    0	      1	              LEVEL_BASE::ARRAYBASE::New	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9378592	589	0	169	0	0	0	0	0	0	0	0
-       438	       144	   9378258	    0	      1	           LEVEL_BASE::ARRAYBASE::Memset	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9378144	273	0	172	0	0	0	0	0	0	0	0
-       439	       144	   9378302	    0	      1	           LEVEL_BASE::ARRAYBASE::Memset	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	9378144	273	0	172	0	0	0	0	0	0	0	0
-       440	        40	   8955697	    0	      1	                           func@0x88a2d0	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8954576	2496	0	138	0	0	0	0	0	0	0	0
-       441	        40	   8955433	    0	      1	                           func@0x88a2d0	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8954576	2496	0	138	0	0	0	0	0	0	0	0
-       442	        40	   8954764	    0	      1	                           func@0x88a2d0	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8954576	2496	0	138	0	0	0	0	0	0	0	0
-       443	        46	   8923644	    0	      1	      LEVEL_PINCLIENT::IMG_FindRtnByName	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8923520	1962	0	141	0	0	0	0	0	0	0	0
-       444	       158	   8923608	    0	      1	      LEVEL_PINCLIENT::IMG_FindRtnByName	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8923520	1962	0	141	0	0	0	0	0	0	0	0
-       445	       158	   8923644	    0	      1	      LEVEL_PINCLIENT::IMG_FindRtnByName	/opt/intel/oneapi/advisor/2025.0/lib64/libtpsstool.so	8923520	1962	0	141	0	0	0	0	0	0	0	0
-       446	        14	     25968	    0	      1	                             func@0x6560	/opt/intel/oneapi/advisor/2025.0/lib64/runtime/libittnotify_collector.so	25952	368	0	52	0	0	0	0	0	0	0	0
-       447	        14	     25972	    0	      1	                             func@0x6560	/opt/intel/oneapi/advisor/2025.0/lib64/runtime/libittnotify_collector.so	25952	368	0	52	0	0	0	0	0	0	0	0
-       448	         2	    172651	    0	      1	                  __libc_start_main_impl	/lib/x86_64-linux-gnu/libc.so.6	172544	334	0	84	0	0	0	0	0	0	0	0
-       449	         2	    172682	    0	      1	                  __libc_start_main_impl	/lib/x86_64-linux-gnu/libc.so.6	172544	334	0	84	0	0	0	0	0	0	0	0
-       450	        19	    623152	    0	      1	                               ___dlopen	/lib/x86_64-linux-gnu/libc.so.6	623072	148	0	88	0	0	0	0	0	0	0	0
-       451	        19	    623182	    0	      1	                               ___dlopen	/lib/x86_64-linux-gnu/libc.so.6	623072	148	0	88	0	0	0	0	0	0	0	0
-       452	       224	    641133	    0	      1	                            start_thread	/lib/x86_64-linux-gnu/libc.so.6	640784	1171	0	96	0	0	0	0	0	0	0	0
-       453	       224	    641683	    0	      1	                            start_thread	/lib/x86_64-linux-gnu/libc.so.6	640784	1171	0	96	0	0	0	0	0	0	0	0
-       454	        38	   3486934	    0	      1	        LEVEL_BASE::SWMALLOC::Deallocate	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3486880	1078	0	40	0	0	0	0	0	0	0	0
-       455	        38	   3486950	    0	      1	        LEVEL_BASE::SWMALLOC::Deallocate	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3486880	1078	0	40	0	0	0	0	0	0	0	0
-       456	        54	   2380395	    0	      1	    LEVEL_VM::MmapCheckedWithMemoryLimit	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	2379008	2471	0	79	0	0	0	0	0	0	0	0
-       457	        54	   2380438	    0	      1	    LEVEL_VM::MmapCheckedWithMemoryLimit	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	2379008	2471	0	79	0	0	0	0	0	0	0	0
-       458	        84	   3491800	    0	      1	ATOMIC::LIFO_PTR<LEVEL_BASE::SWMALLOC::FREE_LIST_ELEMENT, (unsigned int)4, LEVEL_BASE::ATOMIC_STATS>::PopInternal	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3491440	1982	0	98	0	0	0	0	0	0	0	0
-       459	        84	   3491842	    0	      1	ATOMIC::LIFO_PTR<LEVEL_BASE::SWMALLOC::FREE_LIST_ELEMENT, (unsigned int)4, LEVEL_BASE::ATOMIC_STATS>::PopInternal	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3491440	1982	0	98	0	0	0	0	0	0	0	0
-       460	       136	   3491800	    0	      1	ATOMIC::LIFO_PTR<LEVEL_BASE::SWMALLOC::FREE_LIST_ELEMENT, (unsigned int)4, LEVEL_BASE::ATOMIC_STATS>::PopInternal	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3491440	1982	0	98	0	0	0	0	0	0	0	0
-       461	       136	   3492217	    0	      1	ATOMIC::LIFO_PTR<LEVEL_BASE::SWMALLOC::FREE_LIST_ELEMENT, (unsigned int)4, LEVEL_BASE::ATOMIC_STATS>::PopInternal	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3491440	1982	0	98	0	0	0	0	0	0	0	0
-       462	       149	   3486934	    0	      1	        LEVEL_BASE::SWMALLOC::Deallocate	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3486880	1078	0	40	0	0	0	0	0	0	0	0
-       463	       149	   3486950	    0	      1	        LEVEL_BASE::SWMALLOC::Deallocate	/opt/intel/oneapi/advisor/2025.0/bin64/pinbin	3486880	1078	0	40	0	0	0	0	0	0	0	0
-       464	        -1	         0	    0	      0	                      [Outside any loop]	n/a	0	0	0	176	0	0	0	0	0	0	0	0
+         1	        -1	      4304	    0	      0	                                  _start	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	4304	43	0	1	0	0	0	0	0	0	0	0
+         2	        -1	      4345	    0	      0	                                  _start	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	4304	43	0	1	0	0	0	0	0	0	0	0
+         3	       213	    146697	    1	      1	 [Loop at line 261 in __libc_start_main]	/lib/x86_64-linux-gnu/libc.so.6	146561,146800	223,140	0	10	0	0	0	0	0	0	0	0
+         4	         3	      4830	    0	      0	                                    main	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	4544	463	0	2	0	0	0	0	0	0	0	0
+         5	       216	      5411	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+         6	         5	     16487	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+         7	         5	     16425	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+         8	       216	      5407	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+         9	       216	      5369	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        10	         9	     17079	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        11	         9	     16960	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        12	         9	     16944	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        13	         9	     17036	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        14	         5	     16580	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        15	         9	     16826	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        16	       216	      5386	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        17	       216	      5453	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        18	       216	      5475	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        19	         5	     16539	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        20	         9	     17064	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        21	       216	      5489	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        22	         5	     16592	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        23	         9	     17075	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        24	         9	     16938	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        25	         9	     16802	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        26	         9	     16926	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        27	         5	     16512	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        28	       216	      5458	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        29	         9	     17093	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        30	       216	      5480	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        31	       216	      5529	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        32	         9	     17089	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        33	         5	     16547	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        34	       216	      5507	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        35	         5	     16720	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        36	         9	     16989	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        37	         5	     16711	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        38	       216	      5502	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        39	         5	     16434	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        40	         5	     16707	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        41	         5	     16584	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        42	       216	      5398	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        43	         5	     16724	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        44	       216	      5344	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        45	         5	     16519	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        46	         9	     16952	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        47	       216	      5375	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        48	       216	      5365	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        49	         5	     16604	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        50	         5	     16576	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        51	         5	     16696	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        52	         5	     16715	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        53	         4	      6128	    0	      0	                                     cos	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	6128	13	0	8	0	0	0	0	0	0	0	0
+        54	         5	     16660	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        55	         5	     16621	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        56	         5	     16452	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        57	       216	      5356	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        58	         5	     16429	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        59	         4	      6144	    0	      0	                                     sin	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	6144	13	0	9	0	0	0	0	0	0	0	0
+        60	         5	     16522	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        61	       216	      5542	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        62	         5	     16668	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        63	         9	     17028	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        64	         5	     16440	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        65	       216	      5340	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        66	         9	     16808	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        67	       216	      5417	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        68	         9	     16948	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        69	       216	      5547	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        70	         9	     16820	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        71	         5	     16588	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        72	         5	     16558	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        73	       216	      5462	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        74	         9	     17084	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        75	         9	     16797	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        76	         9	     16907	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        77	         9	     16915	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        78	         9	     16880	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        79	         9	     16956	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        80	         9	     16793	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        81	         9	     17006	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        82	         5	     16458	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        83	         9	     16855	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        84	         5	     16565	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        85	         9	     16898	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        86	         5	     16570	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        87	       216	      5440	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        88	         9	     16887	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        89	       216	      5466	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        90	       216	      5493	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        91	         5	     16530	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        92	       216	      5382	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        93	       216	      5550	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        94	         9	     16933	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        95	         9	     16964	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        96	         9	     17041	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+        97	         5	     16781	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+        98	       216	      5403	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+        99	         5	     16629	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       100	         9	     16890	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       101	       216	      5336	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       102	         4	      6148	    0	      0	                                     sin	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	6144	13	0	9	0	0	0	0	0	0	0	0
+       103	         3	      4868	    0	      0	                                    main	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	4544	463	0	2	0	0	0	0	0	0	0	0
+       104	       247	      5369	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       105	       104	     17028	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       106	       104	     16952	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       107	       104	     16802	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       108	       247	      5411	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       109	       108	     16512	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       110	       108	     16621	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       111	       247	      5407	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       112	       104	     16915	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       113	       108	     16660	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       114	       108	     16458	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       115	       104	     16960	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       116	       104	     17036	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       117	       103	      6128	    0	      0	                                     cos	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	6128	13	0	8	0	0	0	0	0	0	0	0
+       118	       247	      5529	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       119	       108	     16668	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       120	       247	      5502	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       121	       104	     16808	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       122	       247	      5356	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       123	       108	     16558	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       124	       104	     17006	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       125	       104	     17089	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       126	       247	      5458	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       127	       108	     16707	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       128	       104	     16855	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       129	       108	     16440	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       130	       108	     16539	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       131	       108	     16487	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       132	       104	     16880	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       133	       104	     16820	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       134	       247	      5453	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       135	       247	      5365	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       136	       108	     16711	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       137	       108	     16519	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       138	       108	     16452	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       139	       104	     16989	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       140	       247	      5507	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       141	       104	     16938	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       142	       104	     17079	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       143	       108	     16696	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       144	       247	      5344	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       145	       108	     16530	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       146	       247	      5440	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       147	       108	     16724	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       148	       247	      5542	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       149	       247	      5386	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       150	       247	      5547	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       151	       108	     16429	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       152	       108	     16565	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       153	       108	     16462	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       154	       104	     16948	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       155	       103	      6144	    0	      0	                                     sin	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	6144	13	0	9	0	0	0	0	0	0	0	0
+       156	       104	     17093	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       157	       104	     16797	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       158	       247	      5462	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       159	       108	     16592	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       160	       108	     16434	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       161	       108	     16425	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       162	       104	     16898	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       163	       247	      5489	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       164	       247	      5398	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       165	       104	     16926	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       166	       104	     16826	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       167	       104	     16944	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       168	       247	      5480	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       169	       108	     16584	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       170	       104	     16793	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       171	       108	     16580	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       172	       247	      5394	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       173	       108	     16715	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       174	       108	     16588	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       175	       108	     16720	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       176	       247	      5475	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       177	       104	     16887	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       178	       104	     16956	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       179	       247	      5340	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       180	       104	     17075	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       181	       104	     16907	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       182	       104	     17064	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       183	       247	      5403	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       184	       108	     16547	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       185	       108	     16570	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       186	       247	      5417	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       187	       108	     16522	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       188	       108	     16664	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       189	       247	      5375	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       190	       108	     16576	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       191	       247	      5466	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       192	       104	     16933	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       193	       247	      5444	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       194	       104	     17069	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       195	       108	     16604	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       196	       104	     16997	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       197	       247	      5511	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       198	       104	     17084	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       199	       104	     17041	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       200	       104	     16890	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       201	       108	     16673	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       202	       247	      5421	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       203	       247	      5533	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       204	       104	     17032	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       205	       247	      5361	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       206	       247	      5352	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       207	       247	      5550	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       208	       247	      5493	    1	      0	                [Loop at line 82 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5321	240	5561	3	0	0	0	0	0	0	0	0
+       209	       108	     16416	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       210	       108	     16781	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       211	       104	     16918	    0	      0	                           __libm_cos_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16784	355	0	7	0	0	0	0	0	0	0	0
+       212	       108	     16629	    0	      0	                           __libm_sin_l9	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	16416	366	0	6	0	0	0	0	0	0	0	0
+       213	         2	    146561	    0	      1	                       __libc_start_main	/lib/x86_64-linux-gnu/libc.so.6	146464	476	0	11	0	0	0	0	0	0	0	0
+       214	         2	    146697	    0	      1	                       __libc_start_main	/lib/x86_64-linux-gnu/libc.so.6	146464	476	0	11	0	0	0	0	0	0	0	0
+       215	         4	      5302	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       216	       215	      5321	    1	      0	                [Loop at line 81 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5302	278	5580	5	0	0	0	0	0	0	0	0
+       217	         4	      5411	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       218	         4	      5407	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       219	         4	      5369	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       220	         4	      5386	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       221	         4	      5453	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       222	         4	      5475	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       223	         4	      5489	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       224	         4	      5458	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       225	         4	      5480	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       226	         4	      5529	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       227	         4	      5507	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       228	         4	      5502	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       229	         4	      5398	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       230	         4	      5344	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       231	         4	      5375	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       232	         4	      5365	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       233	         4	      5356	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       234	         4	      5542	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       235	         4	      5340	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       236	         4	      5417	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       237	         4	      5547	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       238	         4	      5462	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       239	         4	      5440	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       240	         4	      5466	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       241	         4	      5493	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       242	         4	      5382	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       243	         4	      5550	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       244	         4	      5403	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       245	         4	      5336	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       246	       103	      5302	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       247	       246	      5321	    1	      0	                [Loop at line 81 in DFT]	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5302	278	5580	5	0	0	0	0	0	0	0	0
+       248	       103	      5369	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       249	       103	      5411	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       250	       103	      5407	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       251	       103	      5529	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       252	       103	      5502	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       253	       103	      5356	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       254	       103	      5458	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       255	       103	      5453	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       256	       103	      5365	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       257	       103	      5507	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       258	       103	      5344	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       259	       103	      5440	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       260	       103	      5542	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       261	       103	      5386	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       262	       103	      5547	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       263	       103	      5462	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       264	       103	      5489	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       265	       103	      5398	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       266	       103	      5480	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       267	       103	      5394	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       268	       103	      5475	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       269	       103	      5340	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       270	       103	      5403	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       271	       103	      5417	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       272	       103	      5375	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       273	       103	      5466	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       274	       103	      5444	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       275	       103	      5511	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       276	       103	      5421	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       277	       103	      5533	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       278	       103	      5361	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       279	       103	      5352	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       280	       103	      5550	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       281	       103	      5493	    0	      0	                                     DFT	/VM/stud/esame/Desktop/OMP_ass/release/omp_homework	5264	429	0	4	0	0	0	0	0	0	0	0
+       282	        -1	         0	    0	      0	                [Unknown stack frame(s)]	n/a	0	0	0	13	0	0	0	0	0	0	0	0
