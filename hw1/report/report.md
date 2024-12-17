@@ -100,9 +100,65 @@ In particular:
 
 # Vectorization 🏹
 First of all, we studied the code alone and we interrogated ourselves about possible vectorization problems that seemed to not be there. 
-Secondly, we leveraged the OpenMP report flag in order to produce useful outputs about what the compiler did. The following texts display what we obtained as said report.
+Secondly, we leveraged the OpenMP report flag in order to produce useful outputs about what the compiler did. The following texts display what we obtained as said report, only for the hotspot, for readability issues.
 ```
-hihihihhi
+Begin optimization report for: DFT
+
+LOOP BEGIN at ./source/omp_homework.c (83, 3)
+<Multiversioned v2>
+    remark #25452: Poor spatial locality detected in memref(s). 
+    remark #15319: Loop was not vectorized: novector directive used
+
+    LOOP BEGIN at ./source/omp_homework.c (84, 5)
+        remark #15319: Loop was not vectorized: novector directive used
+    LOOP END
+LOOP END
+
+LOOP BEGIN at ./source/omp_homework.c (83, 3)
+<Multiversioned v1>
+    remark #25228: Loop multiversioned for Data Dependence
+    remark #25452: Poor spatial locality detected in memref(s). 
+    remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
+
+    LOOP BEGIN at ./source/omp_homework.c (84, 5)
+        remark #25528: Load/Store of reduction at line 91 sinked after loop
+        remark #25563: Load hoisted out of the loop
+        remark #25564: Store sinked out of the loop
+        remark #25583: Number of Array Refs Scalar Replaced In Loop: 2
+        remark #15300: LOOP WAS VECTORIZED
+        remark #15305: vectorization support: vector length 4
+        remark #15389: vectorization support: unmasked unaligned unit stride load: xr [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (89, 18) ] 
+        remark #15389: vectorization support: unmasked unaligned unit stride load: xi [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (89, 43) ] 
+        remark #15475: --- begin vector loop cost summary ---
+        remark #15476: scalar cost: 101.000000 
+        remark #15477: vector cost: 27.593750 
+        remark #15478: estimated potential speedup: 3.625000 
+        remark #15309: vectorization support: normalized vectorization overhead 0.359375
+        remark #15482: vectorized math library calls: 2 
+        remark #15488: --- end vector loop cost summary ---
+        remark #15447: --- begin vector loop memory reference summary ---
+        remark #15450: unmasked unaligned unit stride loads: 2 
+        remark #15474: --- end vector loop memory reference summary ---
+        remark #25587: Loop has reduction
+        remark #15590: vectorization support: add reduction with value type double [./source/omp_homework.c:83:3]
+        remark #15590: vectorization support: add reduction with value type double [./source/omp_homework.c:83:3]
+    LOOP END
+
+    LOOP BEGIN at ./source/omp_homework.c (84, 5)
+    <Remainder loop for vectorization>
+        remark #15440: remainder loop was vectorized (masked)
+        remark #15305: vectorization support: vector length 4
+        remark #15389: vectorization support: masked unaligned unit stride load: xr [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (89, 18) ] 
+        remark #15389: vectorization support: masked unaligned unit stride load: xi [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (89, 43) ] 
+        remark #15475: --- begin vector loop cost summary ---
+        remark #15482: vectorized math library calls: 2 
+        remark #15488: --- end vector loop cost summary ---
+        remark #15447: --- begin vector loop memory reference summary ---
+        remark #15456: masked unaligned unit stride loads: 2 
+        remark #15474: --- end vector loop memory reference summary ---
+        remark #25261: Single iteration loop optimized away
+    LOOP END
+LOOP END
 ```
 After a deep analysis, we concluded that the possible vectorization optimizations are negligible. 
 Indeed, in the context of this laboratory, we did not notice any vectorization issues (i.e. loop carried dependencies, Read after Write...).
