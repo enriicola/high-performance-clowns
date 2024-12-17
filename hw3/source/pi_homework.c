@@ -6,12 +6,15 @@
 
 #define INTERVALS 100000000000
 
+#ifndef NTHREADS
+#define NTHREADS 4
+#endif
+
 int main(int argc, char **argv) {
   long int i, intervals = INTERVALS;
   double x, dx, f, sum, pi;
   double time2;
 
-<<<<<<< HEAD
 #ifdef PARALLEL
   double time1 = omp_get_wtime();
 #else
@@ -19,20 +22,12 @@ int main(int argc, char **argv) {
 #endif
 
   printf("Number of intervals: %ld\n", intervals);
-=======
-  time_t time1 = clock();
->>>>>>> ec11d75fb1395fc9c3ee76fecebe509e9f885a55
 
   sum = 0.0;
   dx = 1.0 / (double)intervals;
 
 #ifdef PARALLEL
-  omp_set_num_threads(20);
-<<<<<<< HEAD
-#pragma omp parallel for private(x, f) reduction(+ : sum)
-=======
-#pragma omp parallel for private(x, f) reduction(+ : local_sum)
->>>>>>> ec11d75fb1395fc9c3ee76fecebe509e9f885a55
+#pragma omp parallel for num_threads(NTHREADS) private(x, f) reduction(+ : sum)
 #endif
   for (i = 1; i <= intervals; i++) {
     x = dx * ((double)(i - 0.5));

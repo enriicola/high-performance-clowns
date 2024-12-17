@@ -16,13 +16,13 @@
     <accuracy id="accuracy" boolean:visibility="true" boolean:readOnly="false" value="high"/>
     <overheadIndicator id="overheadIndicator" boolean:visibility="true" boolean:readOnly="false"/>
    </commonKnobs>
-   <checked boolean:a1="true" boolean:a3="true" boolean:a6="true" boolean:a7="false"/>
+   <checked boolean:a1="true" boolean:a3="true" boolean:a6="false" boolean:a7="false"/>
   </pmVectorization>
   <pmThreading>
    <checked boolean:a1="true" boolean:a3="true" boolean:a5="false" boolean:a7="false"/>
   </pmThreading>
  </workflow>
- <MainView int:SidebarWidth="329"/>
+ <MainView int:SidebarWidth="0"/>
  <FilterView boolean:VectorizedButtonChecked="true" boolean:NotVectorizedButtonChecked="true" boolean:FakeLoopButtonChecked="false" boolean:LibrariesButtonChecked="false" ModuleFilterValue="All Modules" SourceFilterValue="All Sources" LoopModeFilterValue="Loops And Functions" ThreadFilterValue="All Threads"/>
  <SurveySourceView boolean:SourcePaneVisible="true" boolean:AsmPaneVisible="false" boolean:StackPaneVisible="false"/>
 </bag>

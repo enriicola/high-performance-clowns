@@ -1,0 +1,31 @@
+
+=== Start: [2024/12/16 15:52:46] === 
+Analysis started...
+Result file: /home/stud/esame/Desktop/OMP_ass/advisor/OMP_ass/e000/mp001/mp001.advixe 
+Found target process /VM/stud/esame/Desktop/OMP_ass/release/omp_homework (PID = 50819). Analysis started... 
+Loaded module: /VM/stud/esame/Desktop/OMP_ass/release/omp_homework. 
+Loaded module: /lib64/ld-linux-x86-64.so.2. 
+Loaded module: [vdso]. 
+Loaded module: /lib/x86_64-linux-gnu/libm.so.6. 
+Loaded module: /lib/x86_64-linux-gnu/libdl.so.2. 
+Loaded module: /opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so. 
+Loaded module: /lib/x86_64-linux-gnu/libpthread.so.0. 
+Loaded module: /lib/x86_64-linux-gnu/libc.so.6. 
+Loaded module: /lib/x86_64-linux-gnu/librt.so.1. 
+Loaded module: /lib/x86_64-linux-gnu/libgcc_s.so.1. 
+Unloaded module: /VM/stud/esame/Desktop/OMP_ass/release/omp_homework. 
+Unloaded module: /lib64/ld-linux-x86-64.so.2. 
+Unloaded module: [vdso]. 
+Unloaded module: /lib/x86_64-linux-gnu/libm.so.6. 
+Unloaded module: /lib/x86_64-linux-gnu/libdl.so.2. 
+Unloaded module: /opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so. 
+Unloaded module: /lib/x86_64-linux-gnu/libpthread.so.0. 
+Unloaded module: /lib/x86_64-linux-gnu/libc.so.6. 
+Unloaded module: /lib/x86_64-linux-gnu/librt.so.1. 
+Unloaded module: /lib/x86_64-linux-gnu/libgcc_s.so.1. 
+Process /VM/stud/esame/Desktop/OMP_ass/release/omp_homework (PID = 50819) has terminated. 
+Warning: No SITE annotations were encountered, so no stride/alignment data can be reported. 
+Application exit code: 0 
+Result file: /home/stud/esame/Desktop/OMP_ass/advisor/OMP_ass/e000/mp001/mp001.advixe 
+Analysis completed
+=== End: [2024/12/16 15:53:00] === 

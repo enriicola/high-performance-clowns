@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<log version="1.0" tool="runtool">
+
+<msg id="1" tool="runtool">
+  <type>log-start</type>
+  <arg>2024/12/16 15:56:07</arg>
+</msg>
+<msg id="2" tool="runtool">
+  <type>bandwidth-measurement-starts</type>
+</msg>
+<msg id="3" tool="runtool">
+  <type>bandwidth-measurement-done</type>
+</msg>
+<msg id="4" tool="runtool">
+  <type>collector-starts</type>
+</msg>
+<msg id="5" tool="runtool">
+  <type>marker-file</type>
+  <arg>/home/stud/esame/Desktop/OMP_ass/advisor/OMP_ass/e000/trc000/trc000.advixe</arg>
+</msg>
+<msg id="6" tool="trc">
+  <type>PROCESS_START</type>
+  <arg>/VM/stud/esame/Desktop/OMP_ass/release/omp_homework</arg>
+  <arg>51480</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 15:56:18 2024</timestamp>
+</msg>
+<msg id="7" tool="trc">
+  <type>PROCESS_ANALYSIS_MODE</type>
+  <arg>full</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 15:56:18 2024</timestamp>
+</msg>
+<msg id="8" tool="trc">
+  <type>LOAD_MODULE</type>
+  <arg>/VM/stud/esame/Desktop/OMP_ass/release/omp_homework</arg>
+  <arg>0x400000</arg>
+  <arg>0x40e8a7</arg>
+  <arg>yes</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 15:56:18 2024</timestamp>
+</msg>
+<msg id="9" tool="trc">
+  <type>LOAD_MODULE</type>
+  <arg>/lib64/ld-linux-x86-64.so.2</arg>
+  <arg>0x7f0fe666c000</arg>
+  <arg>0x7f0fe6698177</arg>
+  <arg>no</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 15:56:18 2024</timestamp>
+</msg>
+<msg id="10" tool="trc">
+  <type>LOAD_MODULE</type>
+  <arg>[vdso]</arg>
+  <arg>0x7ffe2b226000</arg>
+  <arg>0x7ffe2b226d7b</arg>
+  <arg>no</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 15:56:18 2024</timestamp>
+</msg>
+<msg id="11" tool="trc">
+  <type>LOAD_MODULE</type>
+  <arg>/lib/x86_64-linux-gnu/libm.so.6</arg>
+  <arg>0x7f0fd1437000</arg>
+  <arg>0x7f0fd157a10f</arg>
+  <arg>no</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 15:56:18 2024</timestamp>
+</msg>
+<msg id="12" tool="trc">
+  <type>LOAD_MODULE</type>
+  <arg>/lib/x86_64-linux-gnu/libdl.so.2</arg>
+  <arg>0x7f0fd1385000</arg>
+  <arg>0x7f0fd138a10f</arg>
+  <arg>no</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 15:56:18 2024</timestamp>
+</msg>
+<msg id="13" tool="trc">
+  <type>LOAD_MODULE</type>
+  <arg>/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so</arg>
+  <arg>0x7f0fd0e00000</arg>
+  <arg>0x7f0fd124114f</arg>
+  <arg>yes</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 15:56:18 2024</timestamp>
+</msg>
+<msg id="14" tool="trc">
+  <type>LOAD_MODULE</type>
+  <arg>/lib/x86_64-linux-gnu/libpthread.so.0</arg>
+  <arg>0x7f0fd12e0000</arg>
+  <arg>0x7f0fd130146f</arg>
+  <arg>yes</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 15:56:18 2024</timestamp>
+</msg>
+<msg id="15" tool="trc">
+  <type>LOAD_MODULE</type>
+  <arg>/lib/x86_64-linux-gnu/libc.so.6</arg>
+  <arg>0x7f0fd0c2c000</arg>
+  <arg>0x7f0fd0dff67f</arg>
+  <arg>no</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 15:56:18 2024</timestamp>
+</msg>
+<msg id="16" tool="trc">
+  <type>LOAD_MODULE</type>
+  <arg>/lib/x86_64-linux-gnu/librt.so.1</arg>
+  <arg>0x7f0fd12c0000</arg>
+  <arg>0x7f0fd12c9bdf</arg>
+  <arg>no</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 15:56:18 2024</timestamp>
+</msg>
+<msg id="17" tool="trc">
+  <type>LOAD_MODULE</type>
+  <arg>/lib/x86_64-linux-gnu/libgcc_s.so.1</arg>
+  <arg>0x7f0fd12a4000</arg>
+  <arg>0x7f0fd12bd447</arg>
+  <arg>no</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 15:56:18 2024</timestamp>
+</msg>
+<msg id="18" tool="trc">
+  <type>STOP_INVOKED</type>
+  <arg></arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 16:03:14 2024</timestamp>
+</msg>
+<msg id="19" tool="trc">
+  <type>STOP_PROCESSED</type>
+  <arg></arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 16:03:14 2024</timestamp>
+</msg>
+<msg id="20" tool="trc">
+  <type>UNLOAD_MODULE</type>
+  <arg>/VM/stud/esame/Desktop/OMP_ass/release/omp_homework</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 16:03:14 2024</timestamp>
+</msg>
+<msg id="21" tool="trc">
+  <type>UNLOAD_MODULE</type>
+  <arg>/lib64/ld-linux-x86-64.so.2</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 16:03:14 2024</timestamp>
+</msg>
+<msg id="22" tool="trc">
+  <type>UNLOAD_MODULE</type>
+  <arg>[vdso]</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 16:03:14 2024</timestamp>
+</msg>
+<msg id="23" tool="trc">
+  <type>UNLOAD_MODULE</type>
+  <arg>/lib/x86_64-linux-gnu/libm.so.6</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 16:03:14 2024</timestamp>
+</msg>
+<msg id="24" tool="trc">
+  <type>UNLOAD_MODULE</type>
+  <arg>/lib/x86_64-linux-gnu/libdl.so.2</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 16:03:14 2024</timestamp>
+</msg>
+<msg id="25" tool="trc">
+  <type>UNLOAD_MODULE</type>
+  <arg>/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 16:03:14 2024</timestamp>
+</msg>
+<msg id="26" tool="trc">
+  <type>UNLOAD_MODULE</type>
+  <arg>/lib/x86_64-linux-gnu/libpthread.so.0</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 16:03:14 2024</timestamp>
+</msg>
+<msg id="27" tool="trc">
+  <type>UNLOAD_MODULE</type>
+  <arg>/lib/x86_64-linux-gnu/libc.so.6</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 16:03:14 2024</timestamp>
+</msg>
+<msg id="28" tool="trc">
+  <type>UNLOAD_MODULE</type>
+  <arg>/lib/x86_64-linux-gnu/librt.so.1</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 16:03:14 2024</timestamp>
+</msg>
+<msg id="29" tool="trc">
+  <type>UNLOAD_MODULE</type>
+  <arg>/lib/x86_64-linux-gnu/libgcc_s.so.1</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 16:03:14 2024</timestamp>
+</msg>
+<msg id="30" tool="trc">
+  <type>PROCESS_FINISH</type>
+  <arg></arg>
+  <arg>51480</arg>
+  <arg>0x0</arg>
+  <severity>INFO</severity>
+  <timestamp>Mon Dec 16 16:03:14 2024</timestamp>
+</msg>
+<msg id="31" tool="runtool">
+  <type>app-exit-code</type>
+  <arg>0</arg>
+</msg>
+<msg id="32" tool="runtool">
+  <type>marker-file</type>
+  <arg>/home/stud/esame/Desktop/OMP_ass/advisor/OMP_ass/e000/trc000/trc000.advixe</arg>
+</msg>
+<msg id="33" tool="runtool">
+  <type>collector-done</type>
+</msg>
+<msg id="34" tool="runtool">
+  <type>log-end</type>
+  <arg>2024/12/16 16:03:18</arg>
+</msg>
+
+</log>
+

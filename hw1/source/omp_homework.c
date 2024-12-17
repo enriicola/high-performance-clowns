@@ -8,7 +8,10 @@
 #define PI2 6.28318530718
 #define R_ERROR 0.01
 
-#define NTHREADS 20
+// NTHREADS can be defined here or by calling "make <target> NTHREADS=4"
+#ifndef NTHREADS
+#define NTHREADS 4
+#endif
 
 int DFT(int idft, double* xr, double* xi, double* Xr_o, double* Xi_o, int N);
 int fillInput(double* xr, double* xi, int N);
@@ -18,8 +21,12 @@ int printResults(double* xr, double* xi, int N);
 
 int main(int argc, char* argv[]) {
   // size of input array
-  int N = 100000;
-  printf("DFTW calculation with N = %d \n", N);
+  long int N = 20000;
+
+  if (argc == 2)
+    N = atoi(argv[1]);
+
+  printf("DFTW calculation with N = %ld \n", N);
 
   double* xr = (double*)malloc(N * sizeof(double));
   double* xi = (double*)malloc(N * sizeof(double));
@@ -70,13 +77,16 @@ int main(int argc, char* argv[]) {
 int DFT(int idft, double* xr, double* xi, double* Xr_o, double* Xi_o, int N) {
   int k, n;
 
-#ifndef PARALLEL
-#pragma omp parallel for num_threads(NTHREADS) collapse(2) schedule(static) reduction(+ : Xr_o[ : N], Xi_o[ : N])
+  double cos_res, sin_res;  // since these two have to be private
+
+#ifdef PARALLEL
+#pragma omp parallel for num_threads(NTHREADS) private(cos_res, sin_res) collapse(2) \
+    schedule(static) reduction(+ : Xr_o[ : N], Xi_o[ : N])
 #endif
   for (k = 0; k < N; k++) {
     for (n = 0; n < N; n++) {
-      double cos_res = cos(n * k * PI2 / N);
-      double sin_res = sin(n * k * PI2 / N);
+      cos_res = cos(n * k * PI2 / N);
+      sin_res = sin(n * k * PI2 / N);
 
       // Real part of X[k]
       Xr_o[k] += xr[n] * cos_res + idft * xi[n] * sin_res;
@@ -87,6 +97,9 @@ int DFT(int idft, double* xr, double* xi, double* Xr_o, double* Xi_o, int N) {
 
   // normalize if you are doing IDFT
   if (idft == -1) {
+#ifdef PARALLEL
+#pragma omp parallel for
+#endif
     for (n = 0; n < N; n++) {
       Xr_o[n] /= N;
       Xi_o[n] /= N;
