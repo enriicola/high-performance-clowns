@@ -46,11 +46,11 @@ $$
 Notice it is just the DFT of the DFT.
 
 # Parallelization strategy 🧠
-Since it is a sum of $N$ elements, it can be splitted into $m$ different threads, each with $m / N$ sums to compute.
+Since it is a sum of $N$ elements, it can be splitted into $m$ different threads, each with $N/m$ sums to compute.
 
 <div style="display: flex; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-    <img src="./images/omp.png" alt="OMP" width="70%" />
+    <img src="./images/omp.png" alt="OMP" width="100%" />
   </figure>
 </div>
 
@@ -83,11 +83,12 @@ We compiled the program using the following command:
 icx -g -Wall -std=c99 -qopenmp -qopt-report=3 -xHost -O3 -ffast-math omp_homework.c
 ```
 In this way, the code is properly optimized, the best istruction set is used and the program is vectorized when possible.
+
 In particular:
 - the **-g** flag enables the debug;
-- the **Wall** flag enables compilation errors;
-- the **std=c99** flag enables standard ISO C99;
-- the **qopenmp** flag enables OpenMP;
+- the **-Wall** flag enables compilation errors;
+- the **-std=c99** flag enables standard ISO C99;
+- the **-qopenmp** flag enables OpenMP;
 - the **-qopt-report=3** flag produce detailed information about the optimizations performed by the compiler;
 - the **-xHost** flag optimize the compilation process relative to the host CPU and architecture;
 - the **-O3** flag optimize the compilation process at high level;
@@ -123,11 +124,15 @@ Xi_o[k] += -idft * xr[n] * sin_res + xi[n] * cos_res;
 Then, there is the actual parallelization part. We used OpenMP as follows:
 
 ```c
-#pragma omp parallel for num_threads(NTHREADS) collapse(2) schedule(static) reduction(+ : Xr_o[ : N], Xi_o[ : N])
+double cos_res;
+double sin_res;
+
+#pragma omp parallel for num_threads(NTHREADS) \
+private(cos_res, sin_res) collapse(2) schedule(static) reduction(+ : Xr_o[ : N], Xi_o[ : N])
 for (k = 0; k < N; k++) {
    for (n = 0; n < N; n++) {
-      double cos_res = cos(n * k * PI2 / N);
-      double sin_res = sin(n * k * PI2 / N);
+      cos_res = cos(n * k * PI2 / N);
+      sin_res = sin(n * k * PI2 / N);
 
       // Real part of X[k]
       Xr_o[k] += xr[n] * cos_res + idft * xi[n] * sin_res;
@@ -137,7 +142,7 @@ for (k = 0; k < N; k++) {
 }
 ```
 
-In order, we collapsed the nested loops in a single $N \times N$ loop managed by OMP, then with the `schedule(static)` we stated that every thread would have had the same chunk size to work on, and finally the `reduction` clause aggregates the sums on the arrays.
+In order, we declared `cos_res` and `sin_res` outside the parallel region, because since they depend on `k` and `n`, they have to be private for each thread. Then, we collapsed the nested loops in a single $N \times N$ loop managed by OMP, then with the `schedule(static)` we stated that every thread would have had the same chunk size to work on, and finally the `reduction` clause aggregates the sums on the arrays.
 
 
 # Performance evaluation 🤔
