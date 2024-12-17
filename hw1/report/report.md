@@ -105,7 +105,7 @@ Secondly, we leveraged the OpenMP report flag in order to produce useful outputs
 hihihihhi
 ```
 After a deep analysis, we concluded that the possible vectorization optimizations are negligible. 
-Indeed, in the context of this laboratory, we did not notice any vectorization issues (i.e. loop carried dependencies, Read after Write).
+Indeed, in the context of this laboratory, we did not notice any vectorization issues (i.e. loop carried dependencies, Read after Write...).
 
 
 # Optimizations 🛤️
@@ -142,7 +142,7 @@ for (k = 0; k < N; k++) {
 }
 ```
 
-In order, we declared `cos_res` and `sin_res` outside the parallel region, because since they depend on `k` and `n`, they have to be private for each thread. Then, we collapsed the nested loops in a single $N \times N$ loop managed by OMP, then with the `schedule(static)` we stated that every thread would have had the same chunk size to work on, and finally the `reduction` clause aggregates the sums on the arrays.
+In order, we declared `cos_res` and `sin_res` outside the parallel region, because since they depend on `n` and `k`, they have to be private for each thread. Then, we collapsed the nested loops in a single $N \times N$ loop managed by OMP, then with the `schedule(static)` we stated that every thread would have had the same chunk size to work on, and finally the `reduction` clause aggregates the sums on the arrays.
 
 
 # Performance evaluation 🤔
@@ -151,9 +151,6 @@ In order, we declared `cos_res` and `sin_res` outside the parallel region, becau
 TODO sunday :)
 
 using vectorization as in the code inside omp homework, the execution time is 0.71 seconds, which is 18.5 times faster than the vanilla version of the code (for N=10000) with a non existent error (Xre = 10000.0000)
-
-
-
 
 + tables and graphs
 
