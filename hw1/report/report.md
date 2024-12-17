@@ -15,7 +15,61 @@ The goal of this laboratory is to optimize the implementation of the Discrete Fo
 
 # Hardware Capability ⚙️
 For this first assignment, we executed the c code using the Software 2 (SW2), with the following characteristics.
-++++neofetch screen :)
+
+```
+S4825087@sw209:~$ lscpu
+Architecture:                    x86_64
+CPU op-mode(s):                  32-bit, 64-bit
+Byte Order:                      Little Endian
+Address sizes:                   46 bits physical, 48 bits virtual
+CPU(s):                          20
+On-line CPU(s) list:             0-19
+Thread(s) per core:              1
+Core(s) per socket:              12
+Socket(s):                       1
+NUMA node(s):                    1
+Vendor ID:                       GenuineIntel
+CPU family:                      6
+Model:                           151
+Model name:                      12th Gen Intel(R) Core(TM) i7-12700
+Stepping:                        2
+CPU MHz:                         2100.000
+CPU max MHz:                     3876.9570
+CPU min MHz:                     800.0000
+BogoMIPS:                        4224.00
+Virtualization:                  VT-x
+L1d cache:                       288 KiB
+L1i cache:                       192 KiB
+L2 cache:                        7.5 MiB
+NUMA node0 CPU(s):               0-19
+Vulnerability Itlb multihit:     Not affected
+Vulnerability L1tf:              Not affected
+Vulnerability Mds:               Not affected
+Vulnerability Meltdown:          Not affected
+Vulnerability Mmio stale data:   Not affected
+Vulnerability Retbleed:          Not affected
+Vulnerability Spec store bypass: Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:        Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:        Mitigation; Enhanced IBRS, IBPB conditional, RSB filling, PBRSB-eIBRS S
+                                 W sequence
+Vulnerability Srbds:             Not affected
+Vulnerability Tsx async abort:   Not affected
+Flags:                           fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36
+                                  clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdt
+                                 scp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology n
+                                 onstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor
+                                  ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_
+                                 2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf
+                                 _lm abm 3dnowprefetch cpuid_fault epb invpcid_single ssbd ibrs ibpb sti
+                                 bp ibrs_enhanced tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase 
+                                 tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt 
+                                 clwb intel_pt sha_ni xsaveopt xsavec xgetbv1 xsaves split_lock_detect a
+                                 vx_vnni dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp h
+                                 wp_pkg_req hfi umip pku ospke waitpkg gfni vaes vpclmulqdq tme rdpid mo
+                                 vdiri movdir64b fsrm md_clear serialize pconfig arch_lbr ibt flush_l1d 
+                                 arch_capabilities
+```
+
 
 # Algorithm analysis 👨🏻‍💻
 The Fourier Transform is a mathematical transformation used to convert a function of time (or space) into a function of frequency. It is defined as:
@@ -68,13 +122,8 @@ for (k = 0; k < N; k++) {
 }
 ```
 
-Since it is in $O(N^2)$, massaging this section is crucial to speed up the program.
+Since it is in $O(N^2)$, massaging this section is crucial to speed up the program, in this context, using OpenMP.
 
-OLD {
-inside the vanilla version of the code, the hotspot is on the line 70 (the nested outer for loop takes 13.2 seconds out of the 13.44 seconds of total execution time)
-inside the vanilla version of the code, the hotspot is on the line 71 (the nested inner for loop takes 13.2 seconds out of the 13.44 seconds of total execution time)
-it is a scalar loop that can be parallelized with OpenMP
-}
 
 # Compiler settings 🔧
 We compiled the program using the following command:
@@ -161,7 +210,7 @@ LOOP BEGIN at ./source/omp_homework.c (83, 3)
 LOOP END
 ```
 After a deep analysis, we concluded that the possible vectorization optimizations are negligible. 
-Indeed, in the context of this laboratory, we did not notice any vectorization issues (i.e. loop carried dependencies, Read after Write...).
+Indeed, in the context of this laboratory, we did not notice any vectorization issues (i.e. loop carried dependencies, Read after Write, etc.).
 
 
 # Optimizations 🛤️
