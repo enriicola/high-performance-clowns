@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
   }
 
   long long int chunk_size = intervals / size;  // How many blocks per node
-  long long int start = (rank == 0) ? rank * chunk_size : rank * chunk_size + 1;
+  long long int start = rank * chunk_size + 1;
   long long int end = (rank == size - 1) ? intervals : start + chunk_size - 1;
 
   local_sum = 0.0;
