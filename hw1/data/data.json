@@ -35,12 +35,23 @@
     },
     {
       "N": 140000,
-      "Time (s)": 75.50, 
+      "Time (s)": 75.50,
       "GFLOPS": 33.29,
       "Hotspots": [
         {
           "Hotspot": "loop in main at omp_homework.c:26",
           "Time (s)": 74.10
+        }
+      ]
+    },
+    {
+      "N": 160000,
+      "Time (s)": 98.49,
+      "GFLOPS": 33.33,
+      "Hotspots": [
+        {
+          "Hotspot": "loop in main at omp_homework.c:26",
+          "Time (s)": 96.87
         }
       ]
     }
@@ -81,12 +92,23 @@
     },
     {
       "N": 140000,
-      "Time (s)": 11.20, 
+      "Time (s)": 11.20,
       "GFLOPS": 231.47,
       "Hotspots": [
         {
           "Hotspot": "loop in main at omp_homework.c:83",
           "Time (s)": 7.29
+        }
+      ]
+    },
+    {
+      "N": 160000,
+      "Time (s)": 14.40,
+      "GFLOPS": 235.15,
+      "Hotspots": [
+        {
+          "Hotspot": "loop in main at omp_homework.c:83",
+          "Time (s)": 9.55
         }
       ]
     }

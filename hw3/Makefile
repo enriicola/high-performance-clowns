@@ -1,20 +1,16 @@
-CC=icx
-FLAGS=-g -Wall -std=c99 -qopenmp -qopt-report=3
-SOURCE=./source
-RELEASE=./release
-NTHREADS ?= 20
+NPROCS ?= 10
+RELEASE_PATH=release
+SOURCE_PATH=source
+FLAGS=-g -O3 -xHost -qopenmp -qopt-report=3 -ffast-math
+INTERVALS ?= 100000000000
 
+# default = best sequential time
 default:
-	${CC} ${FLAGS} ${SOURCE}/omp_homework.c -o ${RELEASE}/omp_homework
+	mpiicx ${FLAGS} ./${SOURCE_PATH}/pi_homework.c -o ./${RELEASE_PATH}/pi_homework
 
-# best sequential
-vec: FLAGS += -xHost -O3 -ffast-math
-vec: 
-	${CC} ${FLAGS} ${SOURCE}/omp_homework.c -o ${RELEASE}/omp_homework
+parallel:
+	mpiicx -D PARALLEL ${FLAGS} ./${SOURCE_PATH}/pi_homework.c -o ./${RELEASE_PATH}/pi_homework
 
-parallel: FLAGS += -xHost -O3 -ffast-math
-parallel: 
-	${CC} -D PARALLEL -D NTHREADS=${NTHREADS} ${FLAGS} ${SOURCE}/omp_homework.c -o ${RELEASE}/omp_homework 
-
-clean:
-	rm -rf ${RELEASE}/*
+mpi:
+	mpiicx -D PARALLEL ${FLAGS} ./${SOURCE_PATH}/pi_homework_mpi.c -o ./${RELEASE_PATH}/pi_homework_mpi
+	mpirun -np ${NPROCS} ./${RELEASE_PATH}/pi_homework_mpi ${INTERVALS} ${NPROCS}

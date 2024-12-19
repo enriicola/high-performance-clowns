@@ -1,0 +1,68 @@
+Global optimization report for : main
+=================================================================
+
+Global optimization report for : main_tree_reduce_8
+=================================================================
+
+Global optimization report for : main.extracted
+
+OMP PARALLEL FOR BEGIN at ./source/pi_homework_mpi.c (49, 1)
+    remark: SHARED clause for variable '' has been changed to PRIVATE
+OMP PARALLEL FOR END
+
+LOOP BEGIN at ./source/pi_homework_mpi.c (49, 1)
+    remark: OpenMP: Outlined parallel loop
+    remark #15521: Loop was not vectorized: loop control variable was not identified. Explicitly compute the iteration count before executing the loop or try using canonical loop form from OpenMP specification
+LOOP END
+=================================================================
+
+---- Begin Inlining Report ----
+Option Values:
+  inline-threshold: 225
+  inlinehint-threshold: 325
+  inlinecold-threshold: 45
+  inlineoptsize-threshold: 15
+
+DEAD STATIC FUNC: atoi
+
+DEAD STATIC FUNC: atoll
+
+DEAD STATIC FUNC: llvm.directive.region.entry
+
+DEAD STATIC FUNC: llvm.directive.region.exit
+
+COMPILE FUNC: main
+   -> INLINE: atoll ./source/pi_homework_mpi.c (21,17) (10<=487)
+      -> EXTERN: strtoll ./source/pi_homework_mpi.c (375,10)
+   -> INLINE: atoi ./source/pi_homework_mpi.c (24,14) (10<=487)
+      -> EXTERN: strtol ./source/pi_homework_mpi.c (363,16)
+   -> EXTERN: clock ./source/pi_homework_mpi.c (28,18)
+   -> EXTERN: MPI_Init ./source/pi_homework_mpi.c (31,3)
+   -> EXTERN: MPI_Comm_size ./source/pi_homework_mpi.c (32,3)
+   -> EXTERN: MPI_Comm_rank ./source/pi_homework_mpi.c (33,3)
+   -> EXTERN: printf ./source/pi_homework_mpi.c (36,5)
+   -> EXTERN: printf ./source/pi_homework_mpi.c (37,5)
+   -> EXTERN: printf ./source/pi_homework_mpi.c (38,5)
+   -> DELETE: llvm.directive.region.entry ./source/pi_homework_mpi.c (49,1)
+   -> DELETE: llvm.directive.region.exit ./source/pi_homework_mpi.c (49,1)
+   -> EXTERN: MPI_Reduce ./source/pi_homework_mpi.c (58,3)
+   -> EXTERN: MPI_Wtime ./source/pi_homework_mpi.c (60,21)
+   -> EXTERN: printf ./source/pi_homework_mpi.c (65,5)
+   -> EXTERN: printf ./source/pi_homework_mpi.c (66,5)
+   -> EXTERN: printf ./source/pi_homework_mpi.c (67,5)
+   -> EXTERN: MPI_Finalize ./source/pi_homework_mpi.c (70,3)
+   -> EXTERN: __kmpc_global_thread_num ./source/pi_homework_mpi.c
+   -> EXTERN: __kmpc_push_num_threads ./source/pi_homework_mpi.c
+   -> EXTERN: __kmpc_fork_call ./source/pi_homework_mpi.c (49,1)
+
+COMPILE FUNC: main.extracted
+   -> EXTERN: __kmpc_for_static_init_8u ./source/pi_homework_mpi.c (49,1)
+   -> EXTERN: __kmpc_for_static_fini ./source/pi_homework_mpi.c (49,1)
+   -> EXTERN: __kmpc_reduce ./source/pi_homework_mpi.c (49,1)
+   -> EXTERN: __kmpc_end_reduce ./source/pi_homework_mpi.c
+   -> EXTERN: __kmpc_atomic_float8_add ./source/pi_homework_mpi.c (49,1)
+   -> EXTERN: __kmpc_end_reduce ./source/pi_homework_mpi.c
+
+COMPILE FUNC: main_tree_reduce_8
+
+---- End Inlining Report ------

@@ -1,0 +1,2429 @@
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/include/stdlib.h', Line: 375, Column: 10 }
+Function:        atoll
+Args:
+  - Callee:          strtoll
+    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          atoll
+    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 374, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/include/stdlib.h', Line: 375, Column: 10 }
+Function:        atoll
+Args:
+  - Callee:          strtoll
+    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          atoll
+    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 374, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/include/stdlib.h', Line: 363, Column: 16 }
+Function:        atoi
+Args:
+  - Callee:          strtol
+    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          atoi
+    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 362, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/include/stdlib.h', Line: 363, Column: 16 }
+Function:        atoi
+Args:
+  - Callee:          strtol
+    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          atoi
+    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 362, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 28, Column: 18 }
+Function:        main
+Args:
+  - Callee:          clock
+    DebugLoc:        { File: '/usr/include/time.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 31, Column: 3 }
+Function:        main
+Args:
+  - Callee:          MPI_Init
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 32, Column: 3 }
+Function:        main
+Args:
+  - Callee:          MPI_Comm_size
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 33, Column: 3 }
+Function:        main
+Args:
+  - Callee:          MPI_Comm_rank
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 36, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 37, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 38, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 58, Column: 3 }
+Function:        main
+Args:
+  - Callee:          MPI_Reduce
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 60, Column: 21 }
+Function:        main
+Args:
+  - Callee:          MPI_Wtime
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 65, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 66, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 67, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 70, Column: 3 }
+Function:        main
+Args:
+  - Callee:          MPI_Finalize
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 28, Column: 18 }
+Function:        main
+Args:
+  - Callee:          clock
+    DebugLoc:        { File: '/usr/include/time.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 31, Column: 3 }
+Function:        main
+Args:
+  - Callee:          MPI_Init
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 32, Column: 3 }
+Function:        main
+Args:
+  - Callee:          MPI_Comm_size
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 33, Column: 3 }
+Function:        main
+Args:
+  - Callee:          MPI_Comm_rank
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 36, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 37, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 38, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 58, Column: 3 }
+Function:        main
+Args:
+  - Callee:          MPI_Reduce
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 60, Column: 21 }
+Function:        main
+Args:
+  - Callee:          MPI_Wtime
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 65, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 66, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 67, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 70, Column: 3 }
+Function:        main
+Args:
+  - Callee:          MPI_Finalize
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 21, Column: 17 }
+Function:        main
+Args:
+  - String:          ''''
+  - Callee:          atoll
+    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 374, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '10'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          main
+  - String:          ':'
+  - Line:            '9'
+  - String:          ':'
+  - Column:          '17'
+  - String:          ';'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 24, Column: 14 }
+Function:        main
+Args:
+  - String:          ''''
+  - Callee:          atoi
+    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 362, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '10'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          main
+  - String:          ':'
+  - Line:            '12'
+  - String:          ':'
+  - Column:          '14'
+  - String:          ';'
+...
+--- !Analysis
+Pass:            openmp
+Name:            optimization note
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main
+Args:
+  - String:          SHARED
+  - String:          ' clause for variable '''
+  - String:          ''
+  - String:          ''' on '''
+  - String:          parallel loop
+  - String:          ''' construct is redundant'
+...
+--- !Passed
+Pass:            vpo-paropt-transform
+Name:            FastReductionAtomic
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main
+Args:
+  - Kind:            ADD
+  - String:          ' reduction update of type '
+  - Type:            ''
+  - String:          ' made atomic'
+...
+--- !Passed
+Pass:            vpo-paropt-transform
+Name:            Reduction
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main
+Args:
+  - String:          'Critical section was generated for reduction update(s)'
+...
+--- !Passed
+Pass:            openmp
+Name:            Region
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - Construct:       parallel loop
+  - String:          ' construct transformed'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - Callee:          __kmpc_for_static_init_8u
+  - String:          ' will not be inlined into '
+  - Caller:          main.extracted
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - Callee:          __kmpc_for_static_fini
+  - String:          ' will not be inlined into '
+  - Caller:          main.extracted
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - Callee:          __kmpc_reduce
+  - String:          ' will not be inlined into '
+  - Caller:          main.extracted
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+Function:        main.extracted
+Args:
+  - Callee:          __kmpc_end_reduce
+  - String:          ' will not be inlined into '
+  - Caller:          main.extracted
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - Callee:          __kmpc_atomic_float8_add
+  - String:          ' will not be inlined into '
+  - Caller:          main.extracted
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+Function:        main.extracted
+Args:
+  - Callee:          __kmpc_end_reduce
+  - String:          ' will not be inlined into '
+  - Caller:          main.extracted
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - Callee:          __kmpc_for_static_init_8u
+  - String:          ' will not be inlined into '
+  - Caller:          main.extracted
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - Callee:          __kmpc_for_static_fini
+  - String:          ' will not be inlined into '
+  - Caller:          main.extracted
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - Callee:          __kmpc_reduce
+  - String:          ' will not be inlined into '
+  - Caller:          main.extracted
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+Function:        main.extracted
+Args:
+  - Callee:          __kmpc_end_reduce
+  - String:          ' will not be inlined into '
+  - Caller:          main.extracted
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - Callee:          __kmpc_atomic_float8_add
+  - String:          ' will not be inlined into '
+  - Caller:          main.extracted
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+Function:        main.extracted
+Args:
+  - Callee:          __kmpc_end_reduce
+  - String:          ' will not be inlined into '
+  - Caller:          main.extracted
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     store
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     store
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     store
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     store
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     store
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     store
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     store
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     store
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+Function:        main
+Args:
+  - Callee:          __kmpc_global_thread_num
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/include/stdlib.h', Line: 375, Column: 10 }
+Function:        main
+Args:
+  - Callee:          strtoll
+    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/include/stdlib.h', Line: 363, Column: 16 }
+Function:        main
+Args:
+  - Callee:          strtol
+    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 28, Column: 18 }
+Function:        main
+Args:
+  - Callee:          clock
+    DebugLoc:        { File: '/usr/include/time.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 31, Column: 3 }
+Function:        main
+Args:
+  - Callee:          MPI_Init
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 32, Column: 3 }
+Function:        main
+Args:
+  - Callee:          MPI_Comm_size
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 33, Column: 3 }
+Function:        main
+Args:
+  - Callee:          MPI_Comm_rank
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 36, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 37, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 38, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+Function:        main
+Args:
+  - Callee:          __kmpc_push_num_threads
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main
+Args:
+  - Callee:          __kmpc_fork_call
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 58, Column: 3 }
+Function:        main
+Args:
+  - Callee:          MPI_Reduce
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 60, Column: 21 }
+Function:        main
+Args:
+  - Callee:          MPI_Wtime
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 65, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 66, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 67, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 70, Column: 3 }
+Function:        main
+Args:
+  - Callee:          MPI_Finalize
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+Function:        main
+Args:
+  - Callee:          __kmpc_global_thread_num
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/include/stdlib.h', Line: 375, Column: 10 }
+Function:        main
+Args:
+  - Callee:          strtoll
+    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/include/stdlib.h', Line: 363, Column: 16 }
+Function:        main
+Args:
+  - Callee:          strtol
+    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 28, Column: 18 }
+Function:        main
+Args:
+  - Callee:          clock
+    DebugLoc:        { File: '/usr/include/time.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 31, Column: 3 }
+Function:        main
+Args:
+  - Callee:          MPI_Init
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 32, Column: 3 }
+Function:        main
+Args:
+  - Callee:          MPI_Comm_size
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 33, Column: 3 }
+Function:        main
+Args:
+  - Callee:          MPI_Comm_rank
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 36, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 37, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 38, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+Function:        main
+Args:
+  - Callee:          __kmpc_push_num_threads
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main
+Args:
+  - Callee:          __kmpc_fork_call
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 58, Column: 3 }
+Function:        main
+Args:
+  - Callee:          MPI_Reduce
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 60, Column: 21 }
+Function:        main
+Args:
+  - Callee:          MPI_Wtime
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 65, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 66, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 67, Column: 5 }
+Function:        main
+Args:
+  - Callee:          printf
+    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 70, Column: 3 }
+Function:        main
+Args:
+  - Callee:          MPI_Finalize
+    DebugLoc:        { File: '/opt/intel/oneapi/mpi/2021.10.0/include/mpi.h', 
+                       Line: 0, Column: 0 }
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 21, Column: 23 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+...
+--- !Passed
+Pass:            gvn
+Name:            LoadElim
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 23, Column: 6 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' eliminated'
+  - String:          ' in favor of '
+  - InfavorOfValue:  ''
+...
+--- !Passed
+Pass:            gvn
+Name:            LoadElim
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 24, Column: 19 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' eliminated'
+  - String:          ' in favor of '
+  - InfavorOfValue:  ''
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 24, Column: 19 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 375, Column: 10 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 35, Column: 7 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 33, Column: 3 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 41, Column: 42 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 33, Column: 3 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 41, Column: 42 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 38, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 42, Column: 25 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 35, Column: 7 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 38, Column: 5 }
+...
+--- !Passed
+Pass:            gvn
+Name:            LoadPRE
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 42, Column: 25 }
+Function:        main
+Args:
+  - String:          load eliminated by PRE
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 63, Column: 7 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 35, Column: 7 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 60, Column: 21 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 64, Column: 15 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 60, Column: 21 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 21, Column: 23 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 24, Column: 19 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 375, Column: 10 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 35, Column: 7 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 33, Column: 3 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 42, Column: 25 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 35, Column: 7 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 38, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 41, Column: 42 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 33, Column: 3 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 41, Column: 42 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 38, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 63, Column: 7 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 35, Column: 7 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 60, Column: 21 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 64, Column: 15 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 60, Column: 21 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 21, Column: 23 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 24, Column: 19 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 375, Column: 10 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 35, Column: 7 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 33, Column: 3 }
+...
+--- !Passed
+Pass:            gvn
+Name:            LoadElim
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 42, Column: 25 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' eliminated'
+  - String:          ' in favor of '
+  - InfavorOfValue:  load
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 35, Column: 7 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 41, Column: 42 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 33, Column: 3 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 63, Column: 7 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 35, Column: 7 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 60, Column: 21 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 64, Column: 15 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 60, Column: 21 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 21, Column: 23 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 24, Column: 19 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 375, Column: 10 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 35, Column: 7 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 33, Column: 3 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 41, Column: 42 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 33, Column: 3 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 63, Column: 7 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 35, Column: 7 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 60, Column: 21 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 64, Column: 15 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 60, Column: 21 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     store
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     store
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     store
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     store
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+...
+--- !Missed
+Pass:            slp-vectorizer
+Name:            NotPossible
+Function:        main_tree_reduce_8
+Args:
+  - String:          'Cannot SLP vectorize list: vectorization was impossible'
+  - String:          ' with available vectorization factors'
+...
+--- !Missed
+Pass:            slp-vectorizer
+Name:            NotPossible
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - String:          'Cannot SLP vectorize list: vectorization was impossible'
+  - String:          ' with available vectorization factors'
+...
+--- !Missed
+Pass:            slp-vectorizer
+Name:            NotPossible
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 52, Column: 12 }
+Function:        main.extracted
+Args:
+  - String:          'Cannot SLP vectorize list: vectorization was impossible'
+  - String:          ' with available vectorization factors'
+...
+--- !Missed
+Pass:            slp-vectorizer
+Name:            NotPossible
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 52, Column: 12 }
+Function:        main.extracted
+Args:
+  - String:          'Cannot SLP vectorize list: vectorization was impossible'
+  - String:          ' with available vectorization factors'
+...
+--- !Missed
+Pass:            slp-vectorizer
+Name:            NotPossible
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - String:          'Cannot SLP vectorize list: vectorization was impossible'
+  - String:          ' with available vectorization factors'
+...
+--- !Passed
+Pass:            loop-unroll
+Name:            PartialUnrolled
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - String:          'unrolled loop by a factor of '
+  - UnrollCount:     '4'
+  - String:          ' with run-time trip count'
+...
+--- !Missed
+Pass:            regalloc
+Name:            SpillReloadCopies
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 1 }
+Function:        main
+Args:
+  - NumSpills:       '2'
+  - String:          ' spills '
+  - TotalSpillsCost: '1.354839e+00'
+  - String:          ' total spills cost '
+  - NumReloads:      '3'
+  - String:          ' reloads '
+  - TotalReloadsCost: '1.193548e+00'
+  - String:          ' total reloads cost '
+  - NumVRCopies:     '19'
+  - String:          ' virtual registers copies '
+  - TotalCopiesCost: '1.145161e+01'
+  - String:          ' total copies cost '
+  - String:          generated in function
+...
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+Function:        main
+Args:
+  - NumStackBytes:   '104'
+  - String:          ' stack bytes in function'
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '20'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '8'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '10'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '2'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '14'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '12'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '5'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '5'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '4'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '13'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '19'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '13'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '16'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '10'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 12, Column: 0 }
+Function:        main
+Args:
+  - NumInstructions: '151'
+  - String:          ' instructions in function'
+...
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+Function:        main_tree_reduce_8
+Args:
+  - NumStackBytes:   '0'
+  - String:          ' stack bytes in function'
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+Function:        main_tree_reduce_8
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '4'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+Function:        main_tree_reduce_8
+Args:
+  - NumInstructions: '4'
+  - String:          ' instructions in function'
+...
+--- !Missed
+Pass:            regalloc
+Name:            LoopSpillReloadCopies
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - NumVRCopies:     '1'
+  - String:          ' virtual registers copies '
+  - TotalCopiesCost: '8.119048e+00'
+  - String:          ' total copies cost '
+  - String:          generated in loop
+...
+--- !Missed
+Pass:            regalloc
+Name:            SpillReloadCopies
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - NumVRCopies:     '9'
+  - String:          ' virtual registers copies '
+  - TotalCopiesCost: '1.495238e+01'
+  - String:          ' total copies cost '
+  - String:          generated in function
+...
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 0 }
+Function:        main.extracted
+Args:
+  - NumStackBytes:   '72'
+  - String:          ' stack bytes in function'
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+Function:        main.extracted
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '32'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main.extracted
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '6'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main.extracted
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '3'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+Function:        main.extracted
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '10'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 1 }
+Function:        main.extracted
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '2'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+Function:        main.extracted
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '3'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+Function:        main.extracted
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '33'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+Function:        main.extracted
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '18'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main.extracted
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '2'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main.extracted
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '7'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main.extracted
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '8'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main.extracted
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '1'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 0, Column: 0 }
+Function:        main.extracted
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '6'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+DebugLoc:        { File: './source/pi_homework_mpi.c', Line: 49, Column: 0 }
+Function:        main.extracted
+Args:
+  - NumInstructions: '131'
+  - String:          ' instructions in function'
+...
