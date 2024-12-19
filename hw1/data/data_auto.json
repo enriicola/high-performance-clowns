@@ -1,0 +1,389 @@
+{
+    "vec": [],
+    "parallel": [
+        {
+            "N": 20000,
+            "Threads": 4,
+            "Time (s)": 0.2837657928466797,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 20000,
+            "Threads": 4,
+            "Time (s)": 0.31035947799682617,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 20000,
+            "Threads": 8,
+            "Time (s)": 0.307293176651001,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 20000,
+            "Threads": 8,
+            "Time (s)": 0.30439186096191406,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 20000,
+            "Threads": 12,
+            "Time (s)": 0.28889012336730957,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 20000,
+            "Threads": 12,
+            "Time (s)": 0.3033730983734131,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 20000,
+            "Threads": 24,
+            "Time (s)": 0.2715895175933838,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 20000,
+            "Threads": 24,
+            "Time (s)": 0.265639066696167,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 40000,
+            "Threads": 4,
+            "Time (s)": 0.8823070526123047,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 40000,
+            "Threads": 4,
+            "Time (s)": 0.9874470233917236,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 40000,
+            "Threads": 8,
+            "Time (s)": 1.0705597400665283,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 40000,
+            "Threads": 8,
+            "Time (s)": 0.999225378036499,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 40000,
+            "Threads": 12,
+            "Time (s)": 0.9281845092773438,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 40000,
+            "Threads": 12,
+            "Time (s)": 0.8921234607696533,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 40000,
+            "Threads": 24,
+            "Time (s)": 0.9195742607116699,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 40000,
+            "Threads": 24,
+            "Time (s)": 0.8373053073883057,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 60000,
+            "Threads": 4,
+            "Time (s)": 2.4496541023254395,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 60000,
+            "Threads": 4,
+            "Time (s)": 2.563887357711792,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 60000,
+            "Threads": 8,
+            "Time (s)": 2.3497636318206787,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 60000,
+            "Threads": 8,
+            "Time (s)": 2.5072689056396484,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 60000,
+            "Threads": 12,
+            "Time (s)": 2.8460891246795654,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 60000,
+            "Threads": 12,
+            "Time (s)": 2.7721128463745117,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 60000,
+            "Threads": 24,
+            "Time (s)": 2.6474502086639404,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 60000,
+            "Threads": 24,
+            "Time (s)": 2.7998697757720947,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 80000,
+            "Threads": 4,
+            "Time (s)": 4.710195064544678,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 80000,
+            "Threads": 4,
+            "Time (s)": 4.671510219573975,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 80000,
+            "Threads": 8,
+            "Time (s)": 4.4452080726623535,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 80000,
+            "Threads": 8,
+            "Time (s)": 4.621876001358032,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 80000,
+            "Threads": 12,
+            "Time (s)": 4.512828588485718,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 80000,
+            "Threads": 12,
+            "Time (s)": 4.66808009147644,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 80000,
+            "Threads": 24,
+            "Time (s)": 4.457074403762817,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        },
+        {
+            "N": 80000,
+            "Threads": 24,
+            "Time (s)": 4.549932956695557,
+            "GFLOPS": 0,
+            "Hotspots": [
+                {
+                    "Hotspot": "-",
+                    "Time (s)": 0
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+sequential:
+    - N: 20_000
+        - Time (s): 32.97
+        - GFLOPS: 2.38
+        - Hotsposts:
+            - loop in DFT at omp_homework.c:82
+                - Time (s): 32.23
+    - N: 40_000
+    - N: 60_000
+
+sequential (vectorized): // BEST sequential time
+    - N: 20_000
+    - N: 40_000
+    - N: 60_000
+    - N: 80_000
+
+parallel:
+    - N: 20_000
+    - N: 40_000
+    - N: 60_000
+    - N: 80_000

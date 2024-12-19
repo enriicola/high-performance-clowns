@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- <!DOCTYPE IntelParallelAdvisorSummaryCollection SYSTEM  "IntelParallelAdvisorSummaryCollection.dtd"> -->
+
+<IntelParallelAdvisorSummary version="" 
+                             kind="DATAKIND_SURVEY_EX" >
+  <hotspot filename="/home/stud/docente/Desktop/OMP_ass/./source/omp_homework.c"
+           line_no="83"
+           routine="DFT.extracted.11"
+           is_vectorized="1"
+           self_time="2.699332E+01"
+           total_time="1.457989E+02"
+           trip_counts="35000"
+           func_instance="6"
+           priority="0"/>
+  <hotspot filename="/home/stud/docente/Desktop/OMP_ass/./source/omp_homework.c"
+           line_no="83"
+           routine="DFT.extracted.11"
+           is_vectorized="0"
+           self_time="0.000000E+00"
+           total_time="1.457989E+02"
+           trip_counts="875"
+           func_instance="8"
+           priority="0"/>
+  <hotspot filename="/home/stud/docente/Desktop/OMP_ass/./source/omp_homework.c"
+           line_no="141"
+           routine="checkResults"
+           is_vectorized="1"
+           self_time="0.000000E+00"
+           total_time="3.900000E-01"
+           trip_counts="35000"
+           func_instance="13"
+           priority="0"/>
+</IntelParallelAdvisorSummary >

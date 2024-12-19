@@ -2,7 +2,7 @@ CC=icx
 FLAGS=-g -Wall -std=c99 -qopenmp -qopt-report=3
 SOURCE=./source
 RELEASE=./release
-NTHREADS ?= 4
+NTHREADS ?= 20
 
 default:
 	${CC} ${FLAGS} ${SOURCE}/omp_homework.c -o ${RELEASE}/omp_homework

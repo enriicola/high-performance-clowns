@@ -1,155 +1,216 @@
-# Assignment 3: MPI
+```
+    describe always the compute capability of the resource you are using;
+    use ICC/ICX on our workstations, GCC with Colab;
+    use the BEST sequential execution time;
+    always provide the compilation and execution commands (e.g. icc -O3 -xHost...);
+    consider different and meaningful data sizes (i.e. no sequential execution time shorter than a few seconds).   
+```
 
-The goal is to distribute the program between the different nodes (in out case different 
-processes on the same machine). 
+# HPC - OpenMP report 🏎️ 💻
+## Leonardo Gonfiantini, Christian Parodi, Enrico Pezzano
+### December 2024
 
-## Algorithm analysis
+# Introduction 🎬
+The goal of this laboratory is to optimize the implementation of the Discrete Fourier Transform (DFT) algorithm by leveraging OpenMP HPC techniques, with a focus on parallelization and vectorization, especially on the hotspots. We aim to reduce execution time without compromising computational accuracy, keeping the tracked error rate as low as possible. Key challenges such as identifying hotspots, addressing potential vectorization barriers, parallelization problems, and managing thread scalability are discussed in depth.
 
-Given the function
+# Hardware Capability ⚙️
+For this first assignment, we executed the c code using the Software 2 (SW2), with the following characteristics.
+++++neofetch screen :)
 
-$$f(x) = \frac{4}{1 + x^2}$$
+# Algorithm analysis 👨🏻‍💻
+The Fourier Transform is a mathematical transformation used to convert a function of time (or space) into a function of frequency. It is defined as:
 
-It's proven that the integral in $[0, 1]$ is equal to $\pi$:
+$$
+\mathcal{F}\{f(t)\} = F(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i \omega t} \, dt
+$$
 
-$$\int_0^1 f(x)\ dx = \pi$$
+For discrete signals, the Discrete Fourier Transform (DFT) is used, which is defined as:
 
-Through **midpoint Riemann sums**, this integral can be approximated by:
+$$
+X_k = \sum_{n=0}^{N-1} x_n \cdot e^{-i \frac{2\pi}{N} k n} = \sum_{n=0}^{N-1} x_n \cdot \left( \cos\left(\frac{2\pi}{N} k n\right) + i \sin\left(\frac{2\pi}{N} k n\right) \right)
+$$
 
-$$\pi \approx \frac{1}{n} \sum_{i=1}^n \frac{4}{1 + (\frac{i-0.5}{n})^2}$$
+where:
+- \( X_k \) is the DFT of the sequence \( x_n \)
+- \( N \) is the number of points in the sequence
+- \( k \) is the index of the output frequency component
+- \( n \) is the index of the input time-domain sequence
+- \( i \) is the imaginary unit
 
-$(i - 0.5)/n$ is indeed the midpoint of the $i$-th subinterval. Since it discretizes the integral, it becomes an approximation of $\pi$.
+The inverse DFT (IDFT) is given by:
 
-### Parallelization strategy
+$$
+x_n = \frac{1}{N} \sum_{k=0}^{N-1} X_k \cdot e^{i \frac{2\pi}{N} k n} =\frac{1}{N} \sum_{k=0}^{N-1} X_k \cdot \left( \cos\left(\frac{2\pi}{N} k n\right) + i \sin\left(\frac{2\pi}{N} k n\right) \right)
+$$
 
-The sequential case is the following:
+Notice it is just the DFT of the DFT.
+
+# Parallelization strategy 🧠
+Since it is a sum of $N$ elements, it can be splitted into $m$ different threads, each with $N/m$ sums to compute.
 
 <div style="display: flex; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-    <img src="./images/sequential.png" alt="Sequential" width="70%" />
-    <figcaption>Figure 1: sequential case</figcaption>
+    <img src="./images/omp.png" alt="OMP" width="100%" />
   </figure>
 </div>
 
-As we can see, the sum is performed alltogether on the same node. The simplest yet most powerful way to parallelize this sum is to split the computations on different nodes, making them calculate only a chunk of the total sum.
-
-<div style="display: flex; align-items: center; width: 100%;">
-  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-    <img src="./images/mpi.png" alt="Distributed" width="80%" />
-    <figcaption>Figure 2: parallel case</figcaption>
-  </figure>
-</div>
-
-The final step would be re-aggregate all the partial sums into the same global result, i.e. **reduce** them.
-
-### Workload distribution
-
-Now that we know how the algorithm works, we can decide how to divide the workload in each MPI node. We start by noticing that it is a sum over $n$ elements (in the code $n =$ `INTERVALS`), so, if we have $m$ worker nodes with same resources and performances, we can divide this sum into $m/\texttt{INTERVALS}$ chunks
+# Hotspot analysis 🔥
+The only hotspot that is worth mentioning is the `loop in DFT at omp_homework.c:71`, as it takes $\approx 98\%$ of the computation time. The said loop is the following:
 
 ```c
-int size, rank;
-MPI_Comm_rank( MPI_COMM_WORLD, &rank );
-MPI_Comm_size( MPI_COMM_WORLD, &size );
-
-long int chunk_size = intervals / size;
-```
-
-and, for each node, determine the starting index and the ending one:
-
-```c
-long int start = rank * chunk_size + 1;
-long int end = (rank == size - 1) ? intervals : start + chunk_size - 1;
-```
-
-at this point, the local sum on the node is computed
-
-```c
-double local_sum = 0.0;
-double x, f;
-double dx = 1 / (double)intervals; // 1 / n
-
-for (long int i = start; i <= end; i++) {
-  x = dx * ((double)(i - 0.5));
-  f = 4.0 / (1.0 + x * x);
-  local_sum += f;
+for (k = 0; k < N; k++) {
+   for (n = 0; n < N; n++) {
+   // Real part of X[k]
+   Xr_o[k] += xr[n] * cos(n * k * PI2 / N) + idft * xi[n] * sin(n * k * PI2 / N);
+   // Imaginary part of X[k]
+   Xi_o[k] += -idft * xr[n] * sin(n * k * PI2 / N) + xi[n] * cos(n * k * PI2 / N);
+   }
 }
 ```
 
-At the end of the loop, the local sum on the node will be computed. After this loop, we reduce all the results by summing the partial sums on the master node ($0$ in our case), getting the final result.
+Since it is in $O(N^2)$, massaging this section is crucial to speed up the program.
 
-```c
-double global_sum;
-// (send_bf, recv_bf, n_elems, datatype_elems, mpi_op, receiver, comm)
-MPI_Reduce(&local_sum, &global_sum, 1, MPI_DOUBLE, MPI_SUM, MASTER_NODE, MPI_COMM_WORLD);
-
-if(rank == MASTER_NODE){
-  double pi = dx * global_sum;
-  printf("Computed PI %.24f\n", pi);
-  printf("The true PI %.24f\n\n", PI25DT);
+OLD {
+inside the vanilla version of the code, the hotspot is on the line 70 (the nested outer for loop takes 13.2 seconds out of the 13.44 seconds of total execution time)
+inside the vanilla version of the code, the hotspot is on the line 71 (the nested inner for loop takes 13.2 seconds out of the 13.44 seconds of total execution time)
+it is a scalar loop that can be parallelized with OpenMP
 }
-```
 
-## Program optimizations
-
-### Vectorization
-
-Now that the program is distributed, we can thinking at the other optimization aspects. The first thing to tune is the compiler, in our case we used `mpiicx` with all the optimization flag needed. The command ran to compile the program is
+# Compiler settings 🔧
+We compiled the program using the following command:
 
 ```bash
-mpiicx -g -O2 -xHost -qopenmp -qopt-report=3 -ffast-math pi_homework.c
+icx -g -Wall -std=c99 -qopenmp -qopt-report=3 -xHost -O3 -ffast-math omp_homework.c
 ```
+In this way, the code is properly optimized, the best istruction set is used and the program is vectorized when possible.
 
-while the one to execute it is
+In particular:
+- the **-g** flag enables the debug;
+- the **-Wall** flag enables compilation errors;
+- the **-std=c99** flag enables standard ISO C99;
+- the **-qopenmp** flag enables OpenMP;
+- the **-qopt-report=3** flag produce detailed information about the optimizations performed by the compiler;
+- the **-xHost** flag optimize the compilation process relative to the host CPU and architecture;
+- the **-O3** flag optimize the compilation process at high level;
+- the **-ffast-math** flag: 
+   - reordering of operations (i.e. `(a + b) + c = a + (b + c)` )
+   - use of approximations
+   - disabling special number handling
+   - ignoring associative and distributive rules (i.e. `x / y / z` might be computed as `x / (y * z)` for better efficiency).
 
-```bash
-mpirun -np 10 ./pi_homework
+# Vectorization 🏹
+First of all, we studied the code alone and we interrogated ourselves about possible vectorization problems that seemed to not be there. 
+Secondly, we leveraged the OpenMP report flag in order to produce useful outputs about what the compiler did. The following texts display what we obtained as said report, only for the hotspot, for readability issues.
 ```
+Begin optimization report for: DFT
 
-### Parallelization
+LOOP BEGIN at ./source/omp_homework.c (83, 3)
+<Multiversioned v2>
+    remark #25452: Poor spatial locality detected in memref(s). 
+    remark #15319: Loop was not vectorized: novector directive used
 
-Another way to improve the performances is to use multithreading. We used **OpenMP** to parallelize the MPI code in this way:
+    LOOP BEGIN at ./source/omp_homework.c (84, 5)
+        remark #15319: Loop was not vectorized: novector directive used
+    LOOP END
+LOOP END
+
+LOOP BEGIN at ./source/omp_homework.c (83, 3)
+<Multiversioned v1>
+    remark #25228: Loop multiversioned for Data Dependence
+    remark #25452: Poor spatial locality detected in memref(s). 
+    remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
+
+    LOOP BEGIN at ./source/omp_homework.c (84, 5)
+        remark #25528: Load/Store of reduction at line 91 sinked after loop
+        remark #25563: Load hoisted out of the loop
+        remark #25564: Store sinked out of the loop
+        remark #25583: Number of Array Refs Scalar Replaced In Loop: 2
+        remark #15300: LOOP WAS VECTORIZED
+        remark #15305: vectorization support: vector length 4
+        remark #15389: vectorization support: unmasked unaligned unit stride load: xr [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (89, 18) ] 
+        remark #15389: vectorization support: unmasked unaligned unit stride load: xi [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (89, 43) ] 
+        remark #15475: --- begin vector loop cost summary ---
+        remark #15476: scalar cost: 101.000000 
+        remark #15477: vector cost: 27.593750 
+        remark #15478: estimated potential speedup: 3.625000 
+        remark #15309: vectorization support: normalized vectorization overhead 0.359375
+        remark #15482: vectorized math library calls: 2 
+        remark #15488: --- end vector loop cost summary ---
+        remark #15447: --- begin vector loop memory reference summary ---
+        remark #15450: unmasked unaligned unit stride loads: 2 
+        remark #15474: --- end vector loop memory reference summary ---
+        remark #25587: Loop has reduction
+        remark #15590: vectorization support: add reduction with value type double [./source/omp_homework.c:83:3]
+        remark #15590: vectorization support: add reduction with value type double [./source/omp_homework.c:83:3]
+    LOOP END
+
+    LOOP BEGIN at ./source/omp_homework.c (84, 5)
+    <Remainder loop for vectorization>
+        remark #15440: remainder loop was vectorized (masked)
+        remark #15305: vectorization support: vector length 4
+        remark #15389: vectorization support: masked unaligned unit stride load: xr [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (89, 18) ] 
+        remark #15389: vectorization support: masked unaligned unit stride load: xi [ /home/chris/high-performance-clowns/hw1/./source/omp_homework.c (89, 43) ] 
+        remark #15475: --- begin vector loop cost summary ---
+        remark #15482: vectorized math library calls: 2 
+        remark #15488: --- end vector loop cost summary ---
+        remark #15447: --- begin vector loop memory reference summary ---
+        remark #15456: masked unaligned unit stride loads: 2 
+        remark #15474: --- end vector loop memory reference summary ---
+        remark #25261: Single iteration loop optimized away
+    LOOP END
+LOOP END
+```
+After a deep analysis, we concluded that the possible vectorization optimizations are negligible. 
+Indeed, in the context of this laboratory, we did not notice any vectorization issues (i.e. loop carried dependencies, Read after Write...).
+
+
+# Optimizations 🛤️
+The first thing we changed was the `sin` and `cos` computation. Those are used in both the statements inside the inner loop, so they can be extracted to variables. Even though it is not a parallelization problem per se, caching in this way the computation of the trigonometric functions, further improve the performance.
 
 ```c
-omp_set_num_threads(20);
-#pragma omp parallel for private(x, f) reduction(+ : local_sum)
-for (i = start; i <= end; i++) {
-  x = dx * ((double)(i - 0.5));
-  f = 4.0 / (1.0 + x * x);
-  local_sum += f;
+double cos_res = cos(n * k * PI2 / N);
+double sin_res = sin(n * k * PI2 / N);
+
+// Real part of X[k]
+Xr_o[k] += xr[n] * cos_res + idft * xi[n] * sin_res;
+// Imaginary part of X[k]
+Xi_o[k] += -idft * xr[n] * sin_res + xi[n] * cos_res;
+```
+
+Then, there is the actual parallelization part. We used OpenMP as follows:
+
+```c
+double cos_res;
+double sin_res;
+
+#pragma omp parallel for num_threads(NTHREADS) \
+private(cos_res, sin_res) collapse(2) schedule(static) reduction(+ : Xr_o[ : N], Xi_o[ : N])
+for (k = 0; k < N; k++) {
+   for (n = 0; n < N; n++) {
+      cos_res = cos(n * k * PI2 / N);
+      sin_res = sin(n * k * PI2 / N);
+
+      // Real part of X[k]
+      Xr_o[k] += xr[n] * cos_res + idft * xi[n] * sin_res;
+      // Imaginary part of X[k]
+      Xi_o[k] += -idft * xr[n] * sin_res + xi[n] * cos_res;
+   }
 }
 ```
 
-That is, simply subdivide the for loop on different threads and apply the reduction on the sum.
+In order, we declared `cos_res` and `sin_res` outside the parallel region, because since they depend on `n` and `k`, they have to be private for each thread. Then, we collapsed the nested loops in a single $N \times N$ loop managed by OMP, then with the `schedule(static)` we stated that every thread would have had the same chunk size to work on, and finally the `reduction` clause aggregates the sums on the arrays.
 
-## Statistics
 
-**sequential (best)**
+# Performance evaluation 🤔
 
-|    INTERVALS    | Time (s) | GFLOPS | GINTOPS |             Hotspots             |
-| :-------------: | :------: | :----: | :-----: | :------------------------------: |
-|  1,000,000,000  |   0.62   |  9.75  |  2.11   | loop in main at pi_homework.c:26 |
-| 10,000,000,000  |   5.87   | 10.22  |  1.22   | loop in main at pi_homework.c:26 |
-| 100,000,000,000 |  58.68   | 10.22  |  1.22   | loop in main at pi_homework.c:26 |
 
-**parallel**
+TODO sunday :)
 
-|    INTERVALS    | Time (s) | GFLOPS | GINTOPS |             Hotspots             | Time per Core (s) |
-| :-------------: | :------: | :----: | :-----: | :------------------------------: | :---------------: |
-|  1,000,000,000  |   0.11   | 53.68  |  15.66  | loop in main at pi_homework.c:26 |       0.05        |
-| 10,000,000,000  |   0.88   | 73.02  |  21.30  | loop in main at pi_homework.c:26 |        0.6        |
-| 100,000,000,000 |   7.81   | 76.85  |  22.41  | loop in main at pi_homework.c:26 |       6.28        |
+using vectorization as in the code inside omp homework, the execution time is 0.71 seconds, which is 18.5 times faster than the vanilla version of the code (for N=10000) with a non existent error (Xre = 10000.0000)
 
-We can easely see that the parallel and distributed program is much faster, with a speedup of
++ tables and graphs
 
-**speedup**
-
-|    INTERVALS    | Sequential time (s) | Parallel time (s) | Speedup  |
-| :-------------: | :-----------------: | :---------------: | :------: |
-|  1,000,000,000  |        0.62         |       0.11        | **5.64** |
-| 10,000,000,000  |        5.87         |       0.88        | **6.67** |
-| 100,000,000,000 |        58.68        |       7.81        | **7.51** |
-
-The speedup increases with the number of intervals, showing the efficiency of the parallel and distributed approach.
-
-# TODO
-
-- take the performances of the MPI - sequential and MPI - parallel
+# Conclusions 🔚
+TODO :)
+In conclusion, by leveraging vectorization and multithreading. Other than that, we also noticed how small
+changes in the code could lead to significant change in performance.
