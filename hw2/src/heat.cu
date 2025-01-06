@@ -3,34 +3,93 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Simple define to index into a 1D array from 2D space
 #define I2D(num, c, r) ((r) * (num) + (c))
 
-__global__ void step_kernel_mod_dev(int ni, int nj, float fact, const float* temp_in, float* temp_out) {
+/**
+ * @brief Performs a step of the heat equation simulation (CUDA).
+ *
+ * This function updates the temperature distribution by computing the
+ * second derivatives in both the x and y directions and applying the
+ * scaling factor to calculate the new temperature values.
+ *
+ * @param ni      Number of grid points in the i (x) direction.
+ * @param nj      Number of grid points in the j (y) direction.
+ * @param fact    Scaling factor applied to the computed derivatives.
+ * @param temp_in Pointer to the input temperature array.
+ * @param temp_out Pointer to the output temperature array where results are stored.
+ *
+ * @global The kernel is executed by multiple thread blocks in a 2D grid
+ */
+__global__ void step_kernel_mod_dev(const int ni, const int nj, const float fact, const float* temp_in, float* temp_out) {
   int i = blockIdx.x * blockDim.x + threadIdx.x;
   int j = blockIdx.y * blockDim.y + threadIdx.y;
+
   if (i > 0 && i < ni - 1 && j > 0 && j < nj - 1) {
-    int i00 = I2D(ni, i, j);
-    int im10 = I2D(ni, i - 1, j);
-    int ip10 = I2D(ni, i + 1, j);
-    int i0m1 = I2D(ni, i, j - 1);
-    int i0p1 = I2D(ni, i, j + 1);
-    float d2tdx2 = temp_in[im10] - 2.0f * temp_in[i00] + temp_in[ip10];
-    float d2tdy2 = temp_in[i0m1] - 2.0f * temp_in[i00] + temp_in[i0p1];
-    temp_out[i00] = temp_in[i00] + fact * (d2tdx2 + d2tdy2);
+    /*
+      im1j = (i-1)j
+      ip1j = (i+1)j
+      ijm1 = i(j-1)
+      ijp1 = i(j+1)
+    */
+
+    // find indices into linear memory
+    // for central point and neighbours
+    int ij = I2D(ni, i, j);        // T[i,j]
+    int im1j = I2D(ni, i - 1, j);  // T[i-1,j]
+    int ip1j = I2D(ni, i + 1, j);  // T[i+1,j]
+    int ijm1 = I2D(ni, i, j - 1);  // T[i,j-1]
+    int ijp1 = I2D(ni, i, j + 1);  // T[i,j+1]
+
+    // evaluate derivatives
+    // we suppose delta x^2 to be 1?
+    float dx2 = temp_in[ip1j] - 2.0f * temp_in[ij] + temp_in[im1j];
+    float dy2 = temp_in[ijp1] - 2.0f * temp_in[ij] + temp_in[ijm1];
+
+    // update temperatures
+    temp_out[ij] = temp_in[ij] + fact * (dx2 + dy2);
   }
 }
 
-void step_kernel_ref(int ni, int nj, float fact, float* temp_in, float* temp_out) {
-  for (int j = 1; j < nj - 1; j++) {
-    for (int i = 1; i < ni - 1; i++) {
-      int i00 = I2D(ni, i, j);
-      int im10 = I2D(ni, i - 1, j);
-      int ip10 = I2D(ni, i + 1, j);
-      int i0m1 = I2D(ni, i, j - 1);
-      int i0p1 = I2D(ni, i, j + 1);
-      float d2tdx2 = temp_in[im10] - 2.f * temp_in[i00] + temp_in[ip10];
-      float d2tdy2 = temp_in[i0m1] - 2.f * temp_in[i00] + temp_in[i0p1];
-      temp_out[i00] = temp_in[i00] + fact * (d2tdx2 + d2tdy2);
+/**
+ * @brief Performs a step of the heat equation simulation (sequential).
+ *
+ * This function updates the temperature distribution by computing the
+ * second derivatives in both the x and y directions and applying the
+ * scaling factor to calculate the new temperature values.
+ *
+ * @param ni      Number of grid points in the i (x) direction.
+ * @param nj      Number of grid points in the j (y) direction.
+ * @param fact    Scaling factor applied to the computed derivatives.
+ * @param temp_in Pointer to the input temperature array.
+ * @param temp_out Pointer to the output temperature array where results are stored.
+ */
+void step_kernel_ref(const int ni, const int nj, const float fact, float* temp_in, float* temp_out) {
+  // loop over all points in domain (except boundary)
+  for (int i = 1; i < ni - 1; i++) {
+    for (int j = 1; j < nj - 1; j++) {
+      /*
+        im1j = (i-1)j
+        ip1j = (i+1)j
+        ijm1 = i(j-1)
+        ijp1 = i(j+1)
+      */
+
+      // find indices into linear memory
+      // for central point and neighbours
+      int ij = I2D(ni, i, j);        // T[i,j]
+      int im1j = I2D(ni, i - 1, j);  // T[i-1,j]
+      int ip1j = I2D(ni, i + 1, j);  // T[i+1,j]
+      int ijm1 = I2D(ni, i, j - 1);  // T[i,j-1]
+      int ijp1 = I2D(ni, i, j + 1);  // T[i,j+1]
+
+      // evaluate derivatives
+      // we suppose delta x^2 to be 1?
+      float dx2 = temp_in[ip1j] - 2.0f * temp_in[ij] + temp_in[im1j];
+      float dy2 = temp_in[ijp1] - 2.0f * temp_in[ij] + temp_in[ijm1];
+
+      // update temperatures
+      temp_out[ij] = temp_in[ij] + fact * (dx2 + dy2);
     }
   }
 }
@@ -43,12 +102,15 @@ void step_kernel_mod(int ni, int nj, float fact, float* temp_in_d, float* temp_o
 }
 
 int main() {
-  int nstep = 200;
-  const int ni = 1000, nj = 1000;
-  float tfac = 8.418e-5;
-  int size = ni * nj * sizeof(float);
+  int nstep = 200;                           // n_iterations
+  const int ni = 1000, nj = 1000;            // rows, cols
+  float tfac = 8.418e-5;                     // thermal diffusivity of silver
+  const int size = ni * nj * sizeof(float);  // matrix size
 
   // Host allocations
+  // temp1_ref: true values (input)
+  // temp2_ref: true values (output)
+  // temp*: initial values to copy to device
   float* temp1_ref = (float*)malloc(size);
   float* temp2_ref = (float*)malloc(size);
   float* temp1 = (float*)malloc(size);
@@ -63,12 +125,16 @@ int main() {
   // CPU reference
   for (int step = 0; step < nstep; step++) {
     step_kernel_ref(ni, nj, tfac, temp1_ref, temp2_ref);
+    // the output becomes the next step's input
     float* tmp = temp1_ref;
     temp1_ref = temp2_ref;
     temp2_ref = tmp;
   }
 
+  /* CUDA */
+
   // Device allocations
+  // allocate and copy the initial values to device
   float *temp1_d, *temp2_d;
   cudaMalloc(&temp1_d, size);
   cudaMalloc(&temp2_d, size);
@@ -78,12 +144,14 @@ int main() {
   // GPU steps
   for (int step = 0; step < nstep; step++) {
     step_kernel_mod(ni, nj, tfac, temp1_d, temp2_d);
+    // the output becomes the next step's input
     float* tmp = temp1_d;
     temp1_d = temp2_d;
     temp2_d = tmp;
   }
 
   // Copy back
+  // temp1 is the final output after the last swap
   cudaMemcpy(temp1, temp1_d, size, cudaMemcpyDeviceToHost);
 
   // Check error
@@ -93,10 +161,11 @@ int main() {
     if (diff > maxError) maxError = diff;
   }
 
+  // Check and see if our maxError is greater than an error bound
   if (maxError > 0.0005f)
-    printf("Problem! Max Error = %.5f\n", maxError);
+    printf("Problem! The Max Error of %.5f is NOT within acceptable bounds.\n", maxError);
   else
-    printf("Max Error = %.5f (OK)\n", maxError);
+    printf("The Max Error of %.5f is within acceptable bounds.\n", maxError);
 
   free(temp1_ref);
   free(temp2_ref);
