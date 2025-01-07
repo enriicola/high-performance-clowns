@@ -97,6 +97,12 @@ void step_kernel_ref(const int ni, const int nj, const float fact, float* temp_i
 // Launches the CUDA kernel
 void step_kernel_mod(int ni, int nj, float fact, float* temp_in_d, float* temp_out_d) {
   dim3 block(16, 16);
+  /*
+    we divide n_rows/block.x and n_cols/block.y. To avoid checking
+    if the n_rows and n_cols are divisible by block.x and block.y,
+    we add block.x - 1 and block.y - 1 at the numerator, so we don't
+    miss the last cell.
+  */
   dim3 grid((ni + block.x - 1) / block.x, (nj + block.y - 1) / block.y);
   step_kernel_mod_dev<<<grid, block>>>(ni, nj, fact, temp_in_d, temp_out_d);
 }
