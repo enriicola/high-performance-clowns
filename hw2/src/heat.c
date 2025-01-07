@@ -1,22 +1,27 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 // Simple define to index into a 1D array from 2D space
 #define I2D(num, c, r) ((r) * (num) + (c))
+
+#ifndef SIZE
+#define SIZE 1000
+#endif
 
 /*
  * `step_kernel_mod` is currently a direct copy of the CPU reference solution
  * `step_kernel_ref` below. Accelerate it to run as a CUDA kernel.
  */
 
-void step_kernel_mod(int ni, int nj, float fact, float* temp_in, float* temp_out) {
-  int i00, im10, ip10, i0m1, i0p1;
+void step_kernel_mod(const size_t ni, const size_t nj, const float fact, const float* temp_in, float* temp_out) {
+  size_t i00, im10, ip10, i0m1, i0p1;
   float d2tdx2, d2tdy2;
 
   // loop over all points in domain (except boundary)
-  for (int j = 1; j < nj - 1; j++) {
-    for (int i = 1; i < ni - 1; i++) {
+  for (size_t j = 1; j < nj - 1; j++) {
+    for (size_t i = 1; i < ni - 1; i++) {
       // find indices into linear memory
       // for central point and neighbours
       i00 = I2D(ni, i, j);
@@ -35,13 +40,13 @@ void step_kernel_mod(int ni, int nj, float fact, float* temp_in, float* temp_out
   }
 }
 
-void step_kernel_ref(int ni, int nj, float fact, float* temp_in, float* temp_out) {
-  int i00, im10, ip10, i0m1, i0p1;
+void step_kernel_ref(const size_t ni, const size_t nj, const float fact, const float* temp_in, float* temp_out) {
+  size_t i00, im10, ip10, i0m1, i0p1;
   float d2tdx2, d2tdy2;
 
   // loop over all points in domain (except boundary)
-  for (int j = 1; j < nj - 1; j++) {
-    for (int i = 1; i < ni - 1; i++) {
+  for (size_t j = 1; j < nj - 1; j++) {
+    for (size_t i = 1; i < ni - 1; i++) {
       // find indices into linear memory
       // for central point and neighbours
       i00 = I2D(ni, i, j);
@@ -65,13 +70,17 @@ int main() {
   int nstep = 200;  // number of time steps
 
   // Specify our 2D dimensions
-  const int ni = 1000;
-  const int nj = 1000;
+  const size_t ni = SIZE;
+  const size_t nj = SIZE;
   float tfac = 8.418e-5;  // thermal diffusivity of silver
 
   float *temp1_ref, *temp2_ref, *temp1, *temp2, *temp_tmp;
 
-  const int size = ni * nj * sizeof(float);
+  const size_t size = ni * nj * sizeof(float);
+
+  printf("MATRIX SIZE: %zux%zu = %zu B = %.3f GB\n", ni, nj, size, (double)size / 1e9);
+
+  double start = clock();
 
   temp1_ref = (float*)malloc(size);
   temp2_ref = (float*)malloc(size);
@@ -79,7 +88,7 @@ int main() {
   temp2 = (float*)malloc(size);
 
   // Initialize with random data
-  for (int i = 0; i < ni * nj; ++i) {
+  for (size_t i = 0; i < ni * nj; ++i) {
     temp1_ref[i] = temp2_ref[i] = temp1[i] = temp2[i] = (float)rand() / (float)(RAND_MAX / 100.0f);
   }
 
@@ -105,7 +114,7 @@ int main() {
 
   float maxError = 0;
   // Output should always be stored in the temp1 and temp1_ref at this point
-  for (int i = 0; i < ni * nj; ++i) {
+  for (size_t i = 0; i < ni * nj; ++i) {
     if (abs(temp1[i] - temp1_ref[i]) > maxError) {
       maxError = abs(temp1[i] - temp1_ref[i]);
     }
@@ -122,5 +131,8 @@ int main() {
   free(temp1);
   free(temp2);
 
+  double end = (clock() - start) / (double)CLOCKS_PER_SEC * 1000.0;  // milliseconds
+
+  printf("\nElapsed time = %.2lf ms = %.2lf s\n", end, end / 1000.0);
   return 0;
 }
