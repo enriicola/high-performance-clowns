@@ -6,6 +6,14 @@
 // Simple define to index into a 1D array from 2D space
 #define I2D(num, c, r) ((r) * (num) + (c))
 
+#ifndef BLOCKDIM
+#define BLOCKDIM 16
+#endif
+
+#ifndef SIZE
+#define SIZE 1000
+#endif
+
 /**
  * @brief Performs a step of the heat equation simulation (CUDA).
  *
@@ -25,7 +33,7 @@ __global__ void step_kernel_mod_dev(const int ni, const int nj, const float fact
   int i = blockIdx.x * blockDim.x + threadIdx.x;
   int j = blockIdx.y * blockDim.y + threadIdx.y;
 
-  if (i > 0 && i < ni - 1 && j > 0 && j < nj - 1) {
+  if ((i > 0 && i < ni - 1) && (j > 0 && j < nj - 1)) {
     /*
       im1j = (i-1)j
       ip1j = (i+1)j
@@ -96,7 +104,7 @@ void step_kernel_ref(const int ni, const int nj, const float fact, float* temp_i
 
 // Launches the CUDA kernel
 void step_kernel_mod(int ni, int nj, float fact, float* temp_in_d, float* temp_out_d) {
-  dim3 block(16, 16);
+  dim3 block(BLOCKDIM, BLOCKDIM);
   /*
     we divide n_rows/block.x and n_cols/block.y. To avoid checking
     if the n_rows and n_cols are divisible by block.x and block.y,
@@ -109,9 +117,13 @@ void step_kernel_mod(int ni, int nj, float fact, float* temp_in_d, float* temp_o
 
 int main() {
   int nstep = 200;                           // n_iterations
-  const int ni = 1000, nj = 1000;            // rows, cols
+  const int ni = SIZE;                       // rows
+  const int nj = SIZE;                       // cols
   float tfac = 8.418e-5;                     // thermal diffusivity of silver
   const int size = ni * nj * sizeof(float);  // matrix size
+
+  printf("BLOCK DIM: %d\n", BLOCKDIM);
+  printf("MATRIX SIZE: %dx%d\n", SIZE, SIZE);
 
   // Host allocations
   // temp1_ref: true values (input)

@@ -1,9 +1,19 @@
 CC=nvcc
 SOURCE=./src
 RELEASE=./release
+BLOCKDIM ?= 16
+FLAGS=-O3
+ARCH=sm_86 # CUDA Capability Major/Minor version number: 8.6
+SIZE ?= 1000 # row = column size
 
 default:
-	${CC} ${SOURCE}/heat.cu -o ${RELEASE}/heat_cuda -run
+	${CC} ${FLAGS} -arch=${ARCH} \
+		-D BLOCKDIM=${BLOCKDIM} \
+		-D SIZE=${SIZE} \
+		${SOURCE}/heat.cu -o ${RELEASE}/heat_cuda -run
 
+# -march=native == -xHost
 seq:
-	gcc  -Wall ${SOURCE}/heat.c -o ${RELEASE}/heat
+	gcc ${FLAGS} -march=native \
+		-D SIZE=${SIZE} \
+		${SOURCE}/heat.c -o ${RELEASE}/heat && ${RELEASE}/heat
