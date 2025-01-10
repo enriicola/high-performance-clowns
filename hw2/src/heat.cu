@@ -1,3 +1,11 @@
+/******************************************************************************
+ * heat_fixed_compare.cu
+ *
+ * This version runs:
+ *   1) CPU 200 steps from the random initial data
+ *   2) GPU 200 steps from that SAME random initial data
+ * and then compares final states fairly.
+ ******************************************************************************/
 #include <cuda_runtime.h>
 #include <math.h>
 #include <stdio.h>
@@ -23,189 +31,216 @@
 #define NSTEPS 200
 #endif
 
-/**
- * @brief Performs a step of the heat equation simulation (CUDA).
- *
- * This function updates the temperature distribution by computing the
- * second derivatives in both the x and y directions and applying the
- * scaling factor to calculate the new temperature values.
- *
- * @param ni      Number of grid points in the i (x) direction.
- * @param nj      Number of grid points in the j (y) direction.
- * @param fact    Scaling factor applied to the computed derivatives.
- * @param temp_in Pointer to the input temperature array.
- * @param temp_out Pointer to the output temperature array where results are stored.
- *
- * @global The kernel is executed by multiple thread blocks in a 2D grid
- */
-__global__ void step_kernel_mod_dev(const size_t ni, const size_t nj, const float fact, const float* temp_in, float* temp_out) {
-  int i = blockIdx.x * blockDim.x + threadIdx.x;
-  int j = blockIdx.y * blockDim.y + threadIdx.y;
-
-  if ((i > 0 && i < ni - 1) && (j > 0 && j < nj - 1)) {
-    /*
-      im1j = (i-1)j
-      ip1j = (i+1)j
-      ijm1 = i(j-1)
-      ijp1 = i(j+1)
-    */
-
-    // find indices into linear memory
-    // for central point and neighbours
-    size_t ij = I2D(ni, i, j);        // T[i,j]
-    size_t im1j = I2D(ni, i - 1, j);  // T[i-1,j]
-    size_t ip1j = I2D(ni, i + 1, j);  // T[i+1,j]
-    size_t ijm1 = I2D(ni, i, j - 1);  // T[i,j-1]
-    size_t ijp1 = I2D(ni, i, j + 1);  // T[i,j+1]
-
-    // evaluate derivatives
-    // we suppose delta x^2 to be 1?
-    float dx2 = temp_in[ip1j] - 2.0f * temp_in[ij] + temp_in[im1j];
-    float dy2 = temp_in[ijp1] - 2.0f * temp_in[ij] + temp_in[ijm1];
-
-    // update temperatures
-    temp_out[ij] = temp_in[ij] + fact * (dx2 + dy2);
-  }
-}
-
-/**
- * @brief Performs a step of the heat equation simulation (sequential).
- *
- * This function updates the temperature distribution by computing the
- * second derivatives in both the x and y directions and applying the
- * scaling factor to calculate the new temperature values.
- *
- * @param ni      Number of grid points in the i (x) direction.
- * @param nj      Number of grid points in the j (y) direction.
- * @param fact    Scaling factor applied to the computed derivatives.
- * @param temp_in Pointer to the input temperature array.
- * @param temp_out Pointer to the output temperature array where results are stored.
- */
-__host__ void step_kernel_ref(const size_t ni, const size_t nj, const float fact, float* temp_in, float* temp_out) {
-  // loop over all points in domain (except boundary)
-  for (size_t i = 1; i < ni - 1; i++) {
-    for (size_t j = 1; j < nj - 1; j++) {
-      /*
-        im1j = (i-1)j
-        ip1j = (i+1)j
-        ijm1 = i(j-1)
-        ijp1 = i(j+1)
-      */
-
-      // find indices into linear memory
-      // for central point and neighbours
-      size_t ij = I2D(ni, i, j);        // T[i,j]
-      size_t im1j = I2D(ni, i - 1, j);  // T[i-1,j]
-      size_t ip1j = I2D(ni, i + 1, j);  // T[i+1,j]
-      size_t ijm1 = I2D(ni, i, j - 1);  // T[i,j-1]
-      size_t ijp1 = I2D(ni, i, j + 1);  // T[i,j+1]
-
-      // evaluate derivatives
-      // we suppose delta x^2 to be 1?
-      float dx2 = temp_in[ip1j] - 2.0f * temp_in[ij] + temp_in[im1j];
-      float dy2 = temp_in[ijp1] - 2.0f * temp_in[ij] + temp_in[ijm1];
-
-      // update temperatures
-      temp_out[ij] = temp_in[ij] + fact * (dx2 + dy2);
+/******************************************************************************
+ * Error-checking helper
+ ******************************************************************************/
+void handle_error(cudaError_t err)
+{
+    if (err != cudaSuccess)
+    {
+        fprintf(stderr, "GPU error: %s\n", cudaGetErrorString(err));
+        exit(err);
     }
-  }
 }
 
-// Launches the CUDA kernel
-__host__ void step_kernel_mod(const size_t ni, const size_t nj, const float fact, const float* temp_in_d, float* temp_out_d) {
-  dim3 threadsPerBlock(BLOCKDIM_X, BLOCKDIM_Y);
-  /*
-    we divide n_rows/block.x and n_cols/block.y. To avoid checking
-    if the n_rows and n_cols are divisible by block.x and block.y,
-    we add block.x - 1 and block.y - 1 at the numerator, so we don't
-    miss the last cell.
-  */
-  dim3 numBlocks((ni + threadsPerBlock.x - 1) / threadsPerBlock.x, (nj + threadsPerBlock.y - 1) / threadsPerBlock.y);
-  step_kernel_mod_dev<<<numBlocks, threadsPerBlock>>>(ni, nj, fact, temp_in_d, temp_out_d);
+/******************************************************************************
+ * GPU kernel
+ ******************************************************************************/
+__global__ void step_kernel_mod_dev(const size_t ni, const size_t nj,
+                                    const float fact,
+                                    const float* temp_in,
+                                    float*       temp_out)
+{
+    int i = blockIdx.x * blockDim.x + threadIdx.x;
+    int j = blockIdx.y * blockDim.y + threadIdx.y;
+
+    if ((i > 0 && i < ni - 1) && (j > 0 && j < nj - 1)) 
+    {
+        // Indices
+        size_t ij   = I2D(ni, i, j);
+        size_t im1j = I2D(ni, i - 1, j);
+        size_t ip1j = I2D(ni, i + 1, j);
+        size_t ijm1 = I2D(ni, i, j - 1);
+        size_t ijp1 = I2D(ni, i, j + 1);
+
+        // second derivatives
+        float dx2 = temp_in[ip1j] - 2.0f * temp_in[ij] + temp_in[im1j];
+        float dy2 = temp_in[ijp1] - 2.0f * temp_in[ij] + temp_in[ijm1];
+
+        // update
+        temp_out[ij] = temp_in[ij] + fact * (dx2 + dy2);
+    }
 }
 
-int main() {
-  int nstep = NSTEPS;                           // n_iterations
-  const size_t ni = SIZE;                       // rows
-  const size_t nj = SIZE;                       // cols
-  float tfac = 8.418e-5f;                       // thermal diffusivity of silver
-  const size_t size = ni * nj * sizeof(float);  // matrix size
+/******************************************************************************
+ * Reference CPU version
+ ******************************************************************************/
+__host__ void step_kernel_ref(const size_t ni, const size_t nj,
+                              const float fact,
+                              float* temp_in,
+                              float* temp_out)
+{
+    for (size_t j = 1; j < nj - 1; j++)
+    {
+        for (size_t i = 1; i < ni - 1; i++)
+        {
+            size_t ij   = I2D(ni, i, j);
+            size_t im1j = I2D(ni, i - 1, j);
+            size_t ip1j = I2D(ni, i + 1, j);
+            size_t ijm1 = I2D(ni, i, j - 1);
+            size_t ijp1 = I2D(ni, i, j + 1);
 
-  printf("BLOCKDIM: %dx%d\n", BLOCKDIM_X, BLOCKDIM_Y);
-  printf("MATRIX SIZE: %zux%zu = %zu B = %.3f GB\n", ni, nj, size, (double)size / 1e9);
+            float dx2 = (temp_in[ip1j] - 2.0f * temp_in[ij] + temp_in[im1j]);
+            float dy2 = (temp_in[ijp1] - 2.0f * temp_in[ij] + temp_in[ijm1]);
 
-  double start = clock();
+            temp_out[ij] = temp_in[ij] + fact * (dx2 + dy2);
+        }
+    }
+}
 
-  // Host allocations
-  // temp1_ref: true values (input)
-  // temp2_ref: true values (output)
-  // temp*: initial values to copy to device
-  float* temp1_ref = (float*)malloc(size);
-  float* temp2_ref = (float*)malloc(size);
-  float* temp1 = (float*)malloc(size);
-  float* temp2 = (float*)malloc(size);
+/******************************************************************************
+ * main()
+ ******************************************************************************/
+int main()
+{
+    // Number of steps
+    int nstep = NSTEPS;
 
-  // Random init
-  for (size_t i = 0; i < ni * nj; ++i) {
-    float v = (float)rand() / ((float)RAND_MAX / 100.0f);
-    temp1_ref[i] = temp2_ref[i] = temp1[i] = temp2[i] = v;
-  }
+    // Problem size
+    const size_t ni = SIZE;
+    const size_t nj = SIZE;
 
-  // CPU reference
-  for (int step = 0; step < nstep; step++) {
-    step_kernel_ref(ni, nj, tfac, temp1_ref, temp2_ref);
-    // the output becomes the next step's input
-    float* tmp = temp1_ref;
-    temp1_ref = temp2_ref;
-    temp2_ref = tmp;
-  }
+    // Thermal diffusivity
+    float tfac = 8.418e-5f;
 
-  /* CUDA */
+    // Memory size
+    const size_t size = ni * nj * sizeof(float);
 
-  // Device allocations
-  // allocate and copy the initial values to device
-  float *temp1_d, *temp2_d;
+    printf("BLOCKDIM: %dx%d\n", BLOCKDIM_X, BLOCKDIM_Y);
+    printf("Matrix size: %zux%zu (%.3f MB)\n",
+           ni, nj, (double)size / (1024.0 * 1024.0));
 
-  cudaMalloc(&temp1_d, size);
-  cudaMalloc(&temp2_d, size);
-  cudaMemcpy(temp1_d, temp1, size, cudaMemcpyHostToDevice);
-  cudaMemcpy(temp2_d, temp2, size, cudaMemcpyHostToDevice);
+    /*************************
+     * Host allocations
+     *************************/
+    float* init_data  = (float*)malloc(size); // store the random initial field
+    float* temp1_ref  = (float*)malloc(size);
+    float* temp2_ref  = (float*)malloc(size);
+    float* gpu_res    = (float*)malloc(size);
 
-  // GPU steps
-  for (int step = 0; step < nstep; step++) {
-    step_kernel_mod(ni, nj, tfac, temp1_d, temp2_d);
-    // the output becomes the next step's input
-    float* tmp = temp1_d;
-    temp1_d = temp2_d;
-    temp2_d = tmp;
-  }
+    // Device pointers
+    float *temp1_d, *temp2_d;
+    handle_error(cudaMalloc((void**)&temp1_d, size));
+    handle_error(cudaMalloc((void**)&temp2_d, size));
 
-  // Copy back
-  // temp1 is the final output after the last swap
-  cudaMemcpy(temp1, temp1_d, size, cudaMemcpyDeviceToHost);
+    // 1) Generate random data once. We'll use this same init for CPU & GPU.
+    srand((unsigned int)time(NULL));
+    for (size_t i = 0; i < ni * nj; ++i)
+    {
+        init_data[i] = (float)rand() / (float)(RAND_MAX / 100.0f);
+    }
 
-  // Check error
-  float maxError = 0.0f;
-  for (size_t i = 0; i < ni * nj; ++i) {
-    float diff = fabsf(temp1[i] - temp1_ref[i]);
-    if (diff > maxError) maxError = diff;
-  }
+    /****************************************************************
+     * 2) CPU Simulation from init_data
+     ****************************************************************/
+    // Copy init_data into temp1_ref and temp2_ref
+    memcpy(temp1_ref, init_data, size);
+    memcpy(temp2_ref, init_data, size);
 
-  // Check and see if our maxError is greater than an error bound
-  if (maxError > 0.0005f)
-    printf("Problem! The Max Error of %.5f is NOT within acceptable bounds.\n", maxError);
-  else
-    printf("The Max Error of %.5f is within acceptable bounds.\n", maxError);
+    // Time the CPU
+    double cpuStart = clock();
+    for (int step = 0; step < nstep; step++)
+    {
+        step_kernel_ref(ni, nj, tfac, temp1_ref, temp2_ref);
 
-  free(temp1_ref);
-  free(temp2_ref);
-  free(temp1);
-  free(temp2);
-  cudaFree(temp1_d);
-  cudaFree(temp2_d);
+        // Swap pointers
+        float* tmp = temp1_ref;
+        temp1_ref  = temp2_ref;
+        temp2_ref  = tmp;
+    }
+    double cpuEnd    = clock();
+    double cpuTimeMs = (cpuEnd - cpuStart) / (double)CLOCKS_PER_SEC * 1000.0;
+    printf("\n--- CPU simulation ---\n");
+    printf("CPU time: %.2f ms (for %d steps)\n", cpuTimeMs, nstep);
 
-  double end = (clock() - start) / (double)CLOCKS_PER_SEC * 1000.0;  // milliseconds
+    // After the final swap, the CPU results are in temp1_ref
 
-  printf("\nElapsed time = %.2lf ms = %.2lf s\n", end, end / 1000.0);
-  return 0;
+    /****************************************************************
+     * 3) GPU Simulation from SAME init_data
+     ****************************************************************/
+    // Copy init_data to GPU arrays
+    handle_error(cudaMemcpy(temp1_d, init_data, size, cudaMemcpyHostToDevice));
+    handle_error(cudaMemcpy(temp2_d, init_data, size, cudaMemcpyHostToDevice));
+
+    // Create events for timing
+    cudaEvent_t start, stop;
+    handle_error(cudaEventCreate(&start));
+    handle_error(cudaEventCreate(&stop));
+
+    // Record the start
+    handle_error(cudaEventRecord(start, 0));
+
+    // GPU steps
+    dim3 threadsPerBlock(BLOCKDIM_X, BLOCKDIM_Y);
+    dim3 numBlocks((ni + threadsPerBlock.x - 1) / threadsPerBlock.x,
+                   (nj + threadsPerBlock.y - 1) / threadsPerBlock.y);
+
+    for (int step = 0; step < nstep; step++)
+    {
+        step_kernel_mod_dev<<<numBlocks, threadsPerBlock>>>(
+            ni, nj, tfac, temp1_d, temp2_d
+        );
+        // Swap
+        float* tmp = temp1_d;
+        temp1_d    = temp2_d;
+        temp2_d    = tmp;
+    }
+
+    // Record stop
+    handle_error(cudaEventRecord(stop, 0));
+    handle_error(cudaEventSynchronize(stop));
+
+    float gpuTimeMs = 0.0f;
+    handle_error(cudaEventElapsedTime(&gpuTimeMs, start, stop));
+
+    printf("\n--- GPU simulation ---\n");
+    printf("GPU time: %.2f ms (for %d steps)\n", gpuTimeMs, nstep);
+
+    // Clean up events
+    cudaEventDestroy(start);
+    cudaEventDestroy(stop);
+
+    /****************************************************************
+     * 4) Compare GPU vs CPU Results
+     ****************************************************************/
+    // temp1_d holds the final GPU result after the last swap
+    handle_error(cudaMemcpy(gpu_res, temp1_d, size, cudaMemcpyDeviceToHost));
+
+    float maxError = 0.0f;
+    for (size_t i = 0; i < ni * nj; ++i)
+    {
+        float diff = fabsf(gpu_res[i] - temp1_ref[i]);
+        if (diff > maxError) maxError = diff;
+    }
+
+    if (maxError > 0.0005f)
+        printf("\nProblem! Max Error of %.5f is NOT within acceptable bounds.\n",
+               maxError);
+    else
+        printf("\nSuccess! Max Error of %.5f is within acceptable bounds.\n",
+               maxError);
+
+    /****************************************************************
+     * Final Cleanup
+     ****************************************************************/
+    free(init_data);
+    free(temp1_ref);
+    free(temp2_ref);
+    free(gpu_res);
+
+    handle_error(cudaFree(temp1_d));
+    handle_error(cudaFree(temp2_d));
+
+    printf("\nDone.\n");
+    return 0;
 }

@@ -3,7 +3,7 @@ SOURCE=./src
 RELEASE=./release
 BLOCKDIM_X ?= 16
 BLOCKDIM_Y ?= 16
-FLAGS=-O3
+FLAGS=-O3 -x cu
 ARCH=sm_86 # CUDA Capability Major/Minor version number: 8.6
 SIZE ?= 1000 # row = column = size
 NSTEPS ?= 200
