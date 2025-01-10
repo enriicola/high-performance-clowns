@@ -91,26 +91,15 @@ __host__ void step_kernel_ref(const size_t ni, const size_t nj,
   }
 }
 
-/******************************************************************************
- * main()
- ******************************************************************************/
 int main() {
-  // Number of steps
   int nstep = NSTEPS;
-
-  // Problem size
   const size_t ni = SIZE;
   const size_t nj = SIZE;
-
-  // Thermal diffusivity
-  float tfac = 8.418e-5f;
-
-  // Memory size
+  float tfac = 8.418e-5f;  // Thermal diffusivity
   const size_t size = ni * nj * sizeof(float);
 
   printf("BLOCKDIM: %dx%d\n", BLOCKDIM_X, BLOCKDIM_Y);
-  printf("Matrix size: %zux%zu (%.3f GB)\n",
-         ni, nj, (double)size / 1e9);
+  printf("Matrix size: %zux%zu (%.3f GB)\n", ni, nj, (double)size / 1e9);
 
   /*************************
    * Host allocations
@@ -120,12 +109,14 @@ int main() {
   float* temp2_ref = (float*)malloc(size);
   float* gpu_res = (float*)malloc(size);
 
-  // Device pointers
+  /*************************
+   * Device allocations
+   *************************/
   float *temp1_d, *temp2_d;
   handle_error(cudaMalloc((void**)&temp1_d, size));
   handle_error(cudaMalloc((void**)&temp2_d, size));
 
-  // 1) Generate random data once. We'll use this same init for CPU & GPU.
+  // Initialise with random data
   srand((unsigned int)time(NULL));
   for (size_t i = 0; i < ni * nj; ++i) {
     float v = (float)rand() / (float)(RAND_MAX / 100.0f);
@@ -133,19 +124,20 @@ int main() {
   }
 
   /****************************************************************
-   * 2) CPU Simulation from init_data
+   * CPU Simulation from init_data
    ****************************************************************/
 
   // Time the CPU
   double cpuStart = clock();
+
   for (int step = 0; step < nstep; step++) {
     step_kernel_ref(ni, nj, tfac, temp1_ref, temp2_ref);
 
-    // Swap pointers
     float* tmp = temp1_ref;
     temp1_ref = temp2_ref;
     temp2_ref = tmp;
   }
+
   double cpuEnd = clock();
   double cpuTimeMs = (cpuEnd - cpuStart) / (double)CLOCKS_PER_SEC * 1000.0;
   printf("\n--- CPU simulation ---\n");
@@ -154,34 +146,31 @@ int main() {
   // After the final swap, the CPU results are in temp1_ref
 
   /****************************************************************
-   * 3) GPU Simulation from SAME init_data
+   * GPU Simulation from SAME init_data
    ****************************************************************/
   // Copy init_data to GPU arrays
   handle_error(cudaMemcpy(temp1_d, init_data, size, cudaMemcpyHostToDevice));
   handle_error(cudaMemcpy(temp2_d, init_data, size, cudaMemcpyHostToDevice));
 
-  // Create events for timing
+  // time measurement
   cudaEvent_t start, stop;
   handle_error(cudaEventCreate(&start));
   handle_error(cudaEventCreate(&stop));
 
-  // Record the start
   handle_error(cudaEventRecord(start, 0));
 
-  // GPU steps
   dim3 threadsPerBlock(BLOCKDIM_X, BLOCKDIM_Y);
   dim3 numBlocks((ni + threadsPerBlock.x - 1) / threadsPerBlock.x,
                  (nj + threadsPerBlock.y - 1) / threadsPerBlock.y);
 
   for (int step = 0; step < nstep; step++) {
     step_kernel_mod_dev<<<numBlocks, threadsPerBlock>>>(ni, nj, tfac, temp1_d, temp2_d);
-    // Swap
+
     float* tmp = temp1_d;
     temp1_d = temp2_d;
     temp2_d = tmp;
   }
 
-  // Record stop
   handle_error(cudaEventRecord(stop, 0));
   handle_error(cudaEventSynchronize(stop));
 
@@ -191,12 +180,11 @@ int main() {
   printf("\n--- GPU simulation ---\n");
   printf("GPU time: %.2f ms (%.2f s)\n", gpuTimeMs, gpuTimeMs / 1000.0);
 
-  // Clean up events
-  cudaEventDestroy(start);
-  cudaEventDestroy(stop);
+  handle_error(cudaEventDestroy(start));
+  handle_error(cudaEventDestroy(stop));
 
   /****************************************************************
-   * 4) Compare GPU vs CPU Results
+   * GPU vs CPU Results
    ****************************************************************/
   // temp1_d holds the final GPU result after the last swap
   handle_error(cudaMemcpy(gpu_res, temp1_d, size, cudaMemcpyDeviceToHost));
@@ -214,9 +202,6 @@ int main() {
     printf("\nSuccess! Max Error of %.5f is within acceptable bounds.\n",
            maxError);
 
-  /****************************************************************
-   * Final Cleanup
-   ****************************************************************/
   free(init_data);
   free(temp1_ref);
   free(temp2_ref);
