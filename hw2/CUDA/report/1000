@@ -1,0 +1,22 @@
+==3764== NVPROF is profiling process 3764, command: heat1000
+==3764== Profiling application: heat1000
+==3764== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   98.00%  81.975ms       200  409.88us  408.07us  412.80us  step_kernel_mod(int, int, float, float*, float*)
+                    1.15%  962.37us         1  962.37us  962.37us  962.37us  [CUDA memcpy DtoH]
+                    0.85%  708.48us         2  354.24us  352.29us  356.19us  [CUDA memcpy HtoD]
+      API calls:   49.94%  84.715ms         2  42.357ms  54.311us  84.660ms  cudaMalloc
+                   48.20%  81.763ms         2  40.882ms  3.6250us  81.760ms  cudaEventSynchronize
+                    1.12%  1.8937ms         3  631.24us  310.61us  1.1588ms  cudaMemcpy
+                    0.22%  381.30us       200  1.9060us  1.6930us  22.843us  cudaLaunchKernel
+                    0.17%  296.71us         1  296.71us  296.71us  296.71us  cuDeviceTotalMem
+                    0.17%  289.87us       101  2.8690us     347ns  120.92us  cuDeviceGetAttribute
+                    0.09%  160.61us         2  80.304us  44.037us  116.57us  cudaFree
+                    0.05%  81.022us         1  81.022us  81.022us  81.022us  cuDeviceGetName
+                    0.01%  13.735us         4  3.4330us  1.1090us  7.5040us  cudaEventRecord
+                    0.01%  13.723us         1  13.723us  13.723us  13.723us  cuDeviceGetPCIBusId
+                    0.00%  6.2570us         4  1.5640us     444ns  3.3170us  cudaEventCreate
+                    0.00%  5.1180us         3  1.7060us     402ns  3.7500us  cuDeviceGetCount
+                    0.00%  2.8520us         2  1.4260us  1.1020us  1.7500us  cudaEventElapsedTime
+                    0.00%  2.6540us         2  1.3270us     430ns  2.2240us  cuDeviceGet
+                    0.00%     788ns         1     788ns     788ns     788ns  cuDeviceGetUuid

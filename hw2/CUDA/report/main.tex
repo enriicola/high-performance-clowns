@@ -1,0 +1,100 @@
+\documentclass{article}
+
+\usepackage{natbib} % Required to change bibliography style to APA
+\usepackage{amsmath} % Required for some math elements 
+\usepackage{geometry}
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage {tikz}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage[export]{adjustbox}
+\usetikzlibrary {positioning}
+\graphicspath{ {./images/} }
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+\usepackage{animate}
+\usepackage{array}
+\usepackage{minted}
+
+
+\newcommand{\ip}[1]{{\fontfamily{pcr}\selectfont #1}}
+\definecolor{LightGray}{gray}{0.9}
+
+\parskip=0pt plus 1pt
+\parindent=15pt
+
+\setlength\parskip{1em plus 0.1em minus 0.2em}
+\setlength\parindent{0pt}
+
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=22mm,
+ top=22mm,
+ }
+
+
+\title{High Performance Computing \\ Homework 2 - CUDA report }
+\author{
+\begin{tabular}[t]{c@{\extracolsep{3em}}c@{\extracolsep{3em}}c} 
+Federico Fontana  & Filippo Siri & Marco Zucca \\
+s4835118@studenti.unige.it & s4819642@studenti.unige.it & s4828628@studenti.unige.it 
+\end{tabular}
+}
+\date{March 2024}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+We were tasked to optimise the implementation of the simulation of the 2D heat conduction formula leveraging the GPU equipped in the machine in Laboratory 210, to see if there were some advantages concerning the same formula, but computed on the CPU
+\section{Setup}
+The machine used for the task was the equipped with the following GPU:
+\begin{verbatim}
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.199.02   Driver Version: 470.199.02   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA T400         On   | 00000000:01:00.0  On |                  N/A |
+| 38%   35C    P8    N/A /  31W |    245MiB /  1873MiB |      3%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+\end{verbatim}
+\section{Kernel implementation}
+
+In order to transform the given implementation of the algorithm in a CUDA Kernel function, we had to remove the loops inside the functions and compute \texttt{x} and \texttt{y} in terms of \texttt{blockIdx}, \texttt{blockDim}, and \texttt{threadIdx} in the following way:
+\begin{verbatim}
+int i = blockIdx.x * blockDim.x + threadIdx.x;
+int j = blockIdx.y * blockDim.y + threadIdx.y;
+\end{verbatim}
+
+The kernel needs two parameters: number of blocks and number of threads per block. We defined the number of thread per block by specifying the dimension of the block, then we computed the number of blocks in this way:
+
+\begin{verbatim}
+dim3 threadsPerBlock(THREADS_X, THREADS_Y); // 1024 threads per block
+dim3 numBlocks((ni + threadsPerBlock.x - 1) / threadsPerBlock.x, 
+               (nj + threadsPerBlock.y - 1) / threadsPerBlock.y);
+\end{verbatim}  
+
+Furthermore, to transfer data from the system RAM to GPU VRAM we used \texttt{cudaMemcpy()}
+
+\section{Measurement}
+
+To test the algorithm, we used matrices of dimensions $1000\times1000$, $10000\times10000$, $30000\times30000$ and using 1, 2, 4, 8, 16 dimension of the block.
+
+\section{Conclusion}
+
+\end{document}
