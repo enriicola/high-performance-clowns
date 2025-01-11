@@ -1,66 +1,58 @@
 {
-    "parallel": [
-      {
-        "INTERVALS": 100000000000,
-        "Time (s)": 8.45,
-        "GFLOPS": 70.97,
-        "Hotspots": [
-          {
-            "Hotspot": "loop in main at pi_homework.c:30",
-            "Time (s)": 6.66
-          }
-        ]
-      },
-      {
-        "INTERVALS": 300000000000,
-        "Time (s)": 26.82,
-        "GFLOPS": 63.13,
-        "Hotspots": [
-          {
-            "Hotspot": "loop in main at pi_homework.c:30",
-            "Time (s)": 21.04
-          }
-        ]
-      },
-      {
-        "INTERVALS": 500000000000,
-        "Time (s)": 41.18,
-        "GFLOPS": 72.86,
-        "Hotspots": [
-          {
-            "Hotspot": "loop in main at omp_homework.c:30",
-            "Time (s)": 34.37
-          }
-        ]
-      },
-      {
-        "INTERVALS": 700000000000,
-        "Time (s)": 59.57, 
-        "GFLOPS": 70.50,
-        "Hotspots": [
-          {
-            "Hotspot": "loop in main at omp_homework.c:30",
-            "Time (s)": 48.60
-          }
-        ]
+  "parallel": [
+    {
+      "INTERVALS": 100000000000,
+      "Time (s)": 8.45,
+      "GFLOPS": 70.97,
+      "Hotspot": {
+        "name": "loop in main at pi_homework.c:30",
+        "Time (s)": 6.66
       }
-    ],
-    "mpi": [
-        {
-            "INTERVALS": 100000000000,
-            "Time (s)": 11.42
-        },
-        {
-            "INTERVALS": 300000000000,
-            "Time (s)": 33.03
-        },
-        {
-            "INTERVALS": 500000000000,
-            "Time (s)": 54.76
-        },
-        {
-            "INTERVALS": 700000000000,
-            "Time (s)": 79.06
-        }
-    ]
-  }
+    },
+    {
+      "INTERVALS": 300000000000,
+      "Time (s)": 26.82,
+      "GFLOPS": 63.13,
+      "Hotspot": {
+        "name": "loop in main at pi_homework.c:30",
+        "Time (s)": 21.04
+      }
+    },
+    {
+      "INTERVALS": 500000000000,
+      "Time (s)": 41.18,
+      "GFLOPS": 72.86,
+      "Hotspot": {
+        "name": "loop in main at omp_homework.c:30",
+        "Time (s)": 34.37
+      }
+    },
+    {
+      "INTERVALS": 700000000000,
+      "Time (s)": 59.57,
+      "GFLOPS": 70.50,
+      "Hotspot": {
+        "name": "loop in main at omp_homework.c:30",
+        "Time (s)": 48.60
+      }
+    }
+  ],
+  "mpi": [
+    {
+      "INTERVALS": 100000000000,
+      "Time (s)": 11.42
+    },
+    {
+      "INTERVALS": 300000000000,
+      "Time (s)": 33.03
+    },
+    {
+      "INTERVALS": 500000000000,
+      "Time (s)": 54.76
+    },
+    {
+      "INTERVALS": 700000000000,
+      "Time (s)": 79.06
+    }
+  ]
+}

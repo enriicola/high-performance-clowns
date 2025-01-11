@@ -92,10 +92,10 @@ if(rank == MASTER_NODE){
 
 ### Vectorization
 
-Now that the program is distributed, we can thinking at the other optimization aspects. The first thing to tune is the compiler, in our case we used `mpiicx` with all the optimization flag needed. The command ran to compile the program is
+Now that the program is distributed, we can start thinking at the other optimization aspects. The first thing to tune is the compiler, in our case we used `mpiicx` with all the optimization flag needed. The command ran to compile the program is
 
 ```bash
-mpiicx -g -O2 -xHost -qopenmp -qopt-report=3 -ffast-math pi_homework.c
+mpiicx -g -O3 -xHost -qopenmp -qopt-report=3 -ffast-math pi_homework.c
 ```
 
 while the one to execute it is
@@ -109,8 +109,7 @@ mpirun -np 10 ./pi_homework
 Another way to improve the performances is to use multithreading. We used **OpenMP** to parallelize the MPI code in this way:
 
 ```c
-omp_set_num_threads(20);
-#pragma omp parallel for private(x, f) reduction(+ : local_sum)
+#pragma omp parallel for num_threads(NTHREADS) private(x, f) reduction(+ : local_sum)
 for (i = start; i <= end; i++) {
   x = dx * ((double)(i - 0.5));
   f = 4.0 / (1.0 + x * x);
@@ -120,35 +119,19 @@ for (i = start; i <= end; i++) {
 
 That is, simply subdivide the for loop on different threads and apply the reduction on the sum.
 
-## Statistics
+## Performance evaluation
 
-**sequential (best)**
+In this program, the only heavy hotspot is `loop in main at pi_homework.c:26`, that is the one that computes the local sums. The following measurements are taken considering the global execution time and the hotspot execution time (since it's only one).
 
-|    INTERVALS    | Time (s) | GFLOPS | GINTOPS |             Hotspots             |
-| :-------------: | :------: | :----: | :-----: | :------------------------------: |
-|  1,000,000,000  |   0.62   |  9.75  |  2.11   | loop in main at pi_homework.c:26 |
-| 10,000,000,000  |   5.87   | 10.22  |  1.22   | loop in main at pi_homework.c:26 |
-| 100,000,000,000 |  58.68   | 10.22  |  1.22   | loop in main at pi_homework.c:26 |
+<div style="display: flex; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <img src="./images/comparison.png" alt="Distributed" width="80%" />
+  </figure>
+</div>
 
-**parallel**
+### NOTE
 
-|    INTERVALS    | Time (s) | GFLOPS | GINTOPS |             Hotspots             | Time per Core (s) |
-| :-------------: | :------: | :----: | :-----: | :------------------------------: | :---------------: |
-|  1,000,000,000  |   0.11   | 53.68  |  15.66  | loop in main at pi_homework.c:26 |       0.05        |
-| 10,000,000,000  |   0.88   | 73.02  |  21.30  | loop in main at pi_homework.c:26 |        0.6        |
-| 100,000,000,000 |   7.81   | 76.85  |  22.41  | loop in main at pi_homework.c:26 |       6.28        |
-
-We can easely see that the parallel and distributed program is much faster, with a speedup of
-
-**speedup**
-
-|    INTERVALS    | Sequential time (s) | Parallel time (s) | Speedup  |
-| :-------------: | :-----------------: | :---------------: | :------: |
-|  1,000,000,000  |        0.62         |       0.11        | **5.64** |
-| 10,000,000,000  |        5.87         |       0.88        | **6.67** |
-| 100,000,000,000 |        58.68        |       7.81        | **7.51** |
-
-The speedup increases with the number of intervals, showing the efficiency of the parallel and distributed approach.
+It's nonsense to compare those execution times, since the parallel case is executed on one machine only but the MPI case should be executed on different machines...
 
 # TODO
 

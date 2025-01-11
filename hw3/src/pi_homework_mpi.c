@@ -14,6 +14,18 @@ int main(int argc, char **argv) {
   double x, dx, f, local_sum, global_sum, pi;
   double time2;
 
+  /*
+   * Since we use only one workstation and we don't have an MPI cluster,
+   * we decided to avoid thread time sharing by decinding how many thread to assign
+   * with respect to the number of spawned processes.
+   *
+   * e.g
+   * if we have 20 threads and 10 processes, we assign 2 threads per process,
+   * if we have 20 threads and 5 processes, we assign 4 threads per process exc.
+   *
+   * NOTE: this is done only becase we do not have an MPI cluster!
+   */
+
   int NPROCS = 10;
   int NTHREADS = NTHREADS_TOTAL / NPROCS;
 

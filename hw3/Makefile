@@ -1,6 +1,6 @@
 NPROCS ?= 10
 RELEASE_PATH=release
-SOURCE_PATH=source
+SOURCE_PATH=src
 FLAGS=-g -O3 -xHost -qopenmp -qopt-report=3 -ffast-math
 INTERVALS ?= 100000000000
 
