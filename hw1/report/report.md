@@ -1,20 +1,13 @@
-```
-    describe always the compute capability of the resource you are using;
-    use ICC/ICX on our workstations, GCC with Colab;
-    use the BEST sequential execution time;
-    always provide the compilation and execution commands (e.g. icc -O3 -xHost...);
-    consider different and meaningful data sizes (i.e. no sequential execution time shorter than a few seconds).   
-```
-
 # HPC - OpenMP report 🏎️ 💻
-## Leonardo Gonfiantini, Christian Parodi, Enrico Pezzano
-### December 2024
+**Leonardo Gonfiantini, Christian Parodi, Enrico Pezzano**
 
 # Introduction 🎬
+
 The goal of this laboratory is to optimize the implementation of the Discrete Fourier Transform (DFT) algorithm by leveraging OpenMP HPC techniques, with a focus on parallelization and vectorization, especially on the hotspots. We aim to reduce execution time without compromising computational accuracy, keeping the tracked error rate as low as possible. Key challenges such as identifying hotspots, addressing potential vectorization barriers, parallelization problems, and managing thread scalability are discussed in depth.
 
 # Hardware Capability ⚙️
-For this first assignment, we executed the c code using the Software 2 (SW2), with the following characteristics.
+
+For this first assignment, we executed the C code using the Software 2 (SW2) workstations, with the following characteristics.
 
 ```
 S4825087@sw209:~$ lscpu
@@ -72,6 +65,7 @@ Flags:                           fpu vme de pse tsc msr pae mce cx8 apic sep mtr
 
 
 # Algorithm analysis 👨🏻‍💻
+
 The Fourier Transform is a mathematical transformation used to convert a function of time (or space) into a function of frequency. It is defined as:
 
 $$
@@ -100,7 +94,8 @@ $$
 Notice it is just the DFT of the DFT.
 
 # Parallelization strategy 🧠
-Since it is a sum of $N$ elements, it can be splitted into $m$ different threads, each with $N/m$ sums to compute.
+
+Since it is a sum of $N$ elements, it can be split into $m$ different threads, each with $N/m$ sums to compute.
 
 <div style="display: flex; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
@@ -113,43 +108,45 @@ The only hotspot that is worth mentioning is the `loop in DFT at omp_homework.c:
 
 ```c
 for (k = 0; k < N; k++) {
-   for (n = 0; n < N; n++) {
-   // Real part of X[k]
-   Xr_o[k] += xr[n] * cos(n * k * PI2 / N) + idft * xi[n] * sin(n * k * PI2 / N);
-   // Imaginary part of X[k]
-   Xi_o[k] += -idft * xr[n] * sin(n * k * PI2 / N) + xi[n] * cos(n * k * PI2 / N);
-   }
+    for (n = 0; n < N; n++) {
+        // Real part of X[k]
+        Xr_o[k] += xr[n] * cos(n * k * PI2 / N) + idft * xi[n] * sin(n * k * PI2 / N);
+        // Imaginary part of X[k]
+        Xi_o[k] += -idft * xr[n] * sin(n * k * PI2 / N) + xi[n] * cos(n * k * PI2 / N);
+    }
 }
 ```
 
 Since it is in $O(N^2)$, massaging this section is crucial to speed up the program, in this context, using OpenMP.
 
-
 # Compiler settings 🔧
+
 We compiled the program using the following command:
 
 ```bash
-icx -g -Wall -std=c99 -qopenmp -qopt-report=3 -xHost -O3 -ffast-math omp_homework.c
+icx -g -Wall -qopenmp -qopt-report=3 -xHost -O3 -ffast-math omp_homework.c
 ```
+
 In this way, the code is properly optimized, the best istruction set is used and the program is vectorized when possible.
 
 In particular:
 - the **-g** flag enables the debug;
-- the **-Wall** flag enables compilation errors;
-- the **-std=c99** flag enables standard ISO C99;
+- the **-Wall** flag enables compilation warnings;
 - the **-qopenmp** flag enables OpenMP;
-- the **-qopt-report=3** flag produce detailed information about the optimizations performed by the compiler;
-- the **-xHost** flag optimize the compilation process relative to the host CPU and architecture;
-- the **-O3** flag optimize the compilation process at high level;
-- the **-ffast-math** flag: 
+- the **-qopt-report=3** flag produces detailed information about the optimizations performed by the compiler;
+- the **-xHost** flag optimizes the compilation process relative to the host CPU and architecture (using the best registries);
+- the **-O3** flag optimizes the compilation process at high level;
+- the **-ffast-math** flag performs: 
    - reordering of operations (i.e. `(a + b) + c = a + (b + c)` )
    - use of approximations
    - disabling special number handling
    - ignoring associative and distributive rules (i.e. `x / y / z` might be computed as `x / (y * z)` for better efficiency).
 
 # Vectorization 🏹
-First of all, we studied the code alone and we interrogated ourselves about possible vectorization problems that seemed to not be there. 
+
+First of all, we studied the code alone and we interrogated ourselves about possible vectorization problems that seemed not to be there. 
 Secondly, we leveraged the OpenMP report flag in order to produce useful outputs about what the compiler did. The following texts display what we obtained as said report, only for the hotspot, for readability issues.
+
 ```
 Begin optimization report for: DFT
 
@@ -209,12 +206,13 @@ LOOP BEGIN at ./source/omp_homework.c (83, 3)
     LOOP END
 LOOP END
 ```
+
 After a deep analysis, we concluded that the possible vectorization optimizations are negligible. 
 Indeed, in the context of this laboratory, we did not notice any vectorization issues (i.e. loop carried dependencies, Read after Write, etc.).
 
-
 # Optimizations 🛤️
-The first thing we changed was the `sin` and `cos` computation. Those are used in both the statements inside the inner loop, so they can be extracted to variables. Even though it is not a parallelization problem per se, caching in this way the computation of the trigonometric functions, further improve the performance.
+
+The first thing we changed was the `sin` and `cos` computation. Those are used in both the statements inside the inner loop, so they can be extracted to variables. Even though it is not a parallelization problem per se, caching in this way the computation of the trigonometric functions, further improves the performance.
 
 ```c
 double cos_res = cos(n * k * PI2 / N);
@@ -232,8 +230,7 @@ Then, there is the actual parallelization part. We used OpenMP as follows:
 double cos_res;
 double sin_res;
 
-#pragma omp parallel for num_threads(NTHREADS) \
-private(cos_res, sin_res) collapse(2) schedule(static) reduction(+ : Xr_o[ : N], Xi_o[ : N])
+#pragma omp parallel for num_threads(NTHREADS) private(cos_res, sin_res)
 for (k = 0; k < N; k++) {
    for (n = 0; n < N; n++) {
       cos_res = cos(n * k * PI2 / N);
@@ -247,19 +244,36 @@ for (k = 0; k < N; k++) {
 }
 ```
 
-In order, we declared `cos_res` and `sin_res` outside the parallel region, because since they depend on `n` and `k`, they have to be private for each thread. Then, we collapsed the nested loops in a single $N \times N$ loop managed by OMP, then with the `schedule(static)` we stated that every thread would have had the same chunk size to work on, and finally the `reduction` clause aggregates the sums on the arrays.
-
+We declared `cos_res` and `sin_res` outside the parallel region, because since they depend on `n` and `k`, they have to be private for each thread.
 
 # Performance evaluation 🤔
 
+We performed the tests on the workstation in SW2, which has 20 cores with 1 thread per core (so no hyperthreading). so we defined `NTHREADS=20`. The only hotspot in the code was the `loop in main at omp_homework.c:26` already discussed, so each measurements refers to the global time and this hotspot's time.
 
-TODO sunday :)
+<div style="display: flex; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+    <img src="./images/comparison.png" alt="OMP" width="100%" />
+  </figure>
+</div>
 
-using vectorization as in the code inside omp homework, the execution time is 0.71 seconds, which is 18.5 times faster than the vanilla version of the code (for N=10000) with a non existent error (Xre = 10000.0000)
+As we expected, the greater the problem size, the longer it will take to execute. We also highlight how close are the sequential global time and hotspot time (meaning that the hotspot is the responsible of the whole execution). Also, the parallel execution is much faster and the two slopes (parallel hotspot and global time) have a larger gap between them, because of the overhead introduced by multithreading.
 
-+ tables and graphs
+### Speedup & Efficiency
+
+<div style="display: flex; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <img src="./images/speedup.png" alt="OMP" width="100%" />
+  </figure>
+</div>
+
+<div style="display: flex; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <img src="./images/efficiency.png" alt="OMP" width="100%" />
+  </figure>
+</div>
+
+As we can state from the plots, we have an average speedup of $6.6$  and an average efficiency of the $33\%$, meaning that our code goes more than 6 times faster in parallel mode than in sequential, but each thread could be used better.
 
 # Conclusions 🔚
-TODO :)
-In conclusion, by leveraging vectorization and multithreading. Other than that, we also noticed how small
-changes in the code could lead to significant change in performance.
+
+In conclusion, by leveraging OpenMP parallelization techniques and optimizing trigonometric computations, we achieved significant performance improvements in the DFT implementation. The parallel execution demonstrated substantial speedup compared to the sequential version, particularly for larger problem sizes. While vectorization opportunities were limited, the combination of compiler optimizations (-O3, -xHost, -ffast-math) and OpenMP parallelization proved effective in reducing execution time while maintaining computational accuracy.
