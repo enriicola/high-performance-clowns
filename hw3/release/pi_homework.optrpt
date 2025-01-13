@@ -6,7 +6,7 @@ Global optimization report for : main_tree_reduce_8
 
 Global optimization report for : main.extracted
 
-LOOP BEGIN at ./source/pi_homework.c (30, 1)
+LOOP BEGIN at ./src/pi_homework.c (28, 1)
     remark: OpenMP: Outlined parallel loop
     remark #15300: LOOP WAS VECTORIZED
     remark #15305: vectorization support: vector length 4
@@ -38,7 +38,7 @@ LOOP BEGIN at ./source/pi_homework.c (30, 1)
     remark #25587: Loop has reduction
 LOOP END
 
-LOOP BEGIN at ./source/pi_homework.c (30, 1)
+LOOP BEGIN at ./src/pi_homework.c (28, 1)
 <Remainder loop for vectorization>
 LOOP END
 =================================================================
@@ -50,35 +50,30 @@ Option Values:
   inlinecold-threshold: 45
   inlineoptsize-threshold: 15
 
-DEAD STATIC FUNC: atoll
-
 DEAD STATIC FUNC: llvm.directive.region.entry
 
 DEAD STATIC FUNC: llvm.directive.region.exit
 
 COMPILE FUNC: main
-   -> INLINE: atoll ./source/pi_homework.c (16,17) (10<=487)
-      -> EXTERN: strtoll ./source/pi_homework.c (375,10)
-   -> EXTERN: omp_get_wtime ./source/pi_homework.c (19,18)
-   -> EXTERN: printf ./source/pi_homework.c (24,3)
-   -> DELETE: llvm.directive.region.entry ./source/pi_homework.c (30,1)
-   -> DELETE: llvm.directive.region.exit ./source/pi_homework.c (30,1)
-   -> EXTERN: omp_get_wtime ./source/pi_homework.c (41,11)
-   -> EXTERN: printf ./source/pi_homework.c (46,3)
-   -> EXTERN: printf ./source/pi_homework.c (47,3)
-   -> EXTERN: printf ./source/pi_homework.c (48,3)
-   -> EXTERN: __kmpc_global_thread_num ./source/pi_homework.c
-   -> EXTERN: __kmpc_push_num_threads ./source/pi_homework.c
-   -> EXTERN: __kmpc_fork_call ./source/pi_homework.c (30,1)
+   -> EXTERN: omp_get_wtime ./src/pi_homework.c (19,11)
+   -> DELETE: llvm.directive.region.entry ./src/pi_homework.c (28,1)
+   -> DELETE: llvm.directive.region.exit ./src/pi_homework.c (28,1)
+   -> EXTERN: omp_get_wtime ./src/pi_homework.c (39,11)
+   -> EXTERN: printf ./src/pi_homework.c (44,3)
+   -> EXTERN: printf ./src/pi_homework.c (45,3)
+   -> EXTERN: printf ./src/pi_homework.c (46,3)
+   -> EXTERN: __kmpc_global_thread_num ./src/pi_homework.c
+   -> EXTERN: __kmpc_push_num_threads ./src/pi_homework.c
+   -> EXTERN: __kmpc_fork_call ./src/pi_homework.c (28,1)
 
 COMPILE FUNC: main.extracted
-   -> EXTERN: __kmpc_for_static_init_8 ./source/pi_homework.c (30,1)
-   -> EXTERN: __kmpc_for_static_fini ./source/pi_homework.c (30,1)
-   -> EXTERN: __kmpc_reduce ./source/pi_homework.c (30,1)
-   -> EXTERN: __kmpc_end_reduce ./source/pi_homework.c
-   -> EXTERN: __kmpc_atomic_float8_add ./source/pi_homework.c (30,1)
-   -> EXTERN: __kmpc_end_reduce ./source/pi_homework.c
-   -> llvm.vector.reduce.fadd.v4f64 ./source/pi_homework.c (35,15)
+   -> EXTERN: __kmpc_for_static_init_8 ./src/pi_homework.c (28,1)
+   -> EXTERN: __kmpc_for_static_fini ./src/pi_homework.c (28,1)
+   -> EXTERN: __kmpc_reduce ./src/pi_homework.c (28,1)
+   -> EXTERN: __kmpc_end_reduce ./src/pi_homework.c
+   -> EXTERN: __kmpc_atomic_float8_add ./src/pi_homework.c (28,1)
+   -> EXTERN: __kmpc_end_reduce ./src/pi_homework.c
+   -> llvm.vector.reduce.fadd.v4f64 ./src/pi_homework.c (33,15)
 
 COMPILE FUNC: main_tree_reduce_8
 

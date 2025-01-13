@@ -178,19 +178,28 @@ for (i = start; i <= end; i++) {
 That is, simply subdivide the for loop on different threads and apply the reduction on the sum.
 
 ## Performance evaluation
-
 In this program, the only heavy hotspot is `loop in main at pi_homework.c:26`, that is the one that computes the local sums. The following measurements are taken considering the global execution time and the hotspot execution time (since it's only one).
 
-<div style="display: flex; align-items: center; width: 100%;">
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
     <img src="./images/comparison.png" alt="Distributed" width="80%" />
   </figure>
 </div>
 
-### NOTE
+<div style="text-align:center;"> execution time comparison</div>
 
-It's nonsense to compare those execution times, since the parallel case is executed on one machine only but the MPI case should be executed on different machines...
+In general, with multithreading we avoid introducing useless overheads due to process creation
 
-# TODO
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <img src="./images/speedup.png" alt="Distributed" width="80%" />
+  </figure>
+</div>
 
-- take the performances of the MPI - sequential and MPI - parallel
+<div style="text-align:center;">Speedup (parallel vs. MPI)</div>
+
+Because of this, we see that the parallel program is $1.6$ times faster than the MPI program.
+
+# Conclusions
+
+The main concept to reason on in this case is the scalability. Multithreading is useful and fast, but, in the best case, we can have no more than $\approx 64$ threads in a single machine, while we can add potentially infinite nodes to an MPI cluster.

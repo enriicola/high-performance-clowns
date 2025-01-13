@@ -13,7 +13,7 @@
 int main(int argc, char **argv) {
   long long int i, intervals = INTERVALS;
   double x, dx, f, sum, pi;
-  time_t time1, time2;
+  double time1, time2;
 
 #ifdef PARALLEL
   time1 = omp_get_wtime();

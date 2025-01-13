@@ -14,20 +14,19 @@
 int main(int argc, char **argv) {
   long long int i, intervals = INTERVALS;
   double x, dx, f, local_sum, global_sum, pi;
-  time_t time1, time2;
+  double time1, time2;
 
-  time1 = clock();
 
   int size, rank;
   MPI_Init(&argc, &argv);
   MPI_Comm_size(MPI_COMM_WORLD, &size);
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
-  if (rank == MASTER_NODE) {
+  time1 = MPI_Wtime();
+
+  if (rank == MASTER_NODE)
     printf("Number of intervals: %lld\n", intervals);
-    printf("Number of threads: %d\n", NTHREADS);
-    printf("Number of procs: %d\n", NPROCS);
-  }
+  
 
   long long int chunk_size = intervals / size;  // How many blocks per node
   long long int start = rank * chunk_size + 1;
@@ -52,7 +51,7 @@ int main(int argc, char **argv) {
     pi = dx * global_sum;
     printf("Computed PI %.24f\n", pi);
     printf("The true PI %.24f\n\n", PI25DT);
-    printf("Elapsed time (s) = %.2lf\n", time2 - time1);
+    printf("Elapsed time (s) = %.2lf\n", (time2 - time1));
   }
 
   MPI_Finalize();

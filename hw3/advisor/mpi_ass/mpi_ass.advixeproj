@@ -19,11 +19,14 @@
  </rdmgr>
  <contextValues type="bag"/>
  <All_Configurations-All_Platforms>
+  <per_group_workloads>
+   <release type="string">release</release>
+  </per_group_workloads>
   <searchDirs>
    <searchCategory>
     <category type="u8_t">1</category>
     <searchDirectory>
-     <name type="string">/home/stud/docente/Desktop/MPI_ass/source</name>
+     <name type="string">/home/stud/S4951409/Desktop/MPI_ass/src</name>
      <recursive type="bool">false</recursive>
      <priority type="bool">true</priority>
     </searchDirectory>
@@ -31,7 +34,7 @@
    <searchCategory>
     <category type="u8_t">2</category>
     <searchDirectory>
-     <name type="string">/home/stud/docente/Desktop/MPI_ass/source</name>
+     <name type="string">/home/stud/S4951409/Desktop/MPI_ass/src</name>
      <recursive type="bool">false</recursive>
      <priority type="bool">true</priority>
     </searchDirectory>
@@ -39,7 +42,7 @@
    <searchCategory>
     <category type="u8_t">3</category>
     <searchDirectory>
-     <name type="string">/home/stud/docente/Desktop/MPI_ass/source</name>
+     <name type="string">/home/stud/S4951409/Desktop/MPI_ass/src</name>
      <recursive type="bool">false</recursive>
      <priority type="bool">true</priority>
     </searchDirectory>
@@ -54,7 +57,7 @@
     <localhost type="string">release</localhost>
    </selected_workload>
    <result_dir>
-    <localhost type="string">/home/stud/docente/Desktop/MPI_ass/advisor/mpi_ass</localhost>
+    <localhost type="string">/home/stud/S4951409/Desktop/MPI_ass/advisor/mpi_ass</localhost>
    </result_dir>
    <result_pattern>
     <localhost type="string">r@@@{at}</localhost>
@@ -224,7 +227,7 @@
        <targetName type="string">attach-survey</targetName>
        <use_app_dir_as_work_dir type="bool">false</use_app_dir_as_work_dir>
        <attach.pid type="null"></attach.pid>
-       <result_directory.path type="string">/home/stud/docente/Desktop/MPI_ass/advisor/mpi_ass/r@@@{at}</result_directory.path>
+       <result_directory.path type="string">/home/stud/S4951409/Desktop/MPI_ass/advisor/mpi_ass/r@@@{at}</result_directory.path>
        <search_directories>
         <item>
          <value type="string">sym:p=/home/stud/docente/Desktop/MPI_ass/source</value>
@@ -343,10 +346,10 @@
        <launch.userapppath type="string">/home/stud/docente/Desktop/MPI_ass/release/pi_homework</launch.userapppath>
        <launch.userappworkdir type="string">/home/stud/docente/Desktop/MPI_ass/release</launch.userappworkdir>
        <launch_app.app_to_launch type="string">/home/stud/docente/Desktop/MPI_ass/release/pi_homework</launch_app.app_to_launch>
-       <launch_app.app_parameters type="string">500000000000</launch_app.app_parameters>
+       <launch_app.app_parameters type="string">700000000000</launch_app.app_parameters>
        <use_app_dir_as_work_dir type="bool">true</use_app_dir_as_work_dir>
-       <launch_app.working_folder type="string">/home/stud/docente/Desktop/MPI_ass/release</launch_app.working_folder>
-       <result_directory.path type="string">/home/stud/docente/Desktop/MPI_ass/advisor/mpi_ass/r@@@{at}</result_directory.path>
+       <launch_app.working_folder type="string"></launch_app.working_folder>
+       <result_directory.path type="string">/home/stud/S4951409/Desktop/MPI_ass/advisor/mpi_ass/r@@@{at}</result_directory.path>
        <search_directories>
         <item>
          <value type="string">sym:p=/home/stud/docente/Desktop/MPI_ass/source</value>
@@ -425,10 +428,10 @@
        <launch.userapppath type="string">/home/stud/docente/Desktop/MPI_ass/release/pi_homework</launch.userapppath>
        <launch.userappworkdir type="string">/home/stud/docente/Desktop/MPI_ass/release</launch.userappworkdir>
        <launch_app.app_to_launch type="string">/home/stud/docente/Desktop/MPI_ass/release/pi_homework</launch_app.app_to_launch>
-       <launch_app.app_parameters type="string">500000000000</launch_app.app_parameters>
+       <launch_app.app_parameters type="string">700000000000</launch_app.app_parameters>
        <use_app_dir_as_work_dir type="bool">true</use_app_dir_as_work_dir>
-       <launch_app.working_folder type="string">/home/stud/docente/Desktop/MPI_ass/release</launch_app.working_folder>
-       <result_directory.path type="string">/home/stud/docente/Desktop/MPI_ass/advisor/mpi_ass/r@@@{at}</result_directory.path>
+       <launch_app.working_folder type="string"></launch_app.working_folder>
+       <result_directory.path type="string">/home/stud/S4951409/Desktop/MPI_ass/advisor/mpi_ass/r@@@{at}</result_directory.path>
        <search_directories>
         <item>
          <value type="string">sym:p=/home/stud/docente/Desktop/MPI_ass/source</value>
@@ -509,7 +512,7 @@
       <workload>
        <targetName type="string">projection</targetName>
        <use_app_dir_as_work_dir type="bool">true</use_app_dir_as_work_dir>
-       <result_directory.path type="string">/home/stud/docente/Desktop/MPI_ass/advisor/mpi_ass/r@@@{at}</result_directory.path>
+       <result_directory.path type="string">/home/stud/S4951409/Desktop/MPI_ass/advisor/mpi_ass/r@@@{at}</result_directory.path>
        <search_directories>
         <item>
          <value type="string">sym:p=/home/stud/docente/Desktop/MPI_ass/source</value>
@@ -700,13 +703,13 @@
        <use_app_dir_as_work_dir type="bool">true</use_app_dir_as_work_dir>
        <launch_app.inherit_sys_environment type="bool">true</launch_app.inherit_sys_environment>
        <launch_app.mpi_run type="bool">false</launch_app.mpi_run>
-       <result_directory.path type="string">/home/stud/docente/Desktop/MPI_ass/advisor/mpi_ass/r@@@{at}</result_directory.path>
-       <launch.userapppath type="string">/home/stud/docente/Desktop/MPI_ass/release/pi_homework</launch.userapppath>
-       <launch_app.app_to_launch type="string">/home/stud/docente/Desktop/MPI_ass/release/pi_homework</launch_app.app_to_launch>
-       <launch.userappworkdir type="string">/home/stud/docente/Desktop/MPI_ass/release</launch.userappworkdir>
+       <result_directory.path type="string">/home/stud/S4951409/Desktop/MPI_ass/advisor/mpi_ass/r@@@{at}</result_directory.path>
+       <launch.userappworkdir type="string"></launch.userappworkdir>
        <launch_app.mpi_max_rank type="null"></launch_app.mpi_max_rank>
-       <launch_app.app_parameters type="string">700000000000</launch_app.app_parameters>
-       <launch_app.working_folder type="string">/home/stud/docente/Desktop/MPI_ass/release</launch_app.working_folder>
+       <launch_app.app_parameters type="string"></launch_app.app_parameters>
+       <launch.userapppath type="string">/home/stud/S4951409/Desktop/MPI_ass/release/pi_homework</launch.userapppath>
+       <launch_app.app_to_launch type="string">/home/stud/S4951409/Desktop/MPI_ass/release/pi_homework</launch_app.app_to_launch>
+       <launch_app.working_folder type="string">/home/stud/S4951409/Desktop/MPI_ass/release</launch_app.working_folder>
        <search_directories>
         <item>
          <value type="string">sym:p=/home/stud/docente/Desktop/MPI_ass/source</value>
@@ -825,10 +828,10 @@
        <launch.userapppath type="string">/home/stud/docente/Desktop/MPI_ass/release/pi_homework</launch.userapppath>
        <launch.userappworkdir type="string">/home/stud/docente/Desktop/MPI_ass/release</launch.userappworkdir>
        <launch_app.app_to_launch type="string">/home/stud/docente/Desktop/MPI_ass/release/pi_homework</launch_app.app_to_launch>
-       <launch_app.app_parameters type="string">500000000000</launch_app.app_parameters>
+       <launch_app.app_parameters type="string">700000000000</launch_app.app_parameters>
        <use_app_dir_as_work_dir type="bool">true</use_app_dir_as_work_dir>
-       <launch_app.working_folder type="string">/home/stud/docente/Desktop/MPI_ass/release</launch_app.working_folder>
-       <result_directory.path type="string">/home/stud/docente/Desktop/MPI_ass/advisor/mpi_ass/r@@@{at}</result_directory.path>
+       <launch_app.working_folder type="string"></launch_app.working_folder>
+       <result_directory.path type="string">/home/stud/S4951409/Desktop/MPI_ass/advisor/mpi_ass/r@@@{at}</result_directory.path>
        <search_directories>
         <item>
          <value type="string">sym:p=/home/stud/docente/Desktop/MPI_ass/source</value>
@@ -868,8 +871,5 @@
     </localhost>
    </workloads>
   </target_settings>
-  <per_group_workloads>
-   <release type="string">release</release>
-  </per_group_workloads>
  </All_Configurations-All_Platforms>
 </root>

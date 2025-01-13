@@ -1,33 +1,7 @@
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: '/usr/include/stdlib.h', Line: 375, Column: 10 }
-Function:        atoll
-Args:
-  - Callee:          strtoll
-    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 0, Column: 0 }
-  - String:          ' will not be inlined into '
-  - Caller:          atoll
-    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 374, Column: 0 }
-  - String:          ' because its definition is unavailable'
-...
---- !Missed
-Pass:            inline
-Name:            NoDefinition
-DebugLoc:        { File: '/usr/include/stdlib.h', Line: 375, Column: 10 }
-Function:        atoll
-Args:
-  - Callee:          strtoll
-    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 0, Column: 0 }
-  - String:          ' will not be inlined into '
-  - Caller:          atoll
-    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 374, Column: 0 }
-  - String:          ' because its definition is unavailable'
-...
---- !Missed
-Pass:            inline
-Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 19, Column: 18 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 19, Column: 11 }
 Function:        main
 Args:
   - Callee:          omp_get_wtime
@@ -35,26 +9,13 @@ Args:
                        Line: 0, Column: 0 }
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 24, Column: 3 }
-Function:        main
-Args:
-  - Callee:          printf
-    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
-  - String:          ' will not be inlined into '
-  - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
-  - String:          ' because its definition is unavailable'
-...
---- !Missed
-Pass:            inline
-Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 41, Column: 11 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 39, Column: 11 }
 Function:        main
 Args:
   - Callee:          omp_get_wtime
@@ -62,52 +23,52 @@ Args:
                        Line: 0, Column: 0 }
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 46, Column: 3 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 44, Column: 3 }
 Function:        main
 Args:
   - Callee:          printf
     DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 47, Column: 3 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 45, Column: 3 }
 Function:        main
 Args:
   - Callee:          printf
     DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 48, Column: 3 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 46, Column: 3 }
 Function:        main
 Args:
   - Callee:          printf
     DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 19, Column: 18 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 19, Column: 11 }
 Function:        main
 Args:
   - Callee:          omp_get_wtime
@@ -115,26 +76,13 @@ Args:
                        Line: 0, Column: 0 }
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 24, Column: 3 }
-Function:        main
-Args:
-  - Callee:          printf
-    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
-  - String:          ' will not be inlined into '
-  - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
-  - String:          ' because its definition is unavailable'
-...
---- !Missed
-Pass:            inline
-Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 41, Column: 11 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 39, Column: 11 }
 Function:        main
 Args:
   - Callee:          omp_get_wtime
@@ -142,79 +90,52 @@ Args:
                        Line: 0, Column: 0 }
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 46, Column: 3 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 44, Column: 3 }
 Function:        main
 Args:
   - Callee:          printf
     DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 47, Column: 3 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 45, Column: 3 }
 Function:        main
 Args:
   - Callee:          printf
     DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 48, Column: 3 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 46, Column: 3 }
 Function:        main
 Args:
   - Callee:          printf
     DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
-...
---- !Passed
-Pass:            inline
-Name:            Inlined
-DebugLoc:        { File: './source/pi_homework.c', Line: 16, Column: 17 }
-Function:        main
-Args:
-  - String:          ''''
-  - Callee:          atoll
-    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 374, Column: 0 }
-  - String:          ''' inlined into '''
-  - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
-  - String:          ''''
-  - String:          ' with '
-  - String:          '(cost='
-  - Cost:            '10'
-  - String:          ', threshold='
-  - Threshold:       '487'
-  - String:          ')'
-  - String:          ' at callsite '
-  - String:          main
-  - String:          ':'
-  - Line:            '6'
-  - String:          ':'
-  - Column:          '17'
-  - String:          ';'
 ...
 --- !Passed
 Pass:            vpo-paropt-transform
 Name:            FastReductionAtomic
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main
 Args:
   - Kind:            ADD
@@ -225,7 +146,7 @@ Args:
 --- !Passed
 Pass:            vpo-paropt-transform
 Name:            Reduction
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main
 Args:
   - String:          'Critical section was generated for reduction update(s)'
@@ -233,7 +154,7 @@ Args:
 --- !Passed
 Pass:            openmp
 Name:            Region
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - Construct:       parallel loop
@@ -242,37 +163,37 @@ Args:
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - Callee:          __kmpc_for_static_init_8
   - String:          ' will not be inlined into '
   - Caller:          main.extracted
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - Callee:          __kmpc_for_static_fini
   - String:          ' will not be inlined into '
   - Caller:          main.extracted
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - Callee:          __kmpc_reduce
   - String:          ' will not be inlined into '
   - Caller:          main.extracted
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
@@ -283,19 +204,19 @@ Args:
   - Callee:          __kmpc_end_reduce
   - String:          ' will not be inlined into '
   - Caller:          main.extracted
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - Callee:          __kmpc_atomic_float8_add
   - String:          ' will not be inlined into '
   - Caller:          main.extracted
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
@@ -306,43 +227,43 @@ Args:
   - Callee:          __kmpc_end_reduce
   - String:          ' will not be inlined into '
   - Caller:          main.extracted
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - Callee:          __kmpc_for_static_init_8
   - String:          ' will not be inlined into '
   - Caller:          main.extracted
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - Callee:          __kmpc_for_static_fini
   - String:          ' will not be inlined into '
   - Caller:          main.extracted
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - Callee:          __kmpc_reduce
   - String:          ' will not be inlined into '
   - Caller:          main.extracted
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
@@ -353,19 +274,19 @@ Args:
   - Callee:          __kmpc_end_reduce
   - String:          ' will not be inlined into '
   - Caller:          main.extracted
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - Callee:          __kmpc_atomic_float8_add
   - String:          ' will not be inlined into '
   - Caller:          main.extracted
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
@@ -376,13 +297,13 @@ Args:
   - Callee:          __kmpc_end_reduce
   - String:          ' will not be inlined into '
   - Caller:          main.extracted
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            gvn
 Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - String:          'load of type '
@@ -390,15 +311,15 @@ Args:
   - String:          ' not eliminated'
   - String:          ' in favor of '
   - OtherAccess:     store
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
 Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - String:          'load of type '
@@ -406,10 +327,10 @@ Args:
   - String:          ' not eliminated'
   - String:          ' in favor of '
   - OtherAccess:     store
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
@@ -421,15 +342,15 @@ Args:
   - String:          ' not eliminated'
   - String:          ' in favor of '
   - OtherAccess:     load
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
 Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - String:          'load of type '
@@ -437,24 +358,10 @@ Args:
   - String:          ' not eliminated'
   - String:          ' in favor of '
   - OtherAccess:     store
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-Function:        main.extracted
-Args:
-  - String:          'load of type '
-  - Type:            ''
-  - String:          ' not eliminated'
-  - String:          ' in favor of '
-  - OtherAccess:     load
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
@@ -468,23 +375,7 @@ Args:
   - OtherAccess:     load
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
-Function:        main.extracted
-Args:
-  - String:          'load of type '
-  - Type:            ''
-  - String:          ' not eliminated'
-  - String:          ' in favor of '
-  - OtherAccess:     store
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
@@ -498,12 +389,12 @@ Args:
   - OtherAccess:     load
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
 Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - String:          'load of type '
@@ -511,57 +402,10 @@ Args:
   - String:          ' not eliminated'
   - String:          ' in favor of '
   - OtherAccess:     store
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
-Function:        main.extracted
-Args:
-  - String:          'load of type '
-  - Type:            ''
-  - String:          ' not eliminated'
-  - String:          ' in favor of '
-  - OtherAccess:     store
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-Function:        main.extracted
-Args:
-  - String:          'load of type '
-  - Type:            ''
-  - String:          ' not eliminated'
-  - String:          ' in favor of '
-  - OtherAccess:     load
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
-Function:        main.extracted
-Args:
-  - String:          'load of type '
-  - Type:            ''
-  - String:          ' not eliminated'
-  - String:          ' in favor of '
-  - OtherAccess:     store
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
@@ -575,26 +419,12 @@ Args:
   - OtherAccess:     load
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
 Name:            LoadClobbered
-Function:        main.extracted
-Args:
-  - String:          'load of type '
-  - Type:            ''
-  - String:          ' not eliminated'
-  - String:          ' in favor of '
-  - OtherAccess:     load
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - String:          'load of type '
@@ -602,10 +432,57 @@ Args:
   - String:          ' not eliminated'
   - String:          ' in favor of '
   - OtherAccess:     store
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     store
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     store
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
@@ -619,7 +496,51 @@ Args:
   - OtherAccess:     load
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     store
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+Function:        main.extracted
+Args:
+  - String:          'load of type '
+  - Type:            ''
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            inline
@@ -629,26 +550,13 @@ Args:
   - Callee:          __kmpc_global_thread_num
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: '/usr/include/stdlib.h', Line: 375, Column: 10 }
-Function:        main
-Args:
-  - Callee:          strtoll
-    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 0, Column: 0 }
-  - String:          ' will not be inlined into '
-  - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
-  - String:          ' because its definition is unavailable'
-...
---- !Missed
-Pass:            inline
-Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 19, Column: 18 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 19, Column: 11 }
 Function:        main
 Args:
   - Callee:          omp_get_wtime
@@ -656,20 +564,7 @@ Args:
                        Line: 0, Column: 0 }
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
-  - String:          ' because its definition is unavailable'
-...
---- !Missed
-Pass:            inline
-Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 24, Column: 3 }
-Function:        main
-Args:
-  - Callee:          printf
-    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
-  - String:          ' will not be inlined into '
-  - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
@@ -680,25 +575,25 @@ Args:
   - Callee:          __kmpc_push_num_threads
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main
 Args:
   - Callee:          __kmpc_fork_call
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 41, Column: 11 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 39, Column: 11 }
 Function:        main
 Args:
   - Callee:          omp_get_wtime
@@ -706,46 +601,46 @@ Args:
                        Line: 0, Column: 0 }
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 46, Column: 3 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 44, Column: 3 }
 Function:        main
 Args:
   - Callee:          printf
     DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 47, Column: 3 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 45, Column: 3 }
 Function:        main
 Args:
   - Callee:          printf
     DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 48, Column: 3 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 46, Column: 3 }
 Function:        main
 Args:
   - Callee:          printf
     DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
@@ -756,26 +651,13 @@ Args:
   - Callee:          __kmpc_global_thread_num
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: '/usr/include/stdlib.h', Line: 375, Column: 10 }
-Function:        main
-Args:
-  - Callee:          strtoll
-    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 0, Column: 0 }
-  - String:          ' will not be inlined into '
-  - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
-  - String:          ' because its definition is unavailable'
-...
---- !Missed
-Pass:            inline
-Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 19, Column: 18 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 19, Column: 11 }
 Function:        main
 Args:
   - Callee:          omp_get_wtime
@@ -783,20 +665,7 @@ Args:
                        Line: 0, Column: 0 }
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
-  - String:          ' because its definition is unavailable'
-...
---- !Missed
-Pass:            inline
-Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 24, Column: 3 }
-Function:        main
-Args:
-  - Callee:          printf
-    DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
-  - String:          ' will not be inlined into '
-  - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
@@ -807,25 +676,25 @@ Args:
   - Callee:          __kmpc_push_num_threads
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main
 Args:
   - Callee:          __kmpc_fork_call
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 41, Column: 11 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 39, Column: 11 }
 Function:        main
 Args:
   - Callee:          omp_get_wtime
@@ -833,64 +702,52 @@ Args:
                        Line: 0, Column: 0 }
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 46, Column: 3 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 44, Column: 3 }
 Function:        main
 Args:
   - Callee:          printf
     DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 47, Column: 3 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 45, Column: 3 }
 Function:        main
 Args:
   - Callee:          printf
     DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            inline
 Name:            NoDefinition
-DebugLoc:        { File: './source/pi_homework.c', Line: 48, Column: 3 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 46, Column: 3 }
 Function:        main
 Args:
   - Callee:          printf
     DebugLoc:        { File: '/usr/include/stdio.h', Line: 0, Column: 0 }
   - String:          ' will not be inlined into '
   - Caller:          main
-    DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
   - String:          ' because its definition is unavailable'
 ...
 --- !Missed
 Pass:            gvn
 Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 16, Column: 23 }
-Function:        main
-Args:
-  - String:          'load of type '
-  - Type:            ''
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     call
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 38, Column: 13 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 36, Column: 13 }
 Function:        main
 Args:
   - String:          'load of type '
@@ -898,35 +755,15 @@ Args:
   - String:          ' not eliminated'
   - String:          ' in favor of '
   - OtherAccess:     store
-    DebugLoc:        { File: './source/pi_homework.c', Line: 26, Column: 7 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 24, Column: 7 }
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
-...
---- !Passed
-Pass:            gvn
-Name:            LoadPRE
-DebugLoc:        { File: './source/pi_homework.c', Line: 38, Column: 13 }
-Function:        main
-Args:
-  - String:          load eliminated by PRE
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
 Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 16, Column: 23 }
-Function:        main
-Args:
-  - String:          'load of type '
-  - Type:            ''
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     call
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 38, Column: 13 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 36, Column: 13 }
 Function:        main
 Args:
   - String:          'load of type '
@@ -934,43 +771,15 @@ Args:
   - String:          ' not eliminated'
   - String:          ' in favor of '
   - OtherAccess:     store
-    DebugLoc:        { File: './source/pi_homework.c', Line: 26, Column: 7 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 24, Column: 7 }
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
 Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 16, Column: 23 }
-Function:        main
-Args:
-  - String:          'load of type '
-  - Type:            ''
-  - String:          ' not eliminated'
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     call
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 38, Column: 13 }
-Function:        main
-Args:
-  - String:          'load of type '
-  - Type:            ''
-  - String:          ' not eliminated'
-  - String:          ' in favor of '
-  - OtherAccess:     store
-    DebugLoc:        { File: './source/pi_homework.c', Line: 26, Column: 7 }
-  - String:          ' because it is clobbered by '
-  - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
-...
---- !Missed
-Pass:            gvn
-Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - String:          'load of type '
@@ -978,15 +787,15 @@ Args:
   - String:          ' not eliminated'
   - String:          ' in favor of '
   - OtherAccess:     store
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
 Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - String:          'load of type '
@@ -994,10 +803,10 @@ Args:
   - String:          ' not eliminated'
   - String:          ' in favor of '
   - OtherAccess:     store
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
@@ -1009,15 +818,15 @@ Args:
   - String:          ' not eliminated'
   - String:          ' in favor of '
   - OtherAccess:     load
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
 Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - String:          'load of type '
@@ -1025,10 +834,10 @@ Args:
   - String:          ' not eliminated'
   - String:          ' in favor of '
   - OtherAccess:     store
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
@@ -1042,7 +851,7 @@ Args:
   - OtherAccess:     load
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
@@ -1056,12 +865,12 @@ Args:
   - OtherAccess:     load
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
 Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - String:          'load of type '
@@ -1069,10 +878,10 @@ Args:
   - String:          ' not eliminated'
   - String:          ' in favor of '
   - OtherAccess:     store
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
@@ -1086,12 +895,12 @@ Args:
   - OtherAccess:     load
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
 Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - String:          'load of type '
@@ -1099,15 +908,15 @@ Args:
   - String:          ' not eliminated'
   - String:          ' in favor of '
   - OtherAccess:     store
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
 Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - String:          'load of type '
@@ -1115,10 +924,10 @@ Args:
   - String:          ' not eliminated'
   - String:          ' in favor of '
   - OtherAccess:     store
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
@@ -1130,15 +939,15 @@ Args:
   - String:          ' not eliminated'
   - String:          ' in favor of '
   - OtherAccess:     load
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
 Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - String:          'load of type '
@@ -1146,10 +955,10 @@ Args:
   - String:          ' not eliminated'
   - String:          ' in favor of '
   - OtherAccess:     store
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
@@ -1163,7 +972,7 @@ Args:
   - OtherAccess:     load
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
@@ -1177,12 +986,12 @@ Args:
   - OtherAccess:     load
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
 Name:            LoadClobbered
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - String:          'load of type '
@@ -1190,10 +999,10 @@ Args:
   - String:          ' not eliminated'
   - String:          ' in favor of '
   - OtherAccess:     store
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            gvn
@@ -1207,7 +1016,7 @@ Args:
   - OtherAccess:     load
   - String:          ' because it is clobbered by '
   - ClobberedBy:     call
-    DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+    DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 ...
 --- !Missed
 Pass:            slp-vectorizer
@@ -1220,7 +1029,7 @@ Args:
 --- !Missed
 Pass:            slp-vectorizer
 Name:            NotPossible
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - String:          'Cannot SLP vectorize list: vectorization was impossible'
@@ -1229,7 +1038,7 @@ Args:
 --- !Missed
 Pass:            slp-vectorizer
 Name:            NotPossible
-DebugLoc:        { File: './source/pi_homework.c', Line: 33, Column: 12 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 31, Column: 12 }
 Function:        main.extracted
 Args:
   - String:          'Cannot SLP vectorize list: vectorization was impossible'
@@ -1238,7 +1047,7 @@ Args:
 --- !Missed
 Pass:            slp-vectorizer
 Name:            NotPossible
-DebugLoc:        { File: './source/pi_homework.c', Line: 33, Column: 12 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 31, Column: 12 }
 Function:        main.extracted
 Args:
   - String:          'Cannot SLP vectorize list: vectorization was impossible'
@@ -1247,69 +1056,49 @@ Args:
 --- !Missed
 Pass:            slp-vectorizer
 Name:            NotPossible
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
   - String:          'Cannot SLP vectorize list: vectorization was impossible'
   - String:          ' with available vectorization factors'
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: './source/pi_homework.c', Line: 33, Column: 12 }
-Function:        main.extracted
-Args:
-  - String:          'hoisting '
-  - Inst:            insertelement
-    DebugLoc:        { File: './source/pi_homework.c', Line: 33, Column: 12 }
-...
---- !Passed
-Pass:            licm
-Name:            Hoisted
-DebugLoc:        { File: './source/pi_homework.c', Line: 33, Column: 12 }
-Function:        main.extracted
-Args:
-  - String:          'hoisting '
-  - Inst:            shufflevector
-    DebugLoc:        { File: './source/pi_homework.c', Line: 33, Column: 12 }
 ...
 --- !Missed
 Pass:            regalloc
 Name:            SpillReloadCopies
-DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 1 }
 Function:        main
 Args:
-  - NumSpills:       '4'
+  - NumSpills:       '3'
   - String:          ' spills '
-  - TotalSpillsCost: '3.619048e+00'
+  - TotalSpillsCost: '3.000000e+00'
   - String:          ' total spills cost '
-  - NumReloads:      '4'
+  - NumReloads:      '2'
   - String:          ' reloads '
-  - TotalReloadsCost: '3.238095e+00'
+  - TotalReloadsCost: '2.000000e+00'
   - String:          ' total reloads cost '
   - NumFoldedReloads: '1'
   - String:          ' folded reloads '
   - TotalFoldedReloadsCost: '1.000000e+00'
   - String:          ' total folded reloads cost '
-  - NumVRCopies:     '7'
+  - NumVRCopies:     '2'
   - String:          ' virtual registers copies '
-  - TotalCopiesCost: '5.714286e+00'
+  - TotalCopiesCost: '2.000000e+00'
   - String:          ' total copies cost '
   - String:          generated in function
 ...
 --- !Analysis
 Pass:            prologepilog
 Name:            StackSize
-DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
 Function:        main
 Args:
-  - NumStackBytes:   '56'
+  - NumStackBytes:   '40'
   - String:          ' stack bytes in function'
 ...
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-DebugLoc:        { File: './source/pi_homework.c', Line: 0, Column: 0 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 0, Column: 0 }
 Function:        main
 Args:
   - String:          'BasicBlock: '
@@ -1317,100 +1106,16 @@ Args:
   - String:          "\n"
   - String:          ''
   - String:          ': '
-  - INST_:           '14'
-  - String:          "\n"
-...
---- !Analysis
-Pass:            asm-printer
-Name:            InstructionMix
-DebugLoc:        { File: './source/pi_homework.c', Line: 0, Column: 0 }
-Function:        main
-Args:
-  - String:          'BasicBlock: '
-  - BasicBlock:      ''
-  - String:          "\n"
-  - String:          ''
-  - String:          ': '
-  - INST_:           '6'
-  - String:          "\n"
-...
---- !Analysis
-Pass:            asm-printer
-Name:            InstructionMix
-DebugLoc:        { File: './source/pi_homework.c', Line: 0, Column: 0 }
-Function:        main
-Args:
-  - String:          'BasicBlock: '
-  - BasicBlock:      ''
-  - String:          "\n"
-  - String:          ''
-  - String:          ': '
-  - INST_:           '1'
-  - String:          "\n"
-...
---- !Analysis
-Pass:            asm-printer
-Name:            InstructionMix
-DebugLoc:        { File: './source/pi_homework.c', Line: 0, Column: 0 }
-Function:        main
-Args:
-  - String:          'BasicBlock: '
-  - BasicBlock:      ''
-  - String:          "\n"
-  - String:          ''
-  - String:          ': '
-  - INST_:           '12'
-  - String:          "\n"
-...
---- !Analysis
-Pass:            asm-printer
-Name:            InstructionMix
-DebugLoc:        { File: './source/pi_homework.c', Line: 0, Column: 0 }
-Function:        main
-Args:
-  - String:          'BasicBlock: '
-  - BasicBlock:      ''
-  - String:          "\n"
-  - String:          ''
-  - String:          ': '
-  - INST_:           '20'
-  - String:          "\n"
-...
---- !Analysis
-Pass:            asm-printer
-Name:            InstructionMix
-DebugLoc:        { File: './source/pi_homework.c', Line: 0, Column: 0 }
-Function:        main
-Args:
-  - String:          'BasicBlock: '
-  - BasicBlock:      ''
-  - String:          "\n"
-  - String:          ''
-  - String:          ': '
-  - INST_:           '1'
-  - String:          "\n"
-...
---- !Analysis
-Pass:            asm-printer
-Name:            InstructionMix
-DebugLoc:        { File: './source/pi_homework.c', Line: 0, Column: 0 }
-Function:        main
-Args:
-  - String:          'BasicBlock: '
-  - BasicBlock:      ''
-  - String:          "\n"
-  - String:          ''
-  - String:          ': '
-  - INST_:           '23'
+  - INST_:           '47'
   - String:          "\n"
 ...
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionCount
-DebugLoc:        { File: './source/pi_homework.c', Line: 10, Column: 0 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 13, Column: 0 }
 Function:        main
 Args:
-  - NumInstructions: '77'
+  - NumInstructions: '47'
   - String:          ' instructions in function'
 ...
 --- !Analysis
@@ -1445,19 +1150,19 @@ Args:
 --- !Missed
 Pass:            regalloc
 Name:            SpillReloadCopies
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 1 }
 Function:        main.extracted
 Args:
-  - NumVRCopies:     '8'
+  - NumVRCopies:     '7'
   - String:          ' virtual registers copies '
-  - TotalCopiesCost: '6.833333e+00'
+  - TotalCopiesCost: '5.833333e+00'
   - String:          ' total copies cost '
   - String:          generated in function
 ...
 --- !Analysis
 Pass:            prologepilog
 Name:            StackSize
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 0 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 0 }
 Function:        main.extracted
 Args:
   - NumStackBytes:   '72'
@@ -1473,13 +1178,13 @@ Args:
   - String:          "\n"
   - String:          ''
   - String:          ': '
-  - INST_:           '32'
+  - INST_:           '31'
   - String:          "\n"
 ...
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-DebugLoc:        { File: './source/pi_homework.c', Line: 0, Column: 0 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 0, Column: 0 }
 Function:        main.extracted
 Args:
   - String:          'BasicBlock: '
@@ -1487,41 +1192,13 @@ Args:
   - String:          "\n"
   - String:          ''
   - String:          ': '
-  - INST_:           '5'
+  - INST_:           '4'
   - String:          "\n"
 ...
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-DebugLoc:        { File: './source/pi_homework.c', Line: 0, Column: 0 }
-Function:        main.extracted
-Args:
-  - String:          'BasicBlock: '
-  - BasicBlock:      ''
-  - String:          "\n"
-  - String:          ''
-  - String:          ': '
-  - INST_:           '8'
-  - String:          "\n"
-...
---- !Analysis
-Pass:            asm-printer
-Name:            InstructionMix
-DebugLoc:        { File: './source/pi_homework.c', Line: 0, Column: 0 }
-Function:        main.extracted
-Args:
-  - String:          'BasicBlock: '
-  - BasicBlock:      ''
-  - String:          "\n"
-  - String:          ''
-  - String:          ': '
-  - INST_:           '24'
-  - String:          "\n"
-...
---- !Analysis
-Pass:            asm-printer
-Name:            InstructionMix
-DebugLoc:        { File: './source/pi_homework.c', Line: 0, Column: 0 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 0, Column: 0 }
 Function:        main.extracted
 Args:
   - String:          'BasicBlock: '
@@ -1535,7 +1212,35 @@ Args:
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-DebugLoc:        { File: './source/pi_homework.c', Line: 0, Column: 0 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 0, Column: 0 }
+Function:        main.extracted
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '23'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './src/pi_homework.c', Line: 0, Column: 0 }
+Function:        main.extracted
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '7'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: './src/pi_homework.c', Line: 0, Column: 0 }
 Function:        main.extracted
 Args:
   - String:          'BasicBlock: '
@@ -1549,7 +1254,7 @@ Args:
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-DebugLoc:        { File: './source/pi_homework.c', Line: 0, Column: 0 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 0, Column: 0 }
 Function:        main.extracted
 Args:
   - String:          'BasicBlock: '
@@ -1557,13 +1262,13 @@ Args:
   - String:          "\n"
   - String:          ''
   - String:          ': '
-  - INST_:           '5'
+  - INST_:           '6'
   - String:          "\n"
 ...
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-DebugLoc:        { File: './source/pi_homework.c', Line: 0, Column: 0 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 0, Column: 0 }
 Function:        main.extracted
 Args:
   - String:          'BasicBlock: '
@@ -1571,13 +1276,13 @@ Args:
   - String:          "\n"
   - String:          ''
   - String:          ': '
-  - INST_:           '10'
+  - INST_:           '9'
   - String:          "\n"
 ...
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 0, Column: 0 }
 Function:        main.extracted
 Args:
   - String:          'BasicBlock: '
@@ -1591,7 +1296,7 @@ Args:
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 0, Column: 0 }
 Function:        main.extracted
 Args:
   - String:          'BasicBlock: '
@@ -1605,7 +1310,7 @@ Args:
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 0, Column: 0 }
 Function:        main.extracted
 Args:
   - String:          'BasicBlock: '
@@ -1619,7 +1324,7 @@ Args:
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 1 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 0, Column: 0 }
 Function:        main.extracted
 Args:
   - String:          'BasicBlock: '
@@ -1633,6 +1338,7 @@ Args:
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
+DebugLoc:        { File: './src/pi_homework.c', Line: 0, Column: 0 }
 Function:        main.extracted
 Args:
   - String:          'BasicBlock: '
@@ -1646,6 +1352,7 @@ Args:
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionMix
+DebugLoc:        { File: './src/pi_homework.c', Line: 0, Column: 0 }
 Function:        main.extracted
 Args:
   - String:          'BasicBlock: '
@@ -1653,15 +1360,15 @@ Args:
   - String:          "\n"
   - String:          ''
   - String:          ': '
-  - INST_:           '6'
+  - INST_:           '5'
   - String:          "\n"
 ...
 --- !Analysis
 Pass:            asm-printer
 Name:            InstructionCount
-DebugLoc:        { File: './source/pi_homework.c', Line: 30, Column: 0 }
+DebugLoc:        { File: './src/pi_homework.c', Line: 28, Column: 0 }
 Function:        main.extracted
 Args:
-  - NumInstructions: '134'
+  - NumInstructions: '129'
   - String:          ' instructions in function'
 ...

@@ -1,4 +1,4 @@
-NPROCS ?= 10
+NPROCS ?= 20
 RELEASE=./release
 SOURCE=./src
 FLAGS=-g -O3 -xHost
