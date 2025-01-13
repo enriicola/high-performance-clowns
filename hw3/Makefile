@@ -1,18 +1,18 @@
 NPROCS ?= 10
-RELEASE_PATH=release
-SOURCE_PATH=src
-FLAGS=-g -O3 -xHost -qopenmp -qopt-report=3 -ffast-math
+RELEASE=./release
+SOURCE=./src
+FLAGS=-g -O3 -xHost
 INTERVALS ?= 100000000000
 
-# default = best sequential time
+default: FLAGS +=-qopenmp -qopt-report=3 -ffast-math
 default:
 	mpiicx ${FLAGS} \
 	-D PARALLEL \
 	-D INTERVALS=${INTERVALS} \
-	./${SOURCE_PATH}/pi_homework.c -o ./${RELEASE_PATH}/pi_homework
+	${SOURCE}/pi_homework.c -o ${RELEASE}/pi_homework
 
 mpi:
 	mpiicx ${FLAGS} \
 	-D INTERVALS=${INTERVALS} \
-	./${SOURCE_PATH}/pi_homework_mpi.c -o ./${RELEASE_PATH}/pi_homework_mpi
-	mpirun -np ${NPROCS} ./${RELEASE_PATH}/pi_homework_mpi
+	${SOURCE}/pi_homework_mpi.c -o ${RELEASE}/pi_homework_mpi
+	mpirun -np ${NPROCS} ${RELEASE}/pi_homework_mpi
