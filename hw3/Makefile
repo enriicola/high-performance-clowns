@@ -7,11 +7,12 @@ INTERVALS ?= 100000000000
 # default = best sequential time
 default:
 	mpiicx ${FLAGS} \
-		-D INTERVALS=${INTERVALS} \
-		./${SOURCE_PATH}/pi_homework.c -o ./${RELEASE_PATH}/pi_homework
+	-D PARALLEL \
+	-D INTERVALS=${INTERVALS} \
+	./${SOURCE_PATH}/pi_homework.c -o ./${RELEASE_PATH}/pi_homework
 
 mpi:
 	mpiicx ${FLAGS} \
-		-D INTERVALS=${INTERVALS} \
-		./${SOURCE_PATH}/pi_homework_mpi.c -o ./${RELEASE_PATH}/pi_homework_mpi
+	-D INTERVALS=${INTERVALS} \
+	./${SOURCE_PATH}/pi_homework_mpi.c -o ./${RELEASE_PATH}/pi_homework_mpi
 	mpirun -np ${NPROCS} ./${RELEASE_PATH}/pi_homework_mpi
