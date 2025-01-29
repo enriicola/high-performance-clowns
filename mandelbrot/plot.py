@@ -16,4 +16,5 @@ if __name__ == "__main__":
 
   plt.imshow(matrix, cmap='magma_r')
   plt.axis("off")
+  plt.savefig("mandelbrot.png")
   plt.show()
