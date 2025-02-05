@@ -1,5 +1,5 @@
 
-# prof instruction
+<!-- # prof instruction
 --------------------------------------------------------
 Write a program that accelerates the attached program that computes the 2D heat conduction formula (see jpg).
 
@@ -21,7 +21,7 @@ The use of your pc is allowed ONLY if you plan to explore ROCm on a AMD cpu. Oth
 Upload a zip file containing the notebook, other possible files and the report in pdf. Send the same via email.
 
 The compute capabilities of the GPU in Colab can be retrieved using the devicequery program.
---------------------------------------------------------
+-------------------------------------------------------- -->
 
 # Introduction
 In this report, we aim to accelerate a given program that computes the 2D heat conduction formula using CUDA. The primary objective is to evaluate different configurations of blocks and threads, as well as various problem sizes, to achieve optimal performance. We will conduct a thorough analysis of the code to identify hotspots and discuss potential vectorization issues. The best sequential time will be established as a reference point, and performance metrics will be presented using Google Colab. The report will include tables and charts to illustrate speedup values, focusing on data sizes that result in sequential execution times of 30 seconds or more. Finally, we will draw conclusions based on our findings.
@@ -202,16 +202,149 @@ The vectorization issues in ```step_kernel_mod``` mainly come from two things:
 
 **Questa spiegazione da rivedere, presa da CHATGPT**
 
-# Best sequential time
+# Sequential measurements
 
-**Da fare in SW2**
+**Da fare in SW2 credo**
 
 
 # CUDA implementation
 
-# Google colab graphs
+To convert the given algorithm into a CUDA kernel function, we replaced the loops inside the functions with direct calculations of ```x``` and ```y``` using ```blockIdx```, ```blockDim```, and ```threadIdx```. \
+This transformation enables parallel execution, as demonstrated here:
 
-# Speed up charts and tables
-- do not consider data size resulting in sequential execution time < 30 seconds;
+```C
+__global__ void step_kernel_mod_dev(const size_t ni, const size_t nj,
+                                    const float fact,
+                                    const float* temp_in,
+                                    float* temp_out) {
+  int i = blockIdx.x * blockDim.x + threadIdx.x;
+  int j = blockIdx.y * blockDim.y + threadIdx.y;
+
+  if ((i > 0 && i < ni - 1) && (j > 0 && j < nj - 1)) {
+    // Indices
+    size_t ij = I2D(ni, i, j);
+    size_t im1j = I2D(ni, i - 1, j);
+    size_t ip1j = I2D(ni, i + 1, j);
+    size_t ijm1 = I2D(ni, i, j - 1);
+    size_t ijp1 = I2D(ni, i, j + 1);
+
+    // second derivatives
+    float dx2 = temp_in[ip1j] - 2.0f * temp_in[ij] + temp_in[im1j];
+    float dy2 = temp_in[ijp1] - 2.0f * temp_in[ij] + temp_in[ijm1];
+
+    // update
+    temp_out[ij] = temp_in[ij] + fact * (dx2 + dy2);
+  }
+}
+```
+
+When launching the kernel, you must supply two parameters: the number of blocks and the number of threads per block. \
+We set the threads per block by defining the block dimensions, and then we calculate the number of blocks:
+
+```C
+dim3 threadsPerBlock(BLOCKDIM_X, BLOCKDIM_Y);
+dim3 numBlocks((ni + threadsPerBlock.x - 1) / threadsPerBlock.x, (nj + threadsPerBlock.y - 1) / threadsPerBlock.y);
+```
+
+Then you can call the Kernel, by invoking:
+
+```C
+step_kernel_mod_dev<<<numBlocks, threadsPerBlock>>>(ni, nj, tfac, temp1_d, temp2_d);
+```
+
+
+
+
+# Google colab measurements
+
+## Generating data
+
+For generating all the data and make the graph we have used this code written on google colab:
+
+```python
+import os
+import subprocess
+import re
+import matplotlib.pyplot as plt
+import numpy as np
+
+def run_cuda_cycle(block_x, block_y, size):
+    """
+    Compiles and runs CUDA code with specified block dimensions and problem size,
+    capturing execution time from nvprof.
+    
+    Args:
+      block_x: Block dimension in the x-direction.
+      block_y: Block dimension in the y-direction.
+      size: Size of the problem (e.g., grid dimensions).
+      
+    Returns:
+      Execution time in milliseconds (ms).
+    """
+    if not os.path.exists("/src/heat.cu"):
+        print("Error: Required CUDA source file is missing.")
+        return None
+
+    # Compile CUDA code
+    compile_cmd = f"nvcc -O3 -arch=sm_60 -D BLOCKDIM_X={block_x} -D BLOCKDIM_Y={block_y} -D SIZE={size} /src/heat.cu -o /src/heat_cuda"
+    os.system(compile_cmd)
+
+    # Run with nvprof and capture output
+    nvprof_cmd = "/usr/local/cuda/bin/nvprof --print-gpu-summary /src/heat_cuda"
+    result = subprocess.run(nvprof_cmd, shell=True, capture_output=True, text=True)
+
+    # Extract execution time using regex
+    match = re.search(r"GPU activities:.*?(\d+\.\d+)ms", result.stderr, re.DOTALL)
+    if match:
+        execution_time = float(match.group(1))
+        print(f"Execution Time: {execution_time} ms")
+        return execution_time
+    else:
+        print("Failed to extract execution time.")
+        return None
+
+# Store results for visualization
+results = []
+
+block_x_values = [1, 2, 4, 8, 16]
+block_y_values = [1, 2, 4, 8, 16]
+size_values = [1000, 5000, 10000]
+
+for block_x in block_x_values:
+    for block_y in block_y_values:
+        for size in size_values:
+            print(f"\nRunning with BLOCKDIM_X={block_x}, BLOCKDIM_Y={block_y}, SIZE={size}")
+            time_ms = run_cuda_cycle(block_x, block_y, size)
+            if time_ms is not None:
+                results.append((block_x, block_y, size, time_ms))
+
+
+
+# Convert results into NumPy arrays for easy manipulation
+results_array = np.array(results)
+
+# Extract unique block sizes and problem sizes
+block_sizes = np.unique(results_array[:, 0:2], axis=0)
+problem_sizes = np.unique(results_array[:, 2])
+
+# Create a heatmap-style plot for execution times
+plt.figure(figsize=(10, 6))
+for size in problem_sizes:
+    subset = results_array[results_array[:, 2] == size]  
+    plt.scatter(subset[:, 0] * subset[:, 1], subset[:, 3], label=f"Size {int(size)}")
+
+plt.xlabel("Block Size (BLOCKDIM_X * BLOCKDIM_Y)")
+plt.ylabel("Execution Time (ms)")
+plt.title("CUDA Execution Time vs Block Size")
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+## Graphs
+
+
+**Analisi da rivedere**
+
 
 # Conclusions
