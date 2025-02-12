@@ -21,6 +21,6 @@ seq:
 cuda:
 	nvcc -O3 -arch=$(ARCH) \
 		-D BLOCKDIM_X=$(BLOCKDIM_X) \
-		-D BLOCKDIM_Y=$(BLOCKDIM_Y) \  
+		-D BLOCKDIM_Y=$(BLOCKDIM_Y) \
 		-D RESOLUTION=${RESOLUTION} \
 		$(SOURCE)/mandelbrot.cu -o $(RELEASE)/mandelbrot_cuda
