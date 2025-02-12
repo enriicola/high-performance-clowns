@@ -1,0 +1,96 @@
+{
+  "vec": [
+    {
+      "N": 80000,
+      "Time (s)": 24.89,
+      "GFLOPS": 32.97,
+      "Hotspot": {
+        "name": "loop in main at omp_homework.c:26",
+        "Time (s)": 24.22
+      }
+    },
+    {
+      "N": 100000,
+      "Time (s)": 38.29,
+      "GFLOPS": 33.06,
+      "Hotspot": {
+        "name": "loop in main at omp_homework.c:26",
+        "Time (s)": 37.81
+      }
+    },
+    {
+      "N": 120000,
+      "Time (s)": 55.63,
+      "GFLOPS": 33.20,
+      "Hotspot": {
+        "name": "loop in main at omp_homework.c:26",
+        "Time (s)": 54.44
+      }
+    },
+    {
+      "N": 140000,
+      "Time (s)": 75.50,
+      "GFLOPS": 33.29,
+      "Hotspot": {
+        "name": "loop in main at omp_homework.c:26",
+        "Time (s)": 74.10
+      }
+    },
+    {
+      "N": 160000,
+      "Time (s)": 98.49,
+      "GFLOPS": 33.33,
+      "Hotspot": {
+        "name": "loop in main at omp_homework.c:26",
+        "Time (s)": 96.87
+      }
+    }
+  ],
+  "parallel": [
+    {
+      "N": 80000,
+      "Time (s)": 3.91,
+      "GFLOPS": 216.55,
+      "Hotspot": {
+        "name": "loop in main at omp_homework.c:83",
+        "Time (s)": 2.39
+      }
+    },
+    {
+      "N": 100000,
+      "Time (s)": 5.96,
+      "GFLOPS": 222.05,
+      "Hotspot": {
+        "name": "loop in main at omp_homework.c:83",
+        "Time (s)": 3.73
+      }
+    },
+    {
+      "N": 120000,
+      "Time (s)": 8.55,
+      "GFLOPS": 222.63,
+      "Hotspot": {
+        "name": "loop in main at omp_homework.c:83",
+        "Time (s)": 5.38
+      }
+    },
+    {
+      "N": 140000,
+      "Time (s)": 11.20,
+      "GFLOPS": 231.47,
+      "Hotspot": {
+        "name": "loop in main at omp_homework.c:83",
+        "Time (s)": 7.29
+      }
+    },
+    {
+      "N": 160000,
+      "Time (s)": 14.40,
+      "GFLOPS": 235.15,
+      "Hotspot": {
+        "name": "loop in main at omp_homework.c:83",
+        "Time (s)": 9.55
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+-r
+/home/stud/docente/Desktop/OMP_ass/advisor/OMP_ass/e000/trc000
+--return-app-exitcode
+--cs-mode=no-count-loops,no-count-flops,stl-profiling,stack-stitching
+--count-flops
+--benchmarks=dram,mcdram,cpu_cache,flop_peak,int,
+--cs-file=/home/stud/docente/Desktop/OMP_ass/advisor/OMP_ass/e000/callstacks.def
+--jit-profiling
+--target-gpu=0:0:2.0
+--search-dir
+sym:p=/home/stud/docente/Desktop/OMP_ass/source
+--search-dir
+bin:p=/home/stud/docente/Desktop/OMP_ass/source
+--app-working-dir=/home/stud/docente/Desktop/OMP_ass/release
+--
+/home/stud/docente/Desktop/OMP_ass/release/omp_homework
+140000

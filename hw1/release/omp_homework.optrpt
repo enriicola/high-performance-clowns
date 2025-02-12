@@ -1,0 +1,663 @@
+Global optimization report for : main
+
+LOOP BEGIN at ./source/omp_homework.c (116, 3)
+    remark #15527: Loop was not vectorized: function call to  cannot be vectorized
+    remark #25438: Loop unrolled without remainder by 8
+LOOP END
+
+LOOP BEGIN at ./source/omp_homework.c (118, 3)
+    remark #15300: LOOP WAS VECTORIZED
+    remark #15305: vectorization support: vector length 4
+    remark #15475: --- begin vector loop cost summary ---
+    remark #15476: scalar cost: 3.000000 
+    remark #15477: vector cost: 1.593750 
+    remark #15478: estimated potential speedup: 1.843750 
+    remark #15309: vectorization support: normalized vectorization overhead 1.250000
+    remark #15482: vectorized math library calls: 0 
+    remark #15484: vector function calls: 0 
+    remark #15485: serialized function calls: 0
+    remark #15488: --- end vector loop cost summary ---
+    remark #15447: --- begin vector loop memory reference summary ---
+    remark #15450: unmasked unaligned unit stride loads: 0 
+    remark #15451: unmasked unaligned unit stride stores: 1 
+    remark #15456: masked unaligned unit stride loads: 0 
+    remark #15457: masked unaligned unit stride stores: 0 
+    remark #15458: masked indexed (or gather) loads: 0 
+    remark #15459: masked indexed (or scatter) stores: 0 
+    remark #15462: unmasked indexed (or gather) loads: 0 
+    remark #15463: unmasked indexed (or scatter) stores: 0 
+    remark #15554: Unmasked VLS-optimized loads (each part of the group counted separately): 0
+    remark #15555: Masked VLS-optimized loads (each part of the group counted separately): 0
+    remark #15556: Unmasked VLS-optimized stores (each part of the group counted separately): 0
+    remark #15557: Masked VLS-optimized stores (each part of the group counted separately): 0
+    remark #15497: vector compress: 0 
+    remark #15498: vector expand: 0 
+    remark #15474: --- end vector loop memory reference summary ---
+LOOP END
+
+LOOP BEGIN at ./source/omp_homework.c (118, 3)
+<Remainder loop for vectorization>
+LOOP END
+
+LOOP BEGIN at ./source/omp_homework.c (143, 3)
+    remark #15527: Loop was not vectorized: function call to  cannot be vectorized
+    remark #25439: Loop unrolled with remainder by 4
+LOOP END
+
+LOOP BEGIN at ./source/omp_homework.c (143, 3)
+<Remainder loop>
+LOOP END
+=================================================================
+
+Global optimization report for : fillInput
+
+LOOP BEGIN at ./source/omp_homework.c (116, 3)
+    remark #15527: Loop was not vectorized: function call to  cannot be vectorized
+    remark #25438: Loop unrolled without remainder by 8
+LOOP END
+
+LOOP BEGIN at ./source/omp_homework.c (118, 3)
+<Multiversioned v2>
+    remark #15319: Loop was not vectorized: novector directive used
+LOOP END
+
+LOOP BEGIN at ./source/omp_homework.c (118, 3)
+<Multiversioned v2>
+    remark #15300: LOOP WAS VECTORIZED
+    remark #15305: vectorization support: vector length 4
+    remark #15475: --- begin vector loop cost summary ---
+    remark #15476: scalar cost: 4.000000 
+    remark #15477: vector cost: 1.937500 
+    remark #15478: estimated potential speedup: 1.890625 
+    remark #15309: vectorization support: normalized vectorization overhead 1.031250
+    remark #15482: vectorized math library calls: 0 
+    remark #15484: vector function calls: 0 
+    remark #15485: serialized function calls: 0
+    remark #15488: --- end vector loop cost summary ---
+    remark #15447: --- begin vector loop memory reference summary ---
+    remark #15450: unmasked unaligned unit stride loads: 0 
+    remark #15451: unmasked unaligned unit stride stores: 2 
+    remark #15456: masked unaligned unit stride loads: 0 
+    remark #15457: masked unaligned unit stride stores: 0 
+    remark #15458: masked indexed (or gather) loads: 0 
+    remark #15459: masked indexed (or scatter) stores: 0 
+    remark #15462: unmasked indexed (or gather) loads: 0 
+    remark #15463: unmasked indexed (or scatter) stores: 0 
+    remark #15554: Unmasked VLS-optimized loads (each part of the group counted separately): 0
+    remark #15555: Masked VLS-optimized loads (each part of the group counted separately): 0
+    remark #15556: Unmasked VLS-optimized stores (each part of the group counted separately): 0
+    remark #15557: Masked VLS-optimized stores (each part of the group counted separately): 0
+    remark #15497: vector compress: 0 
+    remark #15498: vector expand: 0 
+    remark #15474: --- end vector loop memory reference summary ---
+LOOP END
+
+LOOP BEGIN at ./source/omp_homework.c (118, 3)
+<Remainder loop for vectorization>
+LOOP END
+
+LOOP BEGIN at ./source/omp_homework.c (118, 3)
+<Multiversioned v1>
+<Multiversioned v1>
+    remark #25228: Loop multiversioned for Data Dependence
+    remark #25408: memset generated
+    remark #25562: The loop has been multiversioned for the small trip count
+    remark #15300: LOOP WAS VECTORIZED
+    remark #15305: vectorization support: vector length 4
+    remark #15475: --- begin vector loop cost summary ---
+    remark #15476: scalar cost: 3.000000 
+    remark #15477: vector cost: 1.593750 
+    remark #15478: estimated potential speedup: 1.843750 
+    remark #15309: vectorization support: normalized vectorization overhead 1.250000
+    remark #15482: vectorized math library calls: 0 
+    remark #15484: vector function calls: 0 
+    remark #15485: serialized function calls: 0
+    remark #15488: --- end vector loop cost summary ---
+    remark #15447: --- begin vector loop memory reference summary ---
+    remark #15450: unmasked unaligned unit stride loads: 0 
+    remark #15451: unmasked unaligned unit stride stores: 1 
+    remark #15456: masked unaligned unit stride loads: 0 
+    remark #15457: masked unaligned unit stride stores: 0 
+    remark #15458: masked indexed (or gather) loads: 0 
+    remark #15459: masked indexed (or scatter) stores: 0 
+    remark #15462: unmasked indexed (or gather) loads: 0 
+    remark #15463: unmasked indexed (or scatter) stores: 0 
+    remark #15554: Unmasked VLS-optimized loads (each part of the group counted separately): 0
+    remark #15555: Masked VLS-optimized loads (each part of the group counted separately): 0
+    remark #15556: Unmasked VLS-optimized stores (each part of the group counted separately): 0
+    remark #15557: Masked VLS-optimized stores (each part of the group counted separately): 0
+    remark #15497: vector compress: 0 
+    remark #15498: vector expand: 0 
+    remark #15474: --- end vector loop memory reference summary ---
+LOOP END
+
+LOOP BEGIN at ./source/omp_homework.c (118, 3)
+<Remainder loop for vectorization>
+LOOP END
+=================================================================
+
+Global optimization report for : setOutputZero
+
+LOOP BEGIN at ./source/omp_homework.c (133, 3)
+<Multiversioned v1>
+<Multiversioned v1>
+    remark #25228: Loop multiversioned for Data Dependence
+    remark #25408: memset generated
+    remark #25408: memset generated
+    remark #25562: The loop has been multiversioned for the small trip count
+LOOP END
+
+LOOP BEGIN at ./source/omp_homework.c (133, 3)
+<Multiversioned v2>
+    remark #15319: Loop was not vectorized: novector directive used
+LOOP END
+
+LOOP BEGIN at ./source/omp_homework.c (133, 3)
+<Multiversioned v2>
+    remark #15300: LOOP WAS VECTORIZED
+    remark #15305: vectorization support: vector length 4
+    remark #15475: --- begin vector loop cost summary ---
+    remark #15476: scalar cost: 4.000000 
+    remark #15477: vector cost: 1.937500 
+    remark #15478: estimated potential speedup: 1.890625 
+    remark #15309: vectorization support: normalized vectorization overhead 1.031250
+    remark #15482: vectorized math library calls: 0 
+    remark #15484: vector function calls: 0 
+    remark #15485: serialized function calls: 0
+    remark #15488: --- end vector loop cost summary ---
+    remark #15447: --- begin vector loop memory reference summary ---
+    remark #15450: unmasked unaligned unit stride loads: 0 
+    remark #15451: unmasked unaligned unit stride stores: 2 
+    remark #15456: masked unaligned unit stride loads: 0 
+    remark #15457: masked unaligned unit stride stores: 0 
+    remark #15458: masked indexed (or gather) loads: 0 
+    remark #15459: masked indexed (or scatter) stores: 0 
+    remark #15462: unmasked indexed (or gather) loads: 0 
+    remark #15463: unmasked indexed (or scatter) stores: 0 
+    remark #15554: Unmasked VLS-optimized loads (each part of the group counted separately): 0
+    remark #15555: Masked VLS-optimized loads (each part of the group counted separately): 0
+    remark #15556: Unmasked VLS-optimized stores (each part of the group counted separately): 0
+    remark #15557: Masked VLS-optimized stores (each part of the group counted separately): 0
+    remark #15497: vector compress: 0 
+    remark #15498: vector expand: 0 
+    remark #15474: --- end vector loop memory reference summary ---
+LOOP END
+
+LOOP BEGIN at ./source/omp_homework.c (133, 3)
+<Remainder loop for vectorization>
+LOOP END
+=================================================================
+
+Global optimization report for : DFT
+=================================================================
+
+Global optimization report for : checkResults
+
+LOOP BEGIN at ./source/omp_homework.c (143, 3)
+    remark #15527: Loop was not vectorized: function call to  cannot be vectorized
+    remark #25439: Loop unrolled with remainder by 4
+LOOP END
+
+LOOP BEGIN at ./source/omp_homework.c (143, 3)
+<Remainder loop>
+LOOP END
+=================================================================
+
+Global optimization report for : printResults
+
+LOOP BEGIN at ./source/omp_homework.c (156, 3)
+    remark #15527: Loop was not vectorized: function call to  cannot be vectorized
+    remark #25439: Loop unrolled with remainder by 8
+LOOP END
+
+LOOP BEGIN at ./source/omp_homework.c (156, 3)
+<Remainder loop>
+LOOP END
+=================================================================
+
+Global optimization report for : DFT.extracted
+
+LOOP BEGIN at ./source/omp_homework.c (100, 1)
+    remark: OpenMP: Outlined parallel loop
+    remark #15300: LOOP WAS VECTORIZED
+    remark #15305: vectorization support: vector length 4
+    remark #15475: --- begin vector loop cost summary ---
+    remark #15476: scalar cost: 9.000000 
+    remark #15477: vector cost: 3.281250 
+    remark #15478: estimated potential speedup: 2.671875 
+    remark #15309: vectorization support: normalized vectorization overhead 0.609375
+    remark #15482: vectorized math library calls: 0 
+    remark #15484: vector function calls: 0 
+    remark #15485: serialized function calls: 0
+    remark #15488: --- end vector loop cost summary ---
+    remark #15447: --- begin vector loop memory reference summary ---
+    remark #15450: unmasked unaligned unit stride loads: 2 
+    remark #15451: unmasked unaligned unit stride stores: 2 
+    remark #15456: masked unaligned unit stride loads: 0 
+    remark #15457: masked unaligned unit stride stores: 0 
+    remark #15458: masked indexed (or gather) loads: 0 
+    remark #15459: masked indexed (or scatter) stores: 0 
+    remark #15462: unmasked indexed (or gather) loads: 0 
+    remark #15463: unmasked indexed (or scatter) stores: 0 
+    remark #15554: Unmasked VLS-optimized loads (each part of the group counted separately): 0
+    remark #15555: Masked VLS-optimized loads (each part of the group counted separately): 0
+    remark #15556: Unmasked VLS-optimized stores (each part of the group counted separately): 0
+    remark #15557: Masked VLS-optimized stores (each part of the group counted separately): 0
+    remark #15497: vector compress: 0 
+    remark #15498: vector expand: 0 
+    remark #15474: --- end vector loop memory reference summary ---
+LOOP END
+
+LOOP BEGIN at ./source/omp_homework.c (100, 1)
+<Remainder loop for vectorization>
+LOOP END
+=================================================================
+
+Global optimization report for : DFT.extracted.11
+
+LOOP BEGIN at ./source/omp_homework.c (83, 1)
+<Multiversioned v2>
+    remark #15319: Loop was not vectorized: novector directive used
+
+    LOOP BEGIN at ./source/omp_homework.c (86, 5)
+        remark #15319: Loop was not vectorized: novector directive used
+    LOOP END
+LOOP END
+
+LOOP BEGIN at ./source/omp_homework.c (83, 1)
+<Multiversioned v1>
+    remark #25228: Loop multiversioned for Data Dependence
+    remark #25540: Loop unrolled and jammed by 8
+    remark #15553: loop was not vectorized: outer loop is not an auto-vectorization candidate.
+
+    LOOP BEGIN at ./source/omp_homework.c (86, 5)
+        remark #25528: Load/Store of reduction at line 93 sinked after loop
+        remark #25563: Load hoisted out of the loop
+        remark #25564: Store sinked out of the loop
+        remark #25583: Number of Array Refs Scalar Replaced In Loop: 2
+        remark #15300: LOOP WAS VECTORIZED
+        remark #15305: vectorization support: vector length 4
+        remark #15475: --- begin vector loop cost summary ---
+        remark #15476: scalar cost: 810.000000 
+        remark #15477: vector cost: 228.000000 
+        remark #15478: estimated potential speedup: 3.531250 
+        remark #15309: vectorization support: normalized vectorization overhead 0.281250
+        remark #15482: vectorized math library calls: 16 
+        remark #15484: vector function calls: 0 
+        remark #15485: serialized function calls: 0
+        remark #15488: --- end vector loop cost summary ---
+        remark #15447: --- begin vector loop memory reference summary ---
+        remark #15450: unmasked unaligned unit stride loads: 16 
+        remark #15451: unmasked unaligned unit stride stores: 0 
+        remark #15456: masked unaligned unit stride loads: 0 
+        remark #15457: masked unaligned unit stride stores: 0 
+        remark #15458: masked indexed (or gather) loads: 0 
+        remark #15459: masked indexed (or scatter) stores: 0 
+        remark #15462: unmasked indexed (or gather) loads: 0 
+        remark #15463: unmasked indexed (or scatter) stores: 0 
+        remark #15554: Unmasked VLS-optimized loads (each part of the group counted separately): 0
+        remark #15555: Masked VLS-optimized loads (each part of the group counted separately): 0
+        remark #15556: Unmasked VLS-optimized stores (each part of the group counted separately): 0
+        remark #15557: Masked VLS-optimized stores (each part of the group counted separately): 0
+        remark #15497: vector compress: 0 
+        remark #15498: vector expand: 0 
+        remark #15474: --- end vector loop memory reference summary ---
+        remark #25587: Loop has reduction
+        remark #25583: Number of Array Refs Scalar Replaced In Loop: 14
+    LOOP END
+
+    LOOP BEGIN
+    <Remainder loop for vectorization>
+        remark #15440: remainder loop was vectorized (masked)
+        remark #15305: vectorization support: vector length 4
+        remark #15475: --- begin vector loop cost summary ---
+        remark #15482: vectorized math library calls: 16 
+        remark #15484: vector function calls: 0 
+        remark #15485: serialized function calls: 0
+        remark #15488: --- end vector loop cost summary ---
+        remark #15447: --- begin vector loop memory reference summary ---
+        remark #15450: unmasked unaligned unit stride loads: 0 
+        remark #15451: unmasked unaligned unit stride stores: 0 
+        remark #15456: masked unaligned unit stride loads: 16 
+        remark #15457: masked unaligned unit stride stores: 0 
+        remark #15458: masked indexed (or gather) loads: 0 
+        remark #15459: masked indexed (or scatter) stores: 0 
+        remark #15462: unmasked indexed (or gather) loads: 0 
+        remark #15463: unmasked indexed (or scatter) stores: 0 
+        remark #15554: Unmasked VLS-optimized loads (each part of the group counted separately): 0
+        remark #15555: Masked VLS-optimized loads (each part of the group counted separately): 0
+        remark #15556: Unmasked VLS-optimized stores (each part of the group counted separately): 0
+        remark #15557: Masked VLS-optimized stores (each part of the group counted separately): 0
+        remark #15497: vector compress: 0 
+        remark #15498: vector expand: 0 
+        remark #15474: --- end vector loop memory reference summary ---
+    LOOP END
+LOOP END
+
+LOOP BEGIN at ./source/omp_homework.c (83, 1)
+<Remainder loop>
+    remark #15553: loop was not vectorized: outer loop is not an auto-vectorization candidate.
+
+    LOOP BEGIN at ./source/omp_homework.c (86, 5)
+        remark #15300: LOOP WAS VECTORIZED
+        remark #15305: vectorization support: vector length 4
+        remark #15475: --- begin vector loop cost summary ---
+        remark #15476: scalar cost: 100.000000 
+        remark #15477: vector cost: 26.343750 
+        remark #15478: estimated potential speedup: 3.765625 
+        remark #15309: vectorization support: normalized vectorization overhead 0.375000
+        remark #15482: vectorized math library calls: 2 
+        remark #15484: vector function calls: 0 
+        remark #15485: serialized function calls: 0
+        remark #15488: --- end vector loop cost summary ---
+        remark #15447: --- begin vector loop memory reference summary ---
+        remark #15450: unmasked unaligned unit stride loads: 2 
+        remark #15451: unmasked unaligned unit stride stores: 0 
+        remark #15456: masked unaligned unit stride loads: 0 
+        remark #15457: masked unaligned unit stride stores: 0 
+        remark #15458: masked indexed (or gather) loads: 0 
+        remark #15459: masked indexed (or scatter) stores: 0 
+        remark #15462: unmasked indexed (or gather) loads: 0 
+        remark #15463: unmasked indexed (or scatter) stores: 0 
+        remark #15554: Unmasked VLS-optimized loads (each part of the group counted separately): 0
+        remark #15555: Masked VLS-optimized loads (each part of the group counted separately): 0
+        remark #15556: Unmasked VLS-optimized stores (each part of the group counted separately): 0
+        remark #15557: Masked VLS-optimized stores (each part of the group counted separately): 0
+        remark #15497: vector compress: 0 
+        remark #15498: vector expand: 0 
+        remark #15474: --- end vector loop memory reference summary ---
+        remark #25587: Loop has reduction
+    LOOP END
+
+    LOOP BEGIN
+    <Remainder loop for vectorization>
+        remark #15440: remainder loop was vectorized (masked)
+        remark #15305: vectorization support: vector length 4
+        remark #15475: --- begin vector loop cost summary ---
+        remark #15482: vectorized math library calls: 2 
+        remark #15484: vector function calls: 0 
+        remark #15485: serialized function calls: 0
+        remark #15488: --- end vector loop cost summary ---
+        remark #15447: --- begin vector loop memory reference summary ---
+        remark #15450: unmasked unaligned unit stride loads: 0 
+        remark #15451: unmasked unaligned unit stride stores: 0 
+        remark #15456: masked unaligned unit stride loads: 2 
+        remark #15457: masked unaligned unit stride stores: 0 
+        remark #15458: masked indexed (or gather) loads: 0 
+        remark #15459: masked indexed (or scatter) stores: 0 
+        remark #15462: unmasked indexed (or gather) loads: 0 
+        remark #15463: unmasked indexed (or scatter) stores: 0 
+        remark #15554: Unmasked VLS-optimized loads (each part of the group counted separately): 0
+        remark #15555: Masked VLS-optimized loads (each part of the group counted separately): 0
+        remark #15556: Unmasked VLS-optimized stores (each part of the group counted separately): 0
+        remark #15557: Masked VLS-optimized stores (each part of the group counted separately): 0
+        remark #15497: vector compress: 0 
+        remark #15498: vector expand: 0 
+        remark #15474: --- end vector loop memory reference summary ---
+    LOOP END
+LOOP END
+=================================================================
+
+---- Begin Inlining Report ----
+Option Values:
+  inline-threshold: 225
+  inlinehint-threshold: 325
+  inlinecold-threshold: 45
+  inlineoptsize-threshold: 15
+
+DEAD STATIC FUNC: atoi
+
+DEAD STATIC FUNC: llvm.directive.region.entry
+
+DEAD STATIC FUNC: llvm.directive.region.exit
+
+COMPILE FUNC: main
+   -> INLINE: atoi ./source/omp_homework.c (27,9) (10<=487)
+      -> EXTERN: strtol ./source/omp_homework.c (363,16)
+   -> EXTERN: printf ./source/omp_homework.c (29,3)
+   -> EXTERN: malloc ./source/omp_homework.c (31,25)
+   -> EXTERN: malloc ./source/omp_homework.c (32,25)
+   -> INLINE: fillInput ./source/omp_homework.c (33,3) (95<=250)
+      -> EXTERN: time ./source/omp_homework.c (115,9)
+      -> EXTERN: srand ./source/omp_homework.c (115,3)
+      -> DELETE: rand ./source/omp_homework.c (117,5)
+      -> EXTERN: rand ./source/omp_homework.c (117,5)
+      -> EXTERN: rand ./source/omp_homework.c (117,5)
+      -> EXTERN: rand ./source/omp_homework.c (117,5)
+      -> EXTERN: rand ./source/omp_homework.c (117,5)
+      -> EXTERN: rand ./source/omp_homework.c (117,5)
+      -> EXTERN: rand ./source/omp_homework.c (117,5)
+      -> EXTERN: rand ./source/omp_homework.c (117,5)
+      -> EXTERN: rand ./source/omp_homework.c (117,5)
+   -> EXTERN: malloc ./source/omp_homework.c (35,31)
+   -> EXTERN: malloc ./source/omp_homework.c (36,31)
+   -> INLINE: setOutputZero ./source/omp_homework.c (37,3) (-20<=250)
+   -> EXTERN: malloc ./source/omp_homework.c (39,27)
+   -> EXTERN: malloc ./source/omp_homework.c (40,27)
+   -> INLINE: setOutputZero ./source/omp_homework.c (41,3) (-20<=250)
+   -> EXTERN: omp_get_wtime ./source/omp_homework.c (44,23)
+   -> INLINE: DFT ./source/omp_homework.c (48,3) (130<=250)
+      -> DELETE: __kmpc_global_thread_num ./source/omp_homework.c
+      -> EXTERN: __kmpc_push_num_threads ./source/omp_homework.c
+      -> EXTERN: __kmpc_fork_call ./source/omp_homework.c (83,1)
+      -> DELETE: __kmpc_fork_call ./source/omp_homework.c (100,1)
+   -> INLINE: DFT ./source/omp_homework.c (51,3) (200<=250)
+      -> EXTERN: __kmpc_global_thread_num ./source/omp_homework.c
+      -> EXTERN: __kmpc_push_num_threads ./source/omp_homework.c
+      -> EXTERN: __kmpc_fork_call ./source/omp_homework.c (83,1)
+      -> EXTERN: __kmpc_fork_call ./source/omp_homework.c (100,1)
+   -> EXTERN: omp_get_wtime ./source/omp_homework.c (54,21)
+   -> EXTERN: printf ./source/omp_homework.c (55,3)
+   -> INLINE: checkResults ./source/omp_homework.c (58,3) (165<=250)
+      -> DELETE: llvm.fabs.f64 ./source/omp_homework.c (144,9)
+      -> DELETE: printf ./source/omp_homework.c (145,7)
+      -> DELETE: llvm.fabs.f64 ./source/omp_homework.c (146,9)
+      -> DELETE: printf ./source/omp_homework.c (147,7)
+      -> EXTERN: printf ./source/omp_homework.c (149,3)
+      -> llvm.fabs.f64 ./source/omp_homework.c (144,9)
+      -> EXTERN: printf ./source/omp_homework.c (145,7)
+      -> llvm.fabs.f64 ./source/omp_homework.c (146,9)
+      -> EXTERN: printf ./source/omp_homework.c (147,7)
+      -> llvm.fabs.f64 ./source/omp_homework.c (144,9)
+      -> EXTERN: printf ./source/omp_homework.c (145,7)
+      -> llvm.fabs.f64 ./source/omp_homework.c (146,9)
+      -> EXTERN: printf ./source/omp_homework.c (147,7)
+      -> llvm.fabs.f64 ./source/omp_homework.c (144,9)
+      -> EXTERN: printf ./source/omp_homework.c (145,7)
+      -> llvm.fabs.f64 ./source/omp_homework.c (146,9)
+      -> EXTERN: printf ./source/omp_homework.c (147,7)
+      -> llvm.fabs.f64 ./source/omp_homework.c (144,9)
+      -> EXTERN: printf ./source/omp_homework.c (145,7)
+      -> llvm.fabs.f64 ./source/omp_homework.c (146,9)
+      -> EXTERN: printf ./source/omp_homework.c (147,7)
+      -> llvm.fabs.f64 ./source/omp_homework.c (144,9)
+      -> EXTERN: printf ./source/omp_homework.c (145,7)
+      -> llvm.fabs.f64 ./source/omp_homework.c (146,9)
+      -> EXTERN: printf ./source/omp_homework.c (147,7)
+   -> EXTERN: free ./source/omp_homework.c (65,3)
+   -> EXTERN: free ./source/omp_homework.c (66,3)
+   -> EXTERN: free ./source/omp_homework.c (67,3)
+   -> EXTERN: free ./source/omp_homework.c (68,3)
+   -> EXTERN: free ./source/omp_homework.c (69,3)
+   -> EXTERN: free ./source/omp_homework.c (70,3)
+   -> llvm.memset.p0.i64 ./source/omp_homework.c (125,11)
+   -> llvm.memset.p0.i64 ./source/omp_homework.c (134,13)
+   -> llvm.memset.p0.i64 ./source/omp_homework.c (135,13)
+   -> llvm.memset.p0.i64 ./source/omp_homework.c (134,13)
+   -> llvm.memset.p0.i64 ./source/omp_homework.c (135,13)
+   -> llvm.stacksave ./source/omp_homework.c
+   -> llvm.stacksave ./source/omp_homework.c
+   -> llvm.stackrestore ./source/omp_homework.c (107,3)
+
+COMPILE FUNC: fillInput
+   -> EXTERN: time ./source/omp_homework.c (115,9)
+   -> EXTERN: srand ./source/omp_homework.c (115,3)
+   -> DELETE: rand ./source/omp_homework.c (117,5)
+   -> EXTERN: rand ./source/omp_homework.c (117,5)
+   -> EXTERN: rand ./source/omp_homework.c (117,5)
+   -> EXTERN: rand ./source/omp_homework.c (117,5)
+   -> EXTERN: rand ./source/omp_homework.c (117,5)
+   -> EXTERN: rand ./source/omp_homework.c (117,5)
+   -> EXTERN: rand ./source/omp_homework.c (117,5)
+   -> EXTERN: rand ./source/omp_homework.c (117,5)
+   -> EXTERN: rand ./source/omp_homework.c (117,5)
+   -> llvm.memset.p0.i64 ./source/omp_homework.c (125,5)
+
+COMPILE FUNC: setOutputZero
+   -> llvm.memset.p0.i64 ./source/omp_homework.c (134,5)
+   -> llvm.memset.p0.i64 ./source/omp_homework.c (135,5)
+
+COMPILE FUNC: DFT
+   -> DELETE: llvm.directive.region.entry ./source/omp_homework.c (83,1)
+   -> DELETE: llvm.cos.f64 ./source/omp_homework.c (87,17)
+   -> DELETE: llvm.sin.f64 ./source/omp_homework.c (88,17)
+   -> DELETE: llvm.directive.region.exit ./source/omp_homework.c (83,1)
+   -> DELETE: llvm.directive.region.entry ./source/omp_homework.c (100,1)
+   -> DELETE: llvm.directive.region.exit ./source/omp_homework.c (100,1)
+   -> EXTERN: __kmpc_global_thread_num ./source/omp_homework.c
+   -> EXTERN: __kmpc_push_num_threads ./source/omp_homework.c
+   -> EXTERN: __kmpc_fork_call ./source/omp_homework.c (83,1)
+   -> EXTERN: __kmpc_fork_call ./source/omp_homework.c (100,1)
+
+COMPILE FUNC: checkResults
+   -> DELETE: llvm.fabs.f64 ./source/omp_homework.c (144,9)
+   -> DELETE: printf ./source/omp_homework.c (145,7)
+   -> DELETE: llvm.fabs.f64 ./source/omp_homework.c (146,9)
+   -> DELETE: printf ./source/omp_homework.c (147,7)
+   -> EXTERN: printf ./source/omp_homework.c (149,3)
+   -> llvm.fabs.f64 ./source/omp_homework.c (144,9)
+   -> EXTERN: printf ./source/omp_homework.c (145,7)
+   -> llvm.fabs.f64 ./source/omp_homework.c (146,9)
+   -> EXTERN: printf ./source/omp_homework.c (147,7)
+   -> llvm.fabs.f64 ./source/omp_homework.c (144,9)
+   -> EXTERN: printf ./source/omp_homework.c (145,7)
+   -> llvm.fabs.f64 ./source/omp_homework.c (146,9)
+   -> EXTERN: printf ./source/omp_homework.c (147,7)
+   -> llvm.fabs.f64 ./source/omp_homework.c (144,9)
+   -> EXTERN: printf ./source/omp_homework.c (145,7)
+   -> llvm.fabs.f64 ./source/omp_homework.c (146,9)
+   -> EXTERN: printf ./source/omp_homework.c (147,7)
+   -> llvm.fabs.f64 ./source/omp_homework.c (144,9)
+   -> EXTERN: printf ./source/omp_homework.c (145,7)
+   -> llvm.fabs.f64 ./source/omp_homework.c (146,9)
+   -> EXTERN: printf ./source/omp_homework.c (147,7)
+   -> llvm.fabs.f64 ./source/omp_homework.c (144,9)
+   -> EXTERN: printf ./source/omp_homework.c (145,7)
+   -> llvm.fabs.f64 ./source/omp_homework.c (146,9)
+   -> EXTERN: printf ./source/omp_homework.c (147,7)
+
+COMPILE FUNC: printResults
+   -> DELETE: printf ./source/omp_homework.c (157,5)
+   -> EXTERN: printf ./source/omp_homework.c (157,5)
+   -> EXTERN: printf ./source/omp_homework.c (157,5)
+   -> EXTERN: printf ./source/omp_homework.c (157,5)
+   -> EXTERN: printf ./source/omp_homework.c (157,5)
+   -> EXTERN: printf ./source/omp_homework.c (157,5)
+   -> EXTERN: printf ./source/omp_homework.c (157,5)
+   -> EXTERN: printf ./source/omp_homework.c (157,5)
+   -> EXTERN: printf ./source/omp_homework.c (157,5)
+   -> EXTERN: printf ./source/omp_homework.c (157,5)
+
+COMPILE FUNC: DFT.extracted
+   -> EXTERN: __kmpc_for_static_init_4 ./source/omp_homework.c (100,1)
+   -> EXTERN: __kmpc_for_static_fini ./source/omp_homework.c (100,1)
+
+COMPILE FUNC: DFT.extracted.11
+   -> EXTERN: __kmpc_for_static_init_4 ./source/omp_homework.c (83,1)
+   -> DELETE: llvm.cos.f64 ./source/omp_homework.c (87,17)
+   -> DELETE: llvm.sin.f64 ./source/omp_homework.c (88,17)
+   -> EXTERN: __kmpc_for_static_fini ./source/omp_homework.c (83,1)
+   -> EXTERN: __svml_cos4 ./source/omp_homework.c (87,17)
+   -> EXTERN: __svml_sin4 ./source/omp_homework.c (88,17)
+   -> EXTERN: __svml_cos4 ./source/omp_homework.c (87,17)
+   -> EXTERN: __svml_sin4 ./source/omp_homework.c (88,17)
+   -> EXTERN: __svml_cos4 ./source/omp_homework.c (87,17)
+   -> EXTERN: __svml_sin4 ./source/omp_homework.c (88,17)
+   -> EXTERN: __svml_cos4 ./source/omp_homework.c (87,17)
+   -> EXTERN: __svml_sin4 ./source/omp_homework.c (88,17)
+   -> EXTERN: __svml_cos4 ./source/omp_homework.c (87,17)
+   -> EXTERN: __svml_sin4 ./source/omp_homework.c (88,17)
+   -> EXTERN: __svml_cos4 ./source/omp_homework.c (87,17)
+   -> EXTERN: __svml_sin4 ./source/omp_homework.c (88,17)
+   -> EXTERN: __svml_cos4 ./source/omp_homework.c (87,17)
+   -> EXTERN: __svml_sin4 ./source/omp_homework.c (88,17)
+   -> EXTERN: __svml_cos4 ./source/omp_homework.c (87,17)
+   -> EXTERN: __svml_sin4 ./source/omp_homework.c (88,17)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> EXTERN: __svml_cos4_mask ./source/omp_homework.c (87,17)
+   -> EXTERN: __svml_sin4_mask ./source/omp_homework.c (88,17)
+   -> llvm.masked.load.v4f64.p0 ./source/omp_homework.c (91,18)
+   -> llvm.masked.load.v4f64.p0 ./source/omp_homework.c (91,43)
+   -> EXTERN: __svml_cos4_mask ./source/omp_homework.c (87,17)
+   -> EXTERN: __svml_sin4_mask ./source/omp_homework.c (88,17)
+   -> DELETE: llvm.masked.load.v4f64.p0 ./source/omp_homework.c (91,18)
+   -> DELETE: llvm.masked.load.v4f64.p0 ./source/omp_homework.c (91,43)
+   -> EXTERN: __svml_cos4_mask ./source/omp_homework.c (87,17)
+   -> EXTERN: __svml_sin4_mask ./source/omp_homework.c (88,17)
+   -> DELETE: llvm.masked.load.v4f64.p0 ./source/omp_homework.c (91,18)
+   -> DELETE: llvm.masked.load.v4f64.p0 ./source/omp_homework.c (91,43)
+   -> EXTERN: __svml_cos4_mask ./source/omp_homework.c (87,17)
+   -> EXTERN: __svml_sin4_mask ./source/omp_homework.c (88,17)
+   -> DELETE: llvm.masked.load.v4f64.p0 ./source/omp_homework.c (91,18)
+   -> DELETE: llvm.masked.load.v4f64.p0 ./source/omp_homework.c (91,43)
+   -> EXTERN: __svml_cos4_mask ./source/omp_homework.c (87,17)
+   -> EXTERN: __svml_sin4_mask ./source/omp_homework.c (88,17)
+   -> DELETE: llvm.masked.load.v4f64.p0 ./source/omp_homework.c (91,18)
+   -> DELETE: llvm.masked.load.v4f64.p0 ./source/omp_homework.c (91,43)
+   -> EXTERN: __svml_cos4_mask ./source/omp_homework.c (87,17)
+   -> EXTERN: __svml_sin4_mask ./source/omp_homework.c (88,17)
+   -> DELETE: llvm.masked.load.v4f64.p0 ./source/omp_homework.c (91,18)
+   -> DELETE: llvm.masked.load.v4f64.p0 ./source/omp_homework.c (91,43)
+   -> EXTERN: __svml_cos4_mask ./source/omp_homework.c (87,17)
+   -> EXTERN: __svml_sin4_mask ./source/omp_homework.c (88,17)
+   -> DELETE: llvm.masked.load.v4f64.p0 ./source/omp_homework.c (91,18)
+   -> DELETE: llvm.masked.load.v4f64.p0 ./source/omp_homework.c (91,43)
+   -> EXTERN: __svml_cos4_mask ./source/omp_homework.c (87,17)
+   -> EXTERN: __svml_sin4_mask ./source/omp_homework.c (88,17)
+   -> DELETE: llvm.masked.load.v4f64.p0 ./source/omp_homework.c (91,18)
+   -> DELETE: llvm.masked.load.v4f64.p0 ./source/omp_homework.c (91,43)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> EXTERN: __svml_cos4 ./source/omp_homework.c (87,17)
+   -> EXTERN: __svml_sin4 ./source/omp_homework.c (88,17)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> EXTERN: __svml_cos4_mask ./source/omp_homework.c (87,17)
+   -> EXTERN: __svml_sin4_mask ./source/omp_homework.c (88,17)
+   -> llvm.masked.load.v4f64.p0 ./source/omp_homework.c (91,18)
+   -> llvm.masked.load.v4f64.p0 ./source/omp_homework.c (91,43)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.vector.reduce.fadd.v4f64 ./source/omp_homework.c (83,1)
+   -> llvm.cos.f64 ./source/omp_homework.c (87,17)
+   -> llvm.sin.f64 ./source/omp_homework.c (88,17)
+
+---- End Inlining Report ------

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<bag xmlns:boolean="http://www.w3.org/2001/XMLSchema#boolean" xmlns:int="http://www.w3.org/2001/XMLSchema#int" int:version="1">
+ <SurveyView int:survey_view_int_operations_mode="0">
+  <BottomUpGrid>
+   <ColumnStructure DefaultColumnLayout="Default"/>
+   <ColumnWidth int:fdFunctionName="360" int:fdLoopAnnotation="43" int:fdRecommendationPresence="213" int:fdTotalTime="88" int:fdSelfTime="83" int:fdCompilerOptInfoVectLoopTypeSplitting="128" int:fdCompilerOptInfoVectMsg="176" int:fdVectInfoInstSets="56" int:fdVectorGain="56" int:fdVectorLength="56" int:fdSelfGFLOPS="128" int:fdSelfArithmeticIntensity="128" int:fdMemory="91" int:fdTripCountMedian="96" int:fdTripCountOccurrences="96" int:fdVectInfoInstClasses="176" int:fdVectInfoVectDataTypes="72" int:fdCompilerOptDetails="128" int:fdLocation="119"/>
+  </BottomUpGrid>
+  <TopDownGrid>
+   <ColumnStructure DefaultColumnLayout="Top Down"/>
+  </TopDownGrid>
+  <RooflineChart rooflineState="{&quot;threadCount4RoofIdx&quot;:0,&quot;roofsState&quot;:{&quot;drambandwidth&quot;:{&quot;hidden&quot;:false,&quot;selected&quot;:true},&quot;l1bandwidth&quot;:{&quot;hidden&quot;:false,&quot;selected&quot;:true},&quot;scalarl1bandwidth&quot;:{&quot;hidden&quot;:true,&quot;selected&quot;:false},&quot;scalarl2bandwidth&quot;:{&quot;hidden&quot;:true,&quot;selected&quot;:false},&quot;scalarl3bandwidth&quot;:{&quot;hidden&quot;:true,&quot;selected&quot;:false},&quot;dpvectorfmapeak&quot;:{&quot;hidden&quot;:false,&quot;selected&quot;:true},&quot;scalaraddpeak&quot;:{&quot;hidden&quot;:false,&quot;selected&quot;:false,&quot;userSelected&quot;:true},&quot;int32vectoraddpeak&quot;:{&quot;hidden&quot;:false,&quot;selected&quot;:true},&quot;l2bandwidth&quot;:{&quot;selected&quot;:false,&quot;hidden&quot;:false},&quot;l3bandwidth&quot;:{&quot;selected&quot;:false,&quot;hidden&quot;:false},&quot;spvectorfmapeak&quot;:{&quot;selected&quot;:false,&quot;hidden&quot;:false},&quot;spvectoraddpeak&quot;:{&quot;selected&quot;:false,&quot;hidden&quot;:false},&quot;dpvectoraddpeak&quot;:{&quot;selected&quot;:false,&quot;hidden&quot;:false},&quot;integerscalaraddpeak&quot;:{&quot;selected&quot;:false,&quot;hidden&quot;:false},&quot;int64vectoraddpeak&quot;:{&quot;selected&quot;:false,&quot;hidden&quot;:false}},&quot;stackViewVisible&quot;:false,&quot;rooflineType&quot;:&quot;b-1&quot;}"/>
+  <SourceView>
+   <ColumnWidth int:SplitterPos="582"/>
+  </SourceView>
+ </SurveyView>
+ <workflow int:selected="4" boolean:accuracyEnable="false">
+  <pmRoofline>
+   <checked boolean:a1="true" boolean:a3="true" boolean:a6="false" boolean:a7="false"/>
+  </pmRoofline>
+ </workflow>
+ <FilterView boolean:VectorizedButtonChecked="true" boolean:NotVectorizedButtonChecked="true" boolean:FakeLoopButtonChecked="false" boolean:LibrariesButtonChecked="false" ModuleFilterValue="All Modules" SourceFilterValue="All Sources" LoopModeFilterValue="Loops And Functions" ThreadFilterValue="All Threads"/>
+ <MainView int:SidebarWidth="159"/>
+ <SurveySourceView boolean:SourcePaneVisible="true" boolean:AsmPaneVisible="false" boolean:StackPaneVisible="false">
+  <SourceView>
+   <ColumnWidth int:SplitterPos="371"/>
+  </SourceView>
+ </SurveySourceView>
+</bag>

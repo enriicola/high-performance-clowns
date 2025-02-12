@@ -1,0 +1,14 @@
+-r
+/home/stud/esame/Desktop/OMP_ass/advisor/OMP_ass/e000/mp001
+--tool=map
+--record-stack-frame
+--sample-size=300000
+--record-mem-allocations
+--search-dir
+sym:p=/home/stud/esame/Desktop/OMP_ass/source
+--search-dir
+bin:p=/home/stud/esame/Desktop/OMP_ass/source
+--app-working-dir=/home/stud/esame/Desktop/OMP_ass/release
+--
+/home/stud/esame/Desktop/OMP_ass/release/omp_homework
+20000

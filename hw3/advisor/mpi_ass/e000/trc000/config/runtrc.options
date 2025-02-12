@@ -1,0 +1,16 @@
+-r
+/home/stud/S4951409/Desktop/MPI_ass/advisor/mpi_ass/e000/trc000
+--return-app-exitcode
+--cs-mode=no-count-loops,no-count-flops,stl-profiling,stack-stitching
+--count-flops
+--benchmarks=dram,mcdram,cpu_cache,flop_peak,int,
+--cs-file=/home/stud/S4951409/Desktop/MPI_ass/advisor/mpi_ass/e000/callstacks.def
+--jit-profiling
+--target-gpu=0:0:2.0
+--search-dir
+sym:p=/home/stud/S4951409/Desktop/MPI_ass/src
+--search-dir
+bin:p=/home/stud/S4951409/Desktop/MPI_ass/src
+--app-working-dir=/home/stud/S4951409/Desktop/MPI_ass/release
+--
+/home/stud/S4951409/Desktop/MPI_ass/release/pi_homework

@@ -1,0 +1,88 @@
+# callstacks file version: 8
+#    rowid	    parent	       rva	 loop	 system	                                function	binary	instance_start_rva	instance_size	instance_end_rva	finst_rowid	roi	is_inlined	jit_method_id	tripcounts_roi	flops_roi	cachesim_roi	data_transfer_roi	projection_roi
+         1	        -1	      4576	    0	      0	                                  _start	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	4576	43	0	2	0	0	0	0	0	0	0	0
+         2	        -1	      4617	    0	      0	                                  _start	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	4576	43	0	2	0	0	0	0	0	0	0	0
+         3	        46	    146809	    1	      1	 [Loop at line 261 in __libc_start_main]	/lib/x86_64-linux-gnu/libc.so.6	146673,146912	223,140	0	78	0	0	0	0	0	0	0	0
+         4	         3	      4850	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	4816	229	0	3	0	0	0	0	0	0	0	0
+         5	        72	    835305	    0	      1	            __kmp_acquire_bootstrap_lock	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	835286	20	0	9	0	1	0	0	0	0	0	0
+         6	        74	    800894	    0	      1	_INTERNAL77814fad::__kmp_acquire_ticket_lock_timed_template	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	800833,800842,800850,801358	3,5,496,50	0	11	0	1	0	0	0	0	0	0
+         7	         6	    270289	    0	      1	_INTERNALb4e99691::__kmp_itt_fsync_acquired_init_3_0	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	270208	128	0	13	0	0	0	0	0	0	0	0
+         8	         7	    244487	    0	      1	                   __kmp_itt_init_ittlib	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	242944	3456	0	14	0	0	0	0	0	0	0	0
+         9	         8	     77575	    0	      1	                          __itt_api_init	/opt/intel/oneapi/advisor/2023.2.0/lib64/runtime/libittnotify_collector.so	77456	816	0	4	0	0	0	0	0	0	0	0
+        10	         9	     37837	    0	      1	                             func@0x9210	/opt/intel/oneapi/advisor/2023.2.0/lib64/runtime/libittnotify_collector.so	37392	480	0	7	0	0	0	0	0	0	0	0
+        11	        10	     79307	    0	      1	                            func@0x13550	/opt/intel/oneapi/advisor/2023.2.0/lib64/runtime/libittnotify_collector.so	79184	176	0	8	0	0	0	0	0	0	0	0
+        12	         3	      4943	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	4816	229	0	3	0	0	0	0	0	0	0	0
+        13	        12	    564514	    0	      1	                           [OpenMP fork]	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	564096	576	0	15	0	0	0	0	0	0	0	0
+        14	        13	    859931	    0	      1	                         __kmp_fork_call	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	858240	11904	0	16	0	0	0	0	0	0	0	0
+        15	        76	    874466	    1	      1	[Loop at line 5897 in __kmp_allocate_team]	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	874453	91	0	17	0	0	0	0	0	0	0	0
+        16	        15	    844934	    0	      1	                   __kmp_allocate_thread	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	842880	2880	0	19	0	0	0	0	0	0	0	0
+        17	        80	   1461383	    1	      1	[Loop at line 775 in __kmp_create_worker]	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	1460281,1460434,1461642	99,1192,914	0	20	0	0	0	0	0	0	0	0
+        18	        83	    862036	    0	      1	_INTERNAL49d8b4ea::__kmp_itt_stack_caller_create	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	862035	2	0	24	0	1	0	0	0	0	0	0
+        19	        18	         3	    0	      0	                    [Stitch point frame]	n/a	0	0	0	1	0	0	0	0	0	0	0	0
+        20	        19	    857394	    0	      1	                     [OpenMP dispatcher]	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	857088	512	0	26	0	0	0	0	0	0	0	0
+        21	        20	   1455250	    0	      1	                  __kmp_invoke_microtask	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	1455104	176	0	27	0	0	0	0	0	0	0	0
+        22	        48	      5380	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        23	        48	      5376	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        24	        48	      5336	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        25	        48	      5310	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        26	        48	      5362	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        27	        48	      5372	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        28	        48	      5330	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        29	        48	      5367	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        30	        48	      5304	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        31	        48	      5356	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        32	        48	      5298	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        33	        48	      5351	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        34	        48	      5346	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        35	        48	      5315	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        36	        48	      5325	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        37	        48	      5320	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        38	        -1	   1458176	    0	      1	      _INTERNAL1ebb3278::[OpenMP worker]	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	1458176	1664	0	28	0	0	0	0	0	0	0	0
+        39	        48	      5280	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        40	        48	      5341	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        41	        48	      5384	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        42	        48	      5284	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        43	        48	      5387	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        44	        48	      5289	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        45	        48	      5294	    1	      0	               [Loop at line 28 in main]	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5280	109	5389	5	0	0	0	0	0	0	0	0
+        46	         2	    146673	    0	      1	                       __libc_start_main	/lib/x86_64-linux-gnu/libc.so.6	146576	476	0	79	0	0	0	0	0	0	0	0
+        47	         2	    146809	    0	      1	                       __libc_start_main	/lib/x86_64-linux-gnu/libc.so.6	146576	476	0	79	0	0	0	0	0	0	0	0
+        48	        21	      5280	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        49	        21	      5380	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        50	        21	      5376	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        51	        21	      5336	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        52	        21	      5310	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        53	        21	      5362	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        54	        21	      5372	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        55	        21	      5330	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        56	        21	      5367	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        57	        21	      5304	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        58	        21	      5356	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        59	        21	      5298	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        60	        21	      5351	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        61	        21	      5346	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        62	        21	      5315	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        63	        21	      5325	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        64	        21	      5320	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        65	        21	      5280	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        66	        21	      5341	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        67	        21	      5384	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        68	        21	      5284	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        69	        21	      5387	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        70	        21	      5289	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        71	        21	      5294	    0	      0	                                    main	/VM/stud/S4951409/Desktop/MPI_ass/release/pi_homework	5072	598	0	6	0	0	0	0	0	0	0	0
+        72	         4	    835286	    0	      1	          __kmp_get_global_thread_id_reg	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	835264	192	0	10	0	0	0	0	0	0	0	0
+        73	         4	    835305	    0	      1	          __kmp_get_global_thread_id_reg	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	835264	192	0	10	0	0	0	0	0	0	0	0
+        74	         5	    800833	    0	      1	               __kmp_acquire_ticket_lock	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	800832	576	0	12	0	0	0	0	0	0	0	0
+        75	         5	    800894	    0	      1	               __kmp_acquire_ticket_lock	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	800832	576	0	12	0	0	0	0	0	0	0	0
+        76	        14	    874453	    0	      1	                     __kmp_allocate_team	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	870144	5888	0	18	0	0	0	0	0	0	0	0
+        77	        14	    874466	    0	      1	                     __kmp_allocate_team	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	870144	5888	0	18	0	0	0	0	0	0	0	0
+        78	        16	   1460221	    0	      1	                     __kmp_create_worker	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	1460032	2624	0	21	0	0	0	0	0	0	0	0
+        79	        78	   1460247	    1	      1	[Loop at line 775 in __kmp_create_worker]	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	1460221,1461642	1405,914	0	23	0	0	0	0	0	0	0	0
+        80	        79	   1460281	    1	      1	[Loop at line 775 in __kmp_create_worker]	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	1460247,1461642	1379,914	0	22	0	0	0	0	0	0	0	0
+        81	        16	   1461383	    0	      1	                     __kmp_create_worker	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	1460032	2624	0	21	0	0	0	0	0	0	0	0
+        82	        13	    860257	    0	      1	                         __kmp_fork_call	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	858240	11904	0	16	0	0	0	0	0	0	0	0
+        83	        82	    862035	    1	      1	  [Loop at line 2455 in __kmp_fork_call]	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	860257,862123,864324	1846,86,1740	0	25	0	0	0	0	0	0	0	0
+        84	        82	    862036	    1	      1	  [Loop at line 2455 in __kmp_fork_call]	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	860257,862123,864324	1846,86,1740	0	25	0	0	0	0	0	0	0	0
+        85	        13	    862036	    0	      1	                         __kmp_fork_call	/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so	858240	11904	0	16	0	0	0	0	0	0	0	0
+        86	        -1	         0	    0	      0	                      [Outside any loop]	n/a	0	0	0	82	0	0	0	0	0	0	0	0

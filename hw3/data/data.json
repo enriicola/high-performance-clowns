@@ -1,0 +1,58 @@
+{
+  "parallel": [
+    {
+      "INTERVALS": 100000000000,
+      "Time (s)": 7.90,
+      "GFLOPS": 75.92,
+      "Hotspot": {
+        "name": "loop in main at pi_homework.c:28",
+        "Time (s)": 6.25
+      }
+    },
+    {
+      "INTERVALS": 300000000000,
+      "Time (s)": 22.94,
+      "GFLOPS": 78.45,
+      "Hotspot": {
+        "name": "loop in main at pi_homework.c:28",
+        "Time (s)": 18.74
+      }
+    },
+    {
+      "INTERVALS": 500000000000,
+      "Time (s)": 38.51,
+      "GFLOPS": 77.91,
+      "Hotspot": {
+        "name": "loop in main at omp_homework.c:28",
+        "Time (s)": 33.68
+      }
+    },
+    {
+      "INTERVALS": 700000000000,
+      "Time (s)": 55.73,
+      "GFLOPS": 75.36,
+      "Hotspot": {
+        "name": "loop in main at omp_homework.c:28",
+        "Time (s)": 48.08
+      }
+    }
+  ],
+  "mpi": [
+    {
+      "INTERVALS": 100000000000,
+      "Time (s)": 11.85
+    },
+    {
+      "INTERVALS": 300000000000,
+      "Time (s)": 37.96
+    },
+    {
+      "INTERVALS": 500000000000,
+      "Time (s)": 66.49
+    },
+    {
+      "INTERVALS": 700000000000,
+      "Time (s)": 95.72
+    }
+  ]
+}

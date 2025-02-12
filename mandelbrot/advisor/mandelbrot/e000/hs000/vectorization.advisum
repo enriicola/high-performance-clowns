@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- <!DOCTYPE IntelParallelAdvisorSummaryCollection SYSTEM  "IntelParallelAdvisorSummaryCollection.dtd"> -->
+
+<IntelParallelAdvisorSummary version="" 
+                             kind="DATAKIND_SURVEY_EX" >
+  <hotspot filename="/home/chris/high-performance-clowns/mandelbrot/./src/mandelbrot.cpp"
+           line_no="37"
+           routine="main"
+           is_vectorized="0"
+           self_time="3.516172E+00"
+           total_time="4.391106E+00"
+           trip_counts="128"
+           func_instance="5"
+           priority="0"/>
+  <hotspot filename="/home/chris/high-performance-clowns/mandelbrot/./src/mandelbrot.cpp"
+           line_no="52"
+           routine="main"
+           is_vectorized="0"
+           self_time="1.884417E-02"
+           total_time="4.409950E+00"
+           trip_counts="6000000"
+           func_instance="7"
+           priority="0"/>
+</IntelParallelAdvisorSummary >

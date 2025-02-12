@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- <!DOCTYPE IntelParallelAdvisorSummaryCollection SYSTEM  "IntelParallelAdvisorSummaryCollection.dtd"> -->
+
+<IntelParallelAdvisorSummary version="" 
+                             kind="DATAKIND_SURVEY_EX" >
+  <hotspot filename="/home/stud/S4951409/Desktop/MPI_ass/./src/pi_homework.c"
+           line_no="28"
+           routine="main"
+           is_vectorized="1"
+           self_time="9.616830E+02"
+           total_time="9.616830E+02"
+           trip_counts="700000000000"
+           func_instance="5"
+           priority="0"/>
+</IntelParallelAdvisorSummary >

@@ -1,0 +1,193 @@
+Begin optimization report for: step_kernel_mod
+
+LOOP BEGIN at hw2/src/heat.c (23, 3)
+<Multiversioned v2>
+    remark #15319: Loop was not vectorized: novector directive used
+
+    LOOP BEGIN at hw2/src/heat.c (24, 5)
+        remark #15319: Loop was not vectorized: novector directive used
+    LOOP END
+LOOP END
+
+LOOP BEGIN at hw2/src/heat.c (23, 3)
+<Multiversioned v1>
+    remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
+
+    LOOP BEGIN at hw2/src/heat.c (24, 5)
+        remark #15300: LOOP WAS VECTORIZED
+        remark #15305: vectorization support: vector length 4
+        remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (34, 36) ] 
+        remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (34, 51) ] 
+        remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (34, 16) ] 
+        remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (35, 16) ] 
+        remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (35, 51) ] 
+        remark #15389: vectorization support: unmasked unaligned unit stride store: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (38, 7) ] 
+        remark #15475: --- begin vector loop cost summary ---
+        remark #15476: scalar cost: 27.000000 
+        remark #15477: vector cost: 12.156250 
+        remark #15478: estimated potential speedup: 2.187500 
+        remark #15309: vectorization support: normalized vectorization overhead 0.234375
+        remark #15488: --- end vector loop cost summary ---
+        remark #15447: --- begin vector loop memory reference summary ---
+        remark #15450: unmasked unaligned unit stride loads: 5 
+        remark #15451: unmasked unaligned unit stride stores: 1 
+        remark #15474: --- end vector loop memory reference summary ---
+    LOOP END
+
+    LOOP BEGIN at hw2/src/heat.c (24, 5)
+    <Remainder loop for vectorization>
+    LOOP END
+LOOP END
+=================================================================
+
+Begin optimization report for: step_kernel_ref
+
+LOOP BEGIN at hw2/src/heat.c (48, 3)
+<Multiversioned v2>
+    remark #15319: Loop was not vectorized: novector directive used
+
+    LOOP BEGIN at hw2/src/heat.c (49, 5)
+        remark #15319: Loop was not vectorized: novector directive used
+    LOOP END
+LOOP END
+
+LOOP BEGIN at hw2/src/heat.c (48, 3)
+<Multiversioned v1>
+    remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
+
+    LOOP BEGIN at hw2/src/heat.c (49, 5)
+        remark #15300: LOOP WAS VECTORIZED
+        remark #15305: vectorization support: vector length 4
+        remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (59, 36) ] 
+        remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (59, 51) ] 
+        remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (59, 16) ] 
+        remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (60, 16) ] 
+        remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (60, 51) ] 
+        remark #15389: vectorization support: unmasked unaligned unit stride store: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (63, 7) ] 
+        remark #15475: --- begin vector loop cost summary ---
+        remark #15476: scalar cost: 27.000000 
+        remark #15477: vector cost: 12.156250 
+        remark #15478: estimated potential speedup: 2.187500 
+        remark #15309: vectorization support: normalized vectorization overhead 0.234375
+        remark #15488: --- end vector loop cost summary ---
+        remark #15447: --- begin vector loop memory reference summary ---
+        remark #15450: unmasked unaligned unit stride loads: 5 
+        remark #15451: unmasked unaligned unit stride stores: 1 
+        remark #15474: --- end vector loop memory reference summary ---
+    LOOP END
+
+    LOOP BEGIN at hw2/src/heat.c (49, 5)
+    <Remainder loop for vectorization>
+    LOOP END
+LOOP END
+=================================================================
+
+Begin optimization report for: main
+
+LOOP BEGIN at hw2/src/heat.c (91, 3)
+    remark #15527: Loop was not vectorized: function call to  cannot be vectorized
+LOOP END
+
+LOOP BEGIN at hw2/src/heat.c (96, 3)
+    remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
+
+    LOOP BEGIN at hw2/src/heat.c (48, 3)
+        remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
+
+        LOOP BEGIN at hw2/src/heat.c (49, 5)
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15305: vectorization support: vector length 4
+            remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (59, 36) ] 
+            remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (59, 51) ] 
+            remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (59, 16) ] 
+            remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (60, 16) ] 
+            remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (60, 51) ] 
+            remark #15389: vectorization support: unmasked unaligned unit stride store: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (63, 7) ] 
+            remark #15475: --- begin vector loop cost summary ---
+            remark #15476: scalar cost: 27.000000 
+            remark #15477: vector cost: 12.156250 
+            remark #15478: estimated potential speedup: 2.203125 
+            remark #15309: vectorization support: normalized vectorization overhead 0.000000
+            remark #15570: using scalar loop trip count: 998
+            remark #15488: --- end vector loop cost summary ---
+            remark #15447: --- begin vector loop memory reference summary ---
+            remark #15450: unmasked unaligned unit stride loads: 5 
+            remark #15451: unmasked unaligned unit stride stores: 1 
+            remark #15474: --- end vector loop memory reference summary ---
+        LOOP END
+
+        LOOP BEGIN at hw2/src/heat.c (49, 5)
+        <Remainder loop for vectorization>
+            remark #15439: remainder loop was vectorized (unmasked)
+            remark #15305: vectorization support: vector length 2
+            remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (59, 36) ] 
+            remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (59, 51) ] 
+            remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (59, 16) ] 
+            remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (60, 16) ] 
+            remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (60, 51) ] 
+            remark #15389: vectorization support: unmasked unaligned unit stride store: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (63, 7) ] 
+            remark #15475: --- begin vector loop cost summary ---
+            remark #15488: --- end vector loop cost summary ---
+            remark #15447: --- begin vector loop memory reference summary ---
+            remark #15450: unmasked unaligned unit stride loads: 5 
+            remark #15451: unmasked unaligned unit stride stores: 1 
+            remark #15474: --- end vector loop memory reference summary ---
+        LOOP END
+    LOOP END
+LOOP END
+
+LOOP BEGIN at hw2/src/heat.c (106, 3)
+    remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
+
+    LOOP BEGIN at hw2/src/heat.c (23, 3)
+        remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
+
+        LOOP BEGIN at hw2/src/heat.c (24, 5)
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15305: vectorization support: vector length 4
+            remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (34, 36) ] 
+            remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (34, 51) ] 
+            remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (34, 16) ] 
+            remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (35, 16) ] 
+            remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (35, 51) ] 
+            remark #15389: vectorization support: unmasked unaligned unit stride store: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (38, 7) ] 
+            remark #15475: --- begin vector loop cost summary ---
+            remark #15476: scalar cost: 27.000000 
+            remark #15477: vector cost: 12.156250 
+            remark #15478: estimated potential speedup: 2.203125 
+            remark #15309: vectorization support: normalized vectorization overhead 0.000000
+            remark #15570: using scalar loop trip count: 998
+            remark #15488: --- end vector loop cost summary ---
+            remark #15447: --- begin vector loop memory reference summary ---
+            remark #15450: unmasked unaligned unit stride loads: 5 
+            remark #15451: unmasked unaligned unit stride stores: 1 
+            remark #15474: --- end vector loop memory reference summary ---
+        LOOP END
+
+        LOOP BEGIN at hw2/src/heat.c (24, 5)
+        <Remainder loop for vectorization>
+            remark #15439: remainder loop was vectorized (unmasked)
+            remark #15305: vectorization support: vector length 2
+            remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (34, 36) ] 
+            remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (34, 51) ] 
+            remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (34, 16) ] 
+            remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (35, 16) ] 
+            remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (35, 51) ] 
+            remark #15389: vectorization support: unmasked unaligned unit stride store: [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (38, 7) ] 
+            remark #15475: --- begin vector loop cost summary ---
+            remark #15488: --- end vector loop cost summary ---
+            remark #15447: --- begin vector loop memory reference summary ---
+            remark #15450: unmasked unaligned unit stride loads: 5 
+            remark #15451: unmasked unaligned unit stride stores: 1 
+            remark #15474: --- end vector loop memory reference summary ---
+        LOOP END
+    LOOP END
+LOOP END
+
+LOOP BEGIN at hw2/src/heat.c (117, 3)
+    remark #15344: Loop was not vectorized: vector dependence prevents vectorization
+    remark #15346: vector dependence: assumed FLOW dependence between [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (118, 9) ] and [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (118, 9) ] 
+    remark #15346: vector dependence: assumed FLOW dependence between [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (118, 9) ] and [ /home/leonardo/Github/high-performance-clowns/hw2/src/heat.c (118, 9) ] 
+LOOP END
+=================================================================
+

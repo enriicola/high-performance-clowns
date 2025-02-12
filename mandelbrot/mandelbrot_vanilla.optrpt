@@ -1,0 +1,383 @@
+Begin optimization report for: main
+
+LOOP BEGIN at mandelbrot_vanilla.cpp (32, 3)
+    remark #25452: Poor spatial locality detected in memref(s). 
+    remark #25408: memset generated
+    remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
+
+    LOOP BEGIN at mandelbrot_vanilla.cpp (44, 5)
+        remark #25530: Stmt at line 0 sinked after loop using last value computation
+        remark #15344: Loop was not vectorized: vector dependence prevents vectorization
+        remark #15346: vector dependence: assumed FLOW dependence between __t __x z __x [ /usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/complex (1619, 13) ] and __t __x z __x [ /usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/complex (1636, 13) ] 
+        remark #15346: vector dependence: assumed FLOW dependence between __t __x z __x [ /usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/complex (1619, 13) ] and __t __x z __x [ /usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/complex (1636, 13) ] 
+        remark #15346: vector dependence: assumed FLOW dependence between __t __x z __x [ /usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/complex (1619, 13) ] and __t __x z __x [ /usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/complex (1636, 13) ] 
+        remark #15346: vector dependence: assumed FLOW dependence between __t __x z __x [ /usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/complex (1619, 13) ] and __t __x z __x [ /usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/complex (1636, 13) ] 
+        remark #15346: vector dependence: assumed FLOW dependence between __t __x z __x [ /usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/complex (1619, 13) ] and __t __x z __x [ /usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/complex (1636, 13) ] 
+        remark #15346: vector dependence: assumed FLOW dependence between __t __x z __x [ /usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/complex (1619, 13) ] and __t __x z __x [ /usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/complex (1636, 13) ] 
+        remark #25438: Loop unrolled without remainder by 2
+    LOOP END
+LOOP END
+
+LOOP BEGIN at mandelbrot_vanilla.cpp (74, 5)
+
+    LOOP BEGIN at mandelbrot_vanilla.cpp (74, 5)
+    LOOP END
+LOOP END
+=================================================================
+
+Begin optimization report for: __clang_call_terminate
+=================================================================
+
+---- Begin Inlining Report ----
+Option Values:
+  inline-threshold: 225
+  inlinehint-threshold: 325
+  inlinecold-threshold: 45
+  inlineoptsize-threshold: 15
+
+DEAD STATIC FUNC: std::basic_filebuf<char, std::char_traits<char>>::is_open() const
+
+DEAD STATIC FUNC: std::ctype<char>::widen(char) const
+
+DEAD STATIC FUNC: std::chrono::time_point<std::chrono::_V2::steady_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l>>>::time_since_epoch() const
+
+DEAD STATIC FUNC: std::chrono::duration<long, std::ratio<1l, 1000000000l>>::count() const
+
+DEAD STATIC FUNC: std::chrono::duration<long, std::ratio<1l, 1l>>::count() const
+
+DEAD STATIC FUNC: std::complex<double>::__rep() const
+
+DEAD STATIC FUNC: std::ios_base::width() const
+
+DEAD STATIC FUNC: std::basic_ios<char, std::char_traits<char>>::widen(char) const
+
+DEAD STATIC FUNC: std::basic_ios<char, std::char_traits<char>>::rdstate() const
+
+DEAD STATIC FUNC: std::basic_ostream<char, std::char_traits<char>>::basic_ostream()
+
+DEAD STATIC FUNC: std::basic_ostream<char, std::char_traits<char>>::~basic_ostream()
+
+DEAD STATIC FUNC: std::ostream::operator<<(std::ostream& (*)(std::ostream&))
+
+DEAD STATIC FUNC: std::ostream::operator<<(long)
+
+DEAD STATIC FUNC: std::char_traits<char>::length(char const*)
+
+DEAD STATIC FUNC: std::__basic_file<char>::~__basic_file()
+
+DEAD STATIC FUNC: std::basic_filebuf<char, std::char_traits<char>>::basic_filebuf()
+
+DEAD STATIC FUNC: std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf()
+
+DEAD STATIC FUNC: std::basic_ofstream<char, std::char_traits<char>>::open(char const*, std::_Ios_Openmode)
+
+DEAD STATIC FUNC: std::basic_ofstream<char, std::char_traits<char>>::close()
+
+DEAD STATIC FUNC: std::basic_ofstream<char, std::char_traits<char>>::is_open()
+
+DEAD STATIC FUNC: std::basic_ofstream<char, std::char_traits<char>>::~basic_ofstream()
+
+DEAD STATIC FUNC: std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf()
+
+DEAD STATIC FUNC: std::enable_if<__is_duration<std::chrono::duration<long, std::ratio<1l, 1l>>>::value, std::chrono::duration<long, std::ratio<1l, 1l>>>::type std::chrono::duration_cast<std::chrono::duration<long, std::ratio<1l, 1l>>, long, std::ratio<1l, 1000000000l>>(std::chrono::duration<long, std::ratio<1l, 1000000000l>> const&)
+
+DEAD STATIC FUNC: std::chrono::duration<long, std::ratio<1l, 1l>> std::chrono::__duration_cast_impl<std::chrono::duration<long, std::ratio<1l, 1l>>, std::ratio<1l, 1000000000l>, long, true, false>::__cast<long, std::ratio<1l, 1000000000l>>(std::chrono::duration<long, std::ratio<1l, 1000000000l>> const&)
+
+DEAD STATIC FUNC: std::chrono::duration<long, std::ratio<1l, 1000000000l>>::duration<long, void>(long const&)
+
+DEAD STATIC FUNC: std::chrono::duration<long, std::ratio<1l, 1l>>::duration<long, void>(long const&)
+
+DEAD STATIC FUNC: std::common_type<std::chrono::duration<long, std::ratio<1l, 1000000000l>>, std::chrono::duration<long, std::ratio<1l, 1000000000l>>>::type std::chrono::operator-<std::chrono::_V2::steady_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l>>, std::chrono::duration<long, std::ratio<1l, 1000000000l>>>(std::chrono::time_point<std::chrono::_V2::steady_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l>>> const&, std::chrono::time_point<std::chrono::_V2::steady_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l>>> const&)
+
+DEAD STATIC FUNC: std::common_type<std::chrono::duration<long, std::ratio<1l, 1000000000l>>, std::chrono::duration<long, std::ratio<1l, 1000000000l>>>::type std::chrono::operator-<long, std::ratio<1l, 1000000000l>, long, std::ratio<1l, 1000000000l>>(std::chrono::duration<long, std::ratio<1l, 1000000000l>> const&, std::chrono::duration<long, std::ratio<1l, 1000000000l>> const&)
+
+DEAD STATIC FUNC: std::locale::~locale()
+
+DEAD STATIC FUNC: std::complex<double>::complex(double, double)
+
+DEAD STATIC FUNC: std::complex<double>& std::complex<double>::operator/=<double>(std::complex<double> const&)
+
+DEAD STATIC FUNC: std::complex<double>& std::complex<double>::operator*=<double>(std::complex<double> const&)
+
+DEAD STATIC FUNC: std::complex<double>& std::complex<double>::operator+=<double>(std::complex<double> const&)
+
+DEAD STATIC FUNC: std::ios_base::ios_base()
+
+DEAD STATIC FUNC: std::ios_base::~ios_base()
+
+DEAD STATIC FUNC: std::basic_ios<char, std::char_traits<char>>::init(std::basic_streambuf<char, std::char_traits<char>>*)
+
+DEAD STATIC FUNC: std::basic_ios<char, std::char_traits<char>>::setstate(std::_Ios_Iostate)
+
+DEAD STATIC FUNC: std::basic_ios<char, std::char_traits<char>>::basic_ios()
+
+DEAD STATIC FUNC: std::ctype<char> const& std::__check_facet<std::ctype<char>>(std::ctype<char> const*)
+
+DEAD STATIC FUNC: std::__complex_abs(double complex)
+
+DEAD STATIC FUNC: std::complex<double> std::__complex_pow_unsigned<double>(std::complex<double>, unsigned int)
+
+DEAD STATIC FUNC: double std::abs<double>(std::complex<double> const&)
+
+DEAD STATIC FUNC: std::complex<double> std::pow<double>(std::complex<double> const&, int)
+
+DEAD STATIC FUNC: std::basic_ostream<char, std::char_traits<char>>& std::endl<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&)
+
+DEAD STATIC FUNC: std::basic_ostream<char, std::char_traits<char>>& std::flush<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&)
+
+DEAD STATIC FUNC: std::terminate()
+
+DEAD STATIC FUNC: std::complex<double> std::operator/<double>(std::complex<double> const&, std::complex<double> const&)
+
+DEAD STATIC FUNC: std::basic_ostream<char, std::char_traits<char>>& std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&, char const*)
+
+DEAD STATIC FUNC: std::basic_ostream<char, std::char_traits<char>>& std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&, char)
+
+DEAD STATIC FUNC: std::operator|(std::_Ios_Iostate, std::_Ios_Iostate)
+
+DEAD STATIC FUNC: std::operator|(std::_Ios_Openmode, std::_Ios_Openmode)
+
+DEAD STATIC FUNC: std::complex<double> std::operator+<double>(std::complex<double> const&, std::complex<double> const&)
+
+DEAD STATIC FUNC: __clang_call_terminate
+
+DEAD STATIC FUNC: __cxa_begin_catch
+
+DEAD STATIC FUNC: __cxa_end_catch
+
+DEAD STATIC FUNC: llvm.memcpy.p0.p0.i64
+
+DEAD STATIC FUNC: llvm.ssa.copy.f64
+
+DEAD STATIC FUNC: llvm.ssa.copy.i32
+
+DEAD STATIC FUNC: llvm.ssa.copy.i64
+
+DEAD STATIC FUNC: strlen
+
+COMPILE FUNC: main
+   -> INLINE: std::basic_ofstream<char, std::char_traits<char>>::is_open() mandelbrot_vanilla.cpp(68,19) (0<=375)
+      -> INLINE: std::basic_filebuf<char, std::char_traits<char>>::is_open() const fstream(911,27) (0<=375)
+         -> EXTERN: std::__basic_file<char>::is_open() const fstream(273,24)
+   -> DELETE: llvm.memcpy.p0.p0.i64 mandelbrot_vanilla.cpp(45,9)
+   -> DELETE: llvm.dbg.assign mandelbrot_vanilla.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_vanilla.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_vanilla.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_vanilla.cpp
+   -> llvm.dbg.assign mandelbrot_vanilla.cpp
+   -> EXTERN: operator new[](unsigned long) mandelbrot_vanilla.cpp(29,22)
+   -> EXTERN: std::chrono::_V2::steady_clock::now() mandelbrot_vanilla.cpp(31,22)
+   -> DELETE: llvm.dbg.assign mandelbrot_vanilla.cpp
+   -> EXTERN: std::chrono::_V2::steady_clock::now() mandelbrot_vanilla.cpp(54,20)
+   -> DELETE: llvm.dbg.assign mandelbrot_vanilla.cpp
+   -> INLINE: std::basic_ostream<char, std::char_traits<char>>& std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&, char const*) mandelbrot_vanilla.cpp(55,8) (40<=487)
+      -> INLINE: std::basic_ios<char, std::char_traits<char>>::setstate(std::_Ios_Iostate) ostream(665,8) (10<=375)
+         -> INLINE: std::basic_ios<char, std::char_traits<char>>::rdstate() const basic_ios.h(158,27) (-30<=375)
+         -> INLINE: std::operator|(std::_Ios_Iostate, std::_Ios_Iostate) basic_ios.h(158,37) (-15035<=487)
+         -> DELETE: std::basic_ios<char, std::char_traits<char>>::clear(std::_Ios_Iostate) basic_ios.h(158,15)
+      -> INLINE: std::char_traits<char>::length(char const*) ostream(668,29) (-15000<=375)
+         -> DELETE: strlen char_traits.h(399,9)
+      -> EXTERN: std::basic_ostream<char, std::char_traits<char>>& std::__ostream_insert<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&, char const*, long) ostream(667,2)
+   -> INLINE: std::common_type<std::chrono::duration<long, std::ratio<1l, 1000000000l>>, std::chrono::duration<long, std::ratio<1l, 1000000000l>>>::type std::chrono::operator-<std::chrono::_V2::steady_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l>>, std::chrono::duration<long, std::ratio<1l, 1000000000l>>>(std::chrono::time_point<std::chrono::_V2::steady_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l>>> const&, std::chrono::time_point<std::chrono::_V2::steady_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l>>> const&) mandelbrot_vanilla.cpp(56,54) (-14945<=375)
+      -> INLINE: std::chrono::time_point<std::chrono::_V2::steady_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l>>>::time_since_epoch() const chrono.h(1143,22) (-30<=375)
+      -> INLINE: std::chrono::time_point<std::chrono::_V2::steady_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l>>>::time_since_epoch() const chrono.h(1143,49) (-15030<=375)
+      -> INLINE: std::common_type<std::chrono::duration<long, std::ratio<1l, 1000000000l>>, std::chrono::duration<long, std::ratio<1l, 1000000000l>>>::type std::chrono::operator-<long, std::ratio<1l, 1000000000l>, long, std::ratio<1l, 1000000000l>>(std::chrono::duration<long, std::ratio<1l, 1000000000l>> const&, std::chrono::duration<long, std::ratio<1l, 1000000000l>> const&) chrono.h(1143,41) (-14975<=375)
+         -> INLINE: std::chrono::duration<long, std::ratio<1l, 1000000000l>>::count() const chrono.h(716,26) (-35<=375)
+         -> INLINE: std::chrono::duration<long, std::ratio<1l, 1000000000l>>::count() const chrono.h(716,48) (-35<=375)
+         -> INLINE: std::chrono::duration<long, std::ratio<1l, 1000000000l>>::duration<long, void>(long const&) chrono.h(716,9) (-15040<=375)
+   -> INLINE: std::enable_if<__is_duration<std::chrono::duration<long, std::ratio<1l, 1l>>>::value, std::chrono::duration<long, std::ratio<1l, 1l>>>::type std::chrono::duration_cast<std::chrono::duration<long, std::ratio<1l, 1l>>, long, std::ratio<1l, 1000000000l>>(std::chrono::duration<long, std::ratio<1l, 1000000000l>> const&) mandelbrot_vanilla.cpp(56,11) (-15000<=375)
+      -> INLINE: std::chrono::duration<long, std::ratio<1l, 1l>> std::chrono::__duration_cast_impl<std::chrono::duration<long, std::ratio<1l, 1l>>, std::ratio<1l, 1000000000l>, long, true, false>::__cast<long, std::ratio<1l, 1000000000l>>(std::chrono::duration<long, std::ratio<1l, 1000000000l>> const&) chrono.h(287,11) (-14995<=375)
+         -> INLINE: std::chrono::duration<long, std::ratio<1l, 1000000000l>>::count() const chrono.h(212,29) (-15030<=375)
+         -> INLINE: std::chrono::duration<long, std::ratio<1l, 1l>>::duration<long, void>(long const&) chrono.h(211,13) (-15040<=375)
+   -> INLINE: std::chrono::duration<long, std::ratio<1l, 1l>>::count() const mandelbrot_vanilla.cpp(56,63) (-15035<=375)
+   -> INLINE: std::ostream::operator<<(long) mandelbrot_vanilla.cpp(56,8) (0<=375)
+      -> EXTERN: std::ostream& std::ostream::_M_insert<long>(long) ostream(169,16)
+   -> INLINE: std::basic_ostream<char, std::char_traits<char>>& std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&, char const*) mandelbrot_vanilla.cpp(57,8) (40<=487)
+      -> INLINE: std::basic_ios<char, std::char_traits<char>>::setstate(std::_Ios_Iostate) ostream(665,8) (10<=375)
+         -> INLINE: std::basic_ios<char, std::char_traits<char>>::rdstate() const basic_ios.h(158,27) (-30<=375)
+         -> INLINE: std::operator|(std::_Ios_Iostate, std::_Ios_Iostate) basic_ios.h(158,37) (-15035<=487)
+         -> DELETE: std::basic_ios<char, std::char_traits<char>>::clear(std::_Ios_Iostate) basic_ios.h(158,15)
+      -> INLINE: std::char_traits<char>::length(char const*) ostream(668,29) (-15000<=375)
+         -> DELETE: strlen char_traits.h(399,9)
+      -> EXTERN: std::basic_ostream<char, std::char_traits<char>>& std::__ostream_insert<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&, char const*, long) ostream(667,2)
+   -> INLINE: std::ostream::operator<<(std::ostream& (*)(std::ostream&)) mandelbrot_vanilla.cpp(57,23) (-180<=375)
+      -> INLINE: std::basic_ostream<char, std::char_traits<char>>& std::endl<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&) ostream(115,9) (175<=325)
+         -> INLINE: std::basic_ios<char, std::char_traits<char>>::widen(char) const ostream(736,34) (85<=250)
+            -> INLINE: std::ctype<char> const& std::__check_facet<std::ctype<char>>(std::ctype<char> const*) basic_ios.h(450,16) (-14995<=325)
+               -> EXTERN: std::__throw_bad_cast() basic_ios.h(50,2)
+            -> INLINE: std::ctype<char>::widen(char) const basic_ios.h(450,40) (-14955<=250)
+               -> EXTERN: std::ctype<char>::_M_widen_init() const locale_facets.h(884,8)
+               -> INDIRECT: locale_facets.h(885,15)
+         -> EXTERN: std::ostream::put(char) ostream(736,25)
+         -> INLINE: std::basic_ostream<char, std::char_traits<char>>& std::flush<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&) ostream(736,14) (0<=487)
+            -> EXTERN: std::ostream::flush() ostream(758,19)
+   -> std::basic_ofstream<char, std::char_traits<char>>::basic_ofstream() mandelbrot_vanilla.cpp(60,12) (285>250)
+   -> INLINE: std::complex<double>::complex(double, double) mandelbrot_vanilla.cpp(37,27) (-45<=375)
+   -> INLINE: std::complex<double>::complex(double, double) mandelbrot_vanilla.cpp(40,21) (-15045<=375)
+   -> INLINE: std::complex<double> std::pow<double>(std::complex<double> const&, int) mandelbrot_vanilla.cpp(45,11) (-14920<=525)
+      -> INLINE: std::complex<double>::complex(double, double) complex(1283,4) (-45<=375)
+      -> INLINE: std::complex<double> std::__complex_pow_unsigned<double>(std::complex<double>, unsigned int) complex(1283,22) (210<=250)
+         -> INLINE: std::complex<double>::complex(double, double) complex(1260,42) (-45<=375)
+         -> INLINE: std::complex<double>& std::complex<double>::operator*=<double>(std::complex<double> const&) complex(1264,15) (0<=375)
+            -> INLINE: std::complex<double>::__rep() const complex(1635,30) (-15<=375)
+         -> INLINE: std::complex<double>& std::complex<double>::operator*=<double>(std::complex<double> const&) complex(1266,17) (-15000<=375)
+            -> INLINE: std::complex<double>::__rep() const complex(1635,30) (-15<=375)
+      -> INLINE: std::complex<double> std::operator/<double>(std::complex<double> const&, std::complex<double> const&) complex(1283,20) (-14965<=487)
+         -> DELETE: llvm.dbg.assign complex
+         -> INLINE: std::complex<double>& std::complex<double>::operator/=<double>(std::complex<double> const&) complex(428,11) (-14965<=375)
+            -> INLINE: std::complex<double>::__rep() const complex(1644,30) (-15<=375)
+      -> INLINE: std::complex<double> std::__complex_pow_unsigned<double>(std::complex<double>, unsigned int) complex(1284,11) (-14790<=250)
+         -> INLINE: std::complex<double>::complex(double, double) complex(1260,42) (-45<=375)
+         -> INLINE: std::complex<double>& std::complex<double>::operator*=<double>(std::complex<double> const&) complex(1264,15) (0<=375)
+            -> INLINE: std::complex<double>::__rep() const complex(1635,30) (-15<=375)
+         -> INLINE: std::complex<double>& std::complex<double>::operator*=<double>(std::complex<double> const&) complex(1266,17) (-15000<=375)
+            -> INLINE: std::complex<double>::__rep() const complex(1635,30) (-15<=375)
+   -> INLINE: std::complex<double> std::operator+<double>(std::complex<double> const&, std::complex<double> const&) mandelbrot_vanilla.cpp(45,21) (-15010<=787)
+      -> DELETE: llvm.dbg.assign complex
+      -> INLINE: std::complex<double>& std::complex<double>::operator+=<double>(std::complex<double> const&) complex(338,11) (-15010<=375)
+         -> INLINE: std::complex<double>::__rep() const complex(1619,20) (-15<=375)
+   -> DELETE: llvm.dbg.assign mandelbrot_vanilla.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_vanilla.cpp
+   -> INLINE: double std::abs<double>(std::complex<double> const&) mandelbrot_vanilla.cpp(48,11) (-15005<=787)
+      -> INLINE: std::complex<double>::__rep() const complex(887,61) (-15015<=375)
+      -> INLINE: std::__complex_abs(double complex) complex(887,43) (-15020<=487)
+         -> DELETE: llvm.sqrt.f64 complex(879,50)
+         -> llvm.sqrt.f64 complex(879,50)
+         -> llvm.sqrt.f64 complex(879,50)
+   -> INLINE: std::basic_ostream<char, std::char_traits<char>>& std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&, char const*) mandelbrot_vanilla.cpp(63,10) (40<=487)
+      -> INLINE: std::basic_ios<char, std::char_traits<char>>::setstate(std::_Ios_Iostate) ostream(665,8) (10<=375)
+         -> INLINE: std::basic_ios<char, std::char_traits<char>>::rdstate() const basic_ios.h(158,27) (-30<=375)
+         -> INLINE: std::operator|(std::_Ios_Iostate, std::_Ios_Iostate) basic_ios.h(158,37) (-15035<=487)
+         -> DELETE: std::basic_ios<char, std::char_traits<char>>::clear(std::_Ios_Iostate) basic_ios.h(158,15)
+      -> INLINE: std::char_traits<char>::length(char const*) ostream(668,29) (-15000<=375)
+         -> DELETE: strlen char_traits.h(399,9)
+      -> EXTERN: std::basic_ostream<char, std::char_traits<char>>& std::__ostream_insert<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&, char const*, long) ostream(667,2)
+   -> INLINE: std::ostream::operator<<(std::ostream& (*)(std::ostream&)) mandelbrot_vanilla.cpp(63,62) (-180<=375)
+      -> INLINE: std::basic_ostream<char, std::char_traits<char>>& std::endl<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&) ostream(115,9) (175<=325)
+         -> INLINE: std::basic_ios<char, std::char_traits<char>>::widen(char) const ostream(736,34) (85<=250)
+            -> INLINE: std::ctype<char> const& std::__check_facet<std::ctype<char>>(std::ctype<char> const*) basic_ios.h(450,16) (-14995<=325)
+               -> DELETE: std::__throw_bad_cast() basic_ios.h(50,2)
+            -> INLINE: std::ctype<char>::widen(char) const basic_ios.h(450,40) (-14955<=250)
+               -> EXTERN: std::ctype<char>::_M_widen_init() const locale_facets.h(884,8)
+               -> INDIRECT: locale_facets.h(885,15)
+         -> EXTERN: std::ostream::put(char) ostream(736,25)
+         -> INLINE: std::basic_ostream<char, std::char_traits<char>>& std::flush<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&) ostream(736,14) (0<=487)
+            -> EXTERN: std::ostream::flush() ostream(758,19)
+   -> INLINE: std::basic_ofstream<char, std::char_traits<char>>::open(char const*, std::_Ios_Openmode) mandelbrot_vanilla.cpp(67,14) (120<=250)
+      -> INLINE: std::operator|(std::_Ios_Openmode, std::_Ios_Openmode) fstream(930,35) (-15035<=487)
+      -> EXTERN: std::basic_filebuf<char, std::char_traits<char>>::open(char const*, std::_Ios_Openmode) fstream(930,18)
+      -> INLINE: std::basic_ios<char, std::char_traits<char>>::setstate(std::_Ios_Iostate) fstream(931,10) (10<=375)
+         -> INLINE: std::basic_ios<char, std::char_traits<char>>::rdstate() const basic_ios.h(158,27) (-30<=375)
+         -> INLINE: std::operator|(std::_Ios_Iostate, std::_Ios_Iostate) basic_ios.h(158,37) (-15035<=487)
+         -> DELETE: std::basic_ios<char, std::char_traits<char>>::clear(std::_Ios_Iostate) basic_ios.h(158,15)
+      -> DELETE: std::basic_ios<char, std::char_traits<char>>::clear(std::_Ios_Iostate) fstream(935,10)
+   -> INLINE: std::basic_ostream<char, std::char_traits<char>>& std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&, char const*) mandelbrot_vanilla.cpp(69,10) (40<=487)
+      -> INLINE: std::basic_ios<char, std::char_traits<char>>::setstate(std::_Ios_Iostate) ostream(665,8) (10<=375)
+         -> INLINE: std::basic_ios<char, std::char_traits<char>>::rdstate() const basic_ios.h(158,27) (-30<=375)
+         -> INLINE: std::operator|(std::_Ios_Iostate, std::_Ios_Iostate) basic_ios.h(158,37) (-15035<=487)
+         -> DELETE: std::basic_ios<char, std::char_traits<char>>::clear(std::_Ios_Iostate) basic_ios.h(158,15)
+      -> INLINE: std::char_traits<char>::length(char const*) ostream(668,29) (-15000<=375)
+         -> DELETE: strlen char_traits.h(399,9)
+      -> EXTERN: std::basic_ostream<char, std::char_traits<char>>& std::__ostream_insert<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&, char const*, long) ostream(667,2)
+   -> INLINE: std::ostream::operator<<(std::ostream& (*)(std::ostream&)) mandelbrot_vanilla.cpp(69,36) (-180<=375)
+      -> INLINE: std::basic_ostream<char, std::char_traits<char>>& std::endl<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&) ostream(115,9) (175<=325)
+         -> INLINE: std::basic_ios<char, std::char_traits<char>>::widen(char) const ostream(736,34) (85<=250)
+            -> INLINE: std::ctype<char> const& std::__check_facet<std::ctype<char>>(std::ctype<char> const*) basic_ios.h(450,16) (-14995<=325)
+               -> DELETE: std::__throw_bad_cast() basic_ios.h(50,2)
+            -> INLINE: std::ctype<char>::widen(char) const basic_ios.h(450,40) (-14955<=250)
+               -> EXTERN: std::ctype<char>::_M_widen_init() const locale_facets.h(884,8)
+               -> INDIRECT: locale_facets.h(885,15)
+         -> EXTERN: std::ostream::put(char) ostream(736,25)
+         -> INLINE: std::basic_ostream<char, std::char_traits<char>>& std::flush<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&) ostream(736,14) (0<=487)
+            -> EXTERN: std::ostream::flush() ostream(758,19)
+   -> INLINE: std::basic_ofstream<char, std::char_traits<char>>::close() mandelbrot_vanilla.cpp(83,14) (70<=250)
+      -> EXTERN: std::basic_filebuf<char, std::char_traits<char>>::close() fstream(1002,18)
+      -> INLINE: std::basic_ios<char, std::char_traits<char>>::setstate(std::_Ios_Iostate) fstream(1003,10) (10<=375)
+         -> INLINE: std::basic_ios<char, std::char_traits<char>>::rdstate() const basic_ios.h(158,27) (-30<=375)
+         -> INLINE: std::operator|(std::_Ios_Iostate, std::_Ios_Iostate) basic_ios.h(158,37) (-15035<=487)
+         -> EXTERN: std::basic_ios<char, std::char_traits<char>>::clear(std::_Ios_Iostate) basic_ios.h(158,15)
+   -> EXTERN: std::ostream::operator<<(int) mandelbrot_vanilla.cpp(75,18)
+   -> INLINE: std::basic_ostream<char, std::char_traits<char>>& std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&, char) mandelbrot_vanilla.cpp(78,20) (85<=525)
+      -> llvm.dbg.assign ostream
+      -> llvm.dbg.assign ostream
+      -> INLINE: std::ios_base::width() const ostream(572,17) (-15030<=375)
+      -> EXTERN: std::basic_ostream<char, std::char_traits<char>>& std::__ostream_insert<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&, char const*, long) ostream(573,9)
+      -> EXTERN: std::ostream::put(char) ostream(574,13)
+   -> INLINE: std::ostream::operator<<(std::ostream& (*)(std::ostream&)) mandelbrot_vanilla.cpp(81,18) (-180<=375)
+      -> INLINE: std::basic_ostream<char, std::char_traits<char>>& std::endl<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&) ostream(115,9) (175<=325)
+         -> INLINE: std::basic_ios<char, std::char_traits<char>>::widen(char) const ostream(736,34) (85<=250)
+            -> INLINE: std::ctype<char> const& std::__check_facet<std::ctype<char>>(std::ctype<char> const*) basic_ios.h(450,16) (-14995<=325)
+               -> EXTERN: std::__throw_bad_cast() basic_ios.h(50,2)
+            -> INLINE: std::ctype<char>::widen(char) const basic_ios.h(450,40) (-14955<=250)
+               -> EXTERN: std::ctype<char>::_M_widen_init() const locale_facets.h(884,8)
+               -> INDIRECT: locale_facets.h(885,15)
+         -> EXTERN: std::ostream::put(char) ostream(736,25)
+         -> INLINE: std::basic_ostream<char, std::char_traits<char>>& std::flush<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&) ostream(736,14) (0<=487)
+            -> EXTERN: std::ostream::flush() ostream(758,19)
+   -> EXTERN: operator delete[](void*) mandelbrot_vanilla.cpp(85,3)
+   -> std::basic_ofstream<char, std::char_traits<char>>::~basic_ofstream() mandelbrot_vanilla.cpp(87,1) (250>250)
+   -> std::basic_ofstream<char, std::char_traits<char>>::~basic_ofstream() mandelbrot_vanilla.cpp(87,1) (250>45 [EE:65>45])
+   -> DELETE: llvm.memset.p0.i64 mandelbrot_vanilla.cpp(33,5)
+   -> llvm.memset.p0.i64 mandelbrot_vanilla.cpp(33,5)
+   -> DELETE: llvm.ssa.copy.i32
+   -> DELETE: llvm.ssa.copy.f64
+   -> DELETE: llvm.ssa.copy.f64
+   -> DELETE: llvm.ssa.copy.i32
+   -> DELETE: llvm.ssa.copy.i32 mandelbrot_vanilla.cpp(44,39)
+   -> DELETE: llvm.ssa.copy.f64 complex(1619,13)
+   -> DELETE: llvm.ssa.copy.f64 complex(1619,13)
+   -> DELETE: llvm.ssa.copy.i64 mandelbrot_vanilla.cpp(32,46)
+   -> EXTERN: std::basic_ios<char, std::char_traits<char>>::clear(std::_Ios_Iostate) fstream
+   -> EXTERN: std::__throw_bad_cast() basic_ios.h(50,2)
+
+COMPILE FUNC: std::basic_ofstream<char, std::char_traits<char>>::~basic_ofstream()
+   -> INLINE: std::basic_ofstream<char, std::char_traits<char>>::~basic_ofstream() fstream(870,7) (210<=250)
+      -> INLINE: std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf() fstream(870,9) (190<=250)
+         -> DELETE: std::basic_filebuf<char, std::char_traits<char>>::close() fstream(256,12)
+         -> DELETE: __cxa_begin_catch fstream(256,21)
+         -> DELETE: __cxa_end_catch fstream(258,6)
+         -> DELETE: std::__basic_file<char>::~__basic_file() fstream(259,7)
+         -> INLINE: std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf() fstream(259,7) (5<=375)
+            -> DELETE: std::locale::~locale() streambuf(205,9)
+         -> DELETE: __clang_call_terminate fstream(258,6)
+      -> INLINE: std::basic_ostream<char, std::char_traits<char>>::~basic_ostream() fstream(870,9) (-40<=375)
+   -> DELETE: std::ios_base::~ios_base() fstream(870,7)
+
+COMPILE FUNC: std::basic_ofstream<char, std::char_traits<char>>::basic_ofstream()
+   -> INLINE: std::basic_ios<char, std::char_traits<char>>::basic_ios() fstream(786,7) (40<=375)
+      -> DELETE: std::ios_base::ios_base() basic_ios.h(461,9)
+   -> INLINE: std::basic_ostream<char, std::char_traits<char>>::basic_ostream() fstream(786,25) (35<=375)
+      -> DELETE: std::basic_ios<char, std::char_traits<char>>::init(std::basic_streambuf<char, std::char_traits<char>>*) ostream(432,15)
+   -> DELETE: std::basic_filebuf<char, std::char_traits<char>>::basic_filebuf() fstream(786,43)
+   -> DELETE: std::basic_ios<char, std::char_traits<char>>::init(std::basic_streambuf<char, std::char_traits<char>>*) fstream(787,15)
+   -> DELETE: std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf() fstream(787,34)
+   -> INLINE: std::basic_ostream<char, std::char_traits<char>>::~basic_ostream() fstream(787,34) (-40<=45)
+   -> DELETE: std::ios_base::~ios_base() fstream(787,34)
+
+---- End Inlining Report ------
+Register allocation report for: main
+FUNCTION BEGIN
+ LOOP1 BEGIN at (mandelbrot_vanilla.cpp:32:3)
+  LOOP2 BEGIN at (mandelbrot_vanilla.cpp:44:5)
+  LOOP2 END
+ LOOP1 END
+ LOOP1 BEGIN at (mandelbrot_vanilla.cpp:74:5)
+  LOOP2 BEGIN at (mandelbrot_vanilla.cpp:74:5)
+  LOOP2 END
+ LOOP1 END
+
+Hardware registers used
+ Reserved : 4 [ rsp ssp rip mxcsr  ]
+ Available : 13 [ r8 r9 r10 r11 zmm11 zmm12 zmm13 zmm14 zmm15 k0_k1 k2_k3 k4_k5 k6_k7  ]
+ Callee Saved : 6 [ rbp rbx r12 r13 r14 r15  ]
+ Assigned : 23 [ eflags rax rbp rbx rcx rdi rdx rsi r12 r13 r14 r15 zmm0 zmm1 zmm2 zmm3 zmm4 zmm5 zmm6 zmm7 zmm8 zmm9 zmm10  ]
+
+Routine stack 
+ Variables : 513 Bytes
+   Read Count : 7
+   Write Count : 1
+ Spills : 0 Bytes
+   Read Count : 0
+   Write Count : 0
+
+FUNCTION END
