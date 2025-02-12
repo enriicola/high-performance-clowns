@@ -4,9 +4,7 @@
 #include <iostream>
 
 // OMP
-#ifndef NUM_THREADS
-#define NUM_THREADS 4
-#endif
+#define NUM_THREADS 20
 
 // Ranges of the set
 #define MIN_X -2
@@ -47,7 +45,7 @@ int main(int argc, char **argv) {
 
   complex<double> z(0, 0);
 #ifdef PARALLEL
-#pragma omp parallel for num_threads(NUM_THREADS) private(z) schedule(dynamic)
+  #pragma omp parallel for num_threads(NUM_THREADS) private(z) schedule(dynamic)
 #endif
   for (int pos = 0; pos < HEIGHT * WIDTH; pos++) {
     image[pos] = 0;

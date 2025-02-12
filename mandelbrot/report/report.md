@@ -179,7 +179,7 @@ also denote that **the parameter that makes the computation heavier is `RESOLUTI
 ## CPU
 
 The best sequential execution time is obtained by compiling with
-
+Host
 ```bash
 icpx -g -O3 -xHost -qopenmp -qopt-report=3 -ffast-math \
   -D RESOLUTION=1000 \
@@ -290,6 +290,11 @@ __device__ struct complex {
   // for z = a + bi, z^2 = (a^2 - b^2) + 2abi
   __device__ complex square() {
     return {re * re - im * im, 2.0 * re * im};
+  }
+
+  // for z = a + bi and w = c + di, z + w = (a + c) + (b + d)i
+  __device__ complex operator+(const complex& w) const {
+    return {this->re + w.re, this->im + w.im};
   }
 };
 

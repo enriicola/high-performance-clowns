@@ -1,0 +1,108 @@
+{
+  "seq": [
+    {
+      "RESOLUTION": 1000,
+      "Time (s)": 3.39,
+      "Hotspot": {
+        "name": "loop in main at mandelbrot.cpp:48",
+        "Time (s)": 3.38
+      }
+    },
+    {
+      "RESOLUTION": 2000,
+      "Time (s)": 13.56,
+      "Hotspot": {
+        "name": "loop in main at mandelbrot.cpp:48",
+        "Time (s)": 13.54
+      }
+    },
+    {
+      "RESOLUTION": 4000,
+      "Time (s)": 54.27,
+      "Hotspot": {
+        "name": "loop in main at mandelbrot.cpp:48",
+        "Time (s)": 54.21
+      }
+    },
+    {
+      "RESOLUTION": 8000,
+      "Time (s)": 216.93,
+      "Hotspot": {
+        "name": "loop in main at mandelbrot.cpp:48",
+        "Time (s)": 216.41
+      }
+    },
+    {
+      "RESOLUTION": 16000,
+      "Time (s)": 867.14,
+      "Hotspot": {
+        "name": "loop in main at mandelbrot.cpp:48",
+        "Time (s)": 866.97
+      }
+    }
+  ],
+  "parallel": [
+    {
+      "RESOLUTION": 1000,
+      "Time (s)": 0.28,
+      "Hotspot": {
+        "name": "loop in main at mandelbrot.cpp:48",
+        "Time (s)": 0.23
+      }
+    },
+    {
+      "RESOLUTION": 2000,
+      "Time (s)": 1.07,
+      "Hotspot": {
+        "name": "loop in main at mandelbrot.cpp:48",
+        "Time (s)": 0.93
+      }
+    },
+    {
+      "RESOLUTION": 4000,
+      "Time (s)": 4.08,
+      "Hotspot": {
+        "name": "loop in main at mandelbrot.cpp:48",
+        "Time (s)": 3.85
+      }
+    },
+    {
+      "RESOLUTION": 8000,
+      "Time (s)": 16.53,
+      "Hotspot": {
+        "name": "loop in main at mandelbrot.cpp:48",
+        "Time (s)": 15.65
+      }
+    },
+    {
+      "RESOLUTION": 16000,
+      "Time (s)": 67.14,
+      "Hotspot": {
+        "name": "loop in main at mandelbrot.cpp:48",
+        "Time (s)": 63.82
+      }
+    }
+  ],
+  "cuda": [
+    {
+      "RESOLUTION": 1000,
+      "Time (s)": 0.25
+    },
+    {
+      "RESOLUTION": 2000,
+      "Time (s)": 0.50
+    },
+    {
+      "RESOLUTION": 4000,
+      "Time (s)": 1.56
+    },
+    {
+      "RESOLUTION": 8000,
+      "Time (s)": 5.61
+    },
+    {
+      "RESOLUTION": 16000,
+      "Time (s)": 21.74
+    }
+  ]
+}

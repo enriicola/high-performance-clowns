@@ -8,7 +8,7 @@
 #define BLOCKDIM_X 32
 #endif
 
-#ifndef BLOCKIM_Y
+#ifndef BLOCKDIM_Y
 #define BLOCKDIM_Y 32
 #endif
 
@@ -39,7 +39,7 @@
 using namespace std;
 
 // since the STD namespace is not usable on the device
-__device__ struct complex {
+struct complex {
   double re;
   double im;
 
@@ -52,8 +52,13 @@ __device__ struct complex {
   __device__ complex square() {
     return {re * re - im * im, 2.0 * re * im};
   }
-};
 
+  // for z = a + bi and w = c + di, z + w = (a + c) + (b + d)i
+  __device__ complex operator+(const complex& w) const {
+    return {this->re + w.re, this->im + w.im};
+  }
+};
+  
 void handle_error(cudaError_t err) {
   if (err != cudaSuccess) {
     fprintf(stderr, "GPU error: %s\n", cudaGetErrorString(err));
@@ -75,12 +80,8 @@ __global__ void mandelbrot_kernel(int *const image) {
   complex c = {col * STEP + MIN_X, row * STEP + MIN_Y};
   complex z = {0.0, 0.0};
   for (int i = 1; i <= ITERATIONS; i++) {
-    // z = z^2
-    z = z.square();
-
-    // z^2 = z^2 + c;
-    z.re += c.re;
-    z.im += c.im;
+    // z = z^2 + c
+    z = z.square() + c;
 
     // If it is convergent
     if (z.abs2() >= 4.0) {  // if abs > 2.0, then abs^2 > 4.0
