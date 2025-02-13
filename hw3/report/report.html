@@ -27,6 +27,13 @@
 <h1 id="assignment-3-mpi">Assignment 3: MPI </h1>
 <p>The goal is to distribute the program between the different nodes (in out case different<br>
 processes on the same machine).</p>
+<h1 id="hardware">Hardware </h1>
+<p>For this first assignment, we executed the C code using the Software 2 (SW2) workstations, with the following characteristics.</p>
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <img src="./images/hardware.png" alt="Distributed" width="70%">
+  </figure>
+</div>
 <h2 id="algorithm-analysis">Algorithm analysis </h2>
 <p>Given the function</p>
 <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>4</mn><mrow><mn>1</mn><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">f(x) = \frac{4}{1 + x^2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0908em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
@@ -37,16 +44,14 @@ processes on the same machine).</p>
 <p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>i</mi><mo>−</mo><mn>0.5</mn><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">(i - 0.5)/n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.5</span><span class="mclose">)</span><span class="mord">/</span><span class="mord mathnormal">n</span></span></span></span> is indeed the midpoint of the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span>-th subinterval. Since it discretizes the integral, it becomes an approximation of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span>.</p>
 <h3 id="parallelization-strategy">Parallelization strategy </h3>
 <p>The sequential case is the following:</p>
-<div style="display: flex; align-items: center; width: 100%;">
-  <div style="width: 0;"></div>
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
     <img src="./images/sequential.png" alt="Sequential" width="70%">
     <figcaption>Figure 1: sequential case</figcaption>
   </figure>
 </div>
-As we can see, the sum is performed alltogether on the same node. The simplest yet most powerful way to parallelize this sum is to split the computations on different nodes, making them calculate only a chunk of the total sum.
-<div style="display: flex; align-items: center; width: 100%;">
-  <div style="width: 0;"></div>
+<p>As we can see, the sum is performed alltogether on the same node. The simplest yet most powerful way to parallelize this sum is to split the computations on different nodes, making them calculate only a chunk of the total sum.</p>
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
     <img src="./images/mpi.png" alt="Distributed" width="80%">
     <figcaption>Figure 2: parallel case</figcaption>
@@ -85,132 +90,37 @@ As we can see, the sum is performed alltogether on the same node. The simplest y
 <span class="token punctuation">}</span>
 </code></pre><h2 id="program-optimizations">Program optimizations </h2>
 <h3 id="vectorization">Vectorization </h3>
-<p>Now that the program is distributed, we can thinking at the other optimization aspects. The first thing to tune is the compiler, in our case we used <code>mpiicx</code> with all the optimization flag needed. The command ran to compile the program is</p>
-<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>mpiicx <span class="token parameter variable">-g</span> <span class="token parameter variable">-O2</span> <span class="token parameter variable">-xHost</span> <span class="token parameter variable">-qopenmp</span> -qopt-report<span class="token operator">=</span><span class="token number">3</span> -ffast-math pi_homework.c
+<p>Now that the program is distributed, we can start thinking at the other optimization aspects. The first thing to tune is the compiler, in our case we used <code>mpiicx</code> with all the optimization flag needed. The command ran to compile the program is</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>mpiicx <span class="token parameter variable">-g</span> <span class="token parameter variable">-O3</span> <span class="token parameter variable">-xHost</span> <span class="token parameter variable">-qopenmp</span> -qopt-report<span class="token operator">=</span><span class="token number">3</span> -ffast-math pi_homework.c
 </code></pre><p>while the one to execute it is</p>
 <pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>mpirun <span class="token parameter variable">-np</span> <span class="token number">10</span> ./pi_homework
 </code></pre><h3 id="parallelization">Parallelization </h3>
 <p>Another way to improve the performances is to use multithreading. We used <strong>OpenMP</strong> to parallelize the MPI code in this way:</p>
-<pre data-role="codeBlock" data-info="c" class="language-c c"><code><span class="token function">omp_set_num_threads</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">pragma</span> <span class="token expression">omp parallel <span class="token keyword keyword-for">for</span> <span class="token function">private</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> f<span class="token punctuation">)</span> <span class="token function">reduction</span><span class="token punctuation">(</span><span class="token operator">+</span> <span class="token operator">:</span> local_sum<span class="token punctuation">)</span></span></span>
+<pre data-role="codeBlock" data-info="c" class="language-c c"><code><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">pragma</span> <span class="token expression">omp parallel <span class="token keyword keyword-for">for</span> <span class="token function">num_threads</span><span class="token punctuation">(</span>NTHREADS<span class="token punctuation">)</span> <span class="token function">private</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> f<span class="token punctuation">)</span> <span class="token function">reduction</span><span class="token punctuation">(</span><span class="token operator">+</span> <span class="token operator">:</span> local_sum<span class="token punctuation">)</span></span></span>
 <span class="token keyword keyword-for">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> start<span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> end<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   x <span class="token operator">=</span> dx <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword keyword-double">double</span><span class="token punctuation">)</span><span class="token punctuation">(</span>i <span class="token operator">-</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   f <span class="token operator">=</span> <span class="token number">4.0</span> <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">1.0</span> <span class="token operator">+</span> x <span class="token operator">*</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
   local_sum <span class="token operator">+=</span> f<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre><p>That is, simply subdivide the for loop on different threads and apply the reduction on the sum.</p>
-<h2 id="statistics">Statistics </h2>
-<p><strong>sequential (best)</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">INTERVALS</th>
-<th style="text-align:center">Time (s)</th>
-<th style="text-align:center">GFLOPS</th>
-<th style="text-align:center">GINTOPS</th>
-<th style="text-align:center">Hotspots</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">1,000,000,000</td>
-<td style="text-align:center">0.62</td>
-<td style="text-align:center">9.75</td>
-<td style="text-align:center">2.11</td>
-<td style="text-align:center">loop in main at pi_homework.c:26</td>
-</tr>
-<tr>
-<td style="text-align:center">10,000,000,000</td>
-<td style="text-align:center">5.87</td>
-<td style="text-align:center">10.22</td>
-<td style="text-align:center">1.22</td>
-<td style="text-align:center">loop in main at pi_homework.c:26</td>
-</tr>
-<tr>
-<td style="text-align:center">100,000,000,000</td>
-<td style="text-align:center">58.68</td>
-<td style="text-align:center">10.22</td>
-<td style="text-align:center">1.22</td>
-<td style="text-align:center">loop in main at pi_homework.c:26</td>
-</tr>
-</tbody>
-</table>
-<p><strong>parallel</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">INTERVALS</th>
-<th style="text-align:center">Time (s)</th>
-<th style="text-align:center">GFLOPS</th>
-<th style="text-align:center">GINTOPS</th>
-<th style="text-align:center">Hotspots</th>
-<th style="text-align:center">Time per Core (s)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">1,000,000,000</td>
-<td style="text-align:center">0.11</td>
-<td style="text-align:center">53.68</td>
-<td style="text-align:center">15.66</td>
-<td style="text-align:center">loop in main at pi_homework.c:26</td>
-<td style="text-align:center">0.05</td>
-</tr>
-<tr>
-<td style="text-align:center">10,000,000,000</td>
-<td style="text-align:center">0.88</td>
-<td style="text-align:center">73.02</td>
-<td style="text-align:center">21.30</td>
-<td style="text-align:center">loop in main at pi_homework.c:26</td>
-<td style="text-align:center">0.6</td>
-</tr>
-<tr>
-<td style="text-align:center">100,000,000,000</td>
-<td style="text-align:center">7.81</td>
-<td style="text-align:center">76.85</td>
-<td style="text-align:center">22.41</td>
-<td style="text-align:center">loop in main at pi_homework.c:26</td>
-<td style="text-align:center">6.28</td>
-</tr>
-</tbody>
-</table>
-<p>We can easely see that the parallel and distributed program is much faster, with a speedup of</p>
-<p><strong>speedup</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">INTERVALS</th>
-<th style="text-align:center">Sequential time (s)</th>
-<th style="text-align:center">Parallel time (s)</th>
-<th style="text-align:center">Speedup</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">1,000,000,000</td>
-<td style="text-align:center">0.62</td>
-<td style="text-align:center">0.11</td>
-<td style="text-align:center"><strong>5.64</strong></td>
-</tr>
-<tr>
-<td style="text-align:center">10,000,000,000</td>
-<td style="text-align:center">5.87</td>
-<td style="text-align:center">0.88</td>
-<td style="text-align:center"><strong>6.67</strong></td>
-</tr>
-<tr>
-<td style="text-align:center">100,000,000,000</td>
-<td style="text-align:center">58.68</td>
-<td style="text-align:center">7.81</td>
-<td style="text-align:center"><strong>7.51</strong></td>
-</tr>
-</tbody>
-</table>
-<p>The speedup increases with the number of intervals, showing the efficiency of the parallel and distributed approach.</p>
-<h1 id="todo">TODO </h1>
-<ul>
-<li>take the performances of the MPI - sequential and MPI - parallel</li>
-</ul>
+<h2 id="performance-evaluation">Performance evaluation </h2>
+<p>In this program, the only heavy hotspot is <code>loop in main at pi_homework.c:26</code>, that is the one that computes the local sums. The following measurements are taken considering the global execution time and the hotspot execution time (since it's only one).</p>
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <img src="./images/comparison.png" alt="Distributed" width="80%">
+  </figure>
+</div>
+<div style="text-align:center;"> execution time comparison</div>
+<p>In general, with multithreading we avoid introducing useless overheads due to process creation</p>
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <img src="./images/speedup.png" alt="Distributed" width="80%">
+  </figure>
+</div>
+<div style="text-align:center;">Speedup (parallel vs. MPI)</div>
+<p>Because of this, we see that the parallel program is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.6</mn></mrow><annotation encoding="application/x-tex">1.6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.6</span></span></span></span> times faster than the MPI program.</p>
+<h1 id="conclusions">Conclusions </h1>
+<p>The main concept to reason on in this case is the scalability. Multithreading is useful and fast, but, in the best case, we can have no more than <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo><mn>64</mn></mrow><annotation encoding="application/x-tex">\approx 64</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">64</span></span></span></span> threads in a single machine, while we can add potentially infinite nodes to an MPI cluster.</p>
 
       </div>
       

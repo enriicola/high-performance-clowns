@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="file:////home/chris/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.8.15/crossnote/dependencies/katex/katex.min.css">
+      <link rel="stylesheet" href="file:////Users/christianparodi/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.8.15/crossnote/dependencies/katex/katex.min.css">
       
       
       
@@ -24,70 +24,18 @@
     
       <div class="crossnote markdown-preview  ">
       
-<pre data-role="codeBlock" data-info="" class="language-text"><code>    describe always the compute capability of the resource you are using;
-    use ICC/ICX on our workstations, GCC with Colab;
-    use the BEST sequential execution time;
-    always provide the compilation and execution commands (e.g. icc -O3 -xHost...);
-    consider different and meaningful data sizes (i.e. no sequential execution time shorter than a few seconds).   
-</code></pre><h1 id="hpc---openmp-report-️-">HPC - OpenMP report 🏎️ 💻 </h1>
-<h2 id="leonardo-gonfiantini-christian-parodi-enrico-pezzano">Leonardo Gonfiantini, Christian Parodi, Enrico Pezzano </h2>
-<h3 id="december-2024">December 2024 </h3>
+<h1 id="hpc---openmp-report-️-">HPC - OpenMP report 🏎️ 💻 </h1>
+<p><strong>Leonardo Gonfiantini, Christian Parodi, Enrico Pezzano</strong></p>
 <h1 id="introduction-">Introduction 🎬 </h1>
 <p>The goal of this laboratory is to optimize the implementation of the Discrete Fourier Transform (DFT) algorithm by leveraging OpenMP HPC techniques, with a focus on parallelization and vectorization, especially on the hotspots. We aim to reduce execution time without compromising computational accuracy, keeping the tracked error rate as low as possible. Key challenges such as identifying hotspots, addressing potential vectorization barriers, parallelization problems, and managing thread scalability are discussed in depth.</p>
 <h1 id="hardware-capability-️">Hardware Capability ⚙️ </h1>
 <p>For this first assignment, we executed the C code using the Software 2 (SW2) workstations, with the following characteristics.</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>S4825087@sw209:~$ lscpu
-Architecture:                    x86_64
-CPU op-mode(s):                  32-bit, 64-bit
-Byte Order:                      Little Endian
-Address sizes:                   46 bits physical, 48 bits virtual
-CPU(s):                          20
-On-line CPU(s) list:             0-19
-Thread(s) per core:              1
-Core(s) per socket:              12
-Socket(s):                       1
-NUMA node(s):                    1
-Vendor ID:                       GenuineIntel
-CPU family:                      6
-Model:                           151
-Model name:                      12th Gen Intel(R) Core(TM) i7-12700
-Stepping:                        2
-CPU MHz:                         2100.000
-CPU max MHz:                     3876.9570
-CPU min MHz:                     800.0000
-BogoMIPS:                        4224.00
-Virtualization:                  VT-x
-L1d cache:                       288 KiB
-L1i cache:                       192 KiB
-L2 cache:                        7.5 MiB
-NUMA node0 CPU(s):               0-19
-Vulnerability Itlb multihit:     Not affected
-Vulnerability L1tf:              Not affected
-Vulnerability Mds:               Not affected
-Vulnerability Meltdown:          Not affected
-Vulnerability Mmio stale data:   Not affected
-Vulnerability Retbleed:          Not affected
-Vulnerability Spec store bypass: Mitigation; Speculative Store Bypass disabled via prctl
-Vulnerability Spectre v1:        Mitigation; usercopy/swapgs barriers and __user pointer sanitization
-Vulnerability Spectre v2:        Mitigation; Enhanced IBRS, IBPB conditional, RSB filling, PBRSB-eIBRS S
-                                 W sequence
-Vulnerability Srbds:             Not affected
-Vulnerability Tsx async abort:   Not affected
-Flags:                           fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36
-                                  clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdt
-                                 scp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology n
-                                 onstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor
-                                  ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_
-                                 2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf
-                                 _lm abm 3dnowprefetch cpuid_fault epb invpcid_single ssbd ibrs ibpb sti
-                                 bp ibrs_enhanced tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase 
-                                 tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt 
-                                 clwb intel_pt sha_ni xsaveopt xsavec xgetbv1 xsaves split_lock_detect a
-                                 vx_vnni dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp h
-                                 wp_pkg_req hfi umip pku ospke waitpkg gfni vaes vpclmulqdq tme rdpid mo
-                                 vdiri movdir64b fsrm md_clear serialize pconfig arch_lbr ibt flush_l1d 
-                                 arch_capabilities
-</code></pre><h1 id="algorithm-analysis-">Algorithm analysis 👨🏻‍💻 </h1>
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <img src="./images/hardware.png" alt="Distributed" width="70%">
+  </figure>
+</div>
+<h1 id="algorithm-analysis-">Algorithm analysis 👨🏻‍💻 </h1>
 <p>The Fourier Transform is a mathematical transformation used to convert a function of time (or space) into a function of frequency. It is defined as:</p>
 <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="script">F</mi><mo stretchy="false">{</mo><mi>f</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">}</mo><mo>=</mo><mi>F</mi><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo><mo>=</mo><msubsup><mo>∫</mo><mrow><mo>−</mo><mi mathvariant="normal">∞</mi></mrow><mi mathvariant="normal">∞</mi></msubsup><mi>f</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><msup><mi>e</mi><mrow><mo>−</mo><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><mtext> </mtext><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\mathcal{F}\{f(t)\} = F(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i \omega t} \, dt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.09931em;">F</span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)}</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.3846em;vertical-align:-0.9703em;"></span><span class="mop"><span class="mop op-symbol large-op" style="margin-right:0.44445em;position:relative;top:-0.0011em;">∫</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4143em;"><span style="top:-1.7881em;margin-left:-0.4445em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">∞</span></span></span></span><span style="top:-3.8129em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∞</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9703em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8747em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">iω</span><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">t</span></span></span></span></span></p>
 <p>For discrete signals, the Discrete Fourier Transform (DFT) is used, which is defined as:</p>
@@ -105,7 +53,7 @@ Flags:                           fpu vme de pse tsc msr pae mce cx8 apic sep mtr
 <p>Notice it is just the DFT of the DFT.</p>
 <h1 id="parallelization-strategy-">Parallelization strategy 🧠 </h1>
 <p>Since it is a sum of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> elements, it can be split into <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> different threads, each with <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi mathvariant="normal">/</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">N/m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord">/</span><span class="mord mathnormal">m</span></span></span></span> sums to compute.</p>
-<div style="display: flex; align-items: center; width: 100%;">
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
     <img src="./images/omp.png" alt="OMP" width="100%">
   </figure>
@@ -232,29 +180,26 @@ Xi_o<span class="token punctuation">[</span>k<span class="token punctuation">]</
 </code></pre><p>We declared <code>cos_res</code> and <code>sin_res</code> outside the parallel region, because since they depend on <code>n</code> and <code>k</code>, they have to be private for each thread.</p>
 <h1 id="performance-evaluation-">Performance evaluation 🤔 </h1>
 <p>We performed the tests on the workstation in SW2, which has 20 cores with 1 thread per core (so no hyperthreading). so we defined <code>NTHREADS=20</code>. The only hotspot in the code was the <code>loop in main at omp_homework.c:26</code> already discussed, so each measurements refers to the global time and this hotspot's time.</p>
-<div style="display: flex; align-items: center; width: 100%;">
-  <figure style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
-    <img src="./images/vec_time.png" alt="OMP" width="100%">
-    <img src="./images/parallel_time.png" alt="OMP" width="100%">
-  </figure>
-</div>
-<p>As we expected, the greater the problem size, the longer it will take to execute. We also highlight how close are the two slopes (meaning that the hotspot is the responsible of the whole execution).</p>
-<p>In this case, we notice the global time is much lower than the sequential one. There's also a small gap between the hotspot time and the global time, that is due to the context switch and all the overhead added by using multi threading.</p>
-<h3 id="results-comparison">results comparison </h3>
-<div style="display: flex; align-items: center; width: 100%;">
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
     <img src="./images/comparison.png" alt="OMP" width="100%">
   </figure>
 </div>
-<p>TODO sunday 😃</p>
-<p>using vectorization as in the code inside omp homework, the execution time is 0.71 seconds, which is 18.5 times faster than the vanilla version of the code (for N=10000) with a non existent error (Xre = 10000.0000)</p>
-<ul>
-<li>tables and graphs</li>
-</ul>
+<p>As we expected, the greater the problem size, the longer it will take to execute. We also highlight how close are the sequential global time and hotspot time (meaning that the hotspot is the responsible of the whole execution). Also, the parallel execution is much faster and the two slopes (parallel hotspot and global time) have a larger gap between them, because of the overhead introduced by multithreading.</p>
+<h3 id="speedup--efficiency">Speedup &amp; Efficiency </h3>
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <img src="./images/speedup.png" alt="OMP" width="100%">
+  </figure>
+</div>
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <img src="./images/efficiency.png" alt="OMP" width="100%">
+  </figure>
+</div>
+<p>As we can state from the plots, we have an average speedup of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6.6</mn></mrow><annotation encoding="application/x-tex">6.6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6.6</span></span></span></span>  and an average efficiency of the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>33</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">33\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">33%</span></span></span></span>, meaning that our code goes more than 6 times faster in parallel mode than in sequential, but each thread could be used better.</p>
 <h1 id="conclusions-">Conclusions 🔚 </h1>
-<p>TODO 😃<br>
-In conclusion, by leveraging vectorization and multithreading. Other than that, we also noticed how small<br>
-changes in the code could lead to significant change in performance.</p>
+<p>In conclusion, by leveraging OpenMP parallelization techniques and optimizing trigonometric computations, we achieved significant performance improvements in the DFT implementation. The parallel execution demonstrated substantial speedup compared to the sequential version, particularly for larger problem sizes. While vectorization opportunities were limited, the combination of compiler optimizations (-O3, -xHost, -ffast-math) and OpenMP parallelization proved effective in reducing execution time while maintaining computational accuracy.</p>
 
       </div>
       

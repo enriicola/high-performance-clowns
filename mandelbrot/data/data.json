@@ -86,15 +86,15 @@
   "cuda": [
     {
       "RESOLUTION": 1000,
-      "Time (s)": 0.25
+      "Time (s)": 0.22
     },
     {
       "RESOLUTION": 2000,
-      "Time (s)": 0.50
+      "Time (s)": 0.51
     },
     {
       "RESOLUTION": 4000,
-      "Time (s)": 1.56
+      "Time (s)": 1.53
     },
     {
       "RESOLUTION": 8000,
@@ -102,7 +102,7 @@
     },
     {
       "RESOLUTION": 16000,
-      "Time (s)": 21.74
+      "Time (s)": 21.77
     }
   ]
 }
