@@ -142,19 +142,19 @@ In this program, the only heavy hotspot is `loop in main at pi_homework.c:26`, t
 
 |    INTERVALS    | GFLOPS | Time (s) | Hotspot Time (s) |
 | :-------------: | :----: | :------: | :--------------: |
-| 100.000.000.000 | 75.92  |   7.90   |       6.25       |
-| 300.000.000.000 | 78.45  |  22.94   |      18.74       |
-| 500.000.000.000 | 77.91  |  38.51   |      33.68       |
-| 700.000.000.000 | 75.36  |  55.73   |      48.08       |
+| 100,000,000,000 | 75.92  |   7.90   |       6.25       |
+| 300,000,000,000 | 78.45  |  22.94   |      18.74       |
+| 500,000,000,000 | 77.91  |  38.51   |      33.68       |
+| 700,000,000,000 | 75.36  |  55.73   |      48.08       |
 
 #### MPI execution time
 
 |    INTERVALS    | Time (s) |
 | :-------------: | :------: |
-| 100.000.000.000 |  11.85   |
-| 300.000.000.000 |  37.96   |
-| 500.000.000.000 |  66.49   |
-| 700.000.000.000 |  95.72   |
+| 100,000,000,000 |  11.85   |
+| 300,000,000,000 |  37.96   |
+| 500,000,000,000 |  66.49   |
+| 700,000,000,000 |  95.72   |
 
 
 In general, with multithreading we avoid introducing useless overheads due to process creation
@@ -169,12 +169,12 @@ In general, with multithreading we avoid introducing useless overheads due to pr
 
 #### Speedup table
 
-|  INTERVALS   | Speedup |
-| :----------: | :-----: |
-| 100000000000 |  1.50   |
-| 300000000000 |  1.66   |
-| 500000000000 |  1.73   |
-| 700000000000 |  1.72   |
+|    INTERVALS    | Speedup |
+| :-------------: | :-----: |
+| 100,000,000,000 |  1.50   |
+| 300,000,000,000 |  1.66   |
+| 500,000,000,000 |  1.73   |
+| 700,000,000,000 |  1.72   |
 
 Because of this, we see that the parallel program is $1.6$ times faster than the MPI program.
 
