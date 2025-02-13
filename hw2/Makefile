@@ -6,6 +6,7 @@ BLOCKDIM_Y ?= 32
 FLAGS=-O3
 ARCH=sm_86 # CUDA Capability Major/Minor version number: 8.6
 SIZE ?= 1000 # row = column = size
+NTRHEADS ?= 2
 
 default:
 	${CC} ${FLAGS} -arch=${ARCH} \
@@ -14,8 +15,9 @@ default:
 		-D SIZE=${SIZE} \
 		${SOURCE}/heat.cu -o ${RELEASE}/heat_cuda -run
 
-# -march=native == -xHost
-seq:
+cpu:
 	gcc ${FLAGS} -march=native \
+    -D PARALLEL \
+    -D NTRHEADS=${NTRHEADS} \
 		-D SIZE=${SIZE} \
-		${SOURCE}/heat.c -o ${RELEASE}/heat && ${RELEASE}/heat
+		${SOURCE}/heat.c -o ${RELEASE}/heat
