@@ -58,7 +58,21 @@ processes on the same machine).</p>
   </figure>
 </div>
 <p>The final step would be re-aggregate all the partial sums into the same global result, i.e. <strong>reduce</strong> them.</p>
-<h3 id="workload-distribution">Workload distribution </h3>
+<h3 id="vectorization">Vectorization </h3>
+<p>Now that the program is distributed, we can start thinking at the other optimization aspects. The first thing to tune is the compiler, in our case we used <code>mpiicx</code> with all the optimization flag needed. The command ran to compile the program is</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>mpiicx <span class="token parameter variable">-g</span> <span class="token parameter variable">-O3</span> <span class="token parameter variable">-xHost</span> <span class="token parameter variable">-qopenmp</span> -qopt-report<span class="token operator">=</span><span class="token number">3</span> -ffast-math pi_homework.c
+</code></pre><p>while the one to execute it is</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>mpirun <span class="token parameter variable">-np</span> <span class="token number">10</span> ./pi_homework
+</code></pre><h3 id="parallelization">Parallelization </h3>
+<p>Another way to improve the performances is to use multithreading. We used <strong>OpenMP</strong> to parallelize the original code in this way:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c c"><code><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">pragma</span> <span class="token expression">omp parallel <span class="token keyword keyword-for">for</span> <span class="token function">num_threads</span><span class="token punctuation">(</span>NTHREADS<span class="token punctuation">)</span> <span class="token function">private</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> f<span class="token punctuation">)</span> <span class="token function">reduction</span><span class="token punctuation">(</span><span class="token operator">+</span> <span class="token operator">:</span> sum<span class="token punctuation">)</span></span></span>
+  <span class="token keyword keyword-for">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> intervals<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    x <span class="token operator">=</span> dx <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword keyword-double">double</span><span class="token punctuation">)</span><span class="token punctuation">(</span>i <span class="token operator">-</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    f <span class="token operator">=</span> <span class="token number">4.0</span> <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">1.0</span> <span class="token operator">+</span> x <span class="token operator">*</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    sum <span class="token operator">=</span> sum <span class="token operator">+</span> f<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</code></pre><p>That is, simply subdivide the for loop on different threads and apply the reduction on the sum.</p>
+<h3 id="mpi-workload-distribution">MPI workload distribution </h3>
 <p>Now that we know how the algorithm works, we can decide how to divide the workload in each MPI node. We start by noticing that it is a sum over <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> elements (in the code <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">n =</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span></span></span></span> <code>INTERVALS</code>), so, if we have <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> worker nodes with same resources and performances, we can divide this sum into <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi mathvariant="normal">/</mi><mtext mathvariant="monospace">INTERVALS</mtext></mrow><annotation encoding="application/x-tex">m/\texttt{INTERVALS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mord">/</span><span class="mord text"><span class="mord texttt">INTERVALS</span></span></span></span></span> chunks</p>
 <pre data-role="codeBlock" data-info="c" class="language-c c"><code><span class="token keyword keyword-int">int</span> size<span class="token punctuation">,</span> rank<span class="token punctuation">;</span>
 <span class="token function">MPI_Comm_rank</span><span class="token punctuation">(</span> MPI_COMM_WORLD<span class="token punctuation">,</span> <span class="token operator">&amp;</span>rank <span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -88,22 +102,7 @@ processes on the same machine).</p>
   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Computed PI %.24f\n"</span><span class="token punctuation">,</span> pi<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"The true PI %.24f\n\n"</span><span class="token punctuation">,</span> PI25DT<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre><h2 id="program-optimizations">Program optimizations </h2>
-<h3 id="vectorization">Vectorization </h3>
-<p>Now that the program is distributed, we can start thinking at the other optimization aspects. The first thing to tune is the compiler, in our case we used <code>mpiicx</code> with all the optimization flag needed. The command ran to compile the program is</p>
-<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>mpiicx <span class="token parameter variable">-g</span> <span class="token parameter variable">-O3</span> <span class="token parameter variable">-xHost</span> <span class="token parameter variable">-qopenmp</span> -qopt-report<span class="token operator">=</span><span class="token number">3</span> -ffast-math pi_homework.c
-</code></pre><p>while the one to execute it is</p>
-<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>mpirun <span class="token parameter variable">-np</span> <span class="token number">10</span> ./pi_homework
-</code></pre><h3 id="parallelization">Parallelization </h3>
-<p>Another way to improve the performances is to use multithreading. We used <strong>OpenMP</strong> to parallelize the MPI code in this way:</p>
-<pre data-role="codeBlock" data-info="c" class="language-c c"><code><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">pragma</span> <span class="token expression">omp parallel <span class="token keyword keyword-for">for</span> <span class="token function">num_threads</span><span class="token punctuation">(</span>NTHREADS<span class="token punctuation">)</span> <span class="token function">private</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> f<span class="token punctuation">)</span> <span class="token function">reduction</span><span class="token punctuation">(</span><span class="token operator">+</span> <span class="token operator">:</span> local_sum<span class="token punctuation">)</span></span></span>
-<span class="token keyword keyword-for">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> start<span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> end<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  x <span class="token operator">=</span> dx <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword keyword-double">double</span><span class="token punctuation">)</span><span class="token punctuation">(</span>i <span class="token operator">-</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  f <span class="token operator">=</span> <span class="token number">4.0</span> <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">1.0</span> <span class="token operator">+</span> x <span class="token operator">*</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  local_sum <span class="token operator">+=</span> f<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre><p>That is, simply subdivide the for loop on different threads and apply the reduction on the sum.</p>
-<h2 id="performance-evaluation">Performance evaluation </h2>
+</code></pre><h2 id="performance-evaluation">Performance evaluation </h2>
 <p>In this program, the only heavy hotspot is <code>loop in main at pi_homework.c:26</code>, that is the one that computes the local sums. The following measurements are taken considering the global execution time and the hotspot execution time (since it's only one).</p>
 <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
@@ -111,6 +110,70 @@ processes on the same machine).</p>
   </figure>
 </div>
 <div style="text-align:center;"> execution time comparison</div>
+<h4 id="parallel-execution-time">Parallel execution time </h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">INTERVALS</th>
+<th style="text-align:center">GFLOPS</th>
+<th style="text-align:center">Time (s)</th>
+<th style="text-align:center">Hotspot Time (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">100.000.000.000</td>
+<td style="text-align:center">75.92</td>
+<td style="text-align:center">7.90</td>
+<td style="text-align:center">6.25</td>
+</tr>
+<tr>
+<td style="text-align:center">300.000.000.000</td>
+<td style="text-align:center">78.45</td>
+<td style="text-align:center">22.94</td>
+<td style="text-align:center">18.74</td>
+</tr>
+<tr>
+<td style="text-align:center">500.000.000.000</td>
+<td style="text-align:center">77.91</td>
+<td style="text-align:center">38.51</td>
+<td style="text-align:center">33.68</td>
+</tr>
+<tr>
+<td style="text-align:center">700.000.000.000</td>
+<td style="text-align:center">75.36</td>
+<td style="text-align:center">55.73</td>
+<td style="text-align:center">48.08</td>
+</tr>
+</tbody>
+</table>
+<h4 id="mpi-execution-time">MPI execution time </h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">INTERVALS</th>
+<th style="text-align:center">Time (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">100.000.000.000</td>
+<td style="text-align:center">11.85</td>
+</tr>
+<tr>
+<td style="text-align:center">300.000.000.000</td>
+<td style="text-align:center">37.96</td>
+</tr>
+<tr>
+<td style="text-align:center">500.000.000.000</td>
+<td style="text-align:center">66.49</td>
+</tr>
+<tr>
+<td style="text-align:center">700.000.000.000</td>
+<td style="text-align:center">95.72</td>
+</tr>
+</tbody>
+</table>
 <p>In general, with multithreading we avoid introducing useless overheads due to process creation</p>
 <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
@@ -118,6 +181,33 @@ processes on the same machine).</p>
   </figure>
 </div>
 <div style="text-align:center;">Speedup (parallel vs. MPI)</div>
+<h4 id="speedup-table">Speedup table </h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">INTERVALS</th>
+<th style="text-align:center">Speedup</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">100000000000</td>
+<td style="text-align:center">1.50</td>
+</tr>
+<tr>
+<td style="text-align:center">300000000000</td>
+<td style="text-align:center">1.66</td>
+</tr>
+<tr>
+<td style="text-align:center">500000000000</td>
+<td style="text-align:center">1.73</td>
+</tr>
+<tr>
+<td style="text-align:center">700000000000</td>
+<td style="text-align:center">1.72</td>
+</tr>
+</tbody>
+</table>
 <p>Because of this, we see that the parallel program is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.6</mn></mrow><annotation encoding="application/x-tex">1.6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.6</span></span></span></span> times faster than the MPI program.</p>
 <h1 id="conclusions">Conclusions </h1>
 <p>The main concept to reason on in this case is the scalability. Multithreading is useful and fast, but, in the best case, we can have no more than <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo><mn>64</mn></mrow><annotation encoding="application/x-tex">\approx 64</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">64</span></span></span></span> threads in a single machine, while we can add potentially infinite nodes to an MPI cluster.</p>

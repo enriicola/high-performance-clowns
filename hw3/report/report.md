@@ -51,7 +51,36 @@ As we can see, the sum is performed alltogether on the same node. The simplest y
 
 The final step would be re-aggregate all the partial sums into the same global result, i.e. **reduce** them.
 
-### Workload distribution
+### Vectorization
+
+Now that the program is distributed, we can start thinking at the other optimization aspects. The first thing to tune is the compiler, in our case we used `mpiicx` with all the optimization flag needed. The command ran to compile the program is
+
+```bash
+mpiicx -g -O3 -xHost -qopenmp -qopt-report=3 -ffast-math pi_homework.c
+```
+
+while the one to execute it is
+
+```bash
+mpirun -np 10 ./pi_homework
+```
+
+### Parallelization
+
+Another way to improve the performances is to use multithreading. We used **OpenMP** to parallelize the original code in this way:
+
+```c
+#pragma omp parallel for num_threads(NTHREADS) private(x, f) reduction(+ : sum)
+  for (i = 1; i <= intervals; i++) {
+    x = dx * ((double)(i - 0.5));
+    f = 4.0 / (1.0 + x * x);
+    sum = sum + f;
+  }
+```
+
+That is, simply subdivide the for loop on different threads and apply the reduction on the sum.
+
+### MPI workload distribution
 
 Now that we know how the algorithm works, we can decide how to divide the workload in each MPI node. We start by noticing that it is a sum over $n$ elements (in the code $n =$ `INTERVALS`), so, if we have $m$ worker nodes with same resources and performances, we can divide this sum into $m/\texttt{INTERVALS}$ chunks
 
@@ -98,38 +127,8 @@ if(rank == MASTER_NODE){
 }
 ```
 
-## Program optimizations
-
-### Vectorization
-
-Now that the program is distributed, we can start thinking at the other optimization aspects. The first thing to tune is the compiler, in our case we used `mpiicx` with all the optimization flag needed. The command ran to compile the program is
-
-```bash
-mpiicx -g -O3 -xHost -qopenmp -qopt-report=3 -ffast-math pi_homework.c
-```
-
-while the one to execute it is
-
-```bash
-mpirun -np 10 ./pi_homework
-```
-
-### Parallelization
-
-Another way to improve the performances is to use multithreading. We used **OpenMP** to parallelize the MPI code in this way:
-
-```c
-#pragma omp parallel for num_threads(NTHREADS) private(x, f) reduction(+ : local_sum)
-for (i = start; i <= end; i++) {
-  x = dx * ((double)(i - 0.5));
-  f = 4.0 / (1.0 + x * x);
-  local_sum += f;
-}
-```
-
-That is, simply subdivide the for loop on different threads and apply the reduction on the sum.
-
 ## Performance evaluation
+
 In this program, the only heavy hotspot is `loop in main at pi_homework.c:26`, that is the one that computes the local sums. The following measurements are taken considering the global execution time and the hotspot execution time (since it's only one).
 
 <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
@@ -137,8 +136,26 @@ In this program, the only heavy hotspot is `loop in main at pi_homework.c:26`, t
     <img src="./images/comparison.png" alt="Distributed" width="80%" />
   </figure>
 </div>
-
 <div style="text-align:center;"> execution time comparison</div>
+
+#### Parallel execution time
+
+|    INTERVALS    | GFLOPS | Time (s) | Hotspot Time (s) |
+| :-------------: | :----: | :------: | :--------------: |
+| 100.000.000.000 | 75.92  |   7.90   |       6.25       |
+| 300.000.000.000 | 78.45  |  22.94   |      18.74       |
+| 500.000.000.000 | 77.91  |  38.51   |      33.68       |
+| 700.000.000.000 | 75.36  |  55.73   |      48.08       |
+
+#### MPI execution time
+
+|    INTERVALS    | Time (s) |
+| :-------------: | :------: |
+| 100.000.000.000 |  11.85   |
+| 300.000.000.000 |  37.96   |
+| 500.000.000.000 |  66.49   |
+| 700.000.000.000 |  95.72   |
+
 
 In general, with multithreading we avoid introducing useless overheads due to process creation
 
@@ -149,6 +166,15 @@ In general, with multithreading we avoid introducing useless overheads due to pr
 </div>
 
 <div style="text-align:center;">Speedup (parallel vs. MPI)</div>
+
+#### Speedup table
+
+|  INTERVALS   | Speedup |
+| :----------: | :-----: |
+| 100000000000 |  1.50   |
+| 300000000000 |  1.66   |
+| 500000000000 |  1.73   |
+| 700000000000 |  1.72   |
 
 Because of this, we see that the parallel program is $1.6$ times faster than the MPI program.
 

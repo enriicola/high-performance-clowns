@@ -207,6 +207,25 @@ We performed the tests on the workstation in SW2, which has 20 cores with 1 thre
   </figure>
 </div>
 
+#### Sequential Data
+|    N    | GFLOPS | Time (s) | Hotspot Time (s) |
+| :-----: | :----: | :------: | :--------------: |
+| 80,000  | 32.97  |  24.89   |      24.22       |
+| 100,000 | 33.06  |  38.29   |      37.81       |
+| 120,000 | 33.20  |  55.63   |      54.44       |
+| 140,000 | 33.29  |  75.50   |      74.10       |
+| 160,000 | 33.33  |  98.49   |      96.87       |
+
+#### Parallel data
+
+|    N    | GFLOPS | Time (s) | Hotspot Time (s) |
+| :-----: | :----: | :------: | :--------------: |
+| 80,000  | 216.55 |   3.91   |       2.39       |
+| 100,000 | 222.05 |   5.96   |       3.73       |
+| 120,000 | 222.63 |   8.55   |       5.38       |
+| 140,000 | 231.47 |  11.20   |       7.29       |
+| 160,000 | 235.15 |  14.40   |       9.55       |
+
 As we expected, the greater the problem size, the longer it will take to execute. We also highlight how close are the sequential global time and hotspot time (meaning that the hotspot is the responsible of the whole execution). Also, the parallel execution is much faster and the two slopes (parallel hotspot and global time) have a larger gap between them, because of the overhead introduced by multithreading.
 
 ### Speedup & Efficiency
@@ -222,6 +241,26 @@ As we expected, the greater the problem size, the longer it will take to execute
     <img src="./images/efficiency.png" alt="OMP" width="100%" />
   </figure>
 </div>
+
+#### Speedup table
+
+|    N    | Speedup |
+| :-----: | :-----: |
+| 80,000  |  6.37   |
+| 100,000 |  6.42   |
+| 120,000 |  6.51   |
+| 140,000 |  6.74   |
+| 160,000 |  6.84   |
+
+#### Efficiency table
+
+|    N    | Efficiency |
+| :-----: | :--------: |
+| 80,000  |    0.32    |
+| 100,000 |    0.32    |
+| 120,000 |    0.33    |
+| 140,000 |    0.34    |
+| 160,000 |    0.34    |
 
 As we can state from the plots, we have an average speedup of $6.6$  and an average efficiency of the $33\%$, meaning that our code goes more than 6 times faster in parallel mode than in sequential, but each thread could be used better.
 

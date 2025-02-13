@@ -185,6 +185,92 @@ Xi_o<span class="token punctuation">[</span>k<span class="token punctuation">]</
     <img src="./images/comparison.png" alt="OMP" width="100%">
   </figure>
 </div>
+<h4 id="sequential-data">Sequential Data </h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">N</th>
+<th style="text-align:center">GFLOPS</th>
+<th style="text-align:center">Time (s)</th>
+<th style="text-align:center">Hotspot Time (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">80,000</td>
+<td style="text-align:center">32.97</td>
+<td style="text-align:center">24.89</td>
+<td style="text-align:center">24.22</td>
+</tr>
+<tr>
+<td style="text-align:center">100,000</td>
+<td style="text-align:center">33.06</td>
+<td style="text-align:center">38.29</td>
+<td style="text-align:center">37.81</td>
+</tr>
+<tr>
+<td style="text-align:center">120,000</td>
+<td style="text-align:center">33.20</td>
+<td style="text-align:center">55.63</td>
+<td style="text-align:center">54.44</td>
+</tr>
+<tr>
+<td style="text-align:center">140,000</td>
+<td style="text-align:center">33.29</td>
+<td style="text-align:center">75.50</td>
+<td style="text-align:center">74.10</td>
+</tr>
+<tr>
+<td style="text-align:center">160,000</td>
+<td style="text-align:center">33.33</td>
+<td style="text-align:center">98.49</td>
+<td style="text-align:center">96.87</td>
+</tr>
+</tbody>
+</table>
+<h4 id="parallel-data">Parallel data </h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">N</th>
+<th style="text-align:center">GFLOPS</th>
+<th style="text-align:center">Time (s)</th>
+<th style="text-align:center">Hotspot Time (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">80,000</td>
+<td style="text-align:center">216.55</td>
+<td style="text-align:center">3.91</td>
+<td style="text-align:center">2.39</td>
+</tr>
+<tr>
+<td style="text-align:center">100,000</td>
+<td style="text-align:center">222.05</td>
+<td style="text-align:center">5.96</td>
+<td style="text-align:center">3.73</td>
+</tr>
+<tr>
+<td style="text-align:center">120,000</td>
+<td style="text-align:center">222.63</td>
+<td style="text-align:center">8.55</td>
+<td style="text-align:center">5.38</td>
+</tr>
+<tr>
+<td style="text-align:center">140,000</td>
+<td style="text-align:center">231.47</td>
+<td style="text-align:center">11.20</td>
+<td style="text-align:center">7.29</td>
+</tr>
+<tr>
+<td style="text-align:center">160,000</td>
+<td style="text-align:center">235.15</td>
+<td style="text-align:center">14.40</td>
+<td style="text-align:center">9.55</td>
+</tr>
+</tbody>
+</table>
 <p>As we expected, the greater the problem size, the longer it will take to execute. We also highlight how close are the sequential global time and hotspot time (meaning that the hotspot is the responsible of the whole execution). Also, the parallel execution is much faster and the two slopes (parallel hotspot and global time) have a larger gap between them, because of the overhead introduced by multithreading.</p>
 <h3 id="speedup--efficiency">Speedup &amp; Efficiency </h3>
 <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
@@ -197,6 +283,68 @@ Xi_o<span class="token punctuation">[</span>k<span class="token punctuation">]</
     <img src="./images/efficiency.png" alt="OMP" width="100%">
   </figure>
 </div>
+<h4 id="speedup-table">Speedup table </h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">N</th>
+<th style="text-align:center">Speedup</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">80,000</td>
+<td style="text-align:center">6.37</td>
+</tr>
+<tr>
+<td style="text-align:center">100,000</td>
+<td style="text-align:center">6.42</td>
+</tr>
+<tr>
+<td style="text-align:center">120,000</td>
+<td style="text-align:center">6.51</td>
+</tr>
+<tr>
+<td style="text-align:center">140,000</td>
+<td style="text-align:center">6.74</td>
+</tr>
+<tr>
+<td style="text-align:center">160,000</td>
+<td style="text-align:center">6.84</td>
+</tr>
+</tbody>
+</table>
+<h4 id="efficiency-table">Efficiency table </h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">N</th>
+<th style="text-align:center">Efficiency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">80,000</td>
+<td style="text-align:center">0.32</td>
+</tr>
+<tr>
+<td style="text-align:center">100,000</td>
+<td style="text-align:center">0.32</td>
+</tr>
+<tr>
+<td style="text-align:center">120,000</td>
+<td style="text-align:center">0.33</td>
+</tr>
+<tr>
+<td style="text-align:center">140,000</td>
+<td style="text-align:center">0.34</td>
+</tr>
+<tr>
+<td style="text-align:center">160,000</td>
+<td style="text-align:center">0.34</td>
+</tr>
+</tbody>
+</table>
 <p>As we can state from the plots, we have an average speedup of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6.6</mn></mrow><annotation encoding="application/x-tex">6.6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6.6</span></span></span></span>  and an average efficiency of the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>33</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">33\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">33%</span></span></span></span>, meaning that our code goes more than 6 times faster in parallel mode than in sequential, but each thread could be used better.</p>
 <h1 id="conclusions-">Conclusions 🔚 </h1>
 <p>In conclusion, by leveraging OpenMP parallelization techniques and optimizing trigonometric computations, we achieved significant performance improvements in the DFT implementation. The parallel execution demonstrated substantial speedup compared to the sequential version, particularly for larger problem sizes. While vectorization opportunities were limited, the combination of compiler optimizations (-O3, -xHost, -ffast-math) and OpenMP parallelization proved effective in reducing execution time while maintaining computational accuracy.</p>

@@ -223,6 +223,19 @@ The _warp size_ indicates how many threads can be executed at once, in this GPU 
   </figure>
 </div>
 
+#### CUDA thread grid table
+
+These values are in milliseconds.
+
+| BLOCKDIM_Y \ BLOCKDIM_X | 1    | 2    | 4   | 8   | 16  | 32  |
+| ----------------------- | ---- | ---- | --- | --- | --- | --- |
+| **32**                  | 235  | 247  | 247 | 220 | 208 | 209 |
+| **16**                  | 315  | 221  | 206 | 199 | 225 | 239 |
+| **8**                   | 518  | 323  | 198 | 205 | 235 | 210 |
+| **4**                   | 852  | 512  | 313 | 226 | 203 | 230 |
+| **2**                   | 1530 | 816  | 481 | 307 | 198 | 238 |
+| **1**                   | 2827 | 1499 | 863 | 515 | 323 | 243 |
+
 Based on our experiments, we decided to use a $32 \times 32 = 1024$ threads grid.
 
 ```cpp
@@ -299,6 +312,36 @@ We could not plot the result of the program for `RESOLUTION` $>\ \approx 8000$, 
   <img src="./images/speedup.png" alt="OMP" width="100%" />
   </figure>
 </div>
+
+### Sequential data
+
+| RESOLUTION | Time (s) | Hotspot Time (s) |
+| :--------: | :------: | :--------------: |
+|   1,000    |   3.39   |       3.38       |
+|   2,000    |  13.56   |      13.54       |
+|   4,000    |  54.27   |      54.21       |
+|   8,000    |  216.93  |      216.41      |
+|   16,000   |  867.14  |      866.97      |
+
+### Parallel data
+
+| RESOLUTION | Time (s) | Hotspot Time (s) |
+| :--------: | :------: | :--------------: |
+|   1,000    |   0.28   |       0.23       |
+|   2,000    |   1.07   |       0.93       |
+|   4,000    |   4.08   |       3.85       |
+|   8,000    |  16.53   |      15.65       |
+|   16,000   |  67.14   |      63.82       |
+
+### CUDA data
+
+| RESOLUTION | Time (s) |
+| :--------: | :------: |
+|   1,000    |   0.22   |
+|   2,000    |   0.51   |
+|   4,000    |   1.53   |
+|   8,000    |   5.61   |
+|   16,000   |  21.77   |
 
 We immediately see an abrupt change performance-wise in the CUDA version, reaching a speedup of $\approx 40\texttt{x}$ at the maximum `RESOLUTION`. Time-wise, a sequential execution of about $\approx$ **14 minutes** became a CUDA exection of $\approx$ **20 seconds**
 

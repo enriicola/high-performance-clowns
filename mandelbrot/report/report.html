@@ -177,6 +177,77 @@ Max dimension size of a thread block <span class="token punctuation">(</span>x,y
     <img src="./images/best_blockdim.png" alt="OMP" width="100%">
   </figure>
 </div>
+<h4 id="cuda-thread-grid-table">CUDA thread grid table </h4>
+<p>These values are in milliseconds.</p>
+<table>
+<thead>
+<tr>
+<th>BLOCKDIM_Y \ BLOCKDIM_X</th>
+<th>1</th>
+<th>2</th>
+<th>4</th>
+<th>8</th>
+<th>16</th>
+<th>32</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>32</strong></td>
+<td>235</td>
+<td>247</td>
+<td>247</td>
+<td>220</td>
+<td>208</td>
+<td>209</td>
+</tr>
+<tr>
+<td><strong>16</strong></td>
+<td>315</td>
+<td>221</td>
+<td>206</td>
+<td>199</td>
+<td>225</td>
+<td>239</td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td>518</td>
+<td>323</td>
+<td>198</td>
+<td>205</td>
+<td>235</td>
+<td>210</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>852</td>
+<td>512</td>
+<td>313</td>
+<td>226</td>
+<td>203</td>
+<td>230</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>1530</td>
+<td>816</td>
+<td>481</td>
+<td>307</td>
+<td>198</td>
+<td>238</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td>2827</td>
+<td>1499</td>
+<td>863</td>
+<td>515</td>
+<td>323</td>
+<td>243</td>
+</tr>
+</tbody>
+</table>
 <p>Based on our experiments, we decided to use a <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>32</mn><mo>×</mo><mn>32</mn><mo>=</mo><mn>1024</mn></mrow><annotation encoding="application/x-tex">32 \times 32 = 1024</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">32</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">32</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1024</span></span></span></span> threads grid.</p>
 <pre data-role="codeBlock" data-info="cpp" class="language-cpp cpp"><code>dim3 <span class="token function">threadsPerBlock</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 dim3 <span class="token function">numBlocks</span><span class="token punctuation">(</span><span class="token punctuation">(</span>HEIGHT <span class="token operator">+</span> threadsPerBlock<span class="token punctuation">.</span>x <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">/</span> threadsPerBlock<span class="token punctuation">.</span>x<span class="token punctuation">,</span> 
@@ -241,6 +312,111 @@ __global__ <span class="token keyword keyword-void">void</span> <span class="tok
   <img src="./images/speedup.png" alt="OMP" width="100%">
   </figure>
 </div>
+<h3 id="sequential-data">Sequential data </h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">RESOLUTION</th>
+<th style="text-align:center">Time (s)</th>
+<th style="text-align:center">Hotspot Time (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1,000</td>
+<td style="text-align:center">3.39</td>
+<td style="text-align:center">3.38</td>
+</tr>
+<tr>
+<td style="text-align:center">2,000</td>
+<td style="text-align:center">13.56</td>
+<td style="text-align:center">13.54</td>
+</tr>
+<tr>
+<td style="text-align:center">4,000</td>
+<td style="text-align:center">54.27</td>
+<td style="text-align:center">54.21</td>
+</tr>
+<tr>
+<td style="text-align:center">8,000</td>
+<td style="text-align:center">216.93</td>
+<td style="text-align:center">216.41</td>
+</tr>
+<tr>
+<td style="text-align:center">16,000</td>
+<td style="text-align:center">867.14</td>
+<td style="text-align:center">866.97</td>
+</tr>
+</tbody>
+</table>
+<h3 id="parallel-data">Parallel data </h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">RESOLUTION</th>
+<th style="text-align:center">Time (s)</th>
+<th style="text-align:center">Hotspot Time (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1,000</td>
+<td style="text-align:center">0.28</td>
+<td style="text-align:center">0.23</td>
+</tr>
+<tr>
+<td style="text-align:center">2,000</td>
+<td style="text-align:center">1.07</td>
+<td style="text-align:center">0.93</td>
+</tr>
+<tr>
+<td style="text-align:center">4,000</td>
+<td style="text-align:center">4.08</td>
+<td style="text-align:center">3.85</td>
+</tr>
+<tr>
+<td style="text-align:center">8,000</td>
+<td style="text-align:center">16.53</td>
+<td style="text-align:center">15.65</td>
+</tr>
+<tr>
+<td style="text-align:center">16,000</td>
+<td style="text-align:center">67.14</td>
+<td style="text-align:center">63.82</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cuda-data">CUDA data </h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">RESOLUTION</th>
+<th style="text-align:center">Time (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1,000</td>
+<td style="text-align:center">0.22</td>
+</tr>
+<tr>
+<td style="text-align:center">2,000</td>
+<td style="text-align:center">0.51</td>
+</tr>
+<tr>
+<td style="text-align:center">4,000</td>
+<td style="text-align:center">1.53</td>
+</tr>
+<tr>
+<td style="text-align:center">8,000</td>
+<td style="text-align:center">5.61</td>
+</tr>
+<tr>
+<td style="text-align:center">16,000</td>
+<td style="text-align:center">21.77</td>
+</tr>
+</tbody>
+</table>
 <p>We immediately see an abrupt change performance-wise in the CUDA version, reaching a speedup of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo><mn>40</mn><mtext mathvariant="monospace">x</mtext></mrow><annotation encoding="application/x-tex">\approx 40\texttt{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">40</span><span class="mord text"><span class="mord texttt">x</span></span></span></span></span> at the maximum <code>RESOLUTION</code>. Time-wise, a sequential execution of about <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo></mrow><annotation encoding="application/x-tex">\approx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mrel">≈</span></span></span></span> <strong>14 minutes</strong> became a CUDA exection of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo></mrow><annotation encoding="application/x-tex">\approx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mrel">≈</span></span></span></span> <strong>20 seconds</strong></p>
 <h1 id="conclusions">Conclusions </h1>
 <p>The experiments demonstrate significant performance gains, particularly when using GPU acceleration compared to a highly optimized CPU implementation. In contrast, the CUDA implementation on Google Colab, compiled with nvcc and optimized for the Tesla T4 architecture (sm_75), reduced execution times dramatically, achieving up to a 40× speedup for high-resolution workloads.</p>
