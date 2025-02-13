@@ -4,7 +4,13 @@
 #include <iostream>
 
 // OMP
-#define NUM_THREADS 20
+#ifndef NUM_THREADS
+#define NUM_THREADS 4
+#endif
+
+#ifndef OMP_SCHEDULE
+#define OMP_SCHEDULE dynamic
+#endif
 
 // Ranges of the set
 #define MIN_X -2
@@ -45,7 +51,7 @@ int main(int argc, char **argv) {
 
   complex<double> z(0, 0);
 #ifdef PARALLEL
-  #pragma omp parallel for num_threads(NUM_THREADS) private(z) schedule(dynamic)
+#pragma omp parallel for num_threads(NUM_THREADS) private(z) schedule(OMP_SCHEDULE)
 #endif
   for (int pos = 0; pos < HEIGHT * WIDTH; pos++) {
     image[pos] = 0;
@@ -59,6 +65,7 @@ int main(int argc, char **argv) {
     for (int i = 1; i <= ITERATIONS; i++) {
       // RaW DEPENDENCY:
       // z[n] = z[n-1]^2 + c
+      // not vectorizable
       z = z * z + c;
 
       // If it diverges
