@@ -128,7 +128,7 @@ int main() {
   else
     printf("The Max Error of %.5f is within acceptable bounds.\n", maxError);
 
-  double time2 = 1000.0 * (clock() - time1) / (double)CLOCKS_PER_SEC;
+  double time2 = (clock() - time1) / (double)CLOCKS_PER_SEC * 1000.0;
 
   printf("Elapsed time: %f ms\n", time2);
 
