@@ -219,12 +219,26 @@ The _warp size_ indicates how many threads can be executed at once, in this GPU 
 
 <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-    <img src="./images/best_blockdim.png" alt="OMP" width="100%" />
+    <img src="./images/best_blockdim1.png" alt="OMP" width="100%" />
+  </figure>
+</div>
+
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <img src="./images/best_blockdim2.png" alt="OMP" width="100%" />
+  </figure>
+</div>
+
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <img src="./images/best_blockdim3.png" alt="OMP" width="100%" />
   </figure>
 </div>
 
 
-### Parallel schedule in function of #threads 
+
+
+### Parallel schedule in function of the #threads 
 
 <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
@@ -243,6 +257,9 @@ The _warp size_ indicates how many threads can be executed at once, in this GPU 
     <img src="./images/thread_heatmap3.png" alt="thread_heatmap3" width="100%" />
   </figure>
 </div>
+
+#### Heatmap considerations
+After a careful examination on the above Mandelbrot execution time results, we can conclude that, in this case, the guided schedule is the best strategy for this algorithm. 
 
 
 
