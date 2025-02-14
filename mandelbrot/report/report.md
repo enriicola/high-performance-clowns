@@ -201,6 +201,30 @@ for (int pos = 0; pos < HEIGHT * WIDTH; pos++) {
 
 The `#pragma` directive tells the compiler to parallelize the for loop using `NUM_THREADS` threads, keeping `z` private for each thread and schedule the workload dynamically, as the computation may vary depending on how heavy is `z = z^2 + c` resource-wise.
 
+### Parallel schedule in function of the #threads 
+
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <img src="./images/thread_heatmap1.png" alt="thread_heatmap1" width="100%" />
+  </figure>
+</div>
+
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <img src="./images/thread_heatmap2.png" alt="thread_heatmap2" width="100%" />
+  </figure>
+</div>
+
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <img src="./images/thread_heatmap3.png" alt="thread_heatmap3" width="100%" />
+  </figure>
+</div>
+
+#### Heatmap considerations
+
+After a careful examination on the above Mandelbrot execution time results, we can conclude that, in this case, the **guided schedule** and **20 threads** is the best strategy for this algorithm. 
+
 ## CUDA
 
 `image` is a matrix with `HEIGHT` rows and `WIDTH` columns, so defining a grid-like  structure for the cuda threads is reasonable. From the execution of `devicequery`, we know that on Google Colab the GPU has the following characteristics:
@@ -235,39 +259,7 @@ The _warp size_ indicates how many threads can be executed at once, in this GPU 
   </figure>
 </div>
 
-
-
-
-### Parallel schedule in function of the #threads 
-
-<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
-  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-    <img src="./images/thread_heatmap1.png" alt="thread_heatmap1" width="100%" />
-  </figure>
-</div>
-
-<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
-  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-    <img src="./images/thread_heatmap2.png" alt="thread_heatmap2" width="100%" />
-  </figure>
-</div>
-
-<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
-  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-    <img src="./images/thread_heatmap3.png" alt="thread_heatmap3" width="100%" />
-  </figure>
-</div>
-
-#### Heatmap considerations
-After a careful examination on the above Mandelbrot execution time results, we can conclude that, in this case, the guided schedule is the best strategy for this algorithm. 
-
-
-
-
-
-#### CUDA thread grid table
-
-These values are in milliseconds.
+<!-- These values are in milliseconds.
 
 | BLOCKDIM_Y \ BLOCKDIM_X | 1    | 2    | 4   | 8   | 16  | 32  |
 | ----------------------- | ---- | ---- | --- | --- | --- | --- |
@@ -276,17 +268,17 @@ These values are in milliseconds.
 | **8**                   | 518  | 323  | 198 | 205 | 235 | 210 |
 | **4**                   | 852  | 512  | 313 | 226 | 203 | 230 |
 | **2**                   | 1530 | 816  | 481 | 307 | 198 | 238 |
-| **1**                   | 2827 | 1499 | 863 | 515 | 323 | 243 |
+| **1**                   | 2827 | 1499 | 863 | 515 | 323 | 243 |  | --> 
 
-Based on our experiments, we decided to use a $32 \times 32 = 1024$ threads grid.
+Based on the plot above, we chose **`32x8`** cuda threads per block.
 
 ```cpp
-dim3 threadsPerBlock(32, 32);
+dim3 threadsPerBlock(32, 8);
 dim3 numBlocks((HEIGHT + threadsPerBlock.x - 1) / threadsPerBlock.x, 
                (WIDTH + threadsPerBlock.y - 1) / threadsPerBlock.y);
 ```
 
-In this way, the matrix is equally subdivided throughout the $1024$ threads. Finally, the CUDA kernel is defined as follows:
+In this way, the matrix is equally subdivided throughout the threads. Finally, the CUDA kernel is defined as follows:
 
 ```cpp
 // the std namespace cannot be used on the device,
