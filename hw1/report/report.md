@@ -175,13 +175,40 @@ Xr_o[k] += xr[n] * cos_res + idft * xi[n] * sin_res;
 Xi_o[k] += -idft * xr[n] * sin_res + xi[n] * cos_res;
 ```
 
-Then, there is the actual parallelization part. We used OpenMP as follows:
+## Parallelizations
+
+### best parameters for OMP
+
+There are several parameters to take into account. We decided to tune the number of threads and the scheduling type. The number of threads is interesting to analyze because a number that's too low will result in a slower execution, while too high would waste resources. The scheduling type decides wheter to subdivide the workload equally (`static`), depending on which thread is free (`dynamic`) and a compromise between them (`guided`).
+
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+    <img src="./images/thread_heatmap_20000.png" alt="OMP" width="100%" />
+  </figure>
+</div>
+
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+    <img src="./images/thread_heatmap_30000.png" alt="OMP" width="100%" />
+  </figure>
+</div>
+
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+    <img src="./images/thread_heatmap_40000.png" alt="OMP" width="100%" />
+  </figure>
+</div>
+
+From the vizualizations above, we decided to use **20 threads and dynamic schedule**.
 
 ```c
+#define NTHREADS 20
+#define OMP_SCHEDULE dynamic
+...
 double cos_res;
 double sin_res;
 
-#pragma omp parallel for num_threads(NTHREADS) private(cos_res, sin_res)
+#pragma omp parallel for num_threads(NTHREADS) private(cos_res, sin_res) schedule(OMP_SCHEDULE)
 for (k = 0; k < N; k++) {
    for (n = 0; n < N; n++) {
       cos_res = cos(n * k * PI2 / N);
