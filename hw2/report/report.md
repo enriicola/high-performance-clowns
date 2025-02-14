@@ -12,7 +12,7 @@ on our findings.
 
 # Hardware Capability ⚙️
 
-The VM of google colab is equipped with this CPU:
+<!-- The VM of google colab is equipped with this CPU:
 
 ```c
 Architecture:             x86_64
@@ -71,7 +71,7 @@ We have found those characteristics using this command:
 
 ```
 !lscpu
-```
+``` -->
 
 The VM of google colab is equipped with this GPU:
 
@@ -93,6 +93,51 @@ We have found those characteristics using the command:
 
 ```bash
 !nvidia-smi
+```
+
+And, through `devicequery`, the output is the following:
+
+```bash
+Device 0: "Tesla T4"
+  CUDA Driver Version / Runtime Version          12.2 / 12.2
+  CUDA Capability Major/Minor version number:    7.5
+  Total amount of global memory:                 15102 MBytes (15835660288 bytes)
+  (040) Multiprocessors, (064) CUDA Cores/MP:    2560 CUDA Cores
+  GPU Max Clock rate:                            1590 MHz (1.59 GHz)
+  Memory Clock rate:                             5001 Mhz
+  Memory Bus Width:                              256-bit
+  L2 Cache Size:                                 4194304 bytes
+  Maximum Texture Dimension Size (x,y,z)         1D=(131072), 2D=(131072, 65536), 3D=(16384, 16384, 16384)
+  Maximum Layered 1D Texture Size, (num) layers  1D=(32768), 2048 layers
+  Maximum Layered 2D Texture Size, (num) layers  2D=(32768, 32768), 2048 layers
+  Total amount of constant memory:               65536 bytes
+  Total amount of shared memory per block:       49152 bytes
+  Total shared memory per multiprocessor:        65536 bytes
+  Total number of registers available per block: 65536
+  Warp size:                                     32
+  Maximum number of threads per multiprocessor:  1024
+  Maximum number of threads per block:           1024
+  Max dimension size of a thread block (x,y,z): (1024, 1024, 64)
+  Max dimension size of a grid size    (x,y,z): (2147483647, 65535, 65535)
+  Maximum memory pitch:                          2147483647 bytes
+  Texture alignment:                             512 bytes
+  Concurrent copy and kernel execution:          Yes with 3 copy engine(s)
+  Run time limit on kernels:                     No
+  Integrated GPU sharing Host Memory:            No
+  Support host page-locked memory mapping:       Yes
+  Alignment requirement for Surfaces:            Yes
+  Device has ECC support:                        Enabled
+  Device supports Unified Addressing (UVA):      Yes
+  Device supports Managed Memory:                Yes
+  Device supports Compute Preemption:            Yes
+  Supports Cooperative Kernel Launch:            Yes
+  Supports MultiDevice Co-op Kernel Launch:      Yes
+  Device PCI Domain ID / Bus ID / location ID:   0 / 0 / 4
+  Compute Mode:
+     < Default (multiple host threads can use ::cudaSetDevice() with device simultaneously) >
+
+deviceQuery, CUDA Driver = CUDART, CUDA Driver Version = 12.2, CUDA Runtime Version = 12.2, NumDevs = 1
+Result = PASS
 ```
 
 # Hotspot identification
@@ -128,7 +173,7 @@ void step_kernel_mod(int ni, int nj, float fact, float* temp_in, float* temp_out
 
 This section iterates over nearly every grid point (excluding the boundaries) on a large `SIZExSIZE` matrix for each of the 200 time steps. Each iteration involves multiple memory accesses, that means reading the central cell and its four neighbours. This segment accesses adjacent elements and performs several arithmetic operations to compute the finite difference update, making the routine both compute-bound and memory-bound.
 
-# Vectorization
+<!-- # Vectorization
 
 ```bash
 Begin optimization report for: step_kernel_mod
@@ -211,7 +256,7 @@ for size in SIZES:
 What we have obtained is this:
 
 | SIZE  | CPU Execution Time (ms) |
-|-------|-------------------------|
+| ----- | ----------------------- |
 | 1000  | 229.154                 |
 | 2000  | 1330.138                |
 | 4000  | 6035.192                |
@@ -220,8 +265,7 @@ What we have obtained is this:
 | 10000 | 36636.103               |
 
 
-As we can see, the time needed for the program to process a matrix of size=```10000x10000``` is really high.
-
+As we can see, the time needed for the program to process a matrix of size=```10000x10000``` is really high. -->
 
 # CUDA implementation
 
@@ -254,24 +298,9 @@ __global__ void step_kernel_mod_dev(const size_t ni, const size_t nj,
 }
 ```
 
-When launching the kernel, two parameters must be supplied: the number of blocks and the number of threads per block. \
-We set the threads per block by defining the block dimensions, and then we compute the number of blocks:
+# GPU parameters tuning
 
-```C
-dim3 threadsPerBlock(BLOCKDIM_X, BLOCKDIM_Y);
-dim3 numBlocks((ni + threadsPerBlock.x - 1) / threadsPerBlock.x, 
-               (nj + threadsPerBlock.y - 1) / threadsPerBlock.y);
-```
-
-Then the kernel is called by invoking:
-
-```C
-step_kernel_mod_dev<<<numBlocks, threadsPerBlock>>>(ni, nj, tfac, temp1_d, temp2_d);
-```
-
-# GPU measurements
-
-## Generating data
+<!-- ## Generating data
 
 To generate all the data and plot the results we used this code on the Colab notebook:
 
@@ -313,98 +342,13 @@ for block_x in block_x_values:
             if time_ms is not None:
                 results.append((block_x, block_y, size, time_ms))
 
-
-
 # Convert results into NumPy arrays for easy manipulation
 results_array = np.array(results)
+``` -->
 
-print(results)
-```
+<!-- ## Results -->
 
-## Results
-
-| BLOCKDIM_X | BLOCKDIM_Y | SIZE  | Execution Time (ms) |
-|------------|------------|-------|---------------------|
-| 1          | 1          | 1000  | 397.41              |
-| 1          | 1          | 10000 | 22597.21            |
-| 1          | 2          | 1000  | 246.01              |
-| 1          | 2          | 10000 | 11428.86            |
-| 1          | 4          | 1000  | 152.11              |
-| 1          | 4          | 10000 | 6221.48             |
-| 1          | 8          | 1000  | 67.13               |
-| 1          | 8          | 10000 | 4190.27             |
-| 1          | 16         | 1000  | 66.79               |
-| 1          | 16         | 10000 | 3964.75             |
-| 1          | 32         | 1000  | 70.04               |
-| 1          | 32         | 10000 | 4240.1              |
-| 2          | 1          | 1000  | 290.89              |
-| 2          | 1          | 10000 | 11665.04            |
-| 2          | 2          | 1000  | 149.05              |
-| 2          | 2          | 10000 | 6243.06             |
-| 2          | 4          | 1000  | 78.15               |
-| 2          | 4          | 10000 | 3543.88             |
-| 2          | 8          | 1000  | 34.64               |
-| 2          | 8          | 10000 | 2470.83             |
-| 2          | 16         | 1000  | 35.81               |
-| 2          | 16         | 10000 | 2483.13             |
-| 2          | 32         | 1000  | 35.02               |
-| 2          | 32         | 10000 | 2505.36             |
-| 4          | 1          | 1000  | 153.51              |
-| 4          | 1          | 10000 | 6405.87             |
-| 4          | 2          | 1000  | 78.01               |
-| 4          | 2          | 10000 | 3541.15             |
-| 4          | 4          | 1000  | 39.02               |
-| 4          | 4          | 10000 | 2127.01             |
-| 4          | 8          | 1000  | 18.3                |
-| 4          | 8          | 10000 | 1481.12             |
-| 4          | 16         | 1000  | 19.51               |
-| 4          | 16         | 10000 | 1680.5              |
-| 4          | 32         | 1000  | 20.46               |
-| 4          | 32         | 10000 | 1726.68             |
-| 8          | 1          | 1000  | 76.98               |
-| 8          | 1          | 10000 | 3674.55             |
-| 8          | 2          | 1000  | 38.94               |
-| 8          | 2          | 10000 | 2042.79             |
-| 8          | 4          | 1000  | 19.78               |
-| 8          | 4          | 10000 | 1178.2              |
-| 8          | 8          | 1000  | 10.26               |
-| 8          | 8          | 10000 | 941.68              |
-| 8          | 16         | 1000  | 10.36               |
-| 8          | 16         | 10000 | 936.52              |
-| 8          | 32         | 1000  | 11.18               |
-| 8          | 32         | 10000 | 968.99              |
-| 16         | 1          | 1000  | 39.4                |
-| 16         | 1          | 10000 | 2107.46             |
-| 16         | 2          | 1000  | 20.17               |
-| 16         | 2          | 10000 | 1255.31             |
-| 16         | 4          | 1000  | 9.63                |
-| 16         | 4          | 10000 | 784.81              |
-| 16         | 8          | 1000  | 9.81                |
-| 16         | 8          | 10000 | 782.39              |
-| 16         | 16         | 1000  | 10.57               |
-| 16         | 16         | 10000 | 804.65              |
-| 16         | 32         | 1000  | 12.49               |
-| 16         | 32         | 10000 | 875.15              |
-| 32         | 1          | 1000  | 20.82               |
-| 32         | 1          | 10000 | 1261.63             |
-| 32         | 2          | 1000  | 9.54                |
-| 32         | 2          | 10000 | 757.64              |
-| 32         | 4          | 1000  | 9.28                |
-| 32         | 4          | 10000 | 752.1               |
-| 32         | 8          | 1000  | 9.72                |
-| 32         | 8          | 10000 | 741.55              |
-| 32         | 16         | 1000  | 11.2                |
-| 32         | 16         | 10000 | 831.59              |
-| 32         | 32         | 1000  | 14.04               |
-| 32         | 32         | 10000 | 907.58              |
-
-These data represent the execution times (in milliseconds) for cuda tested under various configurations. 
-Each row details:
-- BLOCKDIM_X and BLOCKDIM_Y: Parameters likely representing the dimensions of the computational block (commonly used in parallel processing or GPU computing).
-- SIZE: The problem size, with values of 1000 and 10000.
-- Execution Time: The measured time to complete the execution for that configuration.
-
-The results indicate that increasing the problem size generally leads to longer execution times. Additionally, variations in the block dimensions significantly affect performance, suggesting that tuning these parameters can optimize computational efficiency.
+Since we are processing a matrix, it's reasonable to subdivide the cuda threads in a 2D grid. We see from the above section that the GPU used for the measurements has a warp size of $32$ and each block can handle at most $1024$ threads, so at most we will use a `32x32` grid. For different sizes, we tried different configurations and the result are the following:
 
 <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
@@ -412,76 +356,187 @@ The results indicate that increasing the problem size generally leads to longer 
   </figure>
 </div>
 
+| BLOCKDIM_X | BLOCKDIM_Y |  SIZE  | Execution Time (ms) |
+| :--------: | :--------: | :----: | :-----------------: |
+|     1      |     1      | 1,000  |       397.41        |
+|     1      |     2      | 1,000  |       246.01        |
+|     1      |     4      | 1,000  |       152.11        |
+|     1      |     8      | 1,000  |        67.13        |
+|     1      |     16     | 1,000  |        66.79        |
+|     1      |     32     | 1,000  |        70.04        |
+|     2      |     1      | 1,000  |       290.89        |
+|     2      |     2      | 1,000  |       149.05        |
+|     2      |     4      | 1,000  |        78.15        |
+|     2      |     8      | 1,000  |        34.64        |
+|     2      |     16     | 1,000  |        35.81        |
+|     2      |     32     | 1,000  |        35.02        |
+|     4      |     1      | 1,000  |       153.51        |
+|     4      |     2      | 1,000  |        78.01        |
+|     4      |     4      | 1,000  |        39.02        |
+|     4      |     8      | 1,000  |        18.3         |
+|     4      |     16     | 1,000  |        19.51        |
+|     4      |     32     | 1,000  |        20.46        |
+|     8      |     1      | 1,000  |        76.98        |
+|     8      |     2      | 1,000  |        38.94        |
+|     8      |     4      | 1,000  |        19.78        |
+|     8      |     8      | 1,000  |        10.26        |
+|     8      |     16     | 1,000  |        10.36        |
+|     8      |     32     | 1,000  |        11.18        |
+|     16     |     1      | 1,000  |        39.4         |
+|     16     |     2      | 1,000  |        20.17        |
+|     16     |     4      | 1,000  |        9.63         |
+|     16     |     8      | 1,000  |        9.81         |
+|     16     |     16     | 1,000  |        10.57        |
+|     16     |     32     | 1,000  |        12.49        |
+|     32     |     1      | 1,000  |        20.82        |
+|     32     |     2      | 1,000  |        9.54         |
+|     32     |     4      | 1,000  |        9.28         |
+|     32     |     8      | 1,000  |        9.72         |
+|     32     |     16     | 1,000  |        11.2         |
+|     32     |     32     | 1,000  |        14.04        |
+|     1      |     1      | 10,000 |      22597.21       |
+|     1      |     2      | 10,000 |      11428.86       |
+|     1      |     4      | 10,000 |       6221.48       |
+|     1      |     8      | 10,000 |       4190.27       |
+|     1      |     16     | 10,000 |       3964.75       |
+|     1      |     32     | 10,000 |       4240.1        |
+|     2      |     1      | 10,000 |      11665.04       |
+|     2      |     2      | 10,000 |       6243.06       |
+|     2      |     4      | 10,000 |       3543.88       |
+|     2      |     8      | 10,000 |       2470.83       |
+|     2      |     16     | 10,000 |       2483.13       |
+|     2      |     32     | 10,000 |       2505.36       |
+|     4      |     1      | 10,000 |       6405.87       |
+|     4      |     2      | 10,000 |       3541.15       |
+|     4      |     4      | 10,000 |       2127.01       |
+|     4      |     8      | 10,000 |       1481.12       |
+|     4      |     16     | 10,000 |       1680.5        |
+|     4      |     32     | 10,000 |       1726.68       |
+|     8      |     1      | 10,000 |       3674.55       |
+|     8      |     2      | 10,000 |       2042.79       |
+|     8      |     4      | 10,000 |       1178.2        |
+|     8      |     8      | 10,000 |       941.68        |
+|     8      |     16     | 10,000 |       936.52        |
+|     8      |     32     | 10,000 |       968.99        |
+|     16     |     1      | 10,000 |       2107.46       |
+|     16     |     2      | 10,000 |       1255.31       |
+|     16     |     4      | 10,000 |       784.81        |
+|     16     |     8      | 10,000 |       782.39        |
+|     16     |     16     | 10,000 |       804.65        |
+|     16     |     32     | 10,000 |       875.15        |
+|     32     |     1      | 10,000 |       1261.63       |
+|     32     |     2      | 10,000 |       757.64        |
+|     32     |     4      | 10,000 |        752.1        |
+|     32     |     8      | 10,000 |       741.55        |
+|     32     |     16     | 10,000 |       831.59        |
+|     32     |     32     | 10,000 |       907.58        |
 
-## CUDA transfers calls
+Each row details:
+- **BLOCKDIM_X and BLOCKDIM_Y**: These are the parameters which will define how many
+  threads on the X and Y axis will be used per block.
+- **SIZE**: The problem size, with values of 1000 and 10000.
+- **Execution Time**: The measured time to complete the execution for that configuration.
 
-The profiling results show that a significant amount of time is consumed by API calls, particularly those related to synchronization and memory transfers. For instance, the call to cudaEventSynchronize accounts for about 53.90% of the API call time, indicating that waiting for the GPU operations to complete is a major factor in overall performance. Similarly, the cudaMemcpy operations (both HtoD and DtoH) also contribute substantially, taking up around 31.63% of the API call time. Although the kernel execution (step_kernel_mod_dev) represents 63.16% of the GPU activity, these overheads from synchronization and memory transfers are noteworthy and can be a target for further performance optimization.
+The results indicate that increasing the problem size generally leads to longer execution times. Additionally, variations in the block dimensions significantly affect performance, suggesting that tuning these parameters can optimize computational efficiency. 
+We then will use **`32x8`** threads per block.
 
-
-This is the result of using ```nvprof``` with 10000 size:
-```c
-==45897== Profiling application: ./src/heat_cuda
-==45897== Profiling result:
-            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
- GPU activities:   63.16%  899.87ms       200  4.4993ms  4.0265ms  6.8937ms  step_kernel_mod_dev(unsigned long, unsigned long, float, float const *, float*)
-                   24.13%  343.73ms         1  343.73ms  343.73ms  343.73ms  [CUDA memcpy DtoH]
-                   12.71%  181.14ms         2  90.572ms  89.753ms  91.391ms  [CUDA memcpy HtoD]
-      API calls:   53.90%  899.17ms         1  899.17ms  899.17ms  899.17ms  cudaEventSynchronize
-                   31.63%  527.64ms         3  175.88ms  90.004ms  345.02ms  cudaMemcpy
-                   14.15%  236.09ms         2  118.04ms  254.29us  235.83ms  cudaMalloc
-                    0.17%  2.8580ms         2  1.4290ms  432.90us  2.4251ms  cudaFree
-                    0.07%  1.0862ms       200  5.4300us  3.3440us  249.90us  cudaLaunchKernel
-                    0.06%  1.0660ms         2  532.98us  4.7750us  1.0612ms  cudaEventRecord
-                    0.01%  184.23us       114  1.6160us     125ns  65.752us  cuDeviceGetAttribute
-                    0.00%  30.569us         2  15.284us  1.0410us  29.528us  cudaEventCreate
-                    0.00%  21.590us         1  21.590us  21.590us  21.590us  cuDeviceGetName
-                    0.00%  11.857us         1  11.857us  11.857us  11.857us  cuDeviceGetPCIBusId
-                    0.00%  7.2590us         1  7.2590us  7.2590us  7.2590us  cudaEventElapsedTime
-                    0.00%  5.5550us         2  2.7770us     719ns  4.8360us  cudaEventDestroy
-                    0.00%  3.2840us         3  1.0940us     160ns  2.8660us  cuDeviceGetCount
-                    0.00%  1.2670us         2     633ns     146ns  1.1210us  cuDeviceGet
-                    0.00%     630ns         1     630ns     630ns     630ns  cuModuleGetLoadingMode
-                    0.00%     498ns         1     498ns     498ns     498ns  cuDeviceTotalMem
-                    0.00%     383ns         1     383ns     383ns     383ns  cuDeviceGetUuid
-
+```C
+dim3 threadsPerBlock(32, 8);
+dim3 numBlocks((ni + threadsPerBlock.x - 1) / threadsPerBlock.x, 
+               (nj + threadsPerBlock.y - 1) / threadsPerBlock.y);
 ```
 
+Then the kernel is called by invoking:
 
-This is result of using ```nvprof``` with 1000 size, as we can see the api call impact a lot more than before:
+```C
+step_kernel_mod_dev<<<numBlocks, threadsPerBlock>>>(ni, nj, tfac, temp1_d, temp2_d);
+```
+
+## Measurements
+
+We tried on different values for `SIZE`, each measurement has been taken with **`32x8`** threads per block and each thread is given an equal number of cells of the matrix
+
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+    <img src="./images/exec_times.png" alt="OMP" width="100%" />
+  </figure>
+</div>
+
+| Matrix Size | Execution Time (ms) |
+| :---------: | :-----------------: |
+|    1,000    |        9.71         |
+|    2,000    |        35.74        |
+|    4,000    |       137.51        |
+|    8,000    |       485.24        |
+|   16,000    |       1852.14       |
+|   24,000    |       4176.33       |
+
+As we could expect, the bigger the matrix, the more the program takes to execute, but luckily we still remain in a well-sublinear growth
+
+## Performance analysis
+
+The profiling results show that a significant amount of time is consumed by API calls, particularly those related to synchronization and memory transfers. For instance, the call to `cudaEventSynchronize` accounts for about $57.76\%$ of the API call time, indicating that waiting for the GPU operations to complete is a major factor in overall performance. Similarly, the `cudaMemcpy` operations (both `HtoD` and `DtoH`) also contribute substantially, taking up around $34.74\%$ of the API call time. Although the kernel execution (`step_kernel_mod_dev`) represents $62.16\%$ of the GPU activity, these overheads from synchronization and memory transfers are noteworthy and can be a target for further performance optimization.
+
+This is the result of using `nvprof` with **size 10000**:
 
 ```c
-==46887== Profiling application: ./src/heat_cuda
-==46887== Profiling result:
+==22953== Profiling application: ./release/heat_cuda
+==22953== Profiling result:
             Type  Time(%)      Time     Calls       Avg       Min       Max  Name
- GPU activities:   79.24%  14.724ms       200  73.618us  71.039us  74.750us  step_kernel_mod_dev(unsigned long, unsigned long, float, float const *, float*)
-                   12.36%  2.2959ms         1  2.2959ms  2.2959ms  2.2959ms  [CUDA memcpy DtoH]
-                    8.41%  1.5619ms         2  780.93us  763.80us  798.07us  [CUDA memcpy HtoD]
-      API calls:   91.78%  246.91ms         2  123.45ms  116.47us  246.79ms  cudaMalloc
-                    5.01%  13.475ms         1  13.475ms  13.475ms  13.475ms  cudaEventSynchronize
-                    2.28%  6.1409ms         3  2.0470ms  1.0237ms  4.0451ms  cudaMemcpy
-                    0.61%  1.6483ms       200  8.2410us  5.5560us  242.75us  cudaLaunchKernel
-                    0.19%  517.76us         2  258.88us  255.07us  262.69us  cudaFree
-                    0.09%  239.42us       114  2.1000us     206ns  87.270us  cuDeviceGetAttribute
-                    0.01%  26.674us         2  13.337us  1.9590us  24.715us  cudaEventCreate
-                    0.01%  23.079us         1  23.079us  23.079us  23.079us  cuDeviceGetName
-                    0.01%  18.301us         2  9.1500us  6.8520us  11.449us  cudaEventRecord
-                    0.00%  10.752us         1  10.752us  10.752us  10.752us  cuDeviceGetPCIBusId
-                    0.00%  7.2120us         1  7.2120us  7.2120us  7.2120us  cudaEventElapsedTime
-                    0.00%  4.8870us         2  2.4430us     896ns  3.9910us  cudaEventDestroy
-                    0.00%  3.7620us         3  1.2540us     250ns  2.9930us  cuDeviceGetCount
-                    0.00%  1.3370us         2     668ns     257ns  1.0800us  cuDeviceGet
-                    0.00%     859ns         1     859ns     859ns     859ns  cuModuleGetLoadingMode
-                    0.00%     591ns         1     591ns     591ns     591ns  cuDeviceTotalMem
-                    0.00%     412ns         1     412ns     412ns     412ns  cuDeviceGetUuid
+ GPU activities:   62.56%  752.85ms       200  3.7643ms  3.5573ms  4.7968ms  step_kernel_mod_dev(unsigned long, unsigned long, float, float const *, float*)
+                   23.40%  281.62ms         1  281.62ms  281.62ms  281.62ms  [CUDA memcpy DtoH]
+                   14.04%  168.93ms         2  84.465ms  84.295ms  84.634ms  [CUDA memcpy HtoD]
+      API calls:   57.76%  751.87ms         1  751.87ms  751.87ms  751.87ms  cudaEventSynchronize
+                   34.74%  452.17ms         3  150.72ms  84.597ms  282.70ms  cudaMemcpy
+                    7.18%  93.407ms         2  46.704ms  96.180us  93.311ms  cudaMalloc
+                    0.21%  2.6839ms         2  1.3420ms  377.30us  2.3066ms  cudaFree
+                    0.11%  1.3747ms       200  6.8730us  4.2770us  253.51us  cudaLaunchKernel
+                    0.01%  135.64us       114  1.1890us     106ns  55.544us  cuDeviceGetAttribute
+                    0.00%  28.317us         2  14.158us  1.4020us  26.915us  cudaEventCreate
+                    0.00%  14.350us         1  14.350us  14.350us  14.350us  cuDeviceGetName
+                    0.00%  13.511us         2  6.7550us  5.0980us  8.4130us  cudaEventRecord
+                    0.00%  5.8630us         1  5.8630us  5.8630us  5.8630us  cudaEventElapsedTime
+                    0.00%  5.4070us         1  5.4070us  5.4070us  5.4070us  cuDeviceGetPCIBusId
+                    0.00%  4.7150us         2  2.3570us     761ns  3.9540us  cudaEventDestroy
+                    0.00%  2.3020us         3     767ns     210ns  1.7770us  cuDeviceGetCount
+                    0.00%  1.3930us         2     696ns     248ns  1.1450us  cuDeviceGet
+                    0.00%     496ns         1     496ns     496ns     496ns  cuDeviceTotalMem
+                    0.00%     484ns         1     484ns     484ns     484ns  cuModuleGetLoadingMode
+                    0.00%     389ns         1     389ns     389ns     389ns  cuDeviceGetUuid
+```
 
+With **size 1000**, as we can see the api call impact a lot more than before:
+
+```c
+==23404== Profiling application: ./release/heat_cuda
+==23404== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   77.25%  10.432ms       200  52.162us  49.343us  52.671us  step_kernel_mod_dev(unsigned long, unsigned long, float, float const *, float*)
+                   12.70%  1.7157ms         1  1.7157ms  1.7157ms  1.7157ms  [CUDA memcpy DtoH]
+                   10.05%  1.3572ms         2  678.62us  669.97us  687.28us  [CUDA memcpy HtoD]
+      API calls:   85.03%  91.232ms         2  45.616ms  73.698us  91.158ms  cudaMalloc
+                    9.09%  9.7520ms         1  9.7520ms  9.7520ms  9.7520ms  cudaEventSynchronize
+                    4.42%  4.7398ms         3  1.5799ms  878.97us  2.9776ms  cudaMemcpy
+                    0.93%  1.0011ms       200  5.0050us  3.0540us  138.45us  cudaLaunchKernel
+                    0.35%  372.55us         2  186.28us  167.63us  204.92us  cudaFree
+                    0.13%  136.14us       114  1.1940us     104ns  59.024us  cuDeviceGetAttribute
+                    0.02%  20.135us         2  10.067us     673ns  19.462us  cudaEventCreate
+                    0.01%  11.201us         2  5.6000us  5.1930us  6.0080us  cudaEventRecord
+                    0.01%  11.120us         1  11.120us  11.120us  11.120us  cuDeviceGetName
+                    0.01%  5.3930us         1  5.3930us  5.3930us  5.3930us  cuDeviceGetPCIBusId
+                    0.00%  3.2210us         1  3.2210us  3.2210us  3.2210us  cudaEventElapsedTime
+                    0.00%  3.1450us         2  1.5720us     551ns  2.5940us  cudaEventDestroy
+                    0.00%  1.5530us         3     517ns     118ns  1.1850us  cuDeviceGetCount
+                    0.00%     774ns         2     387ns     130ns     644ns  cuDeviceGet
+                    0.00%     647ns         1     647ns     647ns     647ns  cuModuleGetLoadingMode
+                    0.00%     408ns         1     408ns     408ns     408ns  cuDeviceTotalMem
+                    0.00%     212ns         1     212ns     212ns     212ns  cuDeviceGetUuid
 ```
 
 # Conclusions
 
 In this report, we optimized a 2D heat conduction simulation using CUDA and analyzed its performance across different configurations. By identifying computational hotspots in the sequential implementation and leveraging GPU acceleration, we achieved significant speedups.
 
-Our findings highlight that the choice of block and thread configurations greatly impacts performance. Larger block sizes (e.g., BLOCKDIM_X = 4, BLOCKDIM_Y = 8) provided optimal results, reducing execution time substantially compared to smaller configurations. The CUDA implementation outperformed the CPU version, particularly for large problem sizes (e.g., 10000x10000), where sequential execution exceeded 36 seconds, while the best GPU execution times were in the range of a few milliseconds.
+Our findings highlight that the choice of block and thread configurations greatly impacts performance. Larger block sizes (e.g., BLOCKDIM_X = 4, BLOCKDIM_Y = 8) provided optimal results, reducing execution time substantially compared to smaller configurations.
 
-However, vectorization issues in the CPU implementation, primarily due to index calculations and potential aliasing, limited performance improvements on the CPU side. Addressing these challenges could further enhance efficiency for non-GPU environments.
-
-In conclusion, CUDA acceleration proved highly effective for large-scale heat conduction simulations, with careful tuning of thread-block configurations yielding the best performance. Future work could explore further optimizations, such as memory coalescing and shared memory utilization, to maximize GPU efficiency.
+In conclusion, CUDA acceleration proved highly effective for large-scale heat conduction simulations, with careful tuning of thread-block configurations yielding the best performance.

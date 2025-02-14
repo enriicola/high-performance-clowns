@@ -2,9 +2,9 @@ CC=nvcc
 SOURCE=./src
 RELEASE=./release
 BLOCKDIM_X ?= 32
-BLOCKDIM_Y ?= 32
+BLOCKDIM_Y ?= 8
 FLAGS=-O3
-ARCH=sm_86 # CUDA Capability Major/Minor version number: 8.6
+ARCH ?=sm_86 # CUDA Capability Major/Minor version number: 8.6
 SIZE ?= 1000 # row = column = size
 NTRHEADS ?= 2
 
@@ -15,8 +15,9 @@ default:
 		-D SIZE=${SIZE} \
 		${SOURCE}/heat.cu -o ${RELEASE}/heat_cuda -run
 
+cpu: FLAGS += -march=native -fopenmp
 cpu:
-	gcc ${FLAGS} -march=native \
+	gcc ${FLAGS} \
     -D PARALLEL \
     -D NTRHEADS=${NTRHEADS} \
 		-D SIZE=${SIZE} \

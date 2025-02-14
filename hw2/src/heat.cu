@@ -20,7 +20,7 @@
 #endif
 
 #ifndef BLOCKDIM_Y
-#define BLOCKDIM_Y 32
+#define BLOCKDIM_Y 8
 #endif
 
 #ifndef SIZE

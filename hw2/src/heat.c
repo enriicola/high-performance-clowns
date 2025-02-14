@@ -11,6 +11,10 @@
 #define NTHREADS 2
 #endif
 
+#ifndef OMP_SCHEDULE
+#define OMP_SCHEDULE dynamic
+#endif
+
 #ifndef SIZE
 #define SIZE 1000
 #endif
@@ -21,7 +25,7 @@
  */
 void step_kernel_mod(int ni, int nj, float fact, float* temp_in, float* temp_out) {
 #ifdef PARALLEL
-#pragma omp parallel for num_threads(NTHREADS)
+#pragma omp parallel for num_threads(NTHREADS) schedule(OMP_SCHEDULE)
 #endif
   // loop over all points in domain (except boundary)
   for (int j = 1; j < nj - 1; j++) {
@@ -84,6 +88,7 @@ int main() {
 
   double time1 = clock();
 
+  // we align in order to vectorize
   temp1_ref = (float*)malloc(size);
   temp2_ref = (float*)malloc(size);
   temp1 = (float*)malloc(size);
