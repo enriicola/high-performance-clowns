@@ -13,6 +13,14 @@
 #define NTHREADS 4
 #endif
 
+#ifndef OMP_SCHEDULE
+#define OMP_SCHEDULE static
+#endif
+
+#ifndef SIZE
+#define SIZE 20000
+#endif
+
 int DFT(int idft, double* xr, double* xi, double* Xr_o, double* Xi_o, int N);
 int fillInput(double* xr, double* xi, int N);
 int setOutputZero(double* Xr_o, double* Xi_o, int N);
@@ -21,7 +29,7 @@ int printResults(double* xr, double* xi, int N);
 
 int main(int argc, char* argv[]) {
   // size of input array
-  long int N = 20000;
+  long int N = SIZE;
 
   if (argc == 2)
     N = atoi(argv[1]);
@@ -80,7 +88,7 @@ int DFT(int idft, double* xr, double* xi, double* Xr_o, double* Xi_o, int N) {
   double cos_res, sin_res;  // since these two have to be private
 
 #ifdef PARALLEL
-#pragma omp parallel for num_threads(NTHREADS) private(cos_res, sin_res)
+#pragma omp parallel for num_threads(NTHREADS) private(cos_res, sin_res) schedule(OMP_SCHEDULE)
 #endif
   for (k = 0; k < N; k++) {
     for (n = 0; n < N; n++) {
