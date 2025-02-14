@@ -1,28 +1,3 @@
-
-<!-- # prof instruction
---------------------------------------------------------
-Write a program that accelerates the attached program that computes the 2D heat conduction formula (see jpg).
-
-Evaluate different configurations <<<block, thread>>> AND different problem sizes.
-
-As for the OMP homework, the focus is on writing an exhaustive report about the code analysis (i.e. hotspot identification) and the iterative process to speed up the application.
-
-You should discuss at least the following points:
-
-- hotspot identification with NUMBERS. Don't say only that the main hotspot is the for loop in lines xx-yy, but that is a hotspot because it requires e.g. 80 seconds for a global time of 100 seconds;
-- discuss possible vectorization issues with the report provided by the Intel compiler;
-- define the BEST sequential time to be used as reference;
-- present the performance using Google colab;
-- provide tables and charts regarding speedup values only;
-- do not consider data size resulting in sequential execution time < 30 seconds;
-- discuss conclusions.
-The use of your pc is allowed ONLY if you plan to explore ROCm on a AMD cpu. Otherwise you can develop on your PC but the tests have to be performed with Colab, the sequential ones using gcc .
-
-Upload a zip file containing the notebook, other possible files and the report in pdf. Send the same via email.
-
-The compute capabilities of the GPU in Colab can be retrieved using the devicequery program.
--------------------------------------------------------- -->
-
 # Introduction
 
 In this report, we aim to accelerate a given program that computes the 2D heat conduction 
@@ -37,23 +12,66 @@ on our findings.
 
 # Hardware Capability ⚙️
 
-## SW2 capabilities
+The VM of google colab is equipped with this CPU:
 
-We executed the C code using the Software 2 (SW2) workstations, with the following characteristics:
-
-<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
-  <figure style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
-    <img src="./images/hardware.png" alt="OMP" width="70%" />
-  </figure>
-</div>
-
-We have found those characteristics using the command:
-
-```bash
-lscpu
+```c
+Architecture:             x86_64
+  CPU op-mode(s):         32-bit, 64-bit
+  Address sizes:          46 bits physical, 48 bits virtual
+  Byte Order:             Little Endian
+CPU(s):                   2
+  On-line CPU(s) list:    0,1
+Vendor ID:                GenuineIntel
+  Model name:             Intel(R) Xeon(R) CPU @ 2.20GHz
+    CPU family:           6
+    Model:                79
+    Thread(s) per core:   2
+    Core(s) per socket:   1
+    Socket(s):            1
+    Stepping:             0
+    BogoMIPS:             4399.99
+    Flags:                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 cl
+                          flush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc re
+                          p_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3
+                           fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand
+                           hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd ibrs ibpb stibp 
+                          fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm rdseed adx sm
+                          ap xsaveopt arat md_clear arch_capabilities
+Virtualization features:  
+  Hypervisor vendor:      KVM
+  Virtualization type:    full
+Caches (sum of all):      
+  L1d:                    32 KiB (1 instance)
+  L1i:                    32 KiB (1 instance)
+  L2:                     256 KiB (1 instance)
+  L3:                     55 MiB (1 instance)
+NUMA:                     
+  NUMA node(s):           1
+  NUMA node0 CPU(s):      0,1
+Vulnerabilities:          
+  Gather data sampling:   Not affected
+  Itlb multihit:          Not affected
+  L1tf:                   Mitigation; PTE Inversion
+  Mds:                    Vulnerable; SMT Host state unknown
+  Meltdown:               Vulnerable
+  Mmio stale data:        Vulnerable
+  Reg file data sampling: Not affected
+  Retbleed:               Vulnerable
+  Spec rstack overflow:   Not affected
+  Spec store bypass:      Vulnerable
+  Spectre v1:             Vulnerable: __user pointer sanitization and usercopy barriers only; no swa
+                          pgs barriers
+  Spectre v2:             Vulnerable; IBPB: disabled; STIBP: disabled; PBRSB-eIBRS: Not affected; BH
+                          I: Vulnerable (Syscall hardening enabled)
+  Srbds:                  Not affected
+  Tsx async abort:        Vulnerable
 ```
 
-## Google Colab hardware capabilities
+We have found those characteristics using this command:
+
+```
+!lscpu
+```
 
 The VM of google colab is equipped with this GPU:
 
@@ -165,11 +183,45 @@ The vectorization issues in `step_kernel_mod` mainly come from two things:
 - **Potential Aliasing**:
     The pointers `temp_in` and `temp_out` are not marked with `restrict`. Without `restrict`, the compiler must assume that these pointers might overlap, so it will not optimize the loops as aggressively for vectorization
 
-**Questa spiegazione da rivedere, presa da CHATGPT**
-
 # Sequential measurements
 
-**Da fare in SW2 credo**
+For retrieving the sequential measurements we have used this code:
+
+```python
+SIZES = [1000, 2000, 4000, 6000, 8000, 10000]
+times = []
+
+for size in SIZES:
+  !make cpu SIZE={size}
+  process = subprocess.Popen(['./release/heat'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+  stdout, stderr = process.communicate()
+
+  # Extract the time using regex
+  match = re.search(r"Elapsed time:\s*([\d.]+)\s*ms", stdout)
+  if match:
+    time = float(match.group(1))
+    times.append(time)
+  else:
+    print(f"Could not find the time in the output for size {size}")
+    print("stdout:", stdout)
+    print("stderr:", stderr)
+    times.append(None) # append None to keep the list aligned if something goes wrong
+```
+
+What we have obtained is this:
+
+| SIZE  | CPU Execution Time (ms) |
+|-------|-------------------------|
+| 1000  | 229.154                 |
+| 2000  | 1330.138                |
+| 4000  | 6035.192                |
+| 6000  | 13611.214               |
+| 8000  | 23880.111               |
+| 10000 | 36636.103               |
+
+
+As we can see, the time needed for the program to process a matrix of size=```10000x10000``` is really high.
+
 
 # CUDA implementation
 
@@ -217,46 +269,27 @@ Then the kernel is called by invoking:
 step_kernel_mod_dev<<<numBlocks, threadsPerBlock>>>(ni, nj, tfac, temp1_d, temp2_d);
 ```
 
-# Google colab measurements
+# GPU measurements
 
 ## Generating data
 
 To generate all the data and plot the results we used this code on the Colab notebook:
 
 ```python
-import os
-import subprocess
-import re
-import matplotlib.pyplot as plt
-import numpy as np
-
 def run_cuda_cycle(block_x, block_y, size):
-    """
-    Compiles and runs CUDA code with specified block dimensions and problem size,
-    capturing execution time from nvprof.
-    
-    Args:
-      block_x: Block dimension in the x-direction.
-      block_y: Block dimension in the y-direction.
-      size: Size of the problem (e.g., grid dimensions).
-      
-    Returns:
-      Execution time in milliseconds (ms).
-    """
-    if not os.path.exists("/src/heat.cu"):
+    if not os.path.exists("./src/heat.cu"):
         print("Error: Required CUDA source file is missing.")
         return None
 
     # Compile CUDA code
-    compile_cmd = f"nvcc -O3 -arch=sm_60 -D BLOCKDIM_X={block_x} -D BLOCKDIM_Y={block_y} -D SIZE={size} /src/heat.cu -o /src/heat_cuda"
-    os.system(compile_cmd)
+    compile_cmd = f"nvcc -O3 -arch=sm_75 -D BLOCKDIM_X={block_x} -D BLOCKDIM_Y={block_y} -D SIZE={size} ./src/heat.cu -o ./src/heat_cuda -run"
+    result = subprocess.run(compile_cmd, shell=True, capture_output=True, text=True)
 
-    # Run with nvprof and capture output
-    nvprof_cmd = "/usr/local/cuda/bin/nvprof --print-gpu-summary /src/heat_cuda"
-    result = subprocess.run(nvprof_cmd, shell=True, capture_output=True, text=True)
+    # Extract execution time usin,g regex
+    match = re.search(r"GPU time:\s+([\d.]+)\s+ms", result.stderr, re.DOTALL)
+    if not match:
+        match = re.search(r"GPU time:\s+([\d.]+)\s+ms", result.stdout, re.DOTALL)
 
-    # Extract execution time using regex
-    match = re.search(r"GPU activities:.*?(\d+\.\d+)ms", result.stderr, re.DOTALL)
     if match:
         execution_time = float(match.group(1))
         print(f"Execution Time: {execution_time} ms")
@@ -264,13 +297,13 @@ def run_cuda_cycle(block_x, block_y, size):
     else:
         print("Failed to extract execution time.")
         return None
-
+   
 # Store results for visualization
 results = []
 
-block_x_values = [1, 2, 4, 8, 16]
-block_y_values = [1, 2, 4, 8, 16]
-size_values = [1000, 5000, 10000]
+block_x_values = [1, 2, 4, 8, 16, 32]
+block_y_values = [1, 2, 4, 8, 16, 32]
+size_values = [1000, 10000]
 
 for block_x in block_x_values:
     for block_y in block_y_values:
@@ -280,29 +313,167 @@ for block_x in block_x_values:
             if time_ms is not None:
                 results.append((block_x, block_y, size, time_ms))
 
+
+
 # Convert results into NumPy arrays for easy manipulation
 results_array = np.array(results)
 
-# Extract unique block sizes and problem sizes
-block_sizes = np.unique(results_array[:, 0:2], axis=0)
-problem_sizes = np.unique(results_array[:, 2])
-
-# Create a heatmap-style plot for execution times
-plt.figure(figsize=(10, 6))
-for size in problem_sizes:
-    subset = results_array[results_array[:, 2] == size]  
-    plt.scatter(subset[:, 0] * subset[:, 1], subset[:, 3], label=f"Size {int(size)}")
-
-plt.xlabel("Block Size (BLOCKDIM_X * BLOCKDIM_Y)")
-plt.ylabel("Execution Time (ms)")
-plt.title("CUDA Execution Time vs Block Size")
-plt.legend()
-plt.grid(True)
-plt.show()
+print(results)
 ```
 
 ## Results
 
-**Analisi da rivedere**
+| BLOCKDIM_X | BLOCKDIM_Y | SIZE  | Execution Time (ms) |
+|------------|------------|-------|---------------------|
+| 1          | 1          | 1000  | 397.41              |
+| 1          | 1          | 10000 | 22597.21            |
+| 1          | 2          | 1000  | 246.01              |
+| 1          | 2          | 10000 | 11428.86            |
+| 1          | 4          | 1000  | 152.11              |
+| 1          | 4          | 10000 | 6221.48             |
+| 1          | 8          | 1000  | 67.13               |
+| 1          | 8          | 10000 | 4190.27             |
+| 1          | 16         | 1000  | 66.79               |
+| 1          | 16         | 10000 | 3964.75             |
+| 1          | 32         | 1000  | 70.04               |
+| 1          | 32         | 10000 | 4240.1              |
+| 2          | 1          | 1000  | 290.89              |
+| 2          | 1          | 10000 | 11665.04            |
+| 2          | 2          | 1000  | 149.05              |
+| 2          | 2          | 10000 | 6243.06             |
+| 2          | 4          | 1000  | 78.15               |
+| 2          | 4          | 10000 | 3543.88             |
+| 2          | 8          | 1000  | 34.64               |
+| 2          | 8          | 10000 | 2470.83             |
+| 2          | 16         | 1000  | 35.81               |
+| 2          | 16         | 10000 | 2483.13             |
+| 2          | 32         | 1000  | 35.02               |
+| 2          | 32         | 10000 | 2505.36             |
+| 4          | 1          | 1000  | 153.51              |
+| 4          | 1          | 10000 | 6405.87             |
+| 4          | 2          | 1000  | 78.01               |
+| 4          | 2          | 10000 | 3541.15             |
+| 4          | 4          | 1000  | 39.02               |
+| 4          | 4          | 10000 | 2127.01             |
+| 4          | 8          | 1000  | 18.3                |
+| 4          | 8          | 10000 | 1481.12             |
+| 4          | 16         | 1000  | 19.51               |
+| 4          | 16         | 10000 | 1680.5              |
+| 4          | 32         | 1000  | 20.46               |
+| 4          | 32         | 10000 | 1726.68             |
+| 8          | 1          | 1000  | 76.98               |
+| 8          | 1          | 10000 | 3674.55             |
+| 8          | 2          | 1000  | 38.94               |
+| 8          | 2          | 10000 | 2042.79             |
+| 8          | 4          | 1000  | 19.78               |
+| 8          | 4          | 10000 | 1178.2              |
+| 8          | 8          | 1000  | 10.26               |
+| 8          | 8          | 10000 | 941.68              |
+| 8          | 16         | 1000  | 10.36               |
+| 8          | 16         | 10000 | 936.52              |
+| 8          | 32         | 1000  | 11.18               |
+| 8          | 32         | 10000 | 968.99              |
+| 16         | 1          | 1000  | 39.4                |
+| 16         | 1          | 10000 | 2107.46             |
+| 16         | 2          | 1000  | 20.17               |
+| 16         | 2          | 10000 | 1255.31             |
+| 16         | 4          | 1000  | 9.63                |
+| 16         | 4          | 10000 | 784.81              |
+| 16         | 8          | 1000  | 9.81                |
+| 16         | 8          | 10000 | 782.39              |
+| 16         | 16         | 1000  | 10.57               |
+| 16         | 16         | 10000 | 804.65              |
+| 16         | 32         | 1000  | 12.49               |
+| 16         | 32         | 10000 | 875.15              |
+| 32         | 1          | 1000  | 20.82               |
+| 32         | 1          | 10000 | 1261.63             |
+| 32         | 2          | 1000  | 9.54                |
+| 32         | 2          | 10000 | 757.64              |
+| 32         | 4          | 1000  | 9.28                |
+| 32         | 4          | 10000 | 752.1               |
+| 32         | 8          | 1000  | 9.72                |
+| 32         | 8          | 10000 | 741.55              |
+| 32         | 16         | 1000  | 11.2                |
+| 32         | 16         | 10000 | 831.59              |
+| 32         | 32         | 1000  | 14.04               |
+| 32         | 32         | 10000 | 907.58              |
+
+These data represent the execution times (in milliseconds) for cuda tested under various configurations. 
+Each row details:
+- BLOCKDIM_X and BLOCKDIM_Y: Parameters likely representing the dimensions of the computational block (commonly used in parallel processing or GPU computing).
+- SIZE: The problem size, with values of 1000 and 10000.
+- Execution Time: The measured time to complete the execution for that configuration.
+
+The results indicate that increasing the problem size generally leads to longer execution times. Additionally, variations in the block dimensions significantly affect performance, suggesting that tuning these parameters can optimize computational efficiency.
+
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+    <img src="./images/results.png" alt="OMP" width="100%" />
+  </figure>
+</div>
+
+
+## CUDA transfers calls
+
+The profiling results show that a significant amount of time is consumed by API calls, particularly those related to synchronization and memory transfers. For instance, the call to cudaEventSynchronize accounts for about 53.90% of the API call time, indicating that waiting for the GPU operations to complete is a major factor in overall performance. Similarly, the cudaMemcpy operations (both HtoD and DtoH) also contribute substantially, taking up around 31.63% of the API call time. Although the kernel execution (step_kernel_mod_dev) represents 63.16% of the GPU activity, these overheads from synchronization and memory transfers are noteworthy and can be a target for further performance optimization.
+
+
+This is the result of using ```nvprof``` with 10000 size:
+```c
+==45897== Profiling application: ./src/heat_cuda
+==45897== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   63.16%  899.87ms       200  4.4993ms  4.0265ms  6.8937ms  step_kernel_mod_dev(unsigned long, unsigned long, float, float const *, float*)
+                   24.13%  343.73ms         1  343.73ms  343.73ms  343.73ms  [CUDA memcpy DtoH]
+                   12.71%  181.14ms         2  90.572ms  89.753ms  91.391ms  [CUDA memcpy HtoD]
+      API calls:   53.90%  899.17ms         1  899.17ms  899.17ms  899.17ms  cudaEventSynchronize
+                   31.63%  527.64ms         3  175.88ms  90.004ms  345.02ms  cudaMemcpy
+                   14.15%  236.09ms         2  118.04ms  254.29us  235.83ms  cudaMalloc
+                    0.17%  2.8580ms         2  1.4290ms  432.90us  2.4251ms  cudaFree
+                    0.07%  1.0862ms       200  5.4300us  3.3440us  249.90us  cudaLaunchKernel
+                    0.06%  1.0660ms         2  532.98us  4.7750us  1.0612ms  cudaEventRecord
+                    0.01%  184.23us       114  1.6160us     125ns  65.752us  cuDeviceGetAttribute
+                    0.00%  30.569us         2  15.284us  1.0410us  29.528us  cudaEventCreate
+                    0.00%  21.590us         1  21.590us  21.590us  21.590us  cuDeviceGetName
+                    0.00%  11.857us         1  11.857us  11.857us  11.857us  cuDeviceGetPCIBusId
+                    0.00%  7.2590us         1  7.2590us  7.2590us  7.2590us  cudaEventElapsedTime
+                    0.00%  5.5550us         2  2.7770us     719ns  4.8360us  cudaEventDestroy
+                    0.00%  3.2840us         3  1.0940us     160ns  2.8660us  cuDeviceGetCount
+                    0.00%  1.2670us         2     633ns     146ns  1.1210us  cuDeviceGet
+                    0.00%     630ns         1     630ns     630ns     630ns  cuModuleGetLoadingMode
+                    0.00%     498ns         1     498ns     498ns     498ns  cuDeviceTotalMem
+                    0.00%     383ns         1     383ns     383ns     383ns  cuDeviceGetUuid
+
+```
+
+
+This is result of using ```nvprof``` with 1000 size, as we can see the api call impact a lot more than before:
+
+```c
+==46887== Profiling application: ./src/heat_cuda
+==46887== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   79.24%  14.724ms       200  73.618us  71.039us  74.750us  step_kernel_mod_dev(unsigned long, unsigned long, float, float const *, float*)
+                   12.36%  2.2959ms         1  2.2959ms  2.2959ms  2.2959ms  [CUDA memcpy DtoH]
+                    8.41%  1.5619ms         2  780.93us  763.80us  798.07us  [CUDA memcpy HtoD]
+      API calls:   91.78%  246.91ms         2  123.45ms  116.47us  246.79ms  cudaMalloc
+                    5.01%  13.475ms         1  13.475ms  13.475ms  13.475ms  cudaEventSynchronize
+                    2.28%  6.1409ms         3  2.0470ms  1.0237ms  4.0451ms  cudaMemcpy
+                    0.61%  1.6483ms       200  8.2410us  5.5560us  242.75us  cudaLaunchKernel
+                    0.19%  517.76us         2  258.88us  255.07us  262.69us  cudaFree
+                    0.09%  239.42us       114  2.1000us     206ns  87.270us  cuDeviceGetAttribute
+                    0.01%  26.674us         2  13.337us  1.9590us  24.715us  cudaEventCreate
+                    0.01%  23.079us         1  23.079us  23.079us  23.079us  cuDeviceGetName
+                    0.01%  18.301us         2  9.1500us  6.8520us  11.449us  cudaEventRecord
+                    0.00%  10.752us         1  10.752us  10.752us  10.752us  cuDeviceGetPCIBusId
+                    0.00%  7.2120us         1  7.2120us  7.2120us  7.2120us  cudaEventElapsedTime
+                    0.00%  4.8870us         2  2.4430us     896ns  3.9910us  cudaEventDestroy
+                    0.00%  3.7620us         3  1.2540us     250ns  2.9930us  cuDeviceGetCount
+                    0.00%  1.3370us         2     668ns     257ns  1.0800us  cuDeviceGet
+                    0.00%     859ns         1     859ns     859ns     859ns  cuModuleGetLoadingMode
+                    0.00%     591ns         1     591ns     591ns     591ns  cuDeviceTotalMem
+                    0.00%     412ns         1     412ns     412ns     412ns  cuDeviceGetUuid
+
+```
 
 # Conclusions
