@@ -477,3 +477,11 @@ This is result of using ```nvprof``` with 1000 size, as we can see the api call 
 ```
 
 # Conclusions
+
+In this report, we optimized a 2D heat conduction simulation using CUDA and analyzed its performance across different configurations. By identifying computational hotspots in the sequential implementation and leveraging GPU acceleration, we achieved significant speedups.
+
+Our findings highlight that the choice of block and thread configurations greatly impacts performance. Larger block sizes (e.g., BLOCKDIM_X = 4, BLOCKDIM_Y = 8) provided optimal results, reducing execution time substantially compared to smaller configurations. The CUDA implementation outperformed the CPU version, particularly for large problem sizes (e.g., 10000x10000), where sequential execution exceeded 36 seconds, while the best GPU execution times were in the range of a few milliseconds.
+
+However, vectorization issues in the CPU implementation, primarily due to index calculations and potential aliasing, limited performance improvements on the CPU side. Addressing these challenges could further enhance efficiency for non-GPU environments.
+
+In conclusion, CUDA acceleration proved highly effective for large-scale heat conduction simulations, with careful tuning of thread-block configurations yielding the best performance. Future work could explore further optimizations, such as memory coalescing and shared memory utilization, to maximize GPU efficiency.
