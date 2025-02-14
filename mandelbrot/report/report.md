@@ -223,6 +223,31 @@ The _warp size_ indicates how many threads can be executed at once, in this GPU 
   </figure>
 </div>
 
+
+### Parallel schedule in function of #threads 
+
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <img src="./images/thread_heatmap1.png" alt="thread_heatmap1" width="100%" />
+  </figure>
+</div>
+
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <img src="./images/thread_heatmap2.png" alt="thread_heatmap2" width="100%" />
+  </figure>
+</div>
+
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <img src="./images/thread_heatmap3.png" alt="thread_heatmap3" width="100%" />
+  </figure>
+</div>
+
+
+
+
+
 #### CUDA thread grid table
 
 These values are in milliseconds.
