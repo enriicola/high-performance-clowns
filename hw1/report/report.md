@@ -96,7 +96,7 @@ In particular:
 # Vectorization 🏹
 
 First of all, we studied the code alone and we interrogated ourselves about possible vectorization problems that seemed not to be there. 
-Secondly, we leveraged the OpenMP report flag in order to produce useful outputs about what the compiler did. The following texts display what we obtained as said report, only for the hotspot, for readability issues.
+Secondly, we leveraged the intel compiler report flag in order to produce useful outputs about what the compiler did. The following texts display what we obtained as said report, only for the hotspot, for readability issues.
 
 ```
 Begin optimization report for: DFT
@@ -289,7 +289,7 @@ As we expected, the greater the problem size, the longer it will take to execute
 | 140,000 |    0.34    |
 | 160,000 |    0.34    |
 
-As we can state from the plots, we have an average speedup of $6.6$  and an average efficiency of the $33\%$, meaning that our code goes more than 6 times faster in parallel mode than in sequential, but each thread could be used better.
+As we can state from the plots, we have an average speedup of $6.6$  and an average efficiency of the $33\%$, meaning that even tough our code goes more than 6 times faster in parallel mode than in sequential, there is still room for other performance improvements.
 
 # Conclusions 🔚
 

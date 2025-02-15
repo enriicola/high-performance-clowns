@@ -1,14 +1,9 @@
+# HPC - CUDA report
+**Leonardo Gonfiantini, Christian Parodi, Enrico Pezzano**
+
 # Introduction
 
-In this report, we aim to accelerate a given program that computes the 2D heat conduction 
-formula using CUDA. The primary objective is to evaluate different configurations of 
-blocks and threads, as well as various problem sizes, to achieve optimal performance. We 
-will conduct a thorough analysis of the code to identify hotspots and discuss potential 
-vectorization issues. The best sequential time will be established as a reference point, 
-and performance metrics will be presented using Google Colab. The report will include 
-charts to illustrate speedup values, focusing on data sizes that result in 
-sequential execution times of 30 seconds or more. Finally, we will draw conclusions based 
-on our findings.
+In this report, we aim to accelerate a given program that computes the 2D heat conduction formula using CUDA. The primary objective is to evaluate different configurations of blocks and threads, as well as various problem sizes, to achieve optimal performance. We will conduct a thorough analysis of the code to identify hotspots and discuss potential  vectorization issues. The best sequential time will be established as a reference point, and performance metrics will be presented using Google Colab. Finally, we will draw conclusions based on our findings.
 
 # Hardware Capability ⚙️
 
@@ -89,7 +84,7 @@ The VM of google colab is equipped with this GPU:
 +-----------------------------------------+----------------------+----------------------+
 ```
 
-We have found those characteristics using the command:
+Retrievec by running:
 
 ```bash
 !nvidia-smi
@@ -142,7 +137,7 @@ Result = PASS
 
 # Hotspot identification
 
-The nested loops in the `step_kernel_mod` function:
+The main bottleneck of the program are the nested loops in `step_kernel_mod`:
 
 ```C
 void step_kernel_mod(int ni, int nj, float fact, float* temp_in, float* temp_out) {
@@ -437,7 +432,7 @@ Each row details:
 - **SIZE**: The problem size, with values of 1000 and 10000.
 - **Execution Time**: The measured time to complete the execution for that configuration.
 
-The results indicate that increasing the problem size generally leads to longer execution times. Additionally, variations in the block dimensions significantly affect performance, suggesting that tuning these parameters can optimize computational efficiency. 
+The results indicate that increasing the problem size generally leads to longer executions. Additionally, variations in the block dimensions significantly affect performance, suggesting that tuning these parameters can optimize computational efficiency. 
 We then will use **`32x8`** threads per block.
 
 ```C
@@ -477,7 +472,7 @@ As we could expect, the bigger the matrix, the more the program takes to execute
 
 The profiling results show that a significant amount of time is consumed by API calls, particularly those related to synchronization and memory transfers. For instance, the call to `cudaEventSynchronize` accounts for about $57.76\%$ of the API call time, indicating that waiting for the GPU operations to complete is a major factor in overall performance. Similarly, the `cudaMemcpy` operations (both `HtoD` and `DtoH`) also contribute substantially, taking up around $34.74\%$ of the API call time. Although the kernel execution (`step_kernel_mod_dev`) represents $62.16\%$ of the GPU activity, these overheads from synchronization and memory transfers are noteworthy and can be a target for further performance optimization.
 
-This is the result of using `nvprof` with **size 10000**:
+This is the result of using `nvprof` with **size 10,000**:
 
 ```c
 ==22953== Profiling application: ./release/heat_cuda
@@ -505,7 +500,7 @@ This is the result of using `nvprof` with **size 10000**:
                     0.00%     389ns         1     389ns     389ns     389ns  cuDeviceGetUuid
 ```
 
-With **size 1000**, as we can see the api call impact a lot more than before:
+With **size 1,000**, as we can see the API calls impact a lot more than before:
 
 ```c
 ==23404== Profiling application: ./release/heat_cuda

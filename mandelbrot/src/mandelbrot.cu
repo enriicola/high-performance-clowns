@@ -54,11 +54,11 @@ struct complex {
   }
 
   // for z = a + bi and w = c + di, z + w = (a + c) + (b + d)i
-  __device__ complex operator+(const complex& w) const {
+  __device__ complex operator+(const complex &w) const {
     return {this->re + w.re, this->im + w.im};
   }
 };
-  
+
 void handle_error(cudaError_t err) {
   if (err != cudaSuccess) {
     fprintf(stderr, "GPU error: %s\n", cudaGetErrorString(err));
@@ -109,8 +109,8 @@ int main(int argc, char **argv) {
   const auto start = chrono::steady_clock::now();
 
   dim3 threadsPerBlock(BLOCKDIM_X, BLOCKDIM_Y);
-  dim3 numBlocks((HEIGHT + threadsPerBlock.x - 1) / threadsPerBlock.x,
-                 (WIDTH + threadsPerBlock.y - 1) / threadsPerBlock.y);
+  dim3 numBlocks((WIDTH + threadsPerBlock.x - 1) / threadsPerBlock.x,
+                 (HEIGHT + threadsPerBlock.y - 1) / threadsPerBlock.y);
 
   mandelbrot_kernel<<<numBlocks, threadsPerBlock>>>(d_image);
   handle_error(cudaDeviceSynchronize());

@@ -7,7 +7,7 @@
 - use the BEST sequential execution time;
 - always provide the compilation and execution commands (e.g. icc -O3 -xHost...);
 - consider different and meaningful data sizes (i.e. no sequential execution time shorter than a few seconds). 7 -->
-# HPC final project
+# HPC - final project
 ### Leonardo Gonfiantini, Enrico Pezzano, Christian Parodi
 
 # Introduction
@@ -17,7 +17,7 @@ By examining different data sizes and providing detailed hotspot analysis, we ai
 
 ### Hardware Capabilities ⚙️
 
-Like for the three assignments, we executed the C++ code using the Software 2 (SW2) workstations, with the following characteristics.
+Like in the three assignments, we executed the C++ code using the Software 2 (SW2) workstations, with the following characteristics.
 
 <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
@@ -78,7 +78,7 @@ Result = PASS
 
 # Algorithm analysis
 
-The Mandelbrot set is a collection of complex numbers that produces a well-known fractal when visualized. It is defined through an iterative process. Specifically, for a given complex number $c$, we define the sequence:
+The Mandelbrot set is a collection of complex numbers that produces a well known fractal when visualized. It is defined through an iterative process. Specifically, for a given complex number $c$, we define the sequence:
 
 $$
 z_{0} = 0, \quad z_{n+1} = z_n^2 + c, \quad n \geq 0.
@@ -90,9 +90,7 @@ $$
 M = \left\{ c \in \mathbb{C} : \limsup_{n \rightarrow \infty} |z_n| \leq 2 \right\}.
 $$
 
-In practice, the condition for divergence is determined by checking whether the magnitude $|
-z_n|$ exceeds $2$ for some iteration $n$. If $|z_n| > 2$, the sequence will diverge to 
-infinity.
+In practice, the condition for divergence is determined by checking whether the magnitude $|z_n|$ exceeds $2$ for some iteration $n$. If $|z_n| > 2$, the sequence will diverge to infinity.
 
 Thus, the Mandelbrot set is given by all complex numbers $c$ such that the iterative process maintains $|z_n|$ below or equal to $2$ indefinitely.
 
@@ -124,7 +122,7 @@ for (int pos = 0; pos < HEIGHT * WIDTH; pos++) {
 }
 ```
 
-taking $\approx 99.6\%$ of the actual execution time (not counting the write to file). We also denote that **the parameter that makes the computation heavier is `RESOLUTION`**, as `WIDTH` and `HEIGHT` depends on it.
+taking $\approx 99.6\%$ of the actual execution time (not counting the file write). We also denote that **the parameter that makes the computation heavier is `RESOLUTION`**, as `WIDTH` and `HEIGHT` depends on it.
 
 # Compiler optimizations
 
@@ -167,14 +165,14 @@ The output of the program is a file that, when displayed, shows the Mandelbrot s
   </figure>
 </div>
 
-We saw that the main hotspot has two nested loops, and we may think that vectorizing and parallelizing both may be the best choice. The problem is that the inner loop presents a **Read after Write dependency**, as the computation at time $t$ of $z$ (we call it $z_t$) depends on $z_{t-1} \implies$ $z_t = z_{t-1} + c$. Since this dependency is inherited by the definition of Mandelbrot set, we cannot make any adjustment to remove it.
+We saw that the main hotspot has two nested loops, and we may think that vectorizing and parallelizing both may be the best choice. The problem is that the inner loop presents a **Read after Write dependency**, as the computation at time $t$ of $z$ (we call it $z_t$) depends on $z_{t-1} \implies$ $z_{t+1} = z^2_t + c$. Since this dependency is inherited by the definition of Mandelbrot set, we cannot make any adjustment to remove it.
 
 ## CPU
 
 We parallelize the main hotspot
 
 ```cpp
-#pragma omp parallel for num_threads(NUM_THREADS) private(z) schedule(dynamic)
+#pragma omp parallel for num_threads(NUM_THREADS) private(z) schedule(OMP_SCHEDULE)
 for (int pos = 0; pos < HEIGHT * WIDTH; pos++) {
   image[pos] = 0;
 
@@ -199,7 +197,7 @@ for (int pos = 0; pos < HEIGHT * WIDTH; pos++) {
 }
 ```
 
-The `#pragma` directive tells the compiler to parallelize the for loop using `NUM_THREADS` threads, keeping `z` private for each thread and schedule the workload dynamically, as the computation may vary depending on how heavy is `z = z^2 + c` resource-wise.
+The `#pragma` directive tells the compiler to parallelize the for loop using `NUM_THREADS` threads, keeping `z` private for each thread and select the schedule `OMP_SCHEDULE`. We can infer that as the computation may vary depending on how heavy is `z = z^2 + c`, `OMP_SCHEDULE` will be either `dynamic` or `guided`.
 
 ### Parallel schedule in function of the #threads 
 
@@ -221,8 +219,6 @@ The `#pragma` directive tells the compiler to parallelize the for loop using `NU
   </figure>
 </div>
 
-#### Heatmap considerations
-
 After a careful examination on the above Mandelbrot execution time results, we can conclude that, in this case, the **guided schedule** and **20 threads** is the best strategy for this algorithm. 
 
 ## CUDA
@@ -236,8 +232,7 @@ Maximum number of threads per block: 1024
 Max dimension size of a thread block (x,y,z): (1024, 1024, 64)
 ...
 ```
-
-The _warp size_ indicates how many threads can be executed at once, in this GPU those are $32$. The max number of threads per blocks indicates that, at most, we can build a thread grid of $1024$ total threads.
+The warp size determines the number of threads that can be executed concurrently. For this GPU, that number is $32$. Additionally, the maximum number of threads per block is $1024$, so at most we can create a `32x32` grid.
 
 ### CUDA thread grid configuration 
 
@@ -268,14 +263,14 @@ The _warp size_ indicates how many threads can be executed at once, in this GPU 
 | **8**                   | 518  | 323  | 198 | 205 | 235 | 210 |
 | **4**                   | 852  | 512  | 313 | 226 | 203 | 230 |
 | **2**                   | 1530 | 816  | 481 | 307 | 198 | 238 |
-| **1**                   | 2827 | 1499 | 863 | 515 | 323 | 243 |  | --> 
+| **1**                   | 2827 | 1499 | 863 | 515 | 323 | 243 |  | --> |
 
-Based on the plot above, we chose **`32x8`** cuda threads per block.
+Based on the heatmaps above, we chose **`32x8`** cuda threads per block.
 
 ```cpp
 dim3 threadsPerBlock(32, 8);
-dim3 numBlocks((HEIGHT + threadsPerBlock.x - 1) / threadsPerBlock.x, 
-               (WIDTH + threadsPerBlock.y - 1) / threadsPerBlock.y);
+dim3 numBlocks((WIDTH + threadsPerBlock.x - 1) / threadsPerBlock.x, 
+               (HEIGHT + threadsPerBlock.y - 1) / threadsPerBlock.y);
 ```
 
 In this way, the matrix is equally subdivided throughout the threads. Finally, the CUDA kernel is defined as follows:
@@ -331,9 +326,7 @@ __global__ void mandelbrot_kernel(int *const image) {
 
 # Execution Times and Performance Analysis
 
-For our experiments, we selected different values for `RESOLUTION`, as `WIDTH` and `HEIGHT` directly depends on it, and so does the computation. We decided to exclude the part of the code that writes the result into a file, as it is not relevant in the analysis of the algorithm performances; Thus, the following statistics are referring to the algorithm part alone. The sequential/parallel code has been executed on the machines in SW2 and the CUDA version has been executed on Google Colab, both with the hardware capabilities explained at the beginning of this report.
-
-We could not plot the result of the program for `RESOLUTION` $>\ \approx 8000$, because the resulting file in that case would weight around $1.4\texttt{GB}$ and the machines we were equipped with had not enought RAM to load it and print it.
+For our experiments, we selected different values for `RESOLUTION`, as the whole computation depends on it. We decided to exclude the part of the code that writes the result into a file, as it is not relevant in the analysis of the algorithm performances; Thus, the following statistics are referring to the algorithm part alone. The sequential/parallel code has been executed on the machines in SW2 and the CUDA version has been executed on Google Colab, both with the hardware capabilities explained at the beginning of this report.
 
 <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">

@@ -1,11 +1,13 @@
-# Assignment 3: MPI
+# HPC - MPI report
+**Leonardo Gonfiantini, Christian Parodi, Enrico Pezzano**
 
-The goal is to distribute the program between the different nodes (in out case different 
-processes on the same machine). 
+# Introduction
+
+The goal is to distribute the program between the different nodes (in out case different processes on the same machine). 
 
 # Hardware
 
-For this first assignment, we executed the C code using the Software 2 (SW2) workstations, with the following characteristics.
+For this third assignment, we executed the C code using the Software 2 (SW2) workstations, with the following characteristics.
 
 <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
@@ -40,7 +42,7 @@ The sequential case is the following:
   </figure>
 </div>
 
-As we can see, the sum is performed alltogether on the same node. The simplest yet most powerful way to parallelize this sum is to split the computations on different nodes, making them calculate only a chunk of the total sum.
+As we can see, the sum is performed alltogether on the same node. The simplest yet most powerful way to parallelize this sum is to split the computations on different nodes, making them compute only a chunk of the total sum.
 
 <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
@@ -82,7 +84,7 @@ That is, simply subdivide the for loop on different threads and apply the reduct
 
 ### MPI workload distribution
 
-Now that we know how the algorithm works, we can decide how to divide the workload in each MPI node. We start by noticing that it is a sum over $n$ elements (in the code $n =$ `INTERVALS`), so, if we have $m$ worker nodes with same resources and performances, we can divide this sum into $m/\texttt{INTERVALS}$ chunks
+Now that we know how the algorithm works, we can decide how to divide the workload in each MPI node. We start by noticing that it is a sum over $n$ elements (in the code $n =$ `INTERVALS`), so, if we have $m$ worker nodes with same resources and performances, we can divide this sum into $\texttt{INTERVALS}/m$ chunks
 
 ```c
 int size, rank;
@@ -129,7 +131,7 @@ if(rank == MASTER_NODE){
 
 ## Performance evaluation
 
-In this program, the only heavy hotspot is `loop in main at pi_homework.c:26`, that is the one that computes the local sums. The following measurements are taken considering the global execution time and the hotspot execution time (since it's only one).
+In this program, the only heavy hotspot is `loop in main at pi_homework.c:26`, that is the one that computes the local sums. The following measurements are taken considering the global execution time and the hotspot execution time (since it is the only one).
 
 <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">

@@ -12,11 +12,11 @@ default:
 	${CC} ${FLAGS} ${SOURCE}/omp_homework.c -o ${RELEASE}/omp_homework
 
 # best sequential
-vec: FLAGS += -march=native -O3 -ffast-math
+vec: FLAGS += -xHost -O3 -ffast-math
 vec: 
 	${CC} ${FLAGS} -D SIZE=${SIZE} ${SOURCE}/omp_homework.c -o ${RELEASE}/omp_homework
 
-parallel: FLAGS += -march=native -O3 -ffast-math
+parallel: FLAGS += -xHost -O3 -ffast-math
 parallel: 
 	${CC} ${FLAGS} \
 		-D SIZE=${SIZE} \
