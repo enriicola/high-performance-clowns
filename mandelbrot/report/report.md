@@ -406,6 +406,129 @@ __global__ void mandelbrot_kernel(int *const image) {
 }
 ```
 
+## Nvprof analysis
+
+The profiling results were generated using ```nvprof``` running with different resolution sizes. The kernel launch configuration used was 32x8, and the profiling was conducted for resolutions of 1000, 2000, 4000, 8000, and 16000.
+
+
+### **1000:**
+```
+==2184== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   95.20%  302.95ms         1  302.95ms  302.95ms  302.95ms  mandelbrot_kernel(int*)
+                    4.80%  15.281ms         1  15.281ms  15.281ms  15.281ms  [CUDA memcpy DtoH]
+      API calls:   58.24%  302.96ms         1  302.96ms  302.96ms  302.96ms  cudaDeviceSynchronize
+                   38.47%  200.14ms         1  200.14ms  200.14ms  200.14ms  cudaMalloc
+                    3.18%  16.556ms         1  16.556ms  16.556ms  16.556ms  cudaMemcpy
+                    0.04%  232.45us         1  232.45us  232.45us  232.45us  cudaFree
+                    0.03%  166.11us         1  166.11us  166.11us  166.11us  cudaLaunchKernel
+                    0.03%  150.95us       114  1.3240us     106ns  64.385us  cuDeviceGetAttribute
+                    0.00%  19.745us         1  19.745us  19.745us  19.745us  cuDeviceGetName
+                    0.00%  8.1230us         1  8.1230us  8.1230us  8.1230us  cuDeviceGetPCIBusId
+                    0.00%  3.1870us         3  1.0620us     185ns  2.6820us  cuDeviceGetCount
+                    0.00%  2.4700us         2  1.2350us     131ns  2.3390us  cuDeviceGet
+                    0.00%     565ns         1     565ns     565ns     565ns  cuModuleGetLoadingMode
+                    0.00%     540ns         1     540ns     540ns     540ns  cuDeviceTotalMem
+                    0.00%     333ns         1     333ns     333ns     333ns  cuDeviceGetUuid
+```
+
+### **2000:**
+```
+==3359== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   90.38%  624.28ms         1  624.28ms  624.28ms  624.28ms  mandelbrot_kernel(int*)
+                    9.62%  66.440ms         1  66.440ms  66.440ms  66.440ms  [CUDA memcpy DtoH]
+      API calls:   70.81%  624.28ms         1  624.28ms  624.28ms  624.28ms  cudaDeviceSynchronize
+                   21.46%  189.22ms         1  189.22ms  189.22ms  189.22ms  cudaMalloc
+                    7.66%  67.550ms         1  67.550ms  67.550ms  67.550ms  cudaMemcpy
+                    0.03%  256.15us         1  256.15us  256.15us  256.15us  cudaFree
+                    0.02%  169.75us       114  1.4890us     105ns  65.230us  cuDeviceGetAttribute
+                    0.02%  159.32us         1  159.32us  159.32us  159.32us  cudaLaunchKernel
+                    0.00%  11.835us         1  11.835us  11.835us  11.835us  cuDeviceGetName
+                    0.00%  7.0430us         1  7.0430us  7.0430us  7.0430us  cuDeviceGetPCIBusId
+                    0.00%  1.4830us         3     494ns     115ns  1.2060us  cuDeviceGetCount
+                    0.00%     872ns         2     436ns     135ns     737ns  cuDeviceGet
+                    0.00%     428ns         1     428ns     428ns     428ns  cuModuleGetLoadingMode
+                    0.00%     390ns         1     390ns     390ns     390ns  cuDeviceTotalMem
+                    0.00%     186ns         1     186ns     186ns     186ns  cuDeviceGetUuid
+```
+
+### **4000:**
+```
+==3531== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   88.29%  2.03438s         1  2.03438s  2.03438s  2.03438s  mandelbrot_kernel(int*)
+                   11.71%  269.80ms         1  269.80ms  269.80ms  269.80ms  [CUDA memcpy DtoH]
+      API calls:   80.71%  2.03440s         1  2.03440s  2.03440s  2.03440s  cudaDeviceSynchronize
+                   10.74%  270.71ms         1  270.71ms  270.71ms  270.71ms  cudaMemcpy
+                    8.52%  214.71ms         1  214.71ms  214.71ms  214.71ms  cudaMalloc
+                    0.01%  375.50us         1  375.50us  375.50us  375.50us  cudaFree
+                    0.01%  192.07us       114  1.6840us     131ns  78.183us  cuDeviceGetAttribute
+                    0.01%  167.68us         1  167.68us  167.68us  167.68us  cudaLaunchKernel
+                    0.00%  14.807us         1  14.807us  14.807us  14.807us  cuDeviceGetName
+                    0.00%  9.0420us         1  9.0420us  9.0420us  9.0420us  cuDeviceGetPCIBusId
+                    0.00%  2.1820us         3     727ns     250ns  1.6330us  cuDeviceGetCount
+                    0.00%  1.3120us         2     656ns     224ns  1.0880us  cuDeviceGet
+                    0.00%     770ns         1     770ns     770ns     770ns  cuDeviceTotalMem
+                    0.00%     478ns         1     478ns     478ns     478ns  cuModuleGetLoadingMode
+                    0.00%     378ns         1     378ns     378ns     378ns  cuDeviceGetUuid
+```
+
+### **8000:**
+```
+==3719== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   87.40%  7.56941s         1  7.56941s  7.56941s  7.56941s  mandelbrot_kernel(int*)
+                   12.60%  1.09120s         1  1.09120s  1.09120s  1.09120s  [CUDA memcpy DtoH]
+      API calls:   85.51%  7.56942s         1  7.56942s  7.56942s  7.56942s  cudaDeviceSynchronize
+                   12.34%  1.09252s         1  1.09252s  1.09252s  1.09252s  cudaMemcpy
+                    2.14%  189.16ms         1  189.16ms  189.16ms  189.16ms  cudaMalloc
+                    0.01%  835.68us         1  835.68us  835.68us  835.68us  cudaFree
+                    0.00%  163.45us       114  1.4330us     106ns  85.279us  cuDeviceGetAttribute
+                    0.00%  132.38us         1  132.38us  132.38us  132.38us  cudaLaunchKernel
+                    0.00%  11.346us         1  11.346us  11.346us  11.346us  cuDeviceGetName
+                    0.00%  6.9480us         1  6.9480us  6.9480us  6.9480us  cuDeviceGetPCIBusId
+                    0.00%  1.5210us         3     507ns     119ns  1.0790us  cuDeviceGetCount
+                    0.00%     799ns         1     799ns     799ns     799ns  cuDeviceTotalMem
+                    0.00%     651ns         2     325ns     125ns     526ns  cuDeviceGet
+                    0.00%     448ns         1     448ns     448ns     448ns  cuModuleGetLoadingMode
+                    0.00%     296ns         1     296ns     296ns     296ns  cuDeviceGetUuid
+```
+### **16000**
+```
+==3945== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   86.83%  29.6919s         1  29.6919s  29.6919s  29.6919s  mandelbrot_kernel(int*)
+                   13.17%  4.50194s         1  4.50194s  4.50194s  4.50194s  [CUDA memcpy DtoH]
+      API calls:   86.33%  29.6920s         1  29.6920s  29.6920s  29.6920s  cudaDeviceSynchronize
+                   13.09%  4.50302s         1  4.50302s  4.50302s  4.50302s  cudaMemcpy
+                    0.57%  197.25ms         1  197.25ms  197.25ms  197.25ms  cudaMalloc
+                    0.01%  2.6053ms         1  2.6053ms  2.6053ms  2.6053ms  cudaFree
+                    0.00%  180.51us         1  180.51us  180.51us  180.51us  cudaLaunchKernel
+                    0.00%  134.02us       114  1.1750us     105ns  55.794us  cuDeviceGetAttribute
+                    0.00%  11.631us         1  11.631us  11.631us  11.631us  cuDeviceGetName
+                    0.00%  6.5930us         1  6.5930us  6.5930us  6.5930us  cuDeviceGetPCIBusId
+                    0.00%  1.7580us         3     586ns     137ns  1.3790us  cuDeviceGetCount
+                    0.00%     988ns         2     494ns     157ns     831ns  cuDeviceGet
+                    0.00%     558ns         1     558ns     558ns     558ns  cuModuleGetLoadingMode
+                    0.00%     513ns         1     513ns     513ns     513ns  cuDeviceTotalMem
+                    0.00%     218ns         1     218ns     218ns     218ns  cuDeviceGetUuid
+```
+
+### Observations
+
+- **Kernel Dominance:**
+The mandelbrot_kernel is the primary contributor to execution time across all resolutions, indicating that the core computation scales significantly with increased resolution.
+
+- **Memory Transfer Impact:**
+Although the percentage of time spent in the CUDA memcpy operations increases slightly at higher resolutions, it remains a secondary factor compared to kernel execution.
+
+- **API Overhead:**
+The cudaDeviceSynchronize call consistently represents a large fraction of the API call time. This is expected because it ensures that the CPU waits for the GPU to complete its tasks before moving on.
+
+- **Scaling Behavior:**
+As the resolution doubles, the execution time (especially for the kernel) increases dramatically. This reflects the increased computational workload and the larger amount of data being processed and transferred.
+
 # Execution Times and Performance Analysis
 
 For our experiments, we selected different values for `RESOLUTION`, as the whole computation depends on it. We decided to exclude the part of the code that writes the result into a file, as it is not relevant in the analysis of the algorithm performances; Thus, the following statistics are referring to the algorithm part alone. The sequential/parallel code has been executed on the machines in SW2 and the CUDA version has been executed on Google Colab, both with the hardware capabilities explained at the beginning of this report.
