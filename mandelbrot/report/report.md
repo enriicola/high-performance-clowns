@@ -268,7 +268,8 @@ for (int pos = 0; pos < totalPixels; pos += 4) {
 }
 ```
 
-It is for sure more complex, long and low level with respect to the original one, but it is also much faster.
+It is for sure more complex, long and low level with respect to the original one, but it is also much faster. For example, the original code compiled in a sequential fashion (no multithreading)
+executed in 17 seconds, this version compiled with the same flags and parameters executes in 4 seconds.
 
 ### Parallelization
 
