@@ -231,8 +231,7 @@ for (int pos = 0; pos < totalPixels; pos += 4) {
     // z_real^2 - z_imag^2 + c_real
     __m256d new_z_real = _mm256_add_pd(_mm256_sub_pd(z_real_sq, z_imag_sq), c_real);
     // 2*z_real*z_imag + c_imag
-    __m256d tmp = _mm256_mul_pd(z_real, z_imag);
-    __m256d new_z_imag = _mm256_add_pd(_mm256_mul_pd(_mm256_set1_pd(2.0), tmp), c_imag);
+    __m256d new_z_imag = _mm256_add_pd(_mm256_mul_pd(_mm256_set1_pd(2.0), _mm256_mul_pd(z_real, z_imag)), c_imag);
 
     // update active lanes
     z_real = _mm256_blendv_pd(z_real, new_z_real, active);
