@@ -1,5 +1,21 @@
 Begin optimization report for: main
 
+LOOP BEGIN at ./src/mandelbrot_AVX2.cpp (140, 5)
+
+    LOOP BEGIN at ./src/mandelbrot_AVX2.cpp (140, 5)
+    LOOP END
+LOOP END
+=================================================================
+
+Begin optimization report for: __clang_call_terminate
+=================================================================
+
+Begin optimization report for: main.extracted
+
+OMP PARALLEL FOR BEGIN at ./src/mandelbrot_AVX2.cpp (55, 1)
+    remark #30008: parallel for construct transformed
+OMP PARALLEL FOR END
+
 LOOP BEGIN at ./src/mandelbrot_AVX2.cpp (98, 9)
     remark #25436: Loop completely unrolled by 4
 LOOP END
@@ -7,7 +23,7 @@ LOOP END
 LOOP BEGIN at ./src/mandelbrot_AVX2.cpp (113, 7)
     remark #15300: LOOP WAS VECTORIZED
     remark #15305: vectorization support: vector length 4
-    remark #15389: vectorization support: masked unaligned unit stride store: image [ /home/chris/high-performance-clowns/mandelbrot/./src/mandelbrot_AVX2.cpp (115, 11) ] 
+    remark #15389: vectorization support: masked unaligned unit stride store: [ /home/chris/high-performance-clowns/mandelbrot/./src/mandelbrot_AVX2.cpp (115, 11) ] 
     remark #15475: --- begin vector loop cost summary ---
     remark #15476: scalar cost: 8.000000 
     remark #15477: vector cost: 5.750000 
@@ -21,20 +37,15 @@ LOOP BEGIN at ./src/mandelbrot_AVX2.cpp (113, 7)
     remark #25436: Loop completely unrolled by 1
 LOOP END
 
-LOOP BEGIN at ./src/mandelbrot_AVX2.cpp (58, 3)
+LOOP BEGIN at ./src/mandelbrot_AVX2.cpp (55, 1)
 
-    LOOP BEGIN at ./src/mandelbrot_AVX2.cpp (77, 5)
+    LOOP BEGIN at ./src/mandelbrot_AVX2.cpp (55, 1)
+        remark #30000: OpenMP: Outlined parallel loop
+
+        LOOP BEGIN at ./src/mandelbrot_AVX2.cpp (77, 5)
+        LOOP END
     LOOP END
 LOOP END
-
-LOOP BEGIN at ./src/mandelbrot_AVX2.cpp (140, 5)
-
-    LOOP BEGIN at ./src/mandelbrot_AVX2.cpp (140, 5)
-    LOOP END
-LOOP END
-=================================================================
-
-Begin optimization report for: __clang_call_terminate
 =================================================================
 
 ---- Begin Inlining Report ----
@@ -164,6 +175,10 @@ DEAD STATIC FUNC: __cxa_begin_catch
 
 DEAD STATIC FUNC: __cxa_end_catch
 
+DEAD STATIC FUNC: llvm.directive.region.entry
+
+DEAD STATIC FUNC: llvm.directive.region.exit
+
 DEAD STATIC FUNC: llvm.memcpy.p0.p0.i64
 
 DEAD STATIC FUNC: llvm.ssa.copy.i64
@@ -193,17 +208,38 @@ COMPILE FUNC: main
    -> INLINE: _mm256_set1_pd(double) mandelbrot_AVX2.cpp(85,56)
       -> INLINE: _mm256_set_pd(double, double, double, double)
    -> INLINE: _mm256_blendv_pd(double vector[4], double vector[4], double vector[4]) mandelbrot_AVX2.cpp(89,16)
-      -> llvm.x86.avx.blendv.pd.256
    -> INLINE: _mm256_blendv_pd(double vector[4], double vector[4], double vector[4]) mandelbrot_AVX2.cpp(88,16)
-      -> llvm.x86.avx.blendv.pd.256
    -> INLINE: _mm256_movemask_pd(double vector[4]) mandelbrot_AVX2.cpp(111,24)
    -> INLINE: _mm256_movemask_pd(double vector[4]) mandelbrot_AVX2.cpp(105,13)
    -> INLINE: _mm256_movemask_pd(double vector[4]) mandelbrot_AVX2.cpp(96,22)
    -> INLINE: _mm256_andnot_pd(double vector[4], double vector[4]) mandelbrot_AVX2.cpp(104,18)
    -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
    -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
    -> llvm.dbg.assign mandelbrot_AVX2.cpp
    -> EXTERN: operator new[](unsigned long) mandelbrot_AVX2.cpp(45,22)
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
    -> INLINE: std::basic_ostream<char, std::char_traits<char>>& std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&, char const*) mandelbrot_AVX2.cpp(48,13) (40<=487)
       -> INLINE: std::basic_ios<char, std::char_traits<char>>::setstate(std::_Ios_Iostate) ostream(665,8) (10<=375)
          -> INLINE: std::basic_ios<char, std::char_traits<char>>::rdstate() const basic_ios.h(158,27) (-30<=375)
@@ -234,6 +270,34 @@ COMPILE FUNC: main
          -> INLINE: std::basic_ostream<char, std::char_traits<char>>& std::flush<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&) ostream(736,14) (0<=487)
             -> EXTERN: std::ostream::flush() ostream(758,19)
    -> EXTERN: std::chrono::_V2::steady_clock::now() mandelbrot_AVX2.cpp(52,22)
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
    -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
    -> EXTERN: std::chrono::_V2::steady_clock::now() mandelbrot_AVX2.cpp(120,20)
    -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
@@ -381,12 +445,39 @@ COMPILE FUNC: main
    -> EXTERN: operator delete[](void*) mandelbrot_AVX2.cpp(150,3)
    -> std::basic_ofstream<char, std::char_traits<char>>::~basic_ofstream() mandelbrot_AVX2.cpp(152,1) (250>250)
    -> std::basic_ofstream<char, std::char_traits<char>>::~basic_ofstream() mandelbrot_AVX2.cpp(152,1) (250>45 [EE:65>45])
-   -> DELETE: llvm.ssa.copy.i64
-   -> DELETE: llvm.ssa.copy.i64 mandelbrot_AVX2.cpp(98,32)
-   -> DELETE: llvm.ssa.copy.i64
-   -> DELETE: llvm.ssa.copy.i64 mandelbrot_AVX2.cpp(113,30)
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.stacksave.p0
+   -> DELETE: llvm.stackrestore.p0 chrono.h(1143,9)
+   -> DELETE: llvm.stacksave.p0
+   -> DELETE: llvm.stackrestore.p0 chrono.h(287,4)
+   -> llvm.stacksave.p0
+   -> llvm.stackrestore.p0 ostream(576,5)
+   -> BROKER: __kmpc_fork_call mandelbrot_AVX2.cpp(55,1)(main.extracted)
+   -> EXTERN: __kmpc_global_thread_num
+   -> EXTERN: __kmpc_push_num_threads
    -> EXTERN: std::__throw_bad_cast() basic_ios.h(50,2)
-   -> llvm.masked.store.v4i32.p0 mandelbrot_AVX2.cpp(115,26)
 
 COMPILE FUNC: std::basic_ofstream<char, std::char_traits<char>>::basic_ofstream(char const*, std::_Ios_Openmode)
    -> INLINE: std::basic_ios<char, std::char_traits<char>>::basic_ios() fstream(797,7) (40<=375)
@@ -420,30 +511,120 @@ COMPILE FUNC: std::basic_ofstream<char, std::char_traits<char>>::~basic_ofstream
       -> INLINE: std::basic_ostream<char, std::char_traits<char>>::~basic_ostream() fstream(870,9) (-40<=375)
    -> DELETE: std::ios_base::~ios_base() fstream(870,7)
 
+COMPILE FUNC: main.extracted
+   -> DELETE: llvm.directive.region.entry mandelbrot_AVX2.cpp(55,1)
+   -> INLINE: _mm256_blendv_pd(double vector[4], double vector[4], double vector[4]) mandelbrot_AVX2.cpp(89,16)
+      -> llvm.x86.avx.blendv.pd.256
+   -> INLINE: _mm256_blendv_pd(double vector[4], double vector[4], double vector[4]) mandelbrot_AVX2.cpp(88,16)
+      -> llvm.x86.avx.blendv.pd.256
+   -> DELETE: llvm.directive.region.exit mandelbrot_AVX2.cpp(55,1)
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> EXTERN: __kmpc_dispatch_init_4
+   -> EXTERN: __kmpc_dispatch_next_4
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.ssa.copy.i64
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.ssa.copy.i64 mandelbrot_AVX2.cpp(98,32)
+   -> DELETE: llvm.ssa.copy.i64
+   -> DELETE: llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> DELETE: llvm.ssa.copy.i64 mandelbrot_AVX2.cpp(113,30)
+   -> EXTERN: __kmpc_dispatch_next_4
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.dbg.assign mandelbrot_AVX2.cpp
+   -> llvm.masked.store.v4i32.p0 mandelbrot_AVX2.cpp(115,26)
+
 ---- End Inlining Report ------
 Register allocation report for: main
 FUNCTION BEGIN
- LOOP1 BEGIN at (./src/mandelbrot_AVX2.cpp:58:3)
-  LOOP2 BEGIN at (./src/mandelbrot_AVX2.cpp:77:5)
-  LOOP2 END
- LOOP1 END
+ 3 reloads 1 spills 
  LOOP1 BEGIN at (./src/mandelbrot_AVX2.cpp:140:5)
   LOOP2 BEGIN at (./src/mandelbrot_AVX2.cpp:140:5)
   LOOP2 END
  LOOP1 END
 
 Hardware registers used
- Reserved : 4 [ rsp ssp rip mxcsr  ]
- Available : 8 [ r8 r9 r10 r11 k0_k1 k2_k3 k4_k5 k6_k7  ]
- Callee Saved : 6 [ rbp rbx r12 r13 r14 r15  ]
- Assigned : 28 [ eflags rax rbp rbx rcx rdi rdx rsi r12 r13 r14 r15 zmm0 zmm1 zmm2 zmm3 zmm4 zmm5 zmm6 zmm7 zmm8 zmm9 zmm10 zmm11 zmm12 zmm13 zmm14 zmm15  ]
+ Reserved : 3 [ rsp ssp rip  ]
+ Available : 21 [ r10 r11 zmm1 zmm2 zmm3 zmm4 zmm5 zmm6 zmm7 zmm8 zmm9 zmm10 zmm11 zmm12 zmm13 zmm14 zmm15 k0_k1 k2_k3 k4_k5 k6_k7  ]
+ Callee Saved : 5 [ rbx r12 r13 r14 r15  ]
+ Assigned : 14 [ eflags rax rbx rcx rdi rdx rsi r8 r9 r12 r13 r14 r15 zmm0  ]
 
 Routine stack 
- Variables : 513 Bytes
-   Read Count : 6
+ Variables : 520 Bytes
+   Read Count : 9
    Write Count : 1
- Spills : 0 Bytes
-   Read Count : 0
-   Write Count : 0
+ Spills : 8 Bytes
+   Read Count : 3
+   Write Count : 1
+
+FUNCTION END
+Register allocation report for: main.extracted
+FUNCTION BEGIN
+ 2 spills 
+ LOOP1 BEGIN at (./src/mandelbrot_AVX2.cpp:55:1)
+  2 reloads 
+  LOOP2 BEGIN at (./src/mandelbrot_AVX2.cpp:55:1)
+   LOOP3 BEGIN at (./src/mandelbrot_AVX2.cpp:77:5)
+   LOOP3 END
+  LOOP2 END
+ LOOP1 END
+
+Hardware registers used
+ Reserved : 4 [ rsp ssp rip mxcsr  ]
+ Available : 6 [ r10 r11 k0_k1 k2_k3 k4_k5 k6_k7  ]
+ Callee Saved : 5 [ rbx r12 r13 r14 r15  ]
+ Assigned : 30 [ eflags rax rbp rbx rcx rdi rdx rsi r8 r9 r12 r13 r14 r15 zmm0 zmm1 zmm2 zmm3 zmm4 zmm5 zmm6 zmm7 zmm8 zmm9 zmm10 zmm11 zmm12 zmm13 zmm14 zmm15  ]
+
+Routine stack 
+ Variables : 48 Bytes
+   Read Count : 4
+   Write Count : 6
+ Spills : 32 Bytes
+   Read Count : 2
+   Write Count : 2
 
 FUNCTION END

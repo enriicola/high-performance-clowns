@@ -107,12 +107,12 @@ int main(int argc, char **argv) {
       }
     }
 
-    // for pixels that never diverged, assign the maximum iteration count
+    // for pixels that never diverged
     int still_active = _mm256_movemask_pd(active);
     if (still_active) {
       for (int j = 0; j < 4; ++j) {
         if (still_active & (1 << j)) {
-          image[pos + j] = ITERATIONS;
+          image[pos + j] = 0;
         }
       }
     }

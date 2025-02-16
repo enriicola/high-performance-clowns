@@ -75,8 +75,6 @@ __global__ void mandelbrot_kernel(int *const image) {
 
   int pos = row * WIDTH + col;
 
-  image[pos] = 0;
-
   complex c = {col * STEP + MIN_X, row * STEP + MIN_Y};
   complex z = {0.0, 0.0};
   for (int i = 1; i <= ITERATIONS; i++) {
@@ -89,6 +87,8 @@ __global__ void mandelbrot_kernel(int *const image) {
       return;
     }
   }
+
+  image[pos] = 0;
 }
 
 int main(int argc, char **argv) {

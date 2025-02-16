@@ -9,7 +9,7 @@ NUM_THREADS ?= 4
 OMP_SCHEDULE ?= dynamic
 # CUDA
 BLOCKDIM_X ?= 32
-BLOCKDIM_Y ?= 32
+BLOCKDIM_Y ?= 8
 
 default: FLAGS += -march=native
 default:
