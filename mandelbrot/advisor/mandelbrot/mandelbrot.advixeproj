@@ -30,6 +30,11 @@
      <recursive type="bool">false</recursive>
      <priority type="bool">true</priority>
     </searchDirectory>
+    <searchDirectory>
+     <name type="string">/home/chris/high-performance-clowns/mandelbrot/src</name>
+     <recursive type="bool">false</recursive>
+     <priority type="bool">true</priority>
+    </searchDirectory>
    </searchCategory>
    <searchCategory>
     <category type="u8_t">2</category>
@@ -38,11 +43,21 @@
      <recursive type="bool">false</recursive>
      <priority type="bool">true</priority>
     </searchDirectory>
+    <searchDirectory>
+     <name type="string">/home/chris/high-performance-clowns/mandelbrot/src</name>
+     <recursive type="bool">false</recursive>
+     <priority type="bool">true</priority>
+    </searchDirectory>
    </searchCategory>
    <searchCategory>
     <category type="u8_t">3</category>
     <searchDirectory>
      <name type="string">/home/Zsf/HPC/mandelbrot/src</name>
+     <recursive type="bool">false</recursive>
+     <priority type="bool">true</priority>
+    </searchDirectory>
+    <searchDirectory>
+     <name type="string">/home/chris/high-performance-clowns/mandelbrot/src</name>
      <recursive type="bool">false</recursive>
      <priority type="bool">true</priority>
     </searchDirectory>
@@ -57,7 +72,7 @@
     <localhost type="string">release</localhost>
    </selected_workload>
    <result_dir>
-    <localhost type="string">/home/Zsf/HPC/mandelbrot/advisor/mandelbrot</localhost>
+    <localhost type="string">/home/chris/high-performance-clowns/mandelbrot/advisor/mandelbrot</localhost>
    </result_dir>
    <result_pattern>
     <localhost type="string">r@@@{at}</localhost>
@@ -239,7 +254,7 @@
        <targetName type="string">attach-survey</targetName>
        <use_app_dir_as_work_dir type="bool">false</use_app_dir_as_work_dir>
        <attach.pid type="null"></attach.pid>
-       <result_directory.path type="string">/home/Zsf/HPC/mandelbrot/advisor/mandelbrot/r@@@{at}</result_directory.path>
+       <result_directory.path type="string">/home/chris/high-performance-clowns/mandelbrot/advisor/mandelbrot/r@@@{at}</result_directory.path>
        <search_directories>
         <item>
          <value type="string">sym:p=/home/Zsf/HPC/mandelbrot/src</value>
@@ -251,6 +266,10 @@
        <context>
         <contextValue>
          <id type="string">auto_finalize</id>
+         <value type="bool">true</value>
+        </contextValue>
+        <contextValue>
+         <id type="string">cpu_profiling</id>
          <value type="bool">true</value>
         </contextValue>
         <contextValue>
@@ -282,6 +301,10 @@
          <value type="string">*</value>
         </contextValue>
         <contextValue>
+         <id type="string">kernel_matching_mode</id>
+         <value type="string">strict</value>
+        </contextValue>
+        <contextValue>
          <id type="string">mklUserMode</id>
          <value type="bool">true</value>
         </contextValue>
@@ -302,12 +325,12 @@
          <value type="string"></value>
         </contextValue>
         <contextValue>
-         <id type="string">profilePython</id>
-         <value type="bool">false</value>
-        </contextValue>
-        <contextValue>
          <id type="string">profile_intel_perf_libs</id>
          <value type="bool">true</value>
+        </contextValue>
+        <contextValue>
+         <id type="string">profile_python</id>
+         <value type="string">off</value>
         </contextValue>
         <contextValue>
          <id type="string">show_report</id>
@@ -339,7 +362,7 @@
         </contextValue>
         <contextValue>
          <id type="string">targetGPU</id>
-         <value type="string">0:0:2.0</value>
+         <value type="string">none</value>
         </contextValue>
         <contextValue>
          <id type="string">targetType</id>
@@ -356,12 +379,12 @@
       <workload>
        <targetName type="string">debug</targetName>
        <launch.userapppath type="string">/home/Zsf/HPC/mandelbrot/release/mandelbrot</launch.userapppath>
-       <launch.userappworkdir type="string"></launch.userappworkdir>
+       <launch.userappworkdir type="string">/home/Zsf/HPC/mandelbrot/release</launch.userappworkdir>
        <launch_app.app_to_launch type="string">/home/Zsf/HPC/mandelbrot/release/mandelbrot</launch_app.app_to_launch>
        <launch_app.app_parameters type="string"></launch_app.app_parameters>
        <use_app_dir_as_work_dir type="bool">true</use_app_dir_as_work_dir>
-       <launch_app.working_folder type="string">/home/Zsf/HPC/mandelbrot/release</launch_app.working_folder>
-       <result_directory.path type="string">/home/Zsf/HPC/mandelbrot/advisor/mandelbrot/r@@@{at}</result_directory.path>
+       <launch_app.working_folder type="string"></launch_app.working_folder>
+       <result_directory.path type="string">/home/chris/high-performance-clowns/mandelbrot/advisor/mandelbrot/r@@@{at}</result_directory.path>
        <search_directories>
         <item>
          <value type="string">sym:p=/home/Zsf/HPC/mandelbrot/src</value>
@@ -438,12 +461,12 @@
       <workload>
        <targetName type="string">map</targetName>
        <launch.userapppath type="string">/home/Zsf/HPC/mandelbrot/release/mandelbrot</launch.userapppath>
-       <launch.userappworkdir type="string"></launch.userappworkdir>
+       <launch.userappworkdir type="string">/home/Zsf/HPC/mandelbrot/release</launch.userappworkdir>
        <launch_app.app_to_launch type="string">/home/Zsf/HPC/mandelbrot/release/mandelbrot</launch_app.app_to_launch>
        <launch_app.app_parameters type="string"></launch_app.app_parameters>
        <use_app_dir_as_work_dir type="bool">true</use_app_dir_as_work_dir>
-       <launch_app.working_folder type="string">/home/Zsf/HPC/mandelbrot/release</launch_app.working_folder>
-       <result_directory.path type="string">/home/Zsf/HPC/mandelbrot/advisor/mandelbrot/r@@@{at}</result_directory.path>
+       <launch_app.working_folder type="string"></launch_app.working_folder>
+       <result_directory.path type="string">/home/chris/high-performance-clowns/mandelbrot/advisor/mandelbrot/r@@@{at}</result_directory.path>
        <search_directories>
         <item>
          <value type="string">sym:p=/home/Zsf/HPC/mandelbrot/src</value>
@@ -524,7 +547,7 @@
       <workload>
        <targetName type="string">projection</targetName>
        <use_app_dir_as_work_dir type="bool">true</use_app_dir_as_work_dir>
-       <result_directory.path type="string">/home/Zsf/HPC/mandelbrot/advisor/mandelbrot/r@@@{at}</result_directory.path>
+       <result_directory.path type="string">/home/chris/high-performance-clowns/mandelbrot/advisor/mandelbrot/r@@@{at}</result_directory.path>
        <search_directories>
         <item>
          <value type="string">sym:p=/home/Zsf/HPC/mandelbrot/src</value>
@@ -715,13 +738,13 @@
        <use_app_dir_as_work_dir type="bool">true</use_app_dir_as_work_dir>
        <launch_app.inherit_sys_environment type="bool">true</launch_app.inherit_sys_environment>
        <launch_app.mpi_run type="bool">false</launch_app.mpi_run>
-       <result_directory.path type="string">/home/Zsf/HPC/mandelbrot/advisor/mandelbrot/r@@@{at}</result_directory.path>
+       <result_directory.path type="string">/home/chris/high-performance-clowns/mandelbrot/advisor/mandelbrot/r@@@{at}</result_directory.path>
        <launch_app.app_parameters type="string"></launch_app.app_parameters>
-       <launch.userappworkdir type="string">/home/Zsf/HPC/mandelbrot/release</launch.userappworkdir>
+       <launch.userappworkdir type="string"></launch.userappworkdir>
        <launch_app.mpi_max_rank type="null"></launch_app.mpi_max_rank>
-       <launch.userapppath type="string">/home/Zsf/HPC/mandelbrot/release/mandelbrot</launch.userapppath>
-       <launch_app.app_to_launch type="string">/home/Zsf/HPC/mandelbrot/release/mandelbrot</launch_app.app_to_launch>
-       <launch_app.working_folder type="string">/home/Zsf/HPC/mandelbrot/release</launch_app.working_folder>
+       <launch.userapppath type="string">/home/chris/high-performance-clowns/mandelbrot/release/mandelbrot</launch.userapppath>
+       <launch_app.app_to_launch type="string">/home/chris/high-performance-clowns/mandelbrot/release/mandelbrot</launch_app.app_to_launch>
+       <launch_app.working_folder type="string">/home/chris/high-performance-clowns/mandelbrot/release</launch_app.working_folder>
        <search_directories>
         <item>
          <value type="string">sym:p=/home/Zsf/HPC/mandelbrot/src</value>
@@ -733,6 +756,10 @@
        <context>
         <contextValue>
          <id type="string">auto_finalize</id>
+         <value type="bool">true</value>
+        </contextValue>
+        <contextValue>
+         <id type="string">cpu_profiling</id>
          <value type="bool">true</value>
         </contextValue>
         <contextValue>
@@ -764,6 +791,10 @@
          <value type="string">*</value>
         </contextValue>
         <contextValue>
+         <id type="string">kernel_matching_mode</id>
+         <value type="string">strict</value>
+        </contextValue>
+        <contextValue>
          <id type="string">mklUserMode</id>
          <value type="bool">true</value>
         </contextValue>
@@ -784,12 +815,12 @@
          <value type="string"></value>
         </contextValue>
         <contextValue>
-         <id type="string">profilePython</id>
-         <value type="bool">false</value>
-        </contextValue>
-        <contextValue>
          <id type="string">profile_intel_perf_libs</id>
          <value type="bool">true</value>
+        </contextValue>
+        <contextValue>
+         <id type="string">profile_python</id>
+         <value type="string">off</value>
         </contextValue>
         <contextValue>
          <id type="string">show_report</id>
@@ -821,7 +852,7 @@
         </contextValue>
         <contextValue>
          <id type="string">targetGPU</id>
-         <value type="string">0:0:2.0</value>
+         <value type="string">none</value>
         </contextValue>
         <contextValue>
          <id type="string">targetType</id>
@@ -838,12 +869,12 @@
       <workload>
        <targetName type="string">suitability</targetName>
        <launch.userapppath type="string">/home/Zsf/HPC/mandelbrot/release/mandelbrot</launch.userapppath>
-       <launch.userappworkdir type="string"></launch.userappworkdir>
+       <launch.userappworkdir type="string">/home/Zsf/HPC/mandelbrot/release</launch.userappworkdir>
        <launch_app.app_to_launch type="string">/home/Zsf/HPC/mandelbrot/release/mandelbrot</launch_app.app_to_launch>
        <launch_app.app_parameters type="string"></launch_app.app_parameters>
        <use_app_dir_as_work_dir type="bool">true</use_app_dir_as_work_dir>
-       <launch_app.working_folder type="string">/home/Zsf/HPC/mandelbrot/release</launch_app.working_folder>
-       <result_directory.path type="string">/home/Zsf/HPC/mandelbrot/advisor/mandelbrot/r@@@{at}</result_directory.path>
+       <launch_app.working_folder type="string"></launch_app.working_folder>
+       <result_directory.path type="string">/home/chris/high-performance-clowns/mandelbrot/advisor/mandelbrot/r@@@{at}</result_directory.path>
        <search_directories>
         <item>
          <value type="string">sym:p=/home/Zsf/HPC/mandelbrot/src</value>
@@ -853,6 +884,10 @@
         </item>
        </search_directories>
        <context>
+        <contextValue>
+         <id type="string">cpu_profiling</id>
+         <value type="bool">true</value>
+        </contextValue>
         <contextValue>
          <id type="string">dataLimit</id>
          <value type="s32_t">500</value>

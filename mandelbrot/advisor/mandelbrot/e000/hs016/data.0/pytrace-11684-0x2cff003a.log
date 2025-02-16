@@ -1,0 +1,11 @@
+
+11684 : 0x2cb2d039f58 : 3 : logger_init :  LOG FILE OPENED (by collectunits.logger), level: 4
+11684 : 0x2cb2d18b21c : 4 : pytrace_try_probe_python_functions :  Python version is detected as == 0x0
+11684 : 0x2cb2db08258 : 4 : pytrace_try_probe_python_functions :  Python version is detected as == 0x0
+11684 : 0x2cb52c43f20 : 4 : pytrace_try_probe_python_functions :  Python version is detected as == 0x0
+11684 : 0x2cb54d76e6f : 4 : pytrace_try_probe_python_functions :  Python version is detected as == 0x0
+11684 : 0x2cb553fb384 : 4 : pytrace_try_probe_python_functions :  Python version is detected as == 0x0
+11684 : 0x2cb62d66628 : 4 : pytrace_try_probe_python_functions :  Python version is detected as == 0x0
+11684 : 0x2cb7485b788 : 4 : pytrace_try_probe_python_functions :  Python version is detected as == 0x0
+11684 : 0x2cb750a9c68 : 4 : pytrace_try_probe_python_functions :  Python version is detected as == 0x0
+11684 : 0x2cb75430e83 : 4 : pytrace_try_probe_python_functions :  Python version is detected as == 0x0

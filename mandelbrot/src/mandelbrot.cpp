@@ -9,7 +9,7 @@
 #endif
 
 #ifndef OMP_SCHEDULE
-#define OMP_SCHEDULE dynamic
+#define OMP_SCHEDULE guided
 #endif
 
 // Ranges of the set

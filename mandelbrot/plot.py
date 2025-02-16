@@ -6,12 +6,9 @@ def main():
     data = np.loadtxt('result.csv', delimiter=',')
 
     # Plot the Mandelbrot set using imshow
-    plt.imshow(data, cmap='viridis', origin='lower', interpolation='nearest')
-    plt.colorbar(label='Value')
-    plt.title('Mandelbrot Set')
-    plt.xlabel('X')
-    plt.ylabel('Y')
-    plt.show()
+    plt.imshow(data, cmap='gray_r', origin='lower', interpolation='nearest')
+    plt.axis('off')
+    plt.savefig('mandelbrot.png', dpi=300)
 
 if __name__ == '__main__':
     main()
