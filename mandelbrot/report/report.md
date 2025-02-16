@@ -261,7 +261,7 @@ for (int pos = 0; pos < totalPixels; pos += 4) {
   if (still_active) {
     for (int j = 0; j < 4; ++j) {
       if (still_active & (1 << j)) {
-        image[pos + j] = ITERATIONS;
+        image[pos + j] = 0;
       }
     }
   }
