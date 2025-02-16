@@ -94,9 +94,9 @@ int main(int argc, char **argv) {
       // |z|^2 >= 4.
       __m256d diverged_mask = _mm256_cmp_pd(mag_sq, _mm256_set1_pd(4.0), _CMP_GE_OQ);
       int diverged = _mm256_movemask_pd(diverged_mask);
-      if (diverged) {                  // if any of the 4 pixel diverged
-        for (int j = 0; j < 4; ++j) {  // if the j-th pixel diverged
-          if (diverged & (1 << j)) {
+      if (diverged) {  // if any of the 4 pixel diverged
+        for (int j = 0; j < 4; ++j) {
+          if (diverged & (1 << j)) {  // if the j-th pixel diverged
             image[pos + j] = i;
           }
         }
