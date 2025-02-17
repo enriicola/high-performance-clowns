@@ -535,9 +535,19 @@ For our experiments, we selected different values for `RESOLUTION`, as the whole
 
 <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-  <img src="./images/exec_time.png" alt="OMP" width="100%" />
+  <img src="./images/cpu_hotspot_time.png" alt="OMP" width="100%" />
   </figure>
 </div>
+
+We see that the hotspot time covers almost the totality of the execution time, but, for large `RESOLUTION` values, there seem to be a larger gap due to context switch of the threads.
+
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+  <img src="./images/cpu_gpu_time.png" alt="OMP" width="100%" />
+  </figure>
+</div>
+
+In the same way, comparing the different versions of the algorithm, the gap between the performances enlarges for `RESOLUTION` growing.
 
 <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
@@ -545,7 +555,11 @@ For our experiments, we selected different values for `RESOLUTION`, as the whole
   </figure>
 </div>
 
-### Sequential data 📊
+This is the most interesting plot, because we see that, at a certain point (`RESOLUTION` $\approx 3200$), the CUDA version surpasses the CPU version. We also highlight that, for the CUDA version, the speedup keeps growing, while for the CPU version there is a value for which the speedup starts decreasing.
+
+## Data tables
+
+### Sequential data
 
 | RESOLUTION | Time (s) | Hotspot Time (s) |
 | :--------: | :------: | :--------------: |
@@ -555,17 +569,17 @@ For our experiments, we selected different values for `RESOLUTION`, as the whole
 |   8,000    |  216.93  |      216.41      |
 |   16,000   |  867.14  |      866.97      |
 
-### Parallel data 🛤️
+### AVX2 parallel data
 
 | RESOLUTION | Time (s) | Hotspot Time (s) |
 | :--------: | :------: | :--------------: |
-|   1,000    |   0.28   |       0.23       |
-|   2,000    |   1.07   |       0.93       |
-|   4,000    |   4.08   |       3.85       |
-|   8,000    |  16.53   |      15.65       |
-|   16,000   |  67.14   |      63.82       |
+|   1,000    |   0.13   |       0.09       |
+|   2,000    |   0.42   |       0.37       |
+|   4,000    |   1.62   |       1.47       |
+|   8,000    |   6.35   |       5.85       |
+|   16,000   |  26.62   |      23.63       |
 
-### CUDA data ⏩
+### CUDA data
 
 | RESOLUTION | Time (s) |
 | :--------: | :------: |
@@ -575,7 +589,15 @@ For our experiments, we selected different values for `RESOLUTION`, as the whole
 |   8,000    |   5.61   |
 |   16,000   |  21.77   |
 
-We immediately see an abrupt change performance-wise in the CUDA version, reaching a speedup of $\approx 40\texttt{x}$ at the maximum `RESOLUTION`. Time-wise, a sequential execution of about $\approx$ **14 minutes** became a CUDA exection of $\approx$ **20 seconds**
+### Speedup data
+
+| RESOLUTION | AVX2 parallel Speedup | CUDA Speedup |
+| :--------: | :-------------------: | :----------: |
+|   1,000    |         26.08         |    15.41     |
+|   2,000    |         32.29         |    26.59     |
+|   4,000    |         33.50         |    35.47     |
+|   8,000    |         34.16         |    38.67     |
+|   16,000   |         32.57         |    39.83     |
 
 # Conclusions 🔚
 
