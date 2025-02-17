@@ -8,7 +8,7 @@
 - always provide the compilation and execution commands (e.g. icc -O3 -xHost...);
 - consider different and meaningful data sizes (i.e. no sequential execution time shorter than a few seconds). 7 -->
 # HPC - Mandelbrot report 🏎️ 💻
-### Leonardo Gonfiantini, Enrico Pezzano, Christian Parodi
+### Leonardo Gonfiantini, Christian Parodi, Enrico Pezzano
 
 # Introduction 🎬
 
