@@ -601,4 +601,4 @@ This is the most interesting plot, because we see that, at a certain point (`RES
 
 # Conclusions 🔚
 
-The experiments demonstrate significant performance gains, particularly when using GPU acceleration compared to a highly optimized CPU implementation. In contrast, the CUDA implementation on Google Colab, compiled with nvcc and optimized for the Tesla T4 architecture (sm_75), reduced execution times dramatically, achieving up to a 40× speedup for high-resolution workloads.
+The experiments demonstrate significant performance gains, both when optimizing (and rewriting) the original code and then writing a dedicated CUDA kernel. Although the execution times were similar for the tested values of `RESOLUTION`, we noticed that the speedup changes in favor of the CUDA implementation. So, talking about scalability, the CUDA version is more suited, especially if we expect to increase the resolution.
