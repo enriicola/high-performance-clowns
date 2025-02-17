@@ -1,7 +1,7 @@
-# HPC - CUDA report
+# HPC - CUDA report 🏎️ 💻
 **Leonardo Gonfiantini, Christian Parodi, Enrico Pezzano**
 
-# Introduction
+# Introduction 🎬
 
 In this report, we aim to accelerate a given program that computes the 2D heat conduction formula using CUDA. The primary objective is to evaluate different configurations of blocks and threads, as well as various problem sizes, to achieve optimal performance. We will conduct a thorough analysis of the code to identify hotspots and discuss potential  vectorization issues. The best sequential time will be established as a reference point, and performance metrics will be presented using Google Colab. Finally, we will draw conclusions based on our findings.
 
@@ -84,7 +84,7 @@ The VM of google colab is equipped with this GPU:
 +-----------------------------------------+----------------------+----------------------+
 ```
 
-Retrievec by running:
+Retrieved by running:
 
 ```bash
 !nvidia-smi
@@ -135,7 +135,7 @@ deviceQuery, CUDA Driver = CUDART, CUDA Driver Version = 12.2, CUDA Runtime Vers
 Result = PASS
 ```
 
-# Hotspot identification
+# Hotspot identification 🔥
 
 The main bottleneck of the program are the nested loops in `step_kernel_mod`:
 
@@ -168,7 +168,7 @@ void step_kernel_mod(int ni, int nj, float fact, float* temp_in, float* temp_out
 
 This section iterates over nearly every grid point (excluding the boundaries) on a large `SIZExSIZE` matrix for each of the 200 time steps. Each iteration involves multiple memory accesses, that means reading the central cell and its four neighbours. This segment accesses adjacent elements and performs several arithmetic operations to compute the finite difference update, making the routine both compute-bound and memory-bound.
 
-<!-- # Vectorization
+<!-- # Vectorization 🏹
 
 ```bash
 Begin optimization report for: step_kernel_mod
@@ -262,7 +262,7 @@ What we have obtained is this:
 
 As we can see, the time needed for the program to process a matrix of size=```10000x10000``` is really high. -->
 
-# CUDA implementation
+# CUDA implementation ⏩
 
 To convert the given algorithm into a CUDA kernel function, we replaced the loops inside the functions with direct calculations of `x` and `y` using `blockIdx`, `blockDim`, and `threadIdx`. \
 This transformation enables parallel execution, as demonstrated here:
@@ -293,7 +293,7 @@ __global__ void step_kernel_mod_dev(const size_t ni, const size_t nj,
 }
 ```
 
-# GPU parameters tuning
+# GPU parameters tuning 📽️
 
 <!-- ## Generating data
 
@@ -446,8 +446,8 @@ Then the kernel is called by invoking:
 ```C
 step_kernel_mod_dev<<<numBlocks, threadsPerBlock>>>(ni, nj, tfac, temp1_d, temp2_d);
 ```
-
-## Measurements
+ 
+## Measurements 📏
 
 We tried on different values for `SIZE`, each measurement has been taken with **`32x8`** threads per block and each thread is given an equal number of cells of the matrix
 
@@ -468,7 +468,7 @@ We tried on different values for `SIZE`, each measurement has been taken with **
 
 As we could expect, the bigger the matrix, the more the program takes to execute, but luckily we still remain in a well-sublinear growth
 
-## Performance analysis
+## Performance analysis 📈
 
 The profiling results show that a significant amount of time is consumed by API calls, particularly those related to synchronization and memory transfers. For instance, the call to `cudaEventSynchronize` accounts for about $57.76\%$ of the API call time, indicating that waiting for the GPU operations to complete is a major factor in overall performance. Similarly, the `cudaMemcpy` operations (both `HtoD` and `DtoH`) also contribute substantially, taking up around $34.74\%$ of the API call time. Although the kernel execution (`step_kernel_mod_dev`) represents $62.16\%$ of the GPU activity, these overheads from synchronization and memory transfers are noteworthy and can be a target for further performance optimization.
 
@@ -528,7 +528,7 @@ With **size 1,000**, as we can see the API calls impact a lot more than before:
                     0.00%     212ns         1     212ns     212ns     212ns  cuDeviceGetUuid
 ```
 
-# Conclusions
+# Conclusions 🔚
 
 In this report, we optimized a 2D heat conduction simulation using CUDA and analyzed its performance across different configurations. By identifying computational hotspots in the sequential implementation and leveraging GPU acceleration, we achieved significant speedups.
 

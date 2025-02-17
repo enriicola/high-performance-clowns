@@ -161,7 +161,7 @@ LOOP END
 After a deep analysis, we concluded that the possible vectorization optimizations are negligible. 
 Indeed, in the context of this laboratory, we did not notice any vectorization issues (i.e. loop carried dependencies, Read after Write, etc.).
 
-# Optimizations 🛤️
+# Optimizations 🔬
 
 The first thing we changed was the `sin` and `cos` computation. Those are used in both the statements inside the inner loop, so they can be extracted to variables. Even though it is not a parallelization problem per se, caching in this way the computation of the trigonometric functions, further improves the performance.
 
@@ -175,9 +175,9 @@ Xr_o[k] += xr[n] * cos_res + idft * xi[n] * sin_res;
 Xi_o[k] += -idft * xr[n] * sin_res + xi[n] * cos_res;
 ```
 
-## Parallelizations
+## Parallelizations 🛤️
 
-### best parameters for OMP
+### Best parameters for OMP 💯
 
 There are several parameters to take into account. We decided to tune the number of threads and the scheduling type. The number of threads is interesting to analyze because a number that's too low will result in a slower execution, while too high would waste resources. The scheduling type decides wheter to subdivide the workload equally (`static`), depending on which thread is free (`dynamic`) and a compromise between them (`guided`).
 
@@ -234,7 +234,7 @@ We performed the tests on the workstation in SW2, which has 20 cores with 1 thre
   </figure>
 </div>
 
-#### Sequential Data
+#### Sequential Data ⚠️
 |    N    | GFLOPS | Time (s) | Hotspot Time (s) |
 | :-----: | :----: | :------: | :--------------: |
 | 80,000  | 32.97  |  24.89   |      24.22       |
@@ -243,7 +243,7 @@ We performed the tests on the workstation in SW2, which has 20 cores with 1 thre
 | 140,000 | 33.29  |  75.50   |      74.10       |
 | 160,000 | 33.33  |  98.49   |      96.87       |
 
-#### Parallel data
+#### Parallel data 🛤️
 
 |    N    | GFLOPS | Time (s) | Hotspot Time (s) |
 | :-----: | :----: | :------: | :--------------: |
@@ -255,7 +255,7 @@ We performed the tests on the workstation in SW2, which has 20 cores with 1 thre
 
 As we expected, the greater the problem size, the longer it will take to execute. We also highlight how close are the sequential global time and hotspot time (meaning that the hotspot is the responsible of the whole execution). Also, the parallel execution is much faster and the two slopes (parallel hotspot and global time) have a larger gap between them, because of the overhead introduced by multithreading.
 
-### Speedup & Efficiency
+### Speedup & Efficiency 📈
 
 <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
   <figure style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
@@ -269,7 +269,7 @@ As we expected, the greater the problem size, the longer it will take to execute
   </figure>
 </div>
 
-#### Speedup table
+#### Speedup table 📈
 
 |    N    | Speedup |
 | :-----: | :-----: |
@@ -279,7 +279,7 @@ As we expected, the greater the problem size, the longer it will take to execute
 | 140,000 |  6.74   |
 | 160,000 |  6.84   |
 
-#### Efficiency table
+#### Efficiency table 📈
 
 |    N    | Efficiency |
 | :-----: | :--------: |

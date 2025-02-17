@@ -1,11 +1,11 @@
-# HPC - MPI report
+# HPC - MPI report 🏎️ 💻
 **Leonardo Gonfiantini, Christian Parodi, Enrico Pezzano**
 
-# Introduction
+# Introduction 🎬
 
 The goal is to distribute the program between the different nodes (in out case different processes on the same machine). 
 
-# Hardware
+# Hardware ⚙️
 
 For this third assignment, we executed the C code using the Software 2 (SW2) workstations, with the following characteristics.
 
@@ -15,7 +15,7 @@ For this third assignment, we executed the C code using the Software 2 (SW2) wor
   </figure>
 </div>
 
-## Algorithm analysis
+## Algorithm analysis 👨🏻‍💻
 
 Given the function
 
@@ -31,7 +31,7 @@ $$\pi \approx \frac{1}{n} \sum_{i=1}^n \frac{4}{1 + (\frac{i-0.5}{n})^2}$$
 
 $(i - 0.5)/n$ is indeed the midpoint of the $i$-th subinterval. Since it discretizes the integral, it becomes an approximation of $\pi$.
 
-### Parallelization strategy
+### Parallelization strategy 🛤️
 
 The sequential case is the following:
 
@@ -53,7 +53,7 @@ As we can see, the sum is performed alltogether on the same node. The simplest y
 
 The final step would be re-aggregate all the partial sums into the same global result, i.e. **reduce** them.
 
-### Vectorization
+### Vectorization 🏹
 
 Now that the program is distributed, we can start thinking at the other optimization aspects. The first thing to tune is the compiler, in our case we used `mpiicx` with all the optimization flag needed. The command ran to compile the program is
 
@@ -67,7 +67,7 @@ while the one to execute it is
 mpirun -np 10 ./pi_homework
 ```
 
-### Parallelization
+### Parallelization 🛤️
 
 Another way to improve the performances is to use multithreading. We used **OpenMP** to parallelize the original code in this way:
 
@@ -82,7 +82,7 @@ Another way to improve the performances is to use multithreading. We used **Open
 
 That is, simply subdivide the for loop on different threads and apply the reduction on the sum.
 
-### MPI workload distribution
+### MPI workload distribution 👷
 
 Now that we know how the algorithm works, we can decide how to divide the workload in each MPI node. We start by noticing that it is a sum over $n$ elements (in the code $n =$ `INTERVALS`), so, if we have $m$ worker nodes with same resources and performances, we can divide this sum into $\texttt{INTERVALS}/m$ chunks
 
@@ -129,7 +129,7 @@ if(rank == MASTER_NODE){
 }
 ```
 
-## Performance evaluation
+## Performance evaluation 📈
 
 In this program, the only heavy hotspot is `loop in main at pi_homework.c:26`, that is the one that computes the local sums. The following measurements are taken considering the global execution time and the hotspot execution time (since it is the only one).
 
@@ -140,7 +140,7 @@ In this program, the only heavy hotspot is `loop in main at pi_homework.c:26`, t
 </div>
 <div style="text-align:center;"> execution time comparison</div>
 
-#### Parallel execution time
+#### Parallel execution time 🛤️
 
 |    INTERVALS    | GFLOPS | Time (s) | Hotspot Time (s) |
 | :-------------: | :----: | :------: | :--------------: |
@@ -149,7 +149,7 @@ In this program, the only heavy hotspot is `loop in main at pi_homework.c:26`, t
 | 500,000,000,000 | 77.91  |  38.51   |      33.68       |
 | 700,000,000,000 | 75.36  |  55.73   |      48.08       |
 
-#### MPI execution time
+#### MPI execution time 💌
 
 |    INTERVALS    | Time (s) |
 | :-------------: | :------: |
@@ -169,7 +169,7 @@ In general, with multithreading we avoid introducing useless overheads due to pr
 
 <div style="text-align:center;">Speedup (parallel vs. MPI)</div>
 
-#### Speedup table
+#### Speedup table 📈
 
 |    INTERVALS    | Speedup |
 | :-------------: | :-----: |
@@ -180,6 +180,6 @@ In general, with multithreading we avoid introducing useless overheads due to pr
 
 Because of this, we see that the parallel program is $1.6$ times faster than the MPI program.
 
-# Conclusions
+# Conclusions 🔚
 
 The main concept to reason on in this case is the scalability. Multithreading is useful and fast, but, in the best case, we can have no more than $\approx 64$ threads in a single machine, while we can add potentially infinite nodes to an MPI cluster.
